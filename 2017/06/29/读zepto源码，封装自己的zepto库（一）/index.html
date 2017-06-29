@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="zepto,javascript," />
 
 
 
@@ -93,13 +93,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://yoursite.com/tags/index-1.html">
+<meta name="description" content="写在前面 读zepto源码，封装自己的zepto库系列是自己在读zepto源码的一些理解，有错误的地方还望指出。如果觉得本系列对你有所帮助，还请持续关注wclimb，谢谢。  zepto的整体架构首先来看看整体代码结构 123456789101112131415161718192021222324252627282930313233(function()&amp;#123;	var wclimb = &amp;#">
+<meta name="keywords" content="zepto,javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读zepto源码，封装自己的zepto库（一）">
+<meta property="og:url" content="http://yoursite.com/2017/06/29/读zepto源码，封装自己的zepto库（一）/index.html">
 <meta property="og:site_name" content="Blog by wclimb">
-<meta property="og:updated_time" content="2017-06-27T13:44:24.000Z">
+<meta property="og:description" content="写在前面 读zepto源码，封装自己的zepto库系列是自己在读zepto源码的一些理解，有错误的地方还望指出。如果觉得本系列对你有所帮助，还请持续关注wclimb，谢谢。  zepto的整体架构首先来看看整体代码结构 123456789101112131415161718192021222324252627282930313233(function()&amp;#123;	var wclimb = &amp;#">
+<meta property="og:updated_time" content="2017-06-29T05:42:37.631Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
+<meta name="twitter:title" content="读zepto源码，封装自己的zepto库（一）">
+<meta name="twitter:description" content="写在前面 读zepto源码，封装自己的zepto库系列是自己在读zepto源码的一些理解，有错误的地方还望指出。如果觉得本系列对你有所帮助，还请持续关注wclimb，谢谢。  zepto的整体架构首先来看看整体代码结构 123456789101112131415161718192021222324252627282930313233(function()&amp;#123;	var wclimb = &amp;#">
 
 
 
@@ -127,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/index-1.html"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/29/读zepto源码，封装自己的zepto库（一）/"/>
 
 
 
 
 
-  <title>tags | Blog by wclimb</title>
+  <title>读zepto源码，封装自己的zepto库（一） | Blog by wclimb</title>
   
 
 
@@ -307,18 +311,176 @@
             
 
   <div id="posts" class="posts-expand">
-  <header class="post-header">
+    
 
-	<h1 class="post-title" itemprop="name headline">tags</h1>
+  
 
+  
+  
+  
 
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/29/读zepto源码，封装自己的zepto库（一）/">
 
-</header>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wclimb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog by wclimb">
+    </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">读zepto源码，封装自己的zepto库（一）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-29T10:48:02+08:00">
+                2017-06-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>   浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
+
+    <div class="post-body" itemprop="articleBody">
+
       
-    
+      
+
+      
+        <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><blockquote>
+<p>读zepto源码，封装自己的zepto库系列是自己在读zepto源码的一些理解，有错误的地方还望指出。如果觉得本系列对你有所帮助，还请持续关注wclimb，谢谢。</p>
+</blockquote>
+<h2 id="zepto的整体架构"><a href="#zepto的整体架构" class="headerlink" title="zepto的整体架构"></a>zepto的整体架构</h2><p>首先来看看整体代码结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">(function()&#123;</div><div class="line"></div><div class="line">	var wclimb = &#123;&#125;,$</div><div class="line"></div><div class="line">	$ = function(selector)&#123;</div><div class="line">		return wclimb.init(selector)</div><div class="line">	&#125;</div><div class="line">	wclimb.init = function(selector)&#123;</div><div class="line">		var dom;</div><div class="line">		dom = document.querySelector(selector);</div><div class="line"></div><div class="line">		return wclimb.Z(dom,selector)</div><div class="line"></div><div class="line">	&#125;</div><div class="line">	wclimb.Z = function(dom,selector)&#123;</div><div class="line">		return new Z(dom,selector)</div><div class="line">	&#125;</div><div class="line">	wclimb.Z.prototype  =  Z.prototype  =  &#123;</div><div class="line">		test:function()&#123;</div><div class="line">			alert(1)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	function Z(dom,selector) &#123;</div><div class="line">		for (var i  =  0; i &lt; dom.length; i++) &#123;</div><div class="line">			this[i] = dom[i]</div><div class="line">		&#125;</div><div class="line">		this.selector = selector;</div><div class="line">		this.length = dom.length</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	window.$ = window.wclimb = $</div><div class="line"></div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<p>首先我们设置了一个闭包，避免产生全局变量<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(function()&#123;</div><div class="line">	...</div><div class="line">&#125;)()</div></pre></td></tr></table></figure></p>
+<p>我们定义一个对象wclimb和$，以便后面使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var wclimb = &#123;&#125;,$</div></pre></td></tr></table></figure>
+<p>$函数返回了wclimb.init(selector),我们知道使用zepto的时候，一般是$(‘p’)，而selector就是p元素，当然不止这一种情况如$(function(){}),所以对选择器后面我们要做判断<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ = function(selector)&#123;</div><div class="line">	return wclimb.init(selector)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>而wclimb.init首先定义了一个dom，通过选择器选取的元素赋值给dom，最后返回wclimb.init，传入dom和选择元素selector</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">wclimb.init = function(selector)&#123;</div><div class="line">	var dom;</div><div class="line">	dom = document.querySelector(selector);</div><div class="line">	return wclimb.Z(dom,selector)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们可以看到之前我们定义了对象wclimb，而后我们就往里面添加了一些方法，就像：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">wclimb = &#123;</div><div class="line">	init：function(selector)&#123;</div><div class="line">		var dom;</div><div class="line">		dom = document.querySelector(selector);</div><div class="line">		return wclimb.Z(dom,selector)</div><div class="line">	&#125;,</div><div class="line">	Z: function(dom,selector)&#123;</div><div class="line">		return new Z(dom,selector)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过wclimb.Z，如果有看过zepto源码的同学应该对此有了解.每次用$调用的时候,将直接返回一个Z的实例.达到无new调用的效果,$(‘p’)返回一个实例，然后$(‘p’).test()调用他的原形方法，这里的方法是test</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">wclimb.Z = function(dom,selector)&#123;</div><div class="line">	return new Z(dom,selector)</div><div class="line">&#125;</div><div class="line"></div><div class="line">function Z(dom,selector) &#123;</div><div class="line">	for (var i = 0; i &lt; dom.length; i++) &#123;</div><div class="line">		this[i] = dom[i]</div><div class="line">	&#125;</div><div class="line">	this.selector = selector;</div><div class="line">	this.length = dom.length</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>由于我们是return new Z(dom,selector),那自然,我们需要手动的把wclimb.Z的prototype指向Z的prototype</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">wclimb.Z.prototype = Z.prototype&#123;&#125;</div><div class="line"></div><div class="line">我们可以在里面添加方法了，如addClass eq等，我们试试加一个test</div><div class="line"></div><div class="line">wclimb.Z.prototype = Z.prototype&#123;</div><div class="line">	test: function()&#123;</div><div class="line">		console.log(&apos;test&apos;)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Z函数是这样的，因为我们选择器选择的元素是一个数组（其实不是）我们把this指向选择的元素，然后添加两个元素selector和length，分别代表选择的元素名和元素的长度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function Z(dom,selector) &#123;</div><div class="line">	for (var i = 0; i &lt; dom.length; i++) &#123;</div><div class="line">		this[i] = dom[i]</div><div class="line">	&#125;</div><div class="line">	this.selector = selector;</div><div class="line">	this.length = dom.length</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最后我们在window上对外暴露一个接口,我们就可以用 $(‘p’) 或者wclimb(‘p’) 即可调用.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">window.$ = window.wclimb = $</div></pre></td></tr></table></figure>
+<p>现在可以试试能不能运行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">html：&lt;p&gt;test&lt;/p&gt;</div><div class="line"></div><div class="line">js：$(&apos;p&apos;)  调用方法试试 $(&apos;p&apos;).test()</div></pre></td></tr></table></figure>
+<p>我们的zepto已经完成了，是不是很简单？骗你的，还差得远呢，后面会慢慢完善。待续。。。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/zepto/" rel="tag"># zepto</a>
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/28/canvas/" rel="next" title="canvas">
+                <i class="fa fa-chevron-left"></i> canvas
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -350,8 +512,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -433,6 +604,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zepto的整体架构"><span class="nav-number">2.</span> <span class="nav-text">zepto的整体架构</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -574,10 +761,10 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-  
+
 
   
 
