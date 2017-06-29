@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="canvas仿微信红包 By wclimbHTML1&amp;lt;canvas id=&amp;quot;cav&amp;quot; width=&amp;quot;500&amp;quot; height=&amp;quot;500&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt; CSS 设置canvas的背景图  1234canvas&amp;#123;		background:url(https://b-ssl.duitang.com/upl">
+<meta name="description" content="canvas仿微信红包 By wclimbHTML1&amp;lt;canvas id=&amp;quot;cav&amp;quot; width=&amp;quot;500&amp;quot; height=&amp;quot;500&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt; CSS 设置canvas的背景图  1234canvas&amp;#123;    background:url(https://b-ssl.duitang.com/u">
 <meta name="keywords" content="canvas">
 <meta property="og:type" content="article">
 <meta property="og:title" content="canvas">
 <meta property="og:url" content="http://yoursite.com/2017/06/28/canvas/index.html">
 <meta property="og:site_name" content="Blog by wclimb">
-<meta property="og:description" content="canvas仿微信红包 By wclimbHTML1&amp;lt;canvas id=&amp;quot;cav&amp;quot; width=&amp;quot;500&amp;quot; height=&amp;quot;500&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt; CSS 设置canvas的背景图  1234canvas&amp;#123;		background:url(https://b-ssl.duitang.com/upl">
+<meta property="og:description" content="canvas仿微信红包 By wclimbHTML1&amp;lt;canvas id=&amp;quot;cav&amp;quot; width=&amp;quot;500&amp;quot; height=&amp;quot;500&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt; CSS 设置canvas的背景图  1234canvas&amp;#123;    background:url(https://b-ssl.duitang.com/u">
 <meta property="og:image" content="http://yoursite.com/img/canvas6.gif">
-<meta property="og:updated_time" content="2017-06-28T14:10:14.325Z">
+<meta property="og:updated_time" content="2017-06-29T00:43:44.862Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="canvas">
-<meta name="twitter:description" content="canvas仿微信红包 By wclimbHTML1&amp;lt;canvas id=&amp;quot;cav&amp;quot; width=&amp;quot;500&amp;quot; height=&amp;quot;500&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt; CSS 设置canvas的背景图  1234canvas&amp;#123;		background:url(https://b-ssl.duitang.com/upl">
+<meta name="twitter:description" content="canvas仿微信红包 By wclimbHTML1&amp;lt;canvas id=&amp;quot;cav&amp;quot; width=&amp;quot;500&amp;quot; height=&amp;quot;500&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt; CSS 设置canvas的背景图  1234canvas&amp;#123;    background:url(https://b-ssl.duitang.com/u">
 <meta name="twitter:image" content="http://yoursite.com/img/canvas6.gif">
 
 
@@ -389,7 +389,7 @@
 <h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><blockquote>
 <p>设置canvas的背景图</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">canvas&#123;</div><div class="line">		background:url(https://b-ssl.duitang.com/uploads/item/201501/22/20150122203239_Cfr58.thumb.700_0.jpeg) no-repeat;</div><div class="line">		background-size:100% 100%;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">canvas&#123;</div><div class="line">    background:url(https://b-ssl.duitang.com/uploads/item/201501/22/20150122203239_Cfr58.thumb.700_0.jpeg) no-repeat;</div><div class="line">    background-size:100% 100%;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">var canvas = document.querySelector(&quot;#cav&quot;)</div><div class="line">var context = canvas.getContext(&quot;2d&quot;);</div><div class="line"></div><div class="line">var randomX = Math.floor(Math.random()*440+30)</div><div class="line">var randomY = Math.floor(Math.random()*440+30)</div><div class="line"></div><div class="line">context.globalAlpha = 0.96;</div><div class="line">context.fillStyle = &apos;#333&apos;</div><div class="line">context.rect(0,0,canvas.width,canvas.height);</div><div class="line">context.fill();</div><div class="line"></div><div class="line">context.save()</div><div class="line">context.beginPath()</div><div class="line">context.arc(randomX,randomY,30,0,Math.PI*2,false);</div><div class="line">context.clip();</div><div class="line">context.clearRect(0,0,canvas.width,canvas.height)</div><div class="line">context.restore();</div><div class="line"></div><div class="line">var num = 30;</div><div class="line">var time = null;</div><div class="line">document.body.onclick = function()&#123;</div><div class="line">    function circle()&#123;</div><div class="line">        num += 5</div><div class="line">        context.save()</div><div class="line">        context.beginPath()</div><div class="line">        context.arc(randomX,randomY,num,0,Math.PI*2,false);</div><div class="line">        context.clip();</div><div class="line">        context.clearRect(0,0,canvas.width,canvas.height)</div><div class="line">        context.restore();</div><div class="line">        console.log(num)</div><div class="line"></div><div class="line">        if (num &gt;= 677)&#123;</div><div class="line">        	clearInterval(timer)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    timer = setInterval(circle,10)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><blockquote>
 <p>随机出现圆心的位置，因为canvas为500*500 圆心为30 所以圆心的范围为 X(30,470) Y(470,30)</p>
@@ -404,7 +404,7 @@
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">context.save()</div><div class="line">context.beginPath()</div><div class="line">context.arc(randomX,randomY,30,0,Math.PI*2,false);</div><div class="line">context.clip();</div><div class="line">context.clearRect(0,0,canvas.width,canvas.height)</div><div class="line">context.restore();</div></pre></td></tr></table></figure>
 <blockquote>
-<p>点击body的时候，设置定时器，让圆的半径每隔10毫毛增加5，当num半径大于677关闭定时器，677为canvas对角的长度</p>
+<p>点击body的时候，设置定时器，让圆的半径每隔10毫秒增加5，当num半径大于677关闭定时器，677为canvas对角的长度</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">document.body.onclick = function()&#123;&#125;</div></pre></td></tr></table></figure>
 <h2 id="效果预览"><a href="#效果预览" class="headerlink" title="效果预览"></a>效果预览</h2><p><img src="/img/canvas6.gif" alt="img"></p>
