@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Node,Koa,Mysql,javascript," />
 
 
 
@@ -93,12 +93,24 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Blog by wclimb">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="Koa2-blogNode+Koa2+Mysql 搭建简易博客 开发环境 nodejs v8.1.0 koa v2.3.0 mysql v5.7.0  准备工作如果你已经配置好node和mysql可以跳过 1$ node -v   查看你的node版本，如果过低则去nodejs官网下载替换之前的版本 下载mysql，并设置好用户名和密码，默认可以为用户名：root，密码：123456 1进入到`b">
+<meta name="keywords" content="Node,Koa,Mysql,javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node+Koa2+Mysql 搭建简易博客">
+<meta property="og:url" content="http://yoursite.com/2017/07/12/Node-Koa2-Mysql-搭建简易博客/index.html">
 <meta property="og:site_name" content="Blog by wclimb">
+<meta property="og:description" content="Koa2-blogNode+Koa2+Mysql 搭建简易博客 开发环境 nodejs v8.1.0 koa v2.3.0 mysql v5.7.0  准备工作如果你已经配置好node和mysql可以跳过 1$ node -v   查看你的node版本，如果过低则去nodejs官网下载替换之前的版本 下载mysql，并设置好用户名和密码，默认可以为用户名：root，密码：123456 1进入到`b">
+<meta property="og:image" content="http://yoursite.com/img/database.png">
+<meta property="og:image" content="http://yoursite.com/img/tables.png">
+<meta property="og:image" content="http://yoursite.com/img/item.png">
+<meta property="og:image" content="http://yoursite.com/img/view.png">
+<meta property="og:image" content="http://yoursite.com/img/signup.png">
+<meta property="og:image" content="http://yoursite.com/img/users.png">
+<meta property="og:updated_time" content="2017-07-12T09:23:29.022Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Blog by wclimb">
+<meta name="twitter:title" content="Node+Koa2+Mysql 搭建简易博客">
+<meta name="twitter:description" content="Koa2-blogNode+Koa2+Mysql 搭建简易博客 开发环境 nodejs v8.1.0 koa v2.3.0 mysql v5.7.0  准备工作如果你已经配置好node和mysql可以跳过 1$ node -v   查看你的node版本，如果过低则去nodejs官网下载替换之前的版本 下载mysql，并设置好用户名和密码，默认可以为用户名：root，密码：123456 1进入到`b">
+<meta name="twitter:image" content="http://yoursite.com/img/database.png">
 
 
 
@@ -126,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/07/12/Node-Koa2-Mysql-搭建简易博客/"/>
 
 
 
 
 
-  <title>Blog by wclimb</title>
+  <title>Node+Koa2+Mysql 搭建简易博客 | Blog by wclimb</title>
   
 
 
@@ -157,9 +169,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -306,9 +316,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -334,9 +344,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/12/Node-Koa2-Mysql-搭建简易博客/" itemprop="url">Node+Koa2+Mysql 搭建简易博客</a></h1>
+          <h1 class="post-title" itemprop="name headline">Node+Koa2+Mysql 搭建简易博客</h1>
         
 
         <div class="post-meta">
@@ -395,11 +403,26 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2017/07/12/Node-Koa2-Mysql-搭建简易博客/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
 
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>   浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
           
 
           
@@ -416,9 +439,7 @@
       
 
       
-        
-          
-            <h2 id="Koa2-blog"><a href="#Koa2-blog" class="headerlink" title="Koa2-blog"></a>Koa2-blog</h2><p>Node+Koa2+Mysql 搭建简易博客</p>
+        <h2 id="Koa2-blog"><a href="#Koa2-blog" class="headerlink" title="Koa2-blog"></a>Koa2-blog</h2><p>Node+Koa2+Mysql 搭建简易博客</p>
 <h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><ul>
 <li>nodejs <code>v8.1.0</code></li>
 <li>koa <code>v2.3.0</code></li>
@@ -526,476 +547,78 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ select * from users;</div></pre></td></tr></table></figure>
 <p>这样刚刚我们注册的用户信息都出现了<br><img src="/img/users.png" alt="img"></p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <div>
+      
+        
+
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/29/读zepto源码，封装自己的zepto库（一）/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wclimb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog by wclimb">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/29/读zepto源码，封装自己的zepto库（一）/" itemprop="url">读zepto源码，封装自己的zepto库（一）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-29T10:48:02+08:00">
-                2017-06-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/Node/" rel="tag"># Node</a>
           
-            
+            <a href="/tags/Koa/" rel="tag"># Koa</a>
           
-
+            <a href="/tags/Mysql/" rel="tag"># Mysql</a>
           
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
           
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><blockquote>
-<p>读zepto源码，封装自己的zepto库系列是自己在读zepto源码的一些理解，有错误的地方还望指出。如果觉得本系列对你有所帮助，还请持续关注wclimb，谢谢。</p>
-</blockquote>
-<h2 id="zepto的整体架构"><a href="#zepto的整体架构" class="headerlink" title="zepto的整体架构"></a>zepto的整体架构</h2><p>首先来看看整体代码结构</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">(function()&#123;</div><div class="line"></div><div class="line">	var wclimb = &#123;&#125;,$</div><div class="line"></div><div class="line">	$ = function(selector)&#123;</div><div class="line">		return wclimb.init(selector)</div><div class="line">	&#125;</div><div class="line">	wclimb.init = function(selector)&#123;</div><div class="line">		var dom;</div><div class="line">		dom = document.querySelector(selector);</div><div class="line"></div><div class="line">		return wclimb.Z(dom,selector)</div><div class="line"></div><div class="line">	&#125;</div><div class="line">	wclimb.Z = function(dom,selector)&#123;</div><div class="line">		return new Z(dom,selector)</div><div class="line">	&#125;</div><div class="line">	wclimb.Z.prototype  =  Z.prototype  =  &#123;</div><div class="line">		test:function()&#123;</div><div class="line">			alert(1)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	function Z(dom,selector) &#123;</div><div class="line">		for (var i  =  0; i &lt; dom.length; i++) &#123;</div><div class="line">			this[i] = dom[i]</div><div class="line">		&#125;</div><div class="line">		this.selector = selector;</div><div class="line">		this.length = dom.length</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	window.$ = window.wclimb = $</div><div class="line"></div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
-<p>首先我们设置了一个闭包，避免产生全局变量<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/06/29/读zepto源码，封装自己的zepto库（一）/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/29/读zepto源码，封装自己的zepto库（一）/" rel="next" title="读zepto源码，封装自己的zepto库（一）">
+                <i class="fa fa-chevron-left"></i> 读zepto源码，封装自己的zepto库（一）
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
+          <span class="post-nav-divider"></span>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/28/canvas/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wclimb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog by wclimb">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/28/canvas/" itemprop="url">canvas</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+          <div class="post-nav-prev post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T21:27:33+08:00">
-                2017-06-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/canvas/" itemprop="url" rel="index">
-                    <span itemprop="name">canvas</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <h1 id="canvas仿微信红包-By-wclimb"><a href="#canvas仿微信红包-By-wclimb" class="headerlink" title="canvas仿微信红包 By wclimb"></a>canvas仿微信红包 By wclimb</h1><h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;canvas id=&quot;cav&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;&lt;/canvas&gt;</div></pre></td></tr></table></figure>
-<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><blockquote>
-<p>设置canvas的背景图</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">canvas&#123;</div><div class="line">    background:url(https://b-ssl.duitang.com/uploads/item/201501/22/20150122203239_Cfr58.thumb.700_0.jpeg) no-repeat;</div><div class="line">    background-size:100% 100%;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">var canvas = document.querySelector(&quot;#cav&quot;)</div><div class="line">var context = canvas.getContext(&quot;2d&quot;);</div><div class="line"></div><div class="line">var randomX = Math.floor(Math.random()*440+30)</div><div class="line">var randomY = Math.floor(Math.random()*440+30)</div><div class="line"></div><div class="line">context.globalAlpha = 0.96;</div><div class="line">context.fillStyle = &apos;#333&apos;</div><div class="line">context.rect(0,0,canvas.width,canvas.height);</div><div class="line">context.fill();</div><div class="line"></div><div class="line">context.save()</div><div class="line">context.beginPath()</div><div class="line">context.arc(randomX,randomY,30,0,Math.PI*2,false);</div><div class="line">context.clip();</div><div class="line">context.clearRect(0,0,canvas.width,canvas.height)</div><div class="line">context.restore();</div><div class="line"></div><div class="line">var num = 30;</div><div class="line">var time = null;</div><div class="line">document.body.onclick = function()&#123;</div><div class="line">    function circle()&#123;</div><div class="line">        num += 5</div><div class="line">        context.save()</div><div class="line">        context.beginPath()</div><div class="line">        context.arc(randomX,randomY,num,0,Math.PI*2,false);</div><div class="line">        context.clip();</div><div class="line">        context.clearRect(0,0,canvas.width,canvas.height)</div><div class="line">        context.restore();</div><div class="line">        console.log(num)</div><div class="line"></div><div class="line">        if (num &gt;= 677)&#123;</div><div class="line">        	clearInterval(timer)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    timer = setInterval(circle,10)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/06/28/canvas/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/27/gulp/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wclimb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog by wclimb">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/27/gulp/" itemprop="url">gulp基础教程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-27T15:49:53+08:00">
-                2017-06-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/gulp/" itemprop="url" rel="index">
-                    <span itemprop="name">gulp</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="入门指南–引用gulp官网示例"><a href="#入门指南–引用gulp官网示例" class="headerlink" title="入门指南–引用gulp官网示例"></a>入门指南–引用gulp官网示例</h2><blockquote>
-<p>全局安装 gulp：</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --global gulp</div></pre></td></tr></table></figure>
-<blockquote>
-<p>作为项目的开发依赖（devDependencies）安装：</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --save-dev gulp</div></pre></td></tr></table></figure>
-<blockquote>
-<p>在项目根目录下创建一个名为 gulpfile.js 的文件：</p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/06/27/gulp/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -1003,6 +626,12 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
 
         </div>
         
@@ -1022,8 +651,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -1119,6 +757,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Koa2-blog"><span class="nav-number">1.</span> <span class="nav-text">Koa2-blog</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发环境"><span class="nav-number">2.</span> <span class="nav-text">开发环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备工作"><span class="nav-number">3.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目录结构"><span class="nav-number">4.</span> <span class="nav-text">目录结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#首先配置config"><span class="nav-number">5.</span> <span class="nav-text">首先配置config</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置index-js文件"><span class="nav-number">6.</span> <span class="nav-text">配置index.js文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置lib的mysql-js文件"><span class="nav-number">7.</span> <span class="nav-text">配置lib的mysql.js文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现注册页面"><span class="nav-number">8.</span> <span class="nav-text">实现注册页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完善注册功能"><span class="nav-number">9.</span> <span class="nav-text">完善注册功能</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1267,10 +921,10 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-  
+
 
   
 
