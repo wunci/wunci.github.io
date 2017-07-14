@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="原创,javascript,Node,Koa,Mysql," />
+  <meta name="keywords" content="原创,Node,Koa,Mysql,javascript," />
 
 
 
@@ -94,7 +94,7 @@
 
 
 <meta name="description" content="Koa2-blogNode+Koa2+Mysql 搭建简易博客 写在前面本篇教程一方面是为了自己在学习的过程加深记忆，也是总结的过程。另一方面给对这方面不太了解的同学以借鉴经验。如发现问题还望指正，如果你觉得这篇文章帮助到了你，那就赏脸给个star吧，https://github.com/wclimb/Koa2-blog下一篇可能是 Node + express + mongoose 或 zept">
-<meta name="keywords" content="原创,javascript,Node,Koa,Mysql">
+<meta name="keywords" content="原创,Node,Koa,Mysql,javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Node+Koa2+Mysql 搭建简易博客">
 <meta property="og:url" content="http://yoursite.com/2017/07/12/Node-Koa2-Mysql-搭建简易博客/index.html">
@@ -107,7 +107,7 @@
 <meta property="og:image" content="http://yoursite.com/img/view.png">
 <meta property="og:image" content="http://yoursite.com/img/signup.png">
 <meta property="og:image" content="http://yoursite.com/img/users.png">
-<meta property="og:updated_time" content="2017-07-14T06:25:30.956Z">
+<meta property="og:updated_time" content="2017-07-14T06:44:03.820Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Node+Koa2+Mysql 搭建简易博客">
 <meta name="twitter:description" content="Koa2-blogNode+Koa2+Mysql 搭建简易博客 写在前面本篇教程一方面是为了自己在学习的过程加深记忆，也是总结的过程。另一方面给对这方面不太了解的同学以借鉴经验。如发现问题还望指正，如果你觉得这篇文章帮助到了你，那就赏脸给个star吧，https://github.com/wclimb/Koa2-blog下一篇可能是 Node + express + mongoose 或 zept">
@@ -464,7 +464,7 @@
 </ul>
 <p>首先我们创建koa2-blog文件夹，然后<code>cd koa2-blog</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">接着使用 `npm init` 来创建package.json</div></pre></td></tr></table></figure></p>
 <p>接着安装包，安装之前我们使用<a href="https://npm.taobao.org/" target="_blank" rel="external">cnpm</a>安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g cnpm --registry=https://registry.npm.taobao.org</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cnpm i koa koa-bodyparser koa-mysql-session koa-router koa-session-minimal koa-static koa-views md5 moment mysql --save</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cnpm i koa koa-bodyparser koa-mysql-session koa-router koa-session-minimal koa-static koa-views md5 moment mysql ejs --save</div></pre></td></tr></table></figure>
 <p>各模块用处</p>
 <ol>
 <li><code>koa node</code>框架</li>
@@ -730,13 +730,13 @@
           
             <a href="/tags/原创/" rel="tag"># 原创</a>
           
-            <a href="/tags/javascript/" rel="tag"># javascript</a>
-          
             <a href="/tags/Node/" rel="tag"># Node</a>
           
             <a href="/tags/Koa/" rel="tag"># Koa</a>
           
             <a href="/tags/Mysql/" rel="tag"># Mysql</a>
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
           
         </div>
       
