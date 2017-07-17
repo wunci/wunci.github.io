@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="原创,javascript,zepto," />
+  <meta name="keywords" content="javascript,原创,zepto," />
 
 
 
@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="距离上一篇zepto源码分析已经过去大半个月，想想自己都过意不去，不过之前分享了一篇node博客教程，还算干了点正事。接下来我们继续封装自己的库吧 上节代码概览">
-<meta name="keywords" content="原创,javascript,zepto">
+<meta name="description" content="距离上一篇zepto源码分析已经过去大半个月，想想自己都过意不去，不过之前分享了一篇node博客教程，还算干了点正事。接下来我们继续封装自己的库吧 上节代码概览12345678910111213141516171819202122232425262728293031323334(function()&amp;#123;	var wclimb = &amp;#123;&amp;#125;,$	$ = function(se">
+<meta name="keywords" content="javascript,原创,zepto">
 <meta property="og:type" content="article">
 <meta property="og:title" content="读zepto源码，封装自己的zepto库（二）">
 <meta property="og:url" content="http://yoursite.com/2017/07/17/读zepto源码，封装自己的zepto库（二）/index.html">
 <meta property="og:site_name" content="Blog by wclimb">
-<meta property="og:description" content="距离上一篇zepto源码分析已经过去大半个月，想想自己都过意不去，不过之前分享了一篇node博客教程，还算干了点正事。接下来我们继续封装自己的库吧 上节代码概览">
-<meta property="og:updated_time" content="2017-07-17T15:00:56.866Z">
+<meta property="og:description" content="距离上一篇zepto源码分析已经过去大半个月，想想自己都过意不去，不过之前分享了一篇node博客教程，还算干了点正事。接下来我们继续封装自己的库吧 上节代码概览12345678910111213141516171819202122232425262728293031323334(function()&amp;#123;	var wclimb = &amp;#123;&amp;#125;,$	$ = function(se">
+<meta property="og:updated_time" content="2017-07-17T15:02:32.411Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读zepto源码，封装自己的zepto库（二）">
-<meta name="twitter:description" content="距离上一篇zepto源码分析已经过去大半个月，想想自己都过意不去，不过之前分享了一篇node博客教程，还算干了点正事。接下来我们继续封装自己的库吧 上节代码概览">
+<meta name="twitter:description" content="距离上一篇zepto源码分析已经过去大半个月，想想自己都过意不去，不过之前分享了一篇node博客教程，还算干了点正事。接下来我们继续封装自己的库吧 上节代码概览12345678910111213141516171819202122232425262728293031323334(function()&amp;#123;	var wclimb = &amp;#123;&amp;#125;,$	$ = function(se">
 
 
 
@@ -390,10 +390,9 @@
 
       
         <p>距离上一篇zepto源码分析已经过去大半个月，想想自己都过意不去，不过之前分享了一篇node博客教程，还算干了点正事。接下来我们继续封装自己的库吧</p>
-<h2 id="上节代码概览"><a href="#上节代码概览" class="headerlink" title="上节代码概览"></a>上节代码概览</h2><a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">(function()&#123;</div><div class="line"></div><div class="line">	var wclimb = &#123;&#125;,$</div><div class="line"></div><div class="line">	$ = function(selector)&#123;</div><div class="line">		return wclimb.init(selector)</div><div class="line">	&#125;</div><div class="line">	wclimb.init = function(selector)&#123;</div><div class="line">		var dom;</div><div class="line">		dom = document.querySelectorAll(selector);</div><div class="line"></div><div class="line">		return wclimb.Z(dom,selector)</div><div class="line"></div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	wclimb.Z = function(dom,selector)&#123;</div><div class="line">		return new Z(dom,selector)</div><div class="line">	&#125;</div><div class="line">	wclimb.Z.prototype  =  Z.prototype  =  &#123;</div><div class="line">		test:function()&#123;</div><div class="line">			alert(1)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	function Z(dom,selector) &#123;</div><div class="line">		for (var i  =  0; i &lt; dom.length; i++) &#123;</div><div class="line">			this[i] = dom[i]</div><div class="line">		&#125;</div><div class="line">		this.selector = selector;</div><div class="line">		this.length = dom.length</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	window.$ = window.wclimb = $</div><div class="line"></div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
-<h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><p>在<code>wclimb.init=function(selector){}</code>里面添加选择器代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
-<h2 id="each方法"><a href="#each方法" class="headerlink" title="each方法"></a>each方法</h2><p>在<code>wclimb.Z.prototype=Z.prototype=</code>里面添加方法each</p>
+<h2 id="上节代码概览"><a href="#上节代码概览" class="headerlink" title="上节代码概览"></a>上节代码概览</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">(function()&#123;</div><div class="line"></div><div class="line">	var wclimb = &#123;&#125;,$</div><div class="line"></div><div class="line">	$ = function(selector)&#123;</div><div class="line">		return wclimb.init(selector)</div><div class="line">	&#125;</div><div class="line">	wclimb.init = function(selector)&#123;</div><div class="line">		var dom;</div><div class="line">		dom = document.querySelectorAll(selector);</div><div class="line"></div><div class="line">		return wclimb.Z(dom,selector)</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	wclimb.Z = function(dom,selector)&#123;</div><div class="line">		return new Z(dom,selector)</div><div class="line">	&#125;</div><div class="line">	wclimb.Z.prototype  =  Z.prototype  =  &#123;</div><div class="line">		test:function()&#123;</div><div class="line">			alert(1)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	function Z(dom,selector) &#123;</div><div class="line">		for (var i  =  0; i &lt; dom.length; i++) &#123;</div><div class="line">			this[i] = dom[i]</div><div class="line">		&#125;</div><div class="line">		this.selector = selector;</div><div class="line">		this.length = dom.length</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	window.$ = window.wclimb = $</div><div class="line"></div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<h2 id="each方法"><a href="#each方法" class="headerlink" title="each方法"></a>each方法</h2><a id="more"></a>
+<p>在<code>wclimb.Z.prototype=Z.prototype=</code>里面添加方法each</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">wclimb.Z.prototype  =  Z.prototype  =  &#123;</div><div class="line">	each:function(callback)&#123;</div><div class="line">		[].every.call(this, function(el, idx)&#123;</div><div class="line">        return callback.call(el, idx, el) !== false</div><div class="line">      &#125;)</div><div class="line">      return this;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>通过数组的<code>every</code>方法进行遍历，然后看看每次<code>callback</code>是不是都不是<code>false</code>，如果是则结束遍历</p>
 <p>最后通过 <code>return this</code> 来达到链式调用的效果</p>
@@ -441,9 +440,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/原创/" rel="tag"># 原创</a>
-          
             <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+            <a href="/tags/原创/" rel="tag"># 原创</a>
           
             <a href="/tags/zepto/" rel="tag"># zepto</a>
           
@@ -629,7 +628,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#上节代码概览"><span class="nav-number">1.</span> <span class="nav-text">上节代码概览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择器"><span class="nav-number">2.</span> <span class="nav-text">选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#each方法"><span class="nav-number">3.</span> <span class="nav-text">each方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#addClass方法"><span class="nav-number">4.</span> <span class="nav-text">addClass方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hasClass方法"><span class="nav-number">5.</span> <span class="nav-text">hasClass方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#上节代码概览"><span class="nav-number">1.</span> <span class="nav-text">上节代码概览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#each方法"><span class="nav-number">2.</span> <span class="nav-text">each方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#addClass方法"><span class="nav-number">3.</span> <span class="nav-text">addClass方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hasClass方法"><span class="nav-number">4.</span> <span class="nav-text">hasClass方法</span></a></li></ol></div>
             
 
           </div>

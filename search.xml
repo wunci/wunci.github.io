@@ -3,10 +3,10 @@
   <entry>
     <title><![CDATA[读zepto源码，封装自己的zepto库（二）]]></title>
     <url>%2F2017%2F07%2F17%2F%E8%AF%BBzepto%E6%BA%90%E7%A0%81%EF%BC%8C%E5%B0%81%E8%A3%85%E8%87%AA%E5%B7%B1%E7%9A%84zepto%E5%BA%93%EF%BC%88%E4%BA%8C%EF%BC%89%2F</url>
-    <content type="text"><![CDATA[距离上一篇zepto源码分析已经过去大半个月，想想自己都过意不去，不过之前分享了一篇node博客教程，还算干了点正事。接下来我们继续封装自己的库吧 上节代码概览 12345678910111213141516171819202122232425262728293031323334(function()&#123; var wclimb = &#123;&#125;,$ $ = function(selector)&#123; return wclimb.init(selector) &#125; wclimb.init = function(selector)&#123; var dom; dom = document.querySelectorAll(selector); return wclimb.Z(dom,selector) &#125; wclimb.Z = function(dom,selector)&#123; return new Z(dom,selector) &#125; wclimb.Z.prototype = Z.prototype = &#123; test:function()&#123; alert(1) &#125; &#125; function Z(dom,selector) &#123; for (var i = 0; i &lt; dom.length; i++) &#123; this[i] = dom[i] &#125; this.selector = selector; this.length = dom.length &#125; window.$ = window.wclimb = $&#125;)() 选择器在wclimb.init=function(selector){}里面添加选择器代码12 each方法在wclimb.Z.prototype=Z.prototype=里面添加方法each 12345678wclimb.Z.prototype = Z.prototype = &#123; each:function(callback)&#123; [].every.call(this, function(el, idx)&#123; return callback.call(el, idx, el) !== false &#125;) return this; &#125;&#125; 通过数组的every方法进行遍历，然后看看每次callback是不是都不是false，如果是则结束遍历 最后通过 return this 来达到链式调用的效果 addClass方法继续在里面添加addClass方法 123456789101112131415161718addClass:function(name)&#123; if (!name) return this return this.each(function(el,idx)&#123; if (!(&apos;className&apos; in this)) return classList = []; var cls = className(this) // newName = funcArg(this, name, idx, cls) name.split(/\s+/g).forEach(function(klass)&#123; // if (!$(this).hasClass(klass)) classList.push(klass) &#125;, this) classList.length &amp;&amp; className(this, cls + (cls ? &quot; &quot; : &quot;&quot;) + classList.join(&quot; &quot;)) &#125;)&#125; 我们先判断name存在与否，没有就直接return this，支持链式调用 新建一个数组，存放我们要添加的class，因为可能要同时添加多个 通过调用className方法来获取之前的class，并保存起来。clasName方法在下面 我们添加class一般是这样addClass(&#39;a b c&#39;)，所以我们通过正则表达式把他们用空格分开/\s+/g,用+的原因是，可能会有多个空格的存在，接着对他们进行循环 通过hasClass判断之前是否已经存在需要添加的class，如果有就push到classList数组里面。我们先注释掉hasClass这段代码，因为其中用到了$(this) ,querySelector是不支持的哟，所以后面我们得作判断，判断$()这里面放的是元素、函数、类数组等等。 最后通过函数className方法把他们用空格连接起来 发现里面有一个没有声明的className方法所以我们在wclimb.Z.prototype=Z.prototype=上面声明该函数1234567//获取或者设置classfunction className(node, value)&#123; var klass = node.className || &apos;&apos; if (value === undefined) return klass node.className = value&#125; 该方法主要是获取class和设置class的作用 hasClass方法12345678hasClass : function(cls) &#123; var reg = new RegExp(&apos;(\\s|^)&apos; + cls + &apos;(\\s|$)&apos;); for (var i = 0; i &lt; this.length; i++) &#123; if (this[i].className.match(reg)) return true; return false; &#125; return this;&#125; 通过正则匹配，如果存在则返回true，否则返回false，最后return this支持链式调用 现在来试试效果吧12345html: &lt;p class=&quot;a&quot;&gt;&lt;/p&gt;js: $(&apos;p&apos;).addClass(&apos;test other&apos;) // &lt;p class=&quot;a test other&quot;&gt;&lt;/p&gt; console.log($(&apos;p&apos;).hasClass(&apos;a&apos;)) // true]]></content>
+    <content type="text"><![CDATA[距离上一篇zepto源码分析已经过去大半个月，想想自己都过意不去，不过之前分享了一篇node博客教程，还算干了点正事。接下来我们继续封装自己的库吧 上节代码概览12345678910111213141516171819202122232425262728293031323334(function()&#123; var wclimb = &#123;&#125;,$ $ = function(selector)&#123; return wclimb.init(selector) &#125; wclimb.init = function(selector)&#123; var dom; dom = document.querySelectorAll(selector); return wclimb.Z(dom,selector) &#125; wclimb.Z = function(dom,selector)&#123; return new Z(dom,selector) &#125; wclimb.Z.prototype = Z.prototype = &#123; test:function()&#123; alert(1) &#125; &#125; function Z(dom,selector) &#123; for (var i = 0; i &lt; dom.length; i++) &#123; this[i] = dom[i] &#125; this.selector = selector; this.length = dom.length &#125; window.$ = window.wclimb = $&#125;)() each方法 在wclimb.Z.prototype=Z.prototype=里面添加方法each 12345678wclimb.Z.prototype = Z.prototype = &#123; each:function(callback)&#123; [].every.call(this, function(el, idx)&#123; return callback.call(el, idx, el) !== false &#125;) return this; &#125;&#125; 通过数组的every方法进行遍历，然后看看每次callback是不是都不是false，如果是则结束遍历 最后通过 return this 来达到链式调用的效果 addClass方法继续在里面添加addClass方法 123456789101112131415161718addClass:function(name)&#123; if (!name) return this return this.each(function(el,idx)&#123; if (!(&apos;className&apos; in this)) return classList = []; var cls = className(this) // newName = funcArg(this, name, idx, cls) name.split(/\s+/g).forEach(function(klass)&#123; // if (!$(this).hasClass(klass)) classList.push(klass) &#125;, this) classList.length &amp;&amp; className(this, cls + (cls ? &quot; &quot; : &quot;&quot;) + classList.join(&quot; &quot;)) &#125;)&#125; 我们先判断name存在与否，没有就直接return this，支持链式调用 新建一个数组，存放我们要添加的class，因为可能要同时添加多个 通过调用className方法来获取之前的class，并保存起来。clasName方法在下面 我们添加class一般是这样addClass(&#39;a b c&#39;)，所以我们通过正则表达式把他们用空格分开/\s+/g,用+的原因是，可能会有多个空格的存在，接着对他们进行循环 通过hasClass判断之前是否已经存在需要添加的class，如果有就push到classList数组里面。我们先注释掉hasClass这段代码，因为其中用到了$(this) ,querySelector是不支持的哟，所以后面我们得作判断，判断$()这里面放的是元素、函数、类数组等等。 最后通过函数className方法把他们用空格连接起来 发现里面有一个没有声明的className方法所以我们在wclimb.Z.prototype=Z.prototype=上面声明该函数1234567//获取或者设置classfunction className(node, value)&#123; var klass = node.className || &apos;&apos; if (value === undefined) return klass node.className = value&#125; 该方法主要是获取class和设置class的作用 hasClass方法12345678hasClass : function(cls) &#123; var reg = new RegExp(&apos;(\\s|^)&apos; + cls + &apos;(\\s|$)&apos;); for (var i = 0; i &lt; this.length; i++) &#123; if (this[i].className.match(reg)) return true; return false; &#125; return this;&#125; 通过正则匹配，如果存在则返回true，否则返回false，最后return this支持链式调用 现在来试试效果吧12345html: &lt;p class=&quot;a&quot;&gt;&lt;/p&gt;js: $(&apos;p&apos;).addClass(&apos;test other&apos;) // &lt;p class=&quot;a test other&quot;&gt;&lt;/p&gt; console.log($(&apos;p&apos;).hasClass(&apos;a&apos;)) // true]]></content>
       <tags>
-        <tag>原创</tag>
         <tag>javascript</tag>
+        <tag>原创</tag>
         <tag>zepto</tag>
       </tags>
   </entry>
@@ -19,11 +19,11 @@
         <category>node</category>
       </categories>
       <tags>
-        <tag>原创</tag>
         <tag>Node</tag>
         <tag>Koa</tag>
         <tag>Mysql</tag>
         <tag>javascript</tag>
+        <tag>原创</tag>
       </tags>
   </entry>
   <entry>
@@ -31,8 +31,8 @@
     <url>%2F2017%2F06%2F29%2F%E8%AF%BBzepto%E6%BA%90%E7%A0%81%EF%BC%8C%E5%B0%81%E8%A3%85%E8%87%AA%E5%B7%B1%E7%9A%84zepto%E5%BA%93%EF%BC%88%E4%B8%80%EF%BC%89%2F</url>
     <content type="text"><![CDATA[写在前面 读zepto源码，封装自己的zepto库系列是自己在读zepto源码的一些理解，有错误的地方还望指出。如果觉得本系列对你有所帮助，还请持续关注wclimb，谢谢。 zepto的整体架构首先来看看整体代码结构 123456789101112131415161718192021222324252627282930313233(function()&#123; var wclimb = &#123;&#125;,$ $ = function(selector)&#123; return wclimb.init(selector) &#125; wclimb.init = function(selector)&#123; var dom; dom = document.querySelectorAll(selector); return wclimb.Z(dom,selector) &#125; wclimb.Z = function(dom,selector)&#123; return new Z(dom,selector) &#125; wclimb.Z.prototype = Z.prototype = &#123; test:function()&#123; alert(1) &#125; &#125; function Z(dom,selector) &#123; for (var i = 0; i &lt; dom.length; i++) &#123; this[i] = dom[i] &#125; this.selector = selector; this.length = dom.length &#125; window.$ = window.wclimb = $&#125;)() 首先我们设置了一个闭包，避免产生全局变量123(function()&#123; ...&#125;)() 我们定义一个对象wclimb和$，以便后面使用 1var wclimb = &#123;&#125;,$ $函数返回了wclimb.init(selector),我们知道使用zepto的时候，一般是$(‘p’)，而selector就是p元素，当然不止这一种情况如$(function(){}),所以对选择器后面我们要做判断123$ = function(selector)&#123; return wclimb.init(selector)&#125; 而wclimb.init首先定义了一个dom，通过选择器选取的元素赋值给dom，最后返回wclimb.init，传入dom和选择元素selector 12345wclimb.init = function(selector)&#123; var dom; dom = document.querySelector(selector); return wclimb.Z(dom,selector)&#125; 我们可以看到之前我们定义了对象wclimb，而后我们就往里面添加了一些方法，就像： 12345678910wclimb = &#123; init：function(selector)&#123; var dom; dom = document.querySelector(selector); return wclimb.Z(dom,selector) &#125;, Z: function(dom,selector)&#123; return new Z(dom,selector) &#125;&#125; 通过wclimb.Z，如果有看过zepto源码的同学应该对此有了解.每次用$调用的时候,将直接返回一个Z的实例.达到无new调用的效果,$(‘p’)返回一个实例，然后$(‘p’).test()调用他的原形方法，这里的方法是test 1234567891011wclimb.Z = function(dom,selector)&#123; return new Z(dom,selector)&#125;function Z(dom,selector) &#123; for (var i = 0; i &lt; dom.length; i++) &#123; this[i] = dom[i] &#125; this.selector = selector; this.length = dom.length&#125; 由于我们是return new Z(dom,selector),那自然,我们需要手动的把wclimb.Z的prototype指向Z的prototype 123456789wclimb.Z.prototype = Z.prototype&#123;&#125;我们可以在里面添加方法了，如addClass eq等，我们试试加一个testwclimb.Z.prototype = Z.prototype&#123; test: function()&#123; console.log(&apos;test&apos;) &#125;&#125; Z函数是这样的，因为我们选择器选择的元素是一个数组（其实不是）我们把this指向选择的元素，然后添加两个元素selector和length，分别代表选择的元素名和元素的长度 1234567function Z(dom,selector) &#123; for (var i = 0; i &lt; dom.length; i++) &#123; this[i] = dom[i] &#125; this.selector = selector; this.length = dom.length&#125; 最后我们在window上对外暴露一个接口,我们就可以用 $(‘p’) 或者wclimb(‘p’) 即可调用. 1window.$ = window.wclimb = $ 现在可以试试能不能运行 123html：&lt;p&gt;test&lt;/p&gt;js：$(&apos;p&apos;) 调用方法试试 $(&apos;p&apos;).test() 我们的zepto已经完成了，是不是很简单？骗你的，还差得远呢，后面会慢慢完善。待续。。。如果你觉得该文章帮助到了你，不妨star一下https://github.com/wclimb/wclimb.github.io ，感谢]]></content>
       <tags>
-        <tag>原创</tag>
         <tag>javascript</tag>
+        <tag>原创</tag>
         <tag>zepto</tag>
       </tags>
   </entry>
@@ -45,8 +45,8 @@
         <category>canvas</category>
       </categories>
       <tags>
-        <tag>canvas</tag>
         <tag>原创</tag>
+        <tag>canvas</tag>
       </tags>
   </entry>
   <entry>
@@ -58,8 +58,8 @@
         <category>canvas</category>
       </categories>
       <tags>
-        <tag>canvas</tag>
         <tag>原创</tag>
+        <tag>canvas</tag>
       </tags>
   </entry>
   <entry>
