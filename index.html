@@ -317,6 +317,135 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/18/读zepto源码，封装自己的zepto库-（三）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wclimb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog by wclimb">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/18/读zepto源码，封装自己的zepto库-（三）/" itemprop="url">读zepto源码，封装自己的zepto库 （三）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-18T09:55:40+08:00">
+                2017-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本篇着重讲选择器$()选择器<br>本例我们主要修改<code>wclimb.init=function(selector){}</code>里面的代码<br>将wclimb.init代码修改为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">var dom</div><div class="line">if (!selector) return wclimb.Z()</div><div class="line">else if (typeof selector == &apos;string&apos;) &#123;</div><div class="line">	dom = wclimb.qsa(document, selector)</div><div class="line">&#125;</div><div class="line">else if (typeof selector == &apos;function&apos;)&#123;</div><div class="line">	return wclimb.ready(selector)</div><div class="line">&#125;</div><div class="line">else&#123;</div><div class="line">	if (isArray(selector)) &#123;</div><div class="line">		dom = compact(selector) </div><div class="line">	&#125;</div><div class="line">	else if (wclimb.isZ(selector)) return selector		</div><div class="line">	else&#123;</div><div class="line">		if (isObject(selector)) dom = [selector], selector = null ;</div><div class="line">		else dom=wclimb.qsa(document,selector)</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line">return wclimb.Z(dom, selector)</div></pre></td></tr></table></figure></p>
+<ul>
+<li>首先判断是否存在selector，如果不存在则直接return</li>
+<li>然后判断是否是字符串类型，如<code>$(&#39;a b&#39;)</code>，将选择的元素保存起来</li>
+<li>如果是函数则<code>return wclimb.ready(selector)</code>就是我们经常用的<code>$(function(){})</code></li>
+<li>后面判断是否是当前对象的实例（用了isZ方法）还有判断是否是数组或对象</li>
+</ul>
+<p>我们先在函数顶部添加如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">emptyArray = [], concat = emptyArray.concat, filter = emptyArray.filter</div><div class="line">slice = emptyArray.slice</div><div class="line">function compact(array) &#123; return filter.call(array, function(item)&#123; return item != null &#125;) &#125;</div></pre></td></tr></table></figure></p>
+<p>emptyArray = []，避免出现每次都重复创建的一个数组[]<br>然后拿到数组里面的方法<br>compact就是一个数组筛选，如果某个元素不存在$([1,2,,,4]);只会创建一个[1,2,4]的数组</p>
+<h2 id="wclimb-qsa方法"><a href="#wclimb-qsa方法" class="headerlink" title="wclimb.qsa方法"></a>wclimb.qsa方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">wclimb.qsa=function(element, selector)&#123;</div><div class="line">	var found,</div><div class="line">    maybeID = selector[0] == &apos;#&apos;,</div><div class="line">    maybeClass = !maybeID &amp;&amp; selector[0] == &apos;.&apos;,</div><div class="line">    nameOnly = maybeID || maybeClass ? selector.slice(1) : selector, // Ensure that a 1 char tag name still gets checked</div><div class="line">    isSimple = /^[\w-]*$/.test(nameOnly)</div><div class="line"></div><div class="line">	return (element.getElementById &amp;&amp; isSimple &amp;&amp; maybeID) ? // Safari DocumentFragment doesn&apos;t have getElementById</div><div class="line">	  ( (found = element.getElementById(nameOnly)) ? [found] : [] ) :</div><div class="line">	  (element.nodeType !== 1 &amp;&amp; element.nodeType !== 9 &amp;&amp; element.nodeType !== 11) ? [] :</div><div class="line">	  slice.call(</div><div class="line">	    isSimple &amp;&amp; !maybeID &amp;&amp; element.getElementsByClassName ? // DocumentFragment doesn&apos;t have getElementsByClassName/TagName</div><div class="line">	    maybeClass ? element.getElementsByClassName(nameOnly) : // If it&apos;s simple, it could be a class</div><div class="line">	    element.getElementsByTagName(selector) : // Or a tag</div><div class="line">	    element.querySelectorAll(selector) // Or it&apos;s not simple, and we need to query all</div><div class="line">	)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里我直接用了zepto的代码<br><code>wclimb.init=function(selector){}</code>里的代码还使用了判断数据类型的代码<code>isArray``isObject</code></p>
+<h2 id="判断数据类型"><a href="#判断数据类型" class="headerlink" title="判断数据类型"></a>判断数据类型</h2><p>在函数外面添加如下代码来进行数据类型判断</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// 判断类型</div><div class="line">var obj_i=&#123;&#125;;</div><div class="line">[&apos;Boolean&apos;, &apos;Number&apos;,&apos;String&apos;, &apos;Function&apos;, &apos;Array&apos; ,&apos;Date&apos;, &apos;RegExp&apos;, &apos;Object&apos; ,&apos;Error&apos;].forEach(function(el,idx)&#123;</div><div class="line">	obj_i[&quot;[object &quot; + el + &quot;]&quot;] = el.toLowerCase()</div><div class="line">&#125;)</div><div class="line">function type(obj) &#123;</div><div class="line">    return obj == null ? String(obj) :</div><div class="line">    obj_i[Object.prototype.toString.call(obj)] || &quot;object&quot;</div><div class="line">&#125;</div><div class="line">function isObject(obj) &#123; return type(obj) == &quot;object&quot; &#125;	</div><div class="line">function isArray(obj) &#123; return type(obj) == &quot;array&quot; &#125;</div><div class="line">function isString(obj) &#123; return type(obj) == &quot;string&quot; &#125;</div></pre></td></tr></table></figure>
+<h2 id="wclimb-ready函数"><a href="#wclimb-ready函数" class="headerlink" title="wclimb.ready函数"></a>wclimb.ready函数</h2><p>在外面设置如下函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">wclimb.ready = function(fn) &#123;</div><div class="line">    document.addEventListener(&apos;DOMContentLoaded&apos;,function() &#123;</div><div class="line">        fn &amp;&amp; fn();</div><div class="line">    &#125;,false);</div><div class="line">    document.removeEventListener(&apos;DOMContentLoaded&apos;,fn,true);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="wclimb-isZ函数"><a href="#wclimb-isZ函数" class="headerlink" title="wclimb.isZ函数"></a>wclimb.isZ函数</h2><p>下面代码判断<code>object</code>是不是<code>wclimb.Z</code>的实例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wclimb.isZ = function(object) &#123;</div><div class="line">    return object instanceof wclimb.Z</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>现在试试代码吧，我们顺便把addClass里判断hasClass代码注释去掉了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">	// ready</div><div class="line">	$(function()&#123;</div><div class="line">		alert(1)</div><div class="line">	&#125;)</div><div class="line">	// addClass</div><div class="line">	$(&apos;p&apos;).addClass(&apos;a b&apos;)</div><div class="line">	// 实例</div><div class="line">	console.log($(this))</div><div class="line">	// 数组</div><div class="line">	$([1,23,3,,4])</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<h2 id="全部代码"><a href="#全部代码" class="headerlink" title="全部代码"></a>全部代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div></pre></td><td class="code"><pre><div class="line">(function()&#123;</div><div class="line"></div><div class="line">	var wclimb = &#123;&#125;,$</div><div class="line">	emptyArray = [], concat = emptyArray.concat, filter = emptyArray.filter</div><div class="line">	slice = emptyArray.slice</div><div class="line">	function compact(array) &#123; return filter.call(array, function(item)&#123; return item != null &#125;) &#125;</div><div class="line"></div><div class="line">	$ = function(selector)&#123;</div><div class="line">		return wclimb.init(selector)</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	wclimb.init = function(selector)&#123;</div><div class="line">		var dom</div><div class="line">		if (!selector) return wclimb.Z()</div><div class="line">		else if (typeof selector == &apos;string&apos;) &#123;</div><div class="line">			dom = wclimb.qsa(document, selector)</div><div class="line">		&#125;</div><div class="line">		else if (typeof selector == &apos;function&apos;)&#123;</div><div class="line">			return wclimb.ready(selector)</div><div class="line">		&#125;</div><div class="line">		else&#123;</div><div class="line">			if (isArray(selector)) &#123;</div><div class="line">				dom = compact(selector) </div><div class="line">			&#125;</div><div class="line">			else if (wclimb.isZ(selector)) return selector		</div><div class="line">			else&#123;</div><div class="line">				if (isObject(selector)) dom = [selector], selector = null ;</div><div class="line">				else dom=wclimb.qsa(document,selector)</div><div class="line">			&#125;</div><div class="line"></div><div class="line">		&#125;</div><div class="line">		return wclimb.Z(dom, selector)</div><div class="line"></div><div class="line">	&#125;</div><div class="line">	wclimb.Z = function(dom,selector)&#123;</div><div class="line">		return new Z(dom,selector)</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	function className(node, value)&#123;</div><div class="line">	   var klass = node.className || &apos;&apos;	</div><div class="line">	       </div><div class="line">	   if (value === undefined) return klass</div><div class="line">	   node.className = value  </div><div class="line">	&#125;</div><div class="line"></div><div class="line">	wclimb.Z.prototype  =  Z.prototype  =  &#123;</div><div class="line">		each:function(callback)&#123;</div><div class="line">			[].every.call(this, function(el, idx)&#123;</div><div class="line">	        return callback.call(el, idx, el) !== false</div><div class="line">	      &#125;)</div><div class="line">	      return this;</div><div class="line">		&#125;,</div><div class="line">		addClass:function(name)&#123;</div><div class="line">			if (!name) return this</div><div class="line">		      return this.each(function(el,idx)&#123;</div><div class="line">		        if (!(&apos;className&apos; in this)) return</div><div class="line">		        classList = [];</div><div class="line"></div><div class="line">		        var cls = className(this) </div><div class="line">		        </div><div class="line">		        name.split(/\s+/g).forEach(function(klass)&#123;</div><div class="line"></div><div class="line">		          if (!$(this).hasClass(klass))</div><div class="line">		           classList.push(klass)</div><div class="line">  </div><div class="line">		        &#125;, this)</div><div class="line"></div><div class="line">		        classList.length &amp;&amp; className(this, cls + (cls ? &quot; &quot; : &quot;&quot;) + classList.join(&quot; &quot;))</div><div class="line"></div><div class="line">		      &#125;)</div><div class="line">			&#125;,</div><div class="line">			hasClass : function(cls) &#123;</div><div class="line">			    var reg = new RegExp(&apos;(\\s|^)&apos; + cls + &apos;(\\s|$)&apos;);</div><div class="line">			    for (var i = 0; i &lt; this.length; i++) &#123;</div><div class="line">			        if (this[i].className.match(reg)) return true;</div><div class="line">			            return false;</div><div class="line">			    &#125;</div><div class="line">			    return this;</div><div class="line">			&#125;</div><div class="line">	&#125;</div><div class="line">	wclimb.ready = function(fn) &#123;</div><div class="line">	    document.addEventListener(&apos;DOMContentLoaded&apos;,function() &#123;</div><div class="line">	        fn &amp;&amp; fn();</div><div class="line">	    &#125;,false);</div><div class="line">	    document.removeEventListener(&apos;DOMContentLoaded&apos;,fn,true);</div><div class="line">	&#125;;</div><div class="line"></div><div class="line">	wclimb.qsa=function(element, selector)&#123;</div><div class="line">		var found,</div><div class="line">	    maybeID = selector[0] == &apos;#&apos;,</div><div class="line">	    maybeClass = !maybeID &amp;&amp; selector[0] == &apos;.&apos;,</div><div class="line">	    nameOnly = maybeID || maybeClass ? selector.slice(1) : selector, // Ensure that a 1 char tag name still gets checked</div><div class="line">	    isSimple = /^[\w-]*$/.test(nameOnly)</div><div class="line"></div><div class="line">		return (element.getElementById &amp;&amp; isSimple &amp;&amp; maybeID) ? // Safari DocumentFragment doesn&apos;t have getElementById</div><div class="line">		  ( (found = element.getElementById(nameOnly)) ? [found] : [] ) :</div><div class="line">		  (element.nodeType !== 1 &amp;&amp; element.nodeType !== 9 &amp;&amp; element.nodeType !== 11) ? [] :</div><div class="line">		  slice.call(</div><div class="line">		    isSimple &amp;&amp; !maybeID &amp;&amp; element.getElementsByClassName ? // DocumentFragment doesn&apos;t have getElementsByClassName/TagName</div><div class="line">		    maybeClass ? element.getElementsByClassName(nameOnly) : // If it&apos;s simple, it could be a class</div><div class="line">		    element.getElementsByTagName(selector) : // Or a tag</div><div class="line">		    element.querySelectorAll(selector) // Or it&apos;s not simple, and we need to query all</div><div class="line">		)</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	function Z(dom,selector) &#123;</div><div class="line">		for (var i  =  0; i &lt; dom.length; i++) &#123;</div><div class="line">			this[i] = dom[i]</div><div class="line">		&#125;</div><div class="line">		this.selector = selector;</div><div class="line">		this.length = dom.length</div><div class="line">	&#125;</div><div class="line">	wclimb.isZ = function(object) &#123;</div><div class="line">	    return object instanceof wclimb.Z</div><div class="line">	&#125;</div><div class="line">	// 判断类型</div><div class="line">	var obj_i=&#123;&#125;;</div><div class="line">	[&apos;Boolean&apos;, &apos;Number&apos;,&apos;String&apos;, &apos;Function&apos;, &apos;Array&apos; ,&apos;Date&apos;, &apos;RegExp&apos;, &apos;Object&apos; ,&apos;Error&apos;].forEach(function(el,idx)&#123;</div><div class="line">		obj_i[&quot;[object &quot; + el + &quot;]&quot;] = el.toLowerCase()</div><div class="line">	&#125;)</div><div class="line">	function type(obj) &#123;</div><div class="line">	    return obj == null ? String(obj) :</div><div class="line">	    obj_i[Object.prototype.toString.call(obj)] || &quot;object&quot;</div><div class="line">	&#125;</div><div class="line">	function isObject(obj) &#123; return type(obj) == &quot;object&quot; &#125;	</div><div class="line">	function isArray(obj) &#123; return type(obj) == &quot;array&quot; &#125;</div><div class="line">	function isString(obj) &#123; return type(obj) == &quot;string&quot; &#125;</div><div class="line"></div><div class="line">	window.$ = window.wclimb = $</div><div class="line"></div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/17/读zepto源码，封装自己的zepto库（二）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -878,6 +1007,160 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/28/canvas/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wclimb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog by wclimb">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/28/canvas/" itemprop="url">canvas</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T21:27:33+08:00">
+                2017-06-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/canvas/" itemprop="url" rel="index">
+                    <span itemprop="name">canvas</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="canvas仿微信红包-By-wclimb"><a href="#canvas仿微信红包-By-wclimb" class="headerlink" title="canvas仿微信红包 By wclimb"></a>canvas仿微信红包 By wclimb</h1><h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;canvas id=&quot;cav&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;&lt;/canvas&gt;</div></pre></td></tr></table></figure>
+<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><blockquote>
+<p>设置canvas的背景图</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">canvas&#123;</div><div class="line">    background:url(https://b-ssl.duitang.com/uploads/item/201501/22/20150122203239_Cfr58.thumb.700_0.jpeg) no-repeat;</div><div class="line">    background-size:100% 100%;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">var canvas = document.querySelector(&quot;#cav&quot;)</div><div class="line">var context = canvas.getContext(&quot;2d&quot;);</div><div class="line"></div><div class="line">var randomX = Math.floor(Math.random()*440+30)</div><div class="line">var randomY = Math.floor(Math.random()*440+30)</div><div class="line"></div><div class="line">context.globalAlpha = 0.96;</div><div class="line">context.fillStyle = &apos;#333&apos;</div><div class="line">context.rect(0,0,canvas.width,canvas.height);</div><div class="line">context.fill();</div><div class="line"></div><div class="line">context.save()</div><div class="line">context.beginPath()</div><div class="line">context.arc(randomX,randomY,30,0,Math.PI*2,false);</div><div class="line">context.clip();</div><div class="line">context.clearRect(0,0,canvas.width,canvas.height)</div><div class="line">context.restore();</div><div class="line"></div><div class="line">var num = 30;</div><div class="line">var time = null;</div><div class="line">document.body.onclick = function()&#123;</div><div class="line">    function circle()&#123;</div><div class="line">        num += 5</div><div class="line">        context.save()</div><div class="line">        context.beginPath()</div><div class="line">        context.arc(randomX,randomY,num,0,Math.PI*2,false);</div><div class="line">        context.clip();</div><div class="line">        context.clearRect(0,0,canvas.width,canvas.height)</div><div class="line">        context.restore();</div><div class="line">        console.log(num)</div><div class="line"></div><div class="line">        if (num &gt;= 677)&#123;</div><div class="line">        	clearInterval(timer)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    timer = setInterval(circle,10)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/06/28/canvas/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/27/gulp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1073,7 +1356,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
