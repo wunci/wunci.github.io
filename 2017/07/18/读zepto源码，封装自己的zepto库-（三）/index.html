@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="本篇着重讲选择器$()选择器本例我们主要修改wclimb.init=function(selector){}里面的代码将wclimb.init代码修改为：123456789101112131415161718192021var domif (!selector) return wclimb.Z()else if (typeof selector == &amp;apos;string&amp;apos;) &amp;#1">
+<meta name="description" content="本篇着重讲选择器$()选择器本例我们主要修改wclimb.init=function(selector){}里面的代码将wclimb.init代码修改为：1234567891011121314151617181920var domif (!selector) return wclimb.Z()else if (typeof selector == &amp;apos;string&amp;apos;) &amp;#123">
 <meta name="keywords" content="原创,javascript,zepto">
 <meta property="og:type" content="article">
 <meta property="og:title" content="读zepto源码，封装自己的zepto库 （三）">
 <meta property="og:url" content="http://yoursite.com/2017/07/18/读zepto源码，封装自己的zepto库-（三）/index.html">
 <meta property="og:site_name" content="Blog by wclimb">
-<meta property="og:description" content="本篇着重讲选择器$()选择器本例我们主要修改wclimb.init=function(selector){}里面的代码将wclimb.init代码修改为：123456789101112131415161718192021var domif (!selector) return wclimb.Z()else if (typeof selector == &amp;apos;string&amp;apos;) &amp;#1">
-<meta property="og:updated_time" content="2017-07-18T02:54:40.545Z">
+<meta property="og:description" content="本篇着重讲选择器$()选择器本例我们主要修改wclimb.init=function(selector){}里面的代码将wclimb.init代码修改为：1234567891011121314151617181920var domif (!selector) return wclimb.Z()else if (typeof selector == &amp;apos;string&amp;apos;) &amp;#123">
+<meta property="og:updated_time" content="2017-07-18T02:58:15.244Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读zepto源码，封装自己的zepto库 （三）">
-<meta name="twitter:description" content="本篇着重讲选择器$()选择器本例我们主要修改wclimb.init=function(selector){}里面的代码将wclimb.init代码修改为：123456789101112131415161718192021var domif (!selector) return wclimb.Z()else if (typeof selector == &amp;apos;string&amp;apos;) &amp;#1">
+<meta name="twitter:description" content="本篇着重讲选择器$()选择器本例我们主要修改wclimb.init=function(selector){}里面的代码将wclimb.init代码修改为：1234567891011121314151617181920var domif (!selector) return wclimb.Z()else if (typeof selector == &amp;apos;string&amp;apos;) &amp;#123">
 
 
 
@@ -389,7 +389,8 @@
       
 
       
-        <p>本篇着重讲选择器$()选择器<br>本例我们主要修改<code>wclimb.init=function(selector){}</code>里面的代码<br>将wclimb.init代码修改为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">var dom</div><div class="line">if (!selector) return wclimb.Z()</div><div class="line">else if (typeof selector == &apos;string&apos;) &#123;</div><div class="line">	dom = wclimb.qsa(document, selector)</div><div class="line">&#125;</div><div class="line">else if (typeof selector == &apos;function&apos;)&#123;</div><div class="line">	return wclimb.ready(selector)</div><div class="line">&#125;</div><div class="line">else&#123;</div><div class="line">	if (isArray(selector)) &#123;</div><div class="line">		dom = compact(selector) </div><div class="line">	&#125;</div><div class="line">	else if (wclimb.isZ(selector)) return selector		</div><div class="line">	else&#123;</div><div class="line">		if (isObject(selector)) dom = [selector], selector = null ;</div><div class="line">		else dom=wclimb.qsa(document,selector)</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line">return wclimb.Z(dom, selector)</div><div class="line">&lt;!-- more --&gt;</div></pre></td></tr></table></figure></p>
+        <p>本篇着重讲选择器$()选择器<br>本例我们主要修改<code>wclimb.init=function(selector){}</code>里面的代码<br>将wclimb.init代码修改为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">var dom</div><div class="line">if (!selector) return wclimb.Z()</div><div class="line">else if (typeof selector == &apos;string&apos;) &#123;</div><div class="line">	dom = wclimb.qsa(document, selector)</div><div class="line">&#125;</div><div class="line">else if (typeof selector == &apos;function&apos;)&#123;</div><div class="line">	return wclimb.ready(selector)</div><div class="line">&#125;</div><div class="line">else&#123;</div><div class="line">	if (isArray(selector)) &#123;</div><div class="line">		dom = compact(selector) </div><div class="line">	&#125;</div><div class="line">	else if (wclimb.isZ(selector)) return selector		</div><div class="line">	else&#123;</div><div class="line">		if (isObject(selector)) dom = [selector], selector = null ;</div><div class="line">		else dom=wclimb.qsa(document,selector)</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line">return wclimb.Z(dom, selector)</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <ul>
 <li>首先判断是否存在selector，如果不存在则直接return</li>
 <li>然后判断是否是字符串类型，如<code>$(&#39;a b&#39;)</code>，将选择的元素保存起来</li>
