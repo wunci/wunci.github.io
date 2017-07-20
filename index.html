@@ -317,6 +317,125 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/20/MySQL基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wclimb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog by wclimb">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/20/MySQL基础/" itemprop="url">MySQL基础</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-20T21:30:38+08:00">
+                2017-07-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>转载至    <a href="https://github.com/jaywcjlove/mysql-tutorial" target="_blank" rel="external">mysql-tutorial</a></p>
+<h3 id="登录MySQL"><a href="#登录MySQL" class="headerlink" title="登录MySQL"></a>登录MySQL</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mysql -h 127.0.0.1 -u 用户名 -p</div><div class="line">mysql -D 所选择的数据库名 -h 主机名 -u 用户名 -p</div><div class="line"><span class="meta">mysql&gt;</span> exit # 退出 使用 “quit;” 或 “\q;” 一样的效果</div><div class="line"><span class="meta">mysql&gt;</span> status;  # 显示当前mysql的version的各种信息</div><div class="line"><span class="meta">mysql&gt;</span> select version(); # 显示当前mysql的version信息</div><div class="line"><span class="meta">mysql&gt;</span> show global variables like 'port'; # 查看MySQL端口号</div></pre></td></tr></table></figure>
+<h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><p>对于表的操作需要先进入库<code>use 库名;</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">-- 创建一个名为 samp_db 的数据库，数据库字符编码指定为 gbk</span></div><div class="line"><span class="keyword">create</span> <span class="keyword">database</span> samp_db <span class="built_in">character</span> <span class="keyword">set</span> gbk;</div><div class="line"><span class="keyword">drop</span> <span class="keyword">database</span> samp_db; <span class="comment">-- 删除 库名为samp_db的库</span></div><div class="line"><span class="keyword">show</span> <span class="keyword">databases</span>;        <span class="comment">-- 显示数据库列表。</span></div><div class="line"><span class="keyword">use</span> samp_db;     <span class="comment">-- 选择创建的数据库samp_db</span></div><div class="line"><span class="keyword">show</span> <span class="keyword">tables</span>;     <span class="comment">-- 显示samp_db下面所有的表名字</span></div><div class="line"><span class="keyword">describe</span> 表名;    <span class="comment">-- 显示数据表的结构</span></div><div class="line"><span class="keyword">delete</span> <span class="keyword">from</span> 表名; <span class="comment">-- 清空表中记录</span></div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/20/MySQL基础/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/18/读zepto源码，封装自己的zepto库-（三）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1189,7 +1308,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1211,7 +1330,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
