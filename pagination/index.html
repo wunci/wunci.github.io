@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>分页</title>
+</head>
+<body>
+	<div class="pagination" id="page1"></div>
+	<div class="pagination" id="page2"></div>
+	<div class="pagination" id="page3"></div>
+	<div class="pagination" id="page4"></div>
+	<script src="pagination.js"></script>
+	<script>	
+		pagination({
+			selector: '#page1',
+			totalPage: 30, // 总页数
+			currentPage: 1, // 当前页
+			prev: '上一页',
+			next: '下一页',
+			first: true,
+			last: true,
+			showTotalPage: true,
+			jumpBtn: true, // 需要跳转的输入框
+			pageOneLoad: true, // 首页加载与否
+			count: 2//当前页前面显示的数量
+		},function(val){
+			// 当前页
+			console.log('page1当前页',val)
+		})
+		pagination({
+			selector: '#page2',
+			totalPage: 30,
+			currentPage: 30,
+			prev: '上一页',
+			next: '下一页',
+			showTotalPage: true,
+			first: true,
+			last: true,
+			jumpBtn: false,
+			pageOneLoad: true,
+			count: 2//当前页前面显示的数量
+		},function(val){
+			// 当前页
+			console.log('page2当前页',val)
+		})
+		pagination({
+			selector: '#page3',
+			totalPage: 100,
+			currentPage: 15,
+			prev: '<',
+			next: '>',
+			jumpBtn: false,
+			pageOneLoad: false,
+			count: 2//当前页前面显示的数量
+		},function(val){
+			// 当前页
+			console.log('page3当前页',val)
+		})
+		pagination({
+			selector: '#page4',
+			totalPage: 100,
+			currentPage: 30,
+			prev: 'prev',
+			next: 'next',
+			jumpBtn: false,
+			count: 4//当前页前面显示的数量
+		},function(val){
+			// 当前页
+			console.log('page4当前页',val)
+		})
+	</script>
+</body>
+</html>

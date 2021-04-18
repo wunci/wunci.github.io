@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+	<title>lazyLoad</title>
+</head>
+<style>
+	img,body,div{
+		margin: 0;
+		padding: 0;
+	}
+	body{
+		text-align: center;
+	}
+	.div1{
+		white-space: nowrap;
+		width: 100%;
+		overflow: auto;
+	}
+	.div1 img{
+		width: 300px;
+	}
+	img{
+		width: 500px;
+	}
+</style>
+<body>
+	<div class="div1">
+		<img class="lazyLoad" data-src="https://testdrive-archive.azurewebsites.net/HTML5/DOMContentLoaded/whidbey.jpg" src="" alt="">
+		<img class="lazyLoad" data-src="https://testdrive-archive.azurewebsites.net/HTML5/DOMContentLoaded/whidbey.jpg" src="" alt="">
+		<img class="lazyLoad" data-src="https://testdrive-archive.azurewebsites.net/HTML5/DOMContentLoaded/whidbey.jpg" src="" alt="">
+		<img class="lazyLoad" data-src="https://testdrive-archive.azurewebsites.net/HTML5/DOMContentLoaded/whidbey.jpg" src="" alt="">
+		<img class="lazyLoad" data-src="https://testdrive-archive.azurewebsites.net/HTML5/DOMContentLoaded/whidbey.jpg" src="" alt="">
+		<img class="lazyLoad" data-src="https://testdrive-archive.azurewebsites.net/HTML5/DOMContentLoaded/whidbey.jpg" src="" alt="">
+		<img class="lazyLoad" data-src="https://testdrive-archive.azurewebsites.net/HTML5/DOMContentLoaded/whidbey.jpg" src="" alt="">
+		<img class="lazyLoad" data-src="https://testdrive-archive.azurewebsites.net/HTML5/DOMContentLoaded/whidbey.jpg" src="" alt="">
+		<img class="lazyLoad" data-src="https://testdrive-archive.azurewebsites.net/HTML5/DOMContentLoaded/whidbey.jpg" src="" alt="">
+		<img class="lazyLoad" data-src="https://testdrive-archive.azurewebsites.net/HTML5/DOMContentLoaded/whidbey.jpg" src="" alt="">
+	</div>
+
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br>
+	<br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+	<img class="lazyLoad" data-src="https://testdrive-archive.azurewebsites.net/HTML5/DOMContentLoaded/whidbey.jpg"  src="" alt="">
+
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br>
+	
+	<img class=" asd lazyloads da" src="" alt="">
+
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	
+	<img class="lazyLoad" data-src="https://testdrive-archive.azurewebsites.net/HTML5/DOMContentLoaded/window.jpg"  src="" alt="">
+
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	
+	<img class="lazy" src="" alt="">
+
+	<img class="lazyLoad" data-src="http://az608707.vo.msecnd.net/files/MartapuraMarket_EN-US9502204987_1366x768.jpg"  src="" alt="">
+
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	
+	<img class="lazyLoad" data-src="https://testdrive-archive.azurewebsites.net/HTML5/DOMContentLoaded/whidbey.jpg"  src="" alt="">
+	<img class="lazyLoad" data-src="https://testdrive-archive.azurewebsites.net/HTML5/DOMContentLoaded/whidbey2.jpg"  src="" alt="">
+
+	<script src="lazyLoad.js"></script>
+	<script>
+		wclimb.lazyLoad({
+			cls:'.lazyLoad',
+			src:'data-src',
+			initImg:'http://www.wclimb.site/images/imgLoading.svg'
+		})
+	</script>
+	<!-- <input type="file" accept="image/*;" capture="camera"> -->
+</body>
+</html>

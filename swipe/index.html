@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Swipe 例子</title>
+    <link rel="stylesheet" href="./swipe.css">
+    <style>
+        .main{
+            margin: 30px auto 0;
+            width: 50%
+        }
+        .slide1{
+            background: #4390EE;
+        }
+        .slide2{
+            background: green;
+        }
+        .slide3{
+            background: #999;
+        }
+        .slide4{
+            background: yellow;
+        }
+        .swipe-slide{
+            text-align: center;
+            height: 200px;
+            line-height: 200px;
+            color: #fff;
+            font-size: 30px;
+        }
+       
+        .realIndex{
+            text-align: center;
+            margin-top: 20px;
+        }
+        pre{
+            width: 50%;
+            margin: 20px auto;
+            background: #ccc;
+            border-radius: 10px;
+            white-space: pre-wrap;
+            padding: 20px;
+        }
+        .github {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            justify-content: center;
+        }
+        .github iframe{
+            display: inline-block;
+            
+        }
+         @media (max-width:900px){
+            .main{
+                margin-top: 0;
+                width: 100%;
+            }
+            pre{
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="github">
+        GitHub：
+        <iframe src="https://ghbtns.com/github-btn.html?user=wclimb&repo=Swipe&type=watch&count=true" frameborder="0" scrolling="0"
+     height="20px"></iframe>
+    </div> 
+    <div class="main">
+        <div class="swipe-wrap">
+            <div class="swipe-slide slide1">
+                slide1
+            </div>
+            <div class="swipe-slide slide2">
+                slide2
+            </div>
+            <div class="swipe-slide slide3">
+                slide3
+            </div>
+            <div class="swipe-slide slide4">
+                slide4
+            </div>
+        </div>
+        <div class="pagination"></div>
+        <div class="swipe-btn-prev"></div>
+        <div class="swipe-btn-next"></div>
+    </div>
+
+    <div class="realIndex">运动结束, realIndex = 0</div>
+    <pre>
+var swiper = new Swipe('.main',{
+    startSlide: 1,
+    speed: 300,
+    pagination:{
+        el: '.pagination',
+        clickAble: true
+    },
+    autoplay: 2000,
+    navigation:{
+        next:'.swipe-btn-next',
+        prev:'.swipe-btn-prev'
+    },
+    transitionEnd:function(swipe){
+        console.log('realIndex',swipe.realIndex)
+    },
+})
+    </pre>
+    <script src="./swipe.js"></script>
+    <script>
+        var swiper = new Swipe('.main',{
+            startSlide: 1,
+            speed: 300,
+            pagination:{
+                el: '.pagination',
+                clickAble: true
+            },
+            autoplay: 2000,
+            navigation:{
+                next:'.swipe-btn-next',
+                prev:'.swipe-btn-prev',
+            },
+            transitionEnd:function(swipe){
+                console.log('realIndex',swipe.realIndex)
+                document.querySelector('.realIndex').innerHTML = '运动结束, realIndex = ' + swipe.realIndex
+            },
+        })
+    </script>
+</body>
+</html>

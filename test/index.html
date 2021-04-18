@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>polyfill</title>
+</head>
+<body>
+    <h3>UA: </h3>
+    <code id="ua"></code>
+   <h3>polyfill报错: </h3>
+    <code id="code"></code>
+    <script>
+        window.onerror = function (msg, url, lineNo, columnNo, error) {
+            var string = msg.toLowerCase();
+            var message = [
+                'Message: ' + msg,
+                'Line: ' + lineNo,
+                'Column: ' + columnNo,
+                'Error object: ' + JSON.stringify(error)
+            ].join(' <br> ');
+            var html = document.getElementById('code').innerHTML;
+            document.getElementById('code').innerHTML = html + message + '<br/>'
+        }
+    </script>
+    <script>
+        // symbol
+        var Person = (function(){
+            var NAME = Symbol('name');
+            function A(name) {
+                this[NAME] = name;
+            }
+            A.prototype.getName = function () {
+                return this[NAME];
+            }
+            return A;
+        })();
+
+        var person = new Person('Vasya');
+        console.log(person.getName());            // => 'Vasya'
+        console.log(person['name']);              // => undefined
+        console.log(person[Symbol('name')]);      // => undefined, symbols are uniq
+        var symbol = Symbol.for('key');
+        symbol === Symbol.for('key'); // true
+        Symbol.keyFor(symbol);        // 'key'
+    </script>
+    <script>
+         // Array.prototype.fill = undefined;
+        // Array.prototype.findIndex = function () {};
+        // Array.from = function () {};
+        Array.from(new Set([1, 2, 3, 2, 1]));
+        // Array.prototype.find = function () {};
+    </script>
+    <script>
+        // Object.assign = undefined;
+        var foo = { q: 1, w: 2 };
+        var bar = { e: 3, r: 4 };
+        var baz = { t: 5, y: 6 };
+        Object.assign(foo, bar, baz); 
+    </script>
+    <script>
+         // fetch = undefined;
+         fetch('/users.html')
+        .then(function(response) {
+            return response.text()
+        }).then(function(body) {
+            // document.body.innerHTML = body
+        })
+    </script>
+    <script>
+        // Promise = undefined;
+        Promise.resolve(3)
+        .finally(function () {
+            return 'dummy';
+        })
+        .then(function (result) {
+            return Promise.reject(new Error('test'));
+        })
+        .finally(function () {
+            return 'dummy';
+        })
+        .catch(function (reason) {});
+        var promise1 = Promise.resolve(3);
+        var promise2 = new Promise((resolve, reject) => setTimeout(reject, 100, 'foo'));
+        var promises = [promise1, promise2];
+
+        Promise.allSettled(promises).
+        then((results) => results.forEach((result) => console.log(result.status)));
+    </script>
+    <script>
+        // Set = undefined;
+        // URL = undefined;
+        var url = new URL('http://login:password@example.com:8080/foo/bar?a=1&b=2&a=3#fragment');
+        console.log(url.href);       // => 'http://login:password@example.com:8080/foo/bar?a=1&b=2#fragment'
+        console.log(url.origin);
+    </script>
+    <script>
+         // Map;
+         var array = [1];
+        var map = new Map([['a', 1], [42, 2]]);
+        map.set(array, 3).set(true, 4);
+
+        console.log(map.size);        // => 4
+        console.log(map.has(array));  // => true
+        console.log(map.has([1]));    // => false
+        console.log(map.get(array));  // => 3
+        map.forEach(function(val, key) {
+            console.log(val);           // => 1, 2, 3, 4
+            console.log(key);           // => 'a', 42, [1], true
+        });
+        map.delete(array);
+        console.log(map.size);        // => 3
+        console.log(map.get(array));  // => undefined
+        console.log(Array.from(map)); // => [['a', 1], [42, 2], [true, 4]]
+    </script>
+    <script>
+        var io = new IntersectionObserver(
+            entries => {
+                console.log(entries);
+            }
+        );
+    </script>
+    <script src="ua.js"></script>
+    <script>
+        var ua = document.getElementById('ua')
+	var parser = new UAParser().getResult();
+        for(var key in parser) {
+            ua.innerHTML = ua.innerHTML + key + ': ' + JSON.stringify(parser[key]) + '<br>' ;
+        }
+    </script>
+</body>
+</html>

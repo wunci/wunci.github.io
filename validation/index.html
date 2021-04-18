@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>validation</title>
+</head>
+<style>
+	input,form,label,span,body,button{
+		margin: 0;
+		padding: 0;
+	}
+	form.form-val{
+		margin:30px auto;
+		display: table;
+	}
+	.form-val .name{
+		display: inline-block;
+		vertical-align: top;
+		width: 80px;
+		text-align: right;
+	}
+	.form-val .error-red{
+		border:1px solid #e0b4b4;
+	}
+	.form-val label{
+		display: block;
+		margin-top: 1em;
+	}
+	.form-val .field{
+		display: inline-block;
+	}
+	.form-val input{
+		width: 200px;
+		display: block;
+		padding: 6px 7px;	
+		border-radius: 4px;   
+		border: 1px solid #d7dde4;
+		-webkit-appearance: none;
+	}
+	.form-val input:focus{
+		outline: 0;
+		box-shadow: 0 0 0 2px rgba(51,153,255,.2);
+		border-color: #5cadff;
+	}
+	.form-val input:hover{
+		border-color: #5cadff;
+	}
+	.form-val input:active{
+		border-color: #5cadff;
+	}
+	.form-val button{
+		padding: .6em 2em .6em;
+		border:none;
+		outline: none;
+		cursor: pointer;
+		border-radius: .28571429em;
+		margin-top: 1em;
+		border: 1px solid #fff;
+		transition: all 0.3s;
+		background: #f9f9f9;	
+		border: 1px solid #d7dde4;
+		margin-left: 85px;
+	}
+	.form-val button:hover{
+		background: #fff;
+		border: 1px solid #5cadff;
+		color: #5cadff;
+	}
+	.form-val .error-tips{
+		display: inline-block;
+		animation: error-tips 0.3s;
+		max-width: 100%;
+		position: relative;
+		border:1px solid #e0b4b4;
+		padding:.2em .8em;
+		border-radius: 5px;
+		margin:	1em .1em 0;
+		font-size: 12px;
+		color: #9f3a38!important;
+		font-weight: 700;
+	}
+	.form-val .error-tips:after{
+		content: '';
+		position: absolute;
+		left: 50%;
+		top: 0;
+		width: .6666em;
+		height: .6666em;
+		border-width: 1px 0 0 1px;
+		border-color: inherit;
+		border-style: solid;
+		background-color: #fff;
+		box-sizing: inherit;
+		transform: translateX(-50%) translateY(-50%) rotate(45deg);
+		-webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+		z-index: 99999;
+		margin-top: -1px;
+	}
+	@keyframes error-tips{
+		from{
+			transform: scale(0);
+			-webkit-transform: scale(0);
+		}
+		to{
+			transform: scale(1);
+			-webkit-transform: scale(1);
+		}
+	}
+</style>
+
+<body>
+	<form class="form-val">
+		<label>
+			<div class="name">账号：</div>
+			<div class="field"><input type="text" class="test" name="name"></div>
+		</label>
+		<label>
+			<div class="name">手机号码：</div>
+			<div class="field"><input type="text" class="test" name="phone"></div>
+		</label>
+		<label>
+			<div class="name">密码：</div>
+			<div class="field"><input type="text" class="test" name="pwd"></div>
+		</label>
+		<label>
+			<div class="name">重复密码：</div>
+			<div class="field"><input type="text" class="test" name="repeat"></div>
+		</label>
+		<button>提交</button>
+	</form>
+	<script src="validation.js"></script>
+<script>	
+	// 定义规则
+	var data = {
+		"name":{ 
+			name: 'name',
+			rules: [{
+				type: 'isEmpty',
+				prompt: '请输入账号!'
+			}]
+		},
+		"phone":{ 
+			name: 'phone',
+			rules: [{
+				type: 'isEmpty',
+				prompt: '请输入手机号!'
+			},{
+				type: 'isPhone',
+				prompt: '手机号不正确'
+			}]
+		},
+		"pwd":{
+			name:'pwd',
+			rules:[{
+				type: 'isEmpty',
+				prompt: '请输入密码!'
+			},{
+				type: 'pwdStrong',
+				prompt: '密码强度较弱！(6位以上英文数字)'
+			}]
+		},
+		"repeat":{
+			name:'repeat',
+			rules:[{
+				type: 'isEmpty',
+				prompt: '请输入重复密码!'
+			},{
+				type: 'repeat',
+				prompt: '密码不一致！'
+			}]
+		}
+	}
+	// 校验
+	vld.form({
+		'wrap':'body',
+		'on': 'blur',
+		onSuccess:function(){
+			// ajax or form
+			alert('success');
+			vld.ajax({})
+		},
+		'fields': data
+	})
+
+	</script>
+
+</body>
+</html>
