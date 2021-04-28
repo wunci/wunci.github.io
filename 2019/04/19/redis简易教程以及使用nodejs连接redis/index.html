@@ -1,0 +1,1351 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="教程,Node,redis,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico?v=5.1.1">
+
+
+
+
+
+
+<meta name="description" content="前言一直没机会学习redis，最近抽空学了一下，因为知道reids还是比较重要的，经常看到有人开发公众号因为没有对access_token进行缓存，判断是否过期，导致access_token的调用api次数超过限制而影响业务的情况，熟悉的人都知道使用redis基本上都是做缓存，因为他简单、速度快，可以说是个”快男”。使用reids做抽奖也很普遍，有空可以试试。本篇本章暂时只讲key、hash、li">
+<meta name="keywords" content="教程,Node,redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis简易教程以及使用nodejs连接redis">
+<meta property="og:url" content="http://www.wclimb.site/2019/04/19/redis简易教程以及使用nodejs连接redis/index.html">
+<meta property="og:site_name" content="wclimb的个人博客--分享">
+<meta property="og:description" content="前言一直没机会学习redis，最近抽空学了一下，因为知道reids还是比较重要的，经常看到有人开发公众号因为没有对access_token进行缓存，判断是否过期，导致access_token的调用api次数超过限制而影响业务的情况，熟悉的人都知道使用redis基本上都是做缓存，因为他简单、速度快，可以说是个”快男”。使用reids做抽奖也很普遍，有空可以试试。本篇本章暂时只讲key、hash、li">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-04-04T07:25:37.812Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="redis简易教程以及使用nodejs连接redis">
+<meta name="twitter:description" content="前言一直没机会学习redis，最近抽空学了一下，因为知道reids还是比较重要的，经常看到有人开发公众号因为没有对access_token进行缓存，判断是否过期，导致access_token的调用api次数超过限制而影响业务的情况，熟悉的人都知道使用redis基本上都是做缓存，因为他简单、速度快，可以说是个”快男”。使用reids做抽奖也很普遍，有空可以试试。本篇本章暂时只讲key、hash、li">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.wclimb.site/2019/04/19/redis简易教程以及使用nodejs连接redis/">
+
+
+
+
+
+  <title>redis简易教程以及使用nodejs连接redis | wclimb的个人博客--分享</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">wclimb的个人博客--分享</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.wclimb.site/2019/04/19/redis简易教程以及使用nodejs连接redis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wclimb">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wclimb的个人博客--分享">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">redis简易教程以及使用nodejs连接redis</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-19T15:38:40+08:00">
+                2019-04-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>   浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon" style="margin-left:4px;">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">约</span>
+                
+                <span title="约">
+                  8 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>一直没机会学习<code>redis</code>，最近抽空学了一下，因为知道<code>reids</code>还是比较重要的，经常看到有人开发公众号因为没有对<code>access_token</code>进行缓存，判断是否过期，导致<code>access_token</code>的调用<code>api</code>次数超过限制而影响业务的情况，熟悉的人都知道使用<code>redis</code>基本上都是做缓存，因为他简单、速度快，可以说是个”快男”。使用<code>reids</code>做抽奖也很普遍，有空可以试试。本篇本章暂时只讲<code>key</code>、<code>hash</code>、<code>list</code></p>
+<h2 id="redis简介"><a href="#redis简介" class="headerlink" title="redis简介"></a>redis简介</h2><ul>
+<li>Redis 是完全开源免费的，遵守BSD协议，是一个高性能的key-value数据库。</li>
+<li>Redis 与其他 key - value 缓存产品有以下三个特点：<ol>
+<li>Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。</li>
+<li>Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。</li>
+<li>Redis支持数据的备份，即master-slave模式的数据备份。</li>
+</ol>
+</li>
+</ul>
+<h2 id="为什么要用redis（优势）"><a href="#为什么要用redis（优势）" class="headerlink" title="为什么要用redis（优势）"></a>为什么要用redis（优势）</h2><ol>
+<li>性能极高 – Redis能读的速度是110000次/s,写的速度是81000次/s 。</li>
+<li>丰富的数据类型 – Redis支持二进制案例的 Strings, Lists, Hashes, Sets 及 Ordered Sets 数据类型操作。</li>
+<li>原子 – Redis的所有操作都是原子性的，意思就是要么成功执行要么失败完全不执行。单个操作是原子性的。多个操作也支持事务，即原子性，通过MULTI和EXEC指令包起来。</li>
+<li>丰富的特性 – Redis还支持 publish/subscribe, 通知, key 过期等等特性。</li>
+</ol>
+<h2 id="安装运行及调试（这里以mac为例）"><a href="#安装运行及调试（这里以mac为例）" class="headerlink" title="安装运行及调试（这里以mac为例）"></a>安装运行及调试（这里以mac为例）</h2><ol>
+<li>先去官网下载安装包：<a href="http://www.redis.net.cn/download/" target="_blank" rel="noopener">http://www.redis.net.cn/download/</a></li>
+<li>解压安装</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; tar xzf redis-3.0.6.tar.gz</span><br><span class="line">&gt; make</span><br><span class="line">&gt; sudo make install</span><br><span class="line">&gt; cd /usr/local/bin &amp;&amp; redis-server // 开启redis服务</span><br><span class="line">&gt; cd /usr/local/bin &amp;&amp; redis-cli // 开启redis调试服务</span><br></pre></td></tr></table></figure>
+<p>开启调试会显示下面的界面，现在你就可以开始使用redis的api了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; cd /usr/local/bin &amp;&amp; redis-cli</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h2 id="全局api"><a href="#全局api" class="headerlink" title="全局api"></a>全局api</h2><h3 id="查询键"><a href="#查询键" class="headerlink" title="查询键"></a>查询键</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; keys *</span><br><span class="line">1) &quot;wclimb&quot;</span><br><span class="line">2) &quot;key&quot;</span><br><span class="line">3) &quot;me&quot;</span><br><span class="line">4) &quot;user&quot;</span><br><span class="line">5) &quot;user1&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="键的总数"><a href="#键的总数" class="headerlink" title="键的总数"></a>键的总数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; dbsize </span><br><span class="line">(integer) 5</span><br></pre></td></tr></table></figure>
+<h3 id="检查键是否存在"><a href="#检查键是否存在" class="headerlink" title="检查键是否存在"></a>检查键是否存在</h3><p>存在返回 1 ，不存在返回 0<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; exists wclimb </span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; exists wclimb1 </span><br><span class="line">(integer) 0</span><br></pre></td></tr></table></figure></p>
+<h3 id="删除键"><a href="#删除键" class="headerlink" title="删除键"></a>删除键</h3><p>返回结果为成功删除键的个数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; del user1 </span><br><span class="line">(integer) 1</span><br></pre></td></tr></table></figure></p>
+<h3 id="键过期"><a href="#键过期" class="headerlink" title="键过期"></a>键过期</h3><p>expire key seconds 当超过过期时间，会自动删除，key在seconds秒后过期<br>expireat key timestamp 键在秒级时间戳timestamp后过期<br>pexpire key milliseconds 当超过过期时间，会自动删除，key在milliseconds毫秒后过期<br>pexpireat key milliseconds-timestamp key在毫秒级时间戳timestamp后过期</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; expire user 10   // 10秒后user会被删除</span><br><span class="line">(integer) 1</span><br></pre></td></tr></table></figure>
+<h3 id="randomkey-随机返回一个键"><a href="#randomkey-随机返回一个键" class="headerlink" title="randomkey 随机返回一个键"></a>randomkey 随机返回一个键</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; randomkey </span><br><span class="line">&quot;wclimb&quot;</span><br><span class="line">127.0.0.1:6379&gt; randomkey </span><br><span class="line">&quot;me&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="redis-键（key）"><a href="#redis-键（key）" class="headerlink" title="redis 键（key）"></a>redis 键（key）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">set key value [ex] [px] [nx|xx]</span><br><span class="line">ex为键值设置秒级过期时间</span><br><span class="line">px为键值设置毫秒级过期时间</span><br><span class="line">nx键必须不存在，才可以设置成功，用于添加</span><br><span class="line">xx与nx相反，键必须存在，才可以设置成功，用于更新</span><br><span class="line">setnx、setex 与上面的nx、ex作用相同</span><br></pre></td></tr></table></figure>
+<h3 id="设置key-O-1"><a href="#设置key-O-1" class="headerlink" title="设置key(O(1))"></a>设置key(O(1))</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; set name 25 </span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; keys * </span><br><span class="line">1) &quot;wclimb&quot;</span><br><span class="line">2) &quot;key&quot;</span><br><span class="line">3) &quot;me&quot;</span><br><span class="line">4) &quot;name&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="获取key-O-1"><a href="#获取key-O-1" class="headerlink" title="获取key(O(1))"></a>获取key(O(1))</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; get name </span><br><span class="line">&quot;25&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="批量设置key"><a href="#批量设置key" class="headerlink" title="批量设置key"></a>批量设置key</h3><p>mset key value [key value ……]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; mset test1 1 test2 2</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; get test2</span><br><span class="line">&quot;2&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="追加值-O-1"><a href="#追加值-O-1" class="headerlink" title="追加值(O(1))"></a>追加值(O(1))</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; append test2 apend</span><br><span class="line">(integer) 6</span><br><span class="line">127.0.0.1:6379&gt; get test2 </span><br><span class="line">&quot;2apend&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="字符串长度"><a href="#字符串长度" class="headerlink" title="字符串长度"></a>字符串长度</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; strlen test2</span><br><span class="line">(integer) 6</span><br></pre></td></tr></table></figure>
+<h2 id="哈希（hash）"><a href="#哈希（hash）" class="headerlink" title="哈希（hash）"></a>哈希（hash）</h2><p>HGET KEY_NAME FIELD_NAME<br>类似javscript里的对象 {}</p>
+<h3 id="设置hash"><a href="#设置hash" class="headerlink" title="设置hash"></a>设置hash</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; HMSET hash name wclimb age 25</span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+<h3 id="获取hash"><a href="#获取hash" class="headerlink" title="获取hash"></a>获取hash</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; hmget hash name</span><br><span class="line">1) &quot;wclimb&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="删除hash"><a href="#删除hash" class="headerlink" title="删除hash"></a>删除hash</h3><p>hdel key field [field ……] 会删除一个或多个field，返回结果为成功删除fiel的个数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; hdel hash name</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; hmget hash name  // 再获取就返回nil</span><br><span class="line">1) (nil)</span><br></pre></td></tr></table></figure>
+<h3 id="获取所有field"><a href="#获取所有field" class="headerlink" title="获取所有field"></a>获取所有field</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; hkeys hash</span><br><span class="line">1) &quot;age&quot;</span><br><span class="line">127.0.0.1:6379&gt; HMSET hash name wclimb from jiangxi</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; hkeys hash</span><br><span class="line">1) &quot;age&quot;</span><br><span class="line">2) &quot;name&quot;</span><br><span class="line">3) &quot;from&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="获取所有value"><a href="#获取所有value" class="headerlink" title="获取所有value"></a>获取所有value</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; hvals hash</span><br><span class="line">1) &quot;25&quot;</span><br><span class="line">2) &quot;wclimb&quot;</span><br><span class="line">3) &quot;jiangxi&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="列表（list）"><a href="#列表（list）" class="headerlink" title="列表（list）"></a>列表（list）</h2><table>
+<thead>
+<tr>
+<th>操作类型</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>添加</td>
+<td>rpush 、lpush、linsert</td>
+</tr>
+<tr>
+<td>查</td>
+<td>lrange、lindex、llen</td>
+</tr>
+<tr>
+<td>删除</td>
+<td>lpop 、rpop、 lrem、ltrim</td>
+</tr>
+<tr>
+<td>修改</td>
+<td>lset</td>
+</tr>
+<tr>
+<td>阻塞操作</td>
+<td>blpop、brpop</td>
+</tr>
+</tbody>
+</table>
+<h3 id="添加"><a href="#添加" class="headerlink" title="添加"></a>添加</h3><p>（1）从左边插入元素<br>lpush key value [value……]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; LPUSH list redis</span><br><span class="line">(integer) 1</span><br></pre></td></tr></table></figure></p>
+<p>（1）从右边插入元素<br>rpush key value [value……]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; RPUSH list test</span><br><span class="line">(integer) 2</span><br></pre></td></tr></table></figure></p>
+<h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><p>lrange key start end 索引下标从左到右分别是0到N-1，从右到左分别是-1到-N；end选项包含了自身<br>lrange key 0 -1 可以从左到右获取列表的所有元素<br>lrange mylist 1 3 获取列表中第2个到第4个元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; lrange list 0 1</span><br><span class="line">1) &quot;redis&quot;</span><br><span class="line">2) &quot;test&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="长度"><a href="#长度" class="headerlink" title="长度"></a>长度</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; llen key</span><br><span class="line">(integer) 2</span><br></pre></td></tr></table></figure>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>我们先添加几个</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; LPUSH list a b c</span><br><span class="line">(integer) 5</span><br></pre></td></tr></table></figure>
+<p>（1）从列表右侧弹出元素 rpop key</p>
+<p>（2）从列表左侧弹出元素 lpop key</p>
+<p>先看看现在的列表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; lrange list 0 -1</span><br><span class="line">1) &quot;c&quot;</span><br><span class="line">2) &quot;b&quot;</span><br><span class="line">3) &quot;a&quot;</span><br><span class="line">4) &quot;redis&quot;</span><br><span class="line">5) &quot;test&quot;</span><br></pre></td></tr></table></figure></p>
+<p>删除<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; rpop list </span><br><span class="line">&quot;test&quot;</span><br></pre></td></tr></table></figure></p>
+<p>我们发现test被删除了，现在看看我们的列表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; lrange list 0 -1</span><br><span class="line">1) &quot;c&quot;</span><br><span class="line">2) &quot;b&quot;</span><br><span class="line">3) &quot;a&quot;</span><br><span class="line">4) &quot;redis&quot;</span><br></pre></td></tr></table></figure></p>
+<h3 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h3><p>lset key index newValue 修改指定索引下标的元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; lset list 0 newValue</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; lrange list 0 -1</span><br><span class="line">1) &quot;newValue&quot;</span><br><span class="line">2) &quot;b&quot;</span><br><span class="line">3) &quot;a&quot;</span><br><span class="line">4) &quot;redis&quot;</span><br></pre></td></tr></table></figure>
+<p>第0个下标的元素被替换成最新的值</p>
+<h2 id="使用node连接redis"><a href="#使用node连接redis" class="headerlink" title="使用node连接redis"></a>使用node连接redis</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; npm init</span><br><span class="line">&gt; cnpm i reids -S</span><br><span class="line">&gt; touch index.js</span><br><span class="line">&gt; vim index.js</span><br></pre></td></tr></table></figure>
+<h3 id="连接redis"><a href="#连接redis" class="headerlink" title="连接redis"></a>连接redis</h3><p>redis npm包链接 <a href="https://www.npmjs.com/package/redis" target="_blank" rel="noopener">https://www.npmjs.com/package/redis</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> redis = <span class="built_in">require</span>(<span class="string">'redis'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> client = redis.createClient(<span class="number">6379</span>, <span class="string">'127.0.0.1'</span>);</span><br><span class="line">client.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Error '</span> + err);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="设置获取key"><a href="#设置获取key" class="headerlink" title="设置获取key"></a>设置获取key</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">client.set(<span class="string">'user'</span>, <span class="built_in">JSON</span>.stringify(&#123; <span class="attr">name</span>: <span class="string">'wclimb'</span>, <span class="attr">age</span>: <span class="string">'18'</span> &#125;), redis.print);</span><br><span class="line">client.get(<span class="string">'user'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, value</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Got: '</span> + value);</span><br><span class="line">  client.quit();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>控制台打印</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; node index.js</span><br><span class="line">Reply: OK</span><br><span class="line">Got: &#123;&quot;name&quot;:&quot;wclimb&quot;,&quot;age&quot;:&quot;18&quot;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="设置获取hash"><a href="#设置获取hash" class="headerlink" title="设置获取hash"></a>设置获取hash</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">client.hmset(<span class="string">"hosts"</span>, <span class="string">"mjr"</span>, <span class="string">"1"</span>, <span class="string">"another"</span>, <span class="string">"23"</span>, <span class="string">"home"</span>, <span class="string">"1234"</span>);</span><br><span class="line">client.hgetall(<span class="string">"hosts"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, obj</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.dir(obj);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>控制台打印<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; node index.js</span><br><span class="line">&#123; mjr: &apos;1&apos;, another: &apos;23&apos;, home: &apos;1234&apos; &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="设置获取list"><a href="#设置获取list" class="headerlink" title="设置获取list"></a>设置获取list</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">client.LPUSH(<span class="string">'list'</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], redis.print);</span><br><span class="line">client.lrange(<span class="string">'list'</span>, <span class="string">'0'</span>, <span class="string">'-1'</span>, redis.print);</span><br></pre></td></tr></table></figure>
+<p>控制台打印<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; node index.js</span><br><span class="line">Reply: 8</span><br><span class="line">Reply: 4,3,2,1,newValue,b,a,redis</span><br></pre></td></tr></table></figure></p>
+<p>基本用法和上面讲的都差不多，直接上去一顿写就完事了，完全可以不带脑子的使用各种api</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay">
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay">
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/教程/" rel="tag"># 教程</a>
+          
+            <a href="/tags/Node/" rel="tag"># Node</a>
+          
+            <a href="/tags/redis/" rel="tag"># redis</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/11/JavaScript之实现一个简单的Vue/" rel="next" title="JavaScript之实现一个简单的Vue">
+                <i class="fa fa-chevron-left"></i> JavaScript之实现一个简单的Vue
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/06/webpack系列之初探/" rel="prev" title="webpack系列之初探">
+                webpack系列之初探 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="wclimb">
+          <p class="site-author-name" itemprop="name">wclimb</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wclimb" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://shang.qq.com/wpa/qunwpa?idkey=e6c66b1ee584a90b52dec3545622e988afcf900144eff03cab6d473c50a31d59" target="_blank" title="QQ群">
+                  
+                    <i class="fa fa-fw fa-qq"></i>
+                  
+                  QQ群
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.wclimb.site/cdn/xcx.jpeg" target="_blank" title="小程序">
+                  
+                    <i class="fa fa-fw fa-weixin"></i>
+                  
+                  小程序
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="/img/gzh.jpg" target="_blank" title="公众号">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  公众号
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.lsnsh.site/" title="Lsnsh" target="_blank">Lsnsh</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.curtaintan.club" title="curtain Tan" target="_blank">curtain Tan</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://eraylee.com/" title="eraylee" target="_blank">eraylee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://dcdcdog.com" title="flutter体验" target="_blank">flutter体验</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.jspeng.com" title="技术鹏" target="_blank">技术鹏</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.suchenqiang.cn/" title="苏博客" target="_blank">苏博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.phpojbk.com" title="Blog Luo" target="_blank">Blog Luo</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis简介"><span class="nav-number">2.</span> <span class="nav-text">redis简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要用redis（优势）"><span class="nav-number">3.</span> <span class="nav-text">为什么要用redis（优势）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装运行及调试（这里以mac为例）"><span class="nav-number">4.</span> <span class="nav-text">安装运行及调试（这里以mac为例）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局api"><span class="nav-number">5.</span> <span class="nav-text">全局api</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查询键"><span class="nav-number">5.1.</span> <span class="nav-text">查询键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#键的总数"><span class="nav-number">5.2.</span> <span class="nav-text">键的总数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检查键是否存在"><span class="nav-number">5.3.</span> <span class="nav-text">检查键是否存在</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除键"><span class="nav-number">5.4.</span> <span class="nav-text">删除键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#键过期"><span class="nav-number">5.5.</span> <span class="nav-text">键过期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#randomkey-随机返回一个键"><span class="nav-number">5.6.</span> <span class="nav-text">randomkey 随机返回一个键</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis-键（key）"><span class="nav-number">6.</span> <span class="nav-text">redis 键（key）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置key-O-1"><span class="nav-number">6.1.</span> <span class="nav-text">设置key(O(1))</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取key-O-1"><span class="nav-number">6.2.</span> <span class="nav-text">获取key(O(1))</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#批量设置key"><span class="nav-number">6.3.</span> <span class="nav-text">批量设置key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#追加值-O-1"><span class="nav-number">6.4.</span> <span class="nav-text">追加值(O(1))</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串长度"><span class="nav-number">6.5.</span> <span class="nav-text">字符串长度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#哈希（hash）"><span class="nav-number">7.</span> <span class="nav-text">哈希（hash）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置hash"><span class="nav-number">7.1.</span> <span class="nav-text">设置hash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取hash"><span class="nav-number">7.2.</span> <span class="nav-text">获取hash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除hash"><span class="nav-number">7.3.</span> <span class="nav-text">删除hash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取所有field"><span class="nav-number">7.4.</span> <span class="nav-text">获取所有field</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取所有value"><span class="nav-number">7.5.</span> <span class="nav-text">获取所有value</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列表（list）"><span class="nav-number">8.</span> <span class="nav-text">列表（list）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加"><span class="nav-number">8.1.</span> <span class="nav-text">添加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找"><span class="nav-number">8.2.</span> <span class="nav-text">查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#长度"><span class="nav-number">8.3.</span> <span class="nav-text">长度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除"><span class="nav-number">8.4.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改"><span class="nav-number">8.5.</span> <span class="nav-text">修改</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用node连接redis"><span class="nav-number">9.</span> <span class="nav-text">使用node连接redis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#连接redis"><span class="nav-number">9.1.</span> <span class="nav-text">连接redis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置获取key"><span class="nav-number">9.2.</span> <span class="nav-text">设置获取key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置获取hash"><span class="nav-number">9.3.</span> <span class="nav-text">设置获取hash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置获取list"><span class="nav-number">9.4.</span> <span class="nav-text">设置获取list</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wclimb</span>
+</div>
+
+
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<span id="showDays"></span>
+<script>
+var birthDay = new Date("6/27/2017");
+var now = new Date();
+var duration = now.getTime() - birthDay.getTime();
+var total= Math.floor(duration / (1000 * 60 * 60 * 24));
+document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
+</script>
+
+<span>赣ICP备 17009321号</span> 
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>  访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <script src="https://cdn.bootcss.com/clipboard.js/2.0.6/clipboard.min.js"></script>
+  <style>
+  </style>
+  <script>
+    !function(){var initCopyCode=function(){var copyHtml='<div class="btn-copy" data-clipboard-snippet="">复制代码</div>';$(".highlight .code pre").before(copyHtml);$('.highlight table').wrap('<div style="overflow: auto;"></div>');var clipboard=new ClipboardJS(".btn-copy",{target:function(trigger){return trigger.nextElementSibling}});clipboard.on("success",function(e){e.clearSelection();e.trigger.innerHTML = '复制成功^_^';setTimeout(function(){e.trigger.innerHTML = '复制代码'},3000)})};initCopyCode()}();
+  </script>
+</body>
+</html>

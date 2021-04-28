@@ -1,0 +1,1287 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="原创,javascript,Koa,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico?v=5.1.1">
+
+
+
+
+
+
+<meta name="description" content="写在前面上一篇我们讲了 Koa源码系列之koa-compose，其实也可以归为到这篇文章。今天开始我们看看Koa源码中使用了哪些包，他们起到了什么作用。ps: 这里不准备讲所有的包 is-generator-functionhttps://github.com/koajs/koa/blob/master/lib/application.js#L122123456789101112use(fn) &amp;">
+<meta name="keywords" content="原创,javascript,Koa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Koa源码系列之依赖包解析">
+<meta property="og:url" content="http://www.wclimb.site/2019/12/16/Koa源码系列之依赖包解析/index.html">
+<meta property="og:site_name" content="wclimb的个人博客--分享">
+<meta property="og:description" content="写在前面上一篇我们讲了 Koa源码系列之koa-compose，其实也可以归为到这篇文章。今天开始我们看看Koa源码中使用了哪些包，他们起到了什么作用。ps: 这里不准备讲所有的包 is-generator-functionhttps://github.com/koajs/koa/blob/master/lib/application.js#L122123456789101112use(fn) &amp;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-05-26T07:03:28.221Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Koa源码系列之依赖包解析">
+<meta name="twitter:description" content="写在前面上一篇我们讲了 Koa源码系列之koa-compose，其实也可以归为到这篇文章。今天开始我们看看Koa源码中使用了哪些包，他们起到了什么作用。ps: 这里不准备讲所有的包 is-generator-functionhttps://github.com/koajs/koa/blob/master/lib/application.js#L122123456789101112use(fn) &amp;">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.wclimb.site/2019/12/16/Koa源码系列之依赖包解析/">
+
+
+
+
+
+  <title>Koa源码系列之依赖包解析 | wclimb的个人博客--分享</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">wclimb的个人博客--分享</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.wclimb.site/2019/12/16/Koa源码系列之依赖包解析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wclimb">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wclimb的个人博客--分享">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Koa源码系列之依赖包解析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-16T10:19:49+08:00">
+                2019-12-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Node/" itemprop="url" rel="index">
+                    <span itemprop="name">Node</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Node/Koa/" itemprop="url" rel="index">
+                    <span itemprop="name">Koa</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>   浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon" style="margin-left:4px;">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">约</span>
+                
+                <span title="约">
+                  8 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>上一篇我们讲了 <a href="http://www.wclimb.site/2019/12/11/Koa源码系列之koa-compose/">Koa源码系列之koa-compose</a>，其实也可以归为到这篇文章。今天开始我们看看<code>Koa</code>源码中使用了哪些包，他们起到了什么作用。ps: 这里不准备讲所有的包</p>
+<h2 id="is-generator-function"><a href="#is-generator-function" class="headerlink" title="is-generator-function"></a>is-generator-function</h2><p><a href="https://github.com/koajs/koa/blob/master/lib/application.js#L122" target="_blank" rel="noopener">https://github.com/koajs/koa/blob/master/lib/application.js#L122</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">use(fn) &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> fn !== <span class="string">'function'</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'middleware must be a function!'</span>);</span><br><span class="line">  <span class="keyword">if</span> (isGeneratorFunction(fn)) &#123;</span><br><span class="line">    deprecate(<span class="string">'Support for generators will be removed in v3. '</span> +</span><br><span class="line">              <span class="string">'See the documentation for examples of how to convert old middleware '</span> +</span><br><span class="line">              <span class="string">'https://github.com/koajs/koa/blob/master/docs/migration.md'</span>);</span><br><span class="line">    fn = convert(fn);</span><br><span class="line">  &#125;</span><br><span class="line">  debug(<span class="string">'use %s'</span>, fn._name || fn.name || <span class="string">'-'</span>);</span><br><span class="line">  <span class="keyword">this</span>.middleware.push(fn);</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以看看上面一段代码，<code>koa</code>在注入中间件的之前先判断传入是否是函数，然后判断当前传入的函数是否是 <code>generator</code>，如果是 <code>generator</code> 那么使用<code>convert</code>（<code>koa-convert</code>包，下面会讲到）进行转换，其实转换出来返回的是一个 <code>promise</code>，那么怎么判断是否是 <code>generator</code> 函数的呢？使用了<code>isGeneratorFunction</code>方法，也就是 <code>is-generator-function</code>包，下面是源码<br><a id="more"></a><br><a href="https://github.com/inspect-js/is-generator-function/blob/master/index.js" target="_blank" rel="noopener">https://github.com/inspect-js/is-generator-function/blob/master/index.js</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> toStr = <span class="built_in">Object</span>.prototype.toString;</span><br><span class="line"><span class="keyword">var</span> fnToStr = <span class="built_in">Function</span>.prototype.toString;</span><br><span class="line"><span class="keyword">var</span> isFnRegex = <span class="regexp">/^\s*(?:function)?\*/</span>; </span><br><span class="line"><span class="keyword">var</span> hasToStringTag = <span class="keyword">typeof</span> <span class="built_in">Symbol</span> === <span class="string">'function'</span> &amp;&amp; <span class="keyword">typeof</span> <span class="built_in">Symbol</span>.toStringTag === <span class="string">'symbol'</span>;</span><br><span class="line"><span class="keyword">var</span> getProto = <span class="built_in">Object</span>.getPrototypeOf;</span><br><span class="line"><span class="keyword">var</span> getGeneratorFunc = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">// eslint-disable-line consistent-return</span></span><br><span class="line">	<span class="keyword">if</span> (!hasToStringTag) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">Function</span>(<span class="string">'return function*() &#123;&#125;'</span>)();</span><br><span class="line">	&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> generatorFunc = getGeneratorFunc();</span><br><span class="line"><span class="keyword">var</span> GeneratorFunction = generatorFunc ? getProto(generatorFunc) : &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> <span class="title">isGeneratorFunction</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 首先判断是否是函数，如果不是直接返回false</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">typeof</span> fn !== <span class="string">'function'</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">  <span class="comment">// 先将函数转为字符串，然后正则匹配判断</span></span><br><span class="line">	<span class="keyword">if</span> (isFnRegex.test(fnToStr.call(fn))) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (!hasToStringTag) &#123;</span><br><span class="line">		<span class="keyword">var</span> str = toStr.call(fn);</span><br><span class="line">		<span class="keyword">return</span> str === <span class="string">'[object GeneratorFunction]'</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> getProto(fn) === GeneratorFunction;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="函数转字符串正则匹配"><a href="#函数转字符串正则匹配" class="headerlink" title="函数转字符串正则匹配"></a>函数转字符串正则匹配</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isFnRegex = <span class="regexp">/^\s*(?:function)?\*/</span>;</span><br></pre></td></tr></table></figure>
+<p>上面代码正则匹配 <code>function* (){}</code>，这里其实匹配有问题，因为可以写成 <code>function  * (){}</code>，没有规定<code>*</code>一定到紧跟<code>function</code>，正则可以改成 <code>/^\s*(?:function)?(\s+)?\*/</code></p>
+<h3 id="判断Symbol-toStringTag"><a href="#判断Symbol-toStringTag" class="headerlink" title="判断Symbol.toStringTag"></a>判断<code>Symbol.toStringTag</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> hasToStringTag = <span class="keyword">typeof</span> <span class="built_in">Symbol</span> === <span class="string">'function'</span> &amp;&amp; <span class="keyword">typeof</span> <span class="built_in">Symbol</span>.toStringTag === <span class="string">'symbol'</span>;</span><br></pre></td></tr></table></figure>
+<p>上面这段代码很多人其实很疑惑，其实这里就想得出有没有<code>Symbol</code>以及有没有<code>toStringTag</code>方法，这个很重要，如果存在<code>toStringTag</code>，那么我们用 <code>Object.prototype.toString</code>来判断数据类型变得不可靠了。我们可以看下面这段代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ValidatorClass</span> </span>&#123;</span><br><span class="line">  <span class="keyword">get</span> [Symbol.toStringTag]() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'Validator'</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(<span class="keyword">new</span> ValidatorClass()));</span><br><span class="line"><span class="comment">// expected output: "[object Validator]"</span></span><br></pre></td></tr></table></figure></p>
+<p>有了<code>toStringTag</code>方法，我们可以伪造数据类型，这肯定会有风险，所以之前首先判断是否存在，如果存在它会使用 <code>Object.getPrototypeOf</code>来判断他们的原型是不是来自同一个，也就是下面的代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> generatorFunc = getGeneratorFunc();</span><br><span class="line"><span class="keyword">var</span> getProto = <span class="built_in">Object</span>.getPrototypeOf;</span><br><span class="line"><span class="keyword">var</span> GeneratorFunction = generatorFunc ? getProto(generatorFunc) : &#123;&#125;;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> getProto(fn) === GeneratorFunction;</span><br></pre></td></tr></table></figure></p>
+<h3 id="直接使用Object-prototype-toString"><a href="#直接使用Object-prototype-toString" class="headerlink" title="直接使用Object.prototype.toString"></a>直接使用<code>Object.prototype.toString</code></h3><p>如果不存在<code>Symbol.toStringTag</code>，那么自然我们可以使用 <code>Object.prototype.toString</code> 来判断数据类型<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!hasToStringTag) &#123;</span><br><span class="line">  <span class="keyword">var</span> str = toStr.call(fn);</span><br><span class="line">  <span class="keyword">return</span> str === <span class="string">'[object GeneratorFunction]'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="delegates"><a href="#delegates" class="headerlink" title="delegates"></a>delegates</h2><p>在koa内使用<br><a href="https://github.com/koajs/koa/blob/master/lib/context.js#L191" target="_blank" rel="noopener">https://github.com/koajs/koa/blob/master/lib/context.js#L191</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Response delegation.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">delegate(proto, <span class="string">'response'</span>)</span><br><span class="line">  .method(<span class="string">'attachment'</span>)</span><br><span class="line">  .method(<span class="string">'redirect'</span>)</span><br><span class="line">  .method(<span class="string">'remove'</span>)</span><br><span class="line">  .method(<span class="string">'vary'</span>)</span><br><span class="line">  .method(<span class="string">'has'</span>)</span><br><span class="line">  .method(<span class="string">'set'</span>)</span><br><span class="line">  .method(<span class="string">'append'</span>)</span><br><span class="line">  .method(<span class="string">'flushHeaders'</span>)</span><br><span class="line">  .access(<span class="string">'status'</span>)</span><br><span class="line">  .access(<span class="string">'message'</span>)</span><br><span class="line">  .access(<span class="string">'body'</span>)</span><br><span class="line">  .access(<span class="string">'length'</span>)</span><br><span class="line">  .access(<span class="string">'type'</span>)</span><br><span class="line">  .access(<span class="string">'lastModified'</span>)</span><br><span class="line">  .access(<span class="string">'etag'</span>)</span><br><span class="line">  .getter(<span class="string">'headerSent'</span>)</span><br><span class="line">  .getter(<span class="string">'writable'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>乍一看看不出它有啥用处，其实很简单，它相当于做了代理，本来我们访问<code>body</code>需要<code>ctx.response.body</code>，现在你只需要<code>ctx.body</code>就可以了。是不是很简单？那么我们看一下这个包的源码具体怎么实现的<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Delegator</span>(<span class="params">proto, target</span>) </span>&#123;</span><br><span class="line"> ...</span><br><span class="line">&#125;</span><br><span class="line">Delegator.prototype.getter = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;;</span><br><span class="line">Delegator.prototype.access = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;;</span><br><span class="line">Delegator.prototype.setter = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;;</span><br><span class="line">Delegator.prototype.method = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>上面的👆代码就是 <a href="https://github.com/tj/node-delegates" target="_blank" rel="noopener">delegates</a> 包的大致总体结构，还有其他几个方法这里不做介绍。我们可以先来看一下方法 <code>Delegator</code> 构造函数<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Delegator</span>(<span class="params">proto, target</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!(<span class="keyword">this</span> <span class="keyword">instanceof</span> Delegator)) <span class="keyword">return</span> <span class="keyword">new</span> Delegator(proto, target);</span><br><span class="line">  <span class="keyword">this</span>.proto = proto;</span><br><span class="line">  <span class="keyword">this</span>.target = target;</span><br><span class="line">  <span class="comment">// 以下可以忽略</span></span><br><span class="line">  <span class="keyword">this</span>.methods = [];</span><br><span class="line">  <span class="keyword">this</span>.getters = [];</span><br><span class="line">  <span class="keyword">this</span>.setters = [];</span><br><span class="line">  <span class="keyword">this</span>.fluents = [];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>从上面我们可以看到，接收两个参数，分别是对应的对象和目标<code>key</code>值，<code>koa</code>使用的是 <code>delegate(proto, &#39;response&#39;)</code>，<code>proto</code>就是<code>ctx</code>，<code>response</code>就是目标<code>key</code>值。</p>
+<p>继续看<code>getter</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Delegator.prototype.getter = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> proto = <span class="keyword">this</span>.proto;</span><br><span class="line">  <span class="keyword">var</span> target = <span class="keyword">this</span>.target;</span><br><span class="line">  <span class="keyword">this</span>.getters.push(name);</span><br><span class="line"></span><br><span class="line">  proto.__defineGetter__(name, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>[target][name];</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>通过以上代码可以得知，它使用的是<code>__defineGetter__</code>来代理获取值，访问<code>ctx.body</code>的时候，其实返回的值是 <code>this[target][name]</code>，<code>target</code>我们已经知道，是<code>response</code>，然后在这里<code>body</code>就是<code>name</code>了。<br>但是我查看 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/__defineGetter__" target="_blank" rel="noopener"><strong>defineGetter</strong></a> 这个<code>api</code>，发现 <strong>该特性是非标准的，请尽量不要在生产环境中使用它！</strong>，我们思考以下，其实我们可以使用<code>Object.defineProperty</code>，把它进行改造<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.defineProperty(proto, name, &#123;</span><br><span class="line">  <span class="keyword">get</span>: function() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>[target][name];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>其实我们看一下该项目的<code>PR</code>会发现，已经有人提了<code>PR</code>，但是一直没有<code>meger</code>。<br>剩下的可以同理，<code>setter</code>使用的是<code>__defineSetter__</code>方法，我们就可以借助<code>Object.defineProperty</code>的<code>set</code>进行改造。<br><code>access</code>方法则是两者方法的集合，如果满足可以获取值和设置值条件，都可以使用<code>access</code>，比较方便，它的源码也很好理解，同时调用 <code>get</code>和<code>set</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Delegator.prototype.access = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.getter(name).setter(name);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="koa-convert"><a href="#koa-convert" class="headerlink" title="koa-convert"></a>koa-convert</h2><p>我们在上个模块看到了<code>Koa</code>源码有判断中间件传入的是否是 <code>generator</code> ，如果是<code>true</code>，那么它就调用了 <code>convert(fn)</code>，也就是这个模块需要解析的包 <code>koa-convert</code>，那么他到底有什么用呢？看下面他的源码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> co = <span class="built_in">require</span>(<span class="string">'co'</span>)</span><br><span class="line"><span class="keyword">const</span> compose = <span class="built_in">require</span>(<span class="string">'koa-compose'</span>)</span><br><span class="line"><span class="built_in">module</span>.exports = convert</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">convert</span> (<span class="params">mw</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> mw !== <span class="string">'function'</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'middleware must be a function'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (mw.constructor.name !== <span class="string">'GeneratorFunction'</span>) &#123;</span><br><span class="line">    <span class="comment">// assume it's Promise-based middleware</span></span><br><span class="line">    <span class="keyword">return</span> mw</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> converted = <span class="function"><span class="keyword">function</span> (<span class="params">ctx, next</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> co.call(ctx, mw.call(ctx, createGenerator(next)))</span><br><span class="line">  &#125;</span><br><span class="line">  converted._name = mw._name || mw.name</span><br><span class="line">  <span class="keyword">return</span> converted</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> * <span class="title">createGenerator</span> (<span class="params">next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">yield</span> next()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">convert.compose = <span class="function"><span class="keyword">function</span> (<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!<span class="built_in">Array</span>.isArray(arr)) &#123;</span><br><span class="line">    arr = <span class="built_in">Array</span>.from(<span class="built_in">arguments</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> compose(arr.map(convert))</span><br><span class="line">&#125;</span><br><span class="line">convert.back = <span class="function"><span class="keyword">function</span> (<span class="params">mw</span>) </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们可以直接跳到第13行代码，直观的看到他使用了 <code>co</code> 方法，通过 <code>co</code>包（这里不展开讲这个包）处理返回的结果拿到最终需要转换的函数，使用 <code>call</code> 主要是想把 <code>this</code> 指向 <code>ctx</code> 对象。通过co处理得到的是一个 <code>Promise对象</code>，当然 <code>convert</code> 下还有两个方法，这里介绍一下，一个是 <code>compose</code>，看过上篇文章的应该知道，它依赖了 <code>koa-compose</code>，主要功能是将一个数组里的中间件全转成 <code>Promise</code> 对象。另一个方法是back，字面意思就能知道，就是回退，可以把函数转成 <code>generator</code></p>
+<h2 id="only"><a href="#only" class="headerlink" title="only"></a>only</h2><p>看了koa源码你会发现在好几个地方用到了这个依赖包，这个包主要是输出你想要的对象数据，例子如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">  name: &apos;tobi&apos;,</span><br><span class="line">  last: &apos;holowaychuk&apos;,</span><br><span class="line">  email: &apos;tobi@learnboost.com&apos;,</span><br><span class="line">  _id: &apos;12345&apos;</span><br><span class="line">&#125;;</span><br><span class="line">var user = only(obj, &apos;name last email&apos;);</span><br><span class="line">输出：</span><br><span class="line">&#123;</span><br><span class="line">  name: &apos;tobi&apos;,</span><br><span class="line">  last: &apos;holowaychuk&apos;,</span><br><span class="line">  email: &apos;tobi@learnboost.com&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>koa源码使用的例子 <a href="https://github.com/koajs/koa/blob/master/lib/application.js#L92" target="_blank" rel="noopener">https://github.com/koajs/koa/blob/master/lib/application.js#L92</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">toJSON() &#123;</span><br><span class="line">  <span class="keyword">return</span> only(<span class="keyword">this</span>, [</span><br><span class="line">    <span class="string">'subdomainOffset'</span>,</span><br><span class="line">    <span class="string">'proxy'</span>,</span><br><span class="line">    <span class="string">'env'</span></span><br><span class="line">  ]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>依赖包源码 <a href="https://github.com/tj/node-only/blob/master/index.js" target="_blank" rel="noopener">https://github.com/tj/node-only/blob/master/index.js</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">obj, keys</span>)</span>&#123;</span><br><span class="line">  obj = obj || &#123;&#125;;</span><br><span class="line">  <span class="keyword">if</span> (<span class="string">'string'</span> == <span class="keyword">typeof</span> keys) keys = keys.split(<span class="regexp">/ +/</span>);</span><br><span class="line">  <span class="keyword">return</span> keys.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">ret, key</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="literal">null</span> == obj[key]) <span class="keyword">return</span> ret;</span><br><span class="line">    ret[key] = obj[key];</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">  &#125;, &#123;&#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>代码很简单，看源码知道，我们可以传字符串或者直接数组的形式传递需要的<code>key</code>值，默认定义一个空对象，调用<code>reduce</code>把结果循环传递下去，最终返回，如果没找指定的<code>value</code>，直接返回<code>ret</code>。额，感觉没有讲的必要，那么就。。。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本来一股脑想讲5 6个依赖包，但是看了一下，简单的讲起来感觉有点没意思，大部分依赖包内部又依赖其他包，想讲明白其实不容易，篇幅太长，所以先讲到这里吧，下一篇讲讲总体的<code>koa</code>构造流程，有一个更清楚的认识，毕竟看源码也主要是为了这一点。</p>
+<p>原文地址：<a href="http://www.wclimb.site/2019/12/16/Koa源码系列之依赖包解析/">http://www.wclimb.site/2019/12/16/Koa源码系列之依赖包解析/</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay">
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay">
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/原创/" rel="tag"># 原创</a>
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+            <a href="/tags/Koa/" rel="tag"># Koa</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/11/Koa源码系列之koa-compose/" rel="next" title="Koa源码系列之koa-compose">
+                <i class="fa fa-chevron-left"></i> Koa源码系列之koa-compose
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/23/Koa源码系列之全流程解析/" rel="prev" title="Koa源码系列之全流程解析">
+                Koa源码系列之全流程解析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="wclimb">
+          <p class="site-author-name" itemprop="name">wclimb</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wclimb" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://shang.qq.com/wpa/qunwpa?idkey=e6c66b1ee584a90b52dec3545622e988afcf900144eff03cab6d473c50a31d59" target="_blank" title="QQ群">
+                  
+                    <i class="fa fa-fw fa-qq"></i>
+                  
+                  QQ群
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.wclimb.site/cdn/xcx.jpeg" target="_blank" title="小程序">
+                  
+                    <i class="fa fa-fw fa-weixin"></i>
+                  
+                  小程序
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="/img/gzh.jpg" target="_blank" title="公众号">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  公众号
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.lsnsh.site/" title="Lsnsh" target="_blank">Lsnsh</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.curtaintan.club" title="curtain Tan" target="_blank">curtain Tan</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://eraylee.com/" title="eraylee" target="_blank">eraylee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://dcdcdog.com" title="flutter体验" target="_blank">flutter体验</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.jspeng.com" title="技术鹏" target="_blank">技术鹏</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.suchenqiang.cn/" title="苏博客" target="_blank">苏博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.phpojbk.com" title="Blog Luo" target="_blank">Blog Luo</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#is-generator-function"><span class="nav-number">2.</span> <span class="nav-text">is-generator-function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数转字符串正则匹配"><span class="nav-number">2.1.</span> <span class="nav-text">函数转字符串正则匹配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断Symbol-toStringTag"><span class="nav-number">2.2.</span> <span class="nav-text">判断Symbol.toStringTag</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直接使用Object-prototype-toString"><span class="nav-number">2.3.</span> <span class="nav-text">直接使用Object.prototype.toString</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delegates"><span class="nav-number">3.</span> <span class="nav-text">delegates</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#koa-convert"><span class="nav-number">4.</span> <span class="nav-text">koa-convert</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#only"><span class="nav-number">5.</span> <span class="nav-text">only</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wclimb</span>
+</div>
+
+
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<span id="showDays"></span>
+<script>
+var birthDay = new Date("6/27/2017");
+var now = new Date();
+var duration = now.getTime() - birthDay.getTime();
+var total= Math.floor(duration / (1000 * 60 * 60 * 24));
+document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
+</script>
+
+<span>赣ICP备 17009321号</span> 
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>  访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <script src="https://cdn.bootcss.com/clipboard.js/2.0.6/clipboard.min.js"></script>
+  <style>
+  </style>
+  <script>
+    !function(){var initCopyCode=function(){var copyHtml='<div class="btn-copy" data-clipboard-snippet="">复制代码</div>';$(".highlight .code pre").before(copyHtml);$('.highlight table').wrap('<div style="overflow: auto;"></div>');var clipboard=new ClipboardJS(".btn-copy",{target:function(trigger){return trigger.nextElementSibling}});clipboard.on("success",function(e){e.clearSelection();e.trigger.innerHTML = '复制成功^_^';setTimeout(function(){e.trigger.innerHTML = '复制代码'},3000)})};initCopyCode()}();
+  </script>
+</body>
+</html>

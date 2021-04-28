@@ -1,0 +1,1324 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="原创,javascript,webpack,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico?v=5.1.1">
+
+
+
+
+
+
+<meta name="description" content="写在前面使用webpack或者自己配置研究过webpack的人都知道plugin，也就是webpack的插件，对于大多数人来说，经常使用的插件诸如：clean-webpack-plugin、html-webpack-plugin等等，在很多情况下，我们只会去用它，知道他是干什么的，但是其内部做的操作缺知之甚少，今天我们就来写一个plugin 基础首先我们看看插件是怎么使用在webpack上的 12">
+<meta name="keywords" content="原创,javascript,webpack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack系列之编写一个plugin">
+<meta property="og:url" content="http://www.wclimb.site/2019/06/21/webpack系列之编写一个plugin/index.html">
+<meta property="og:site_name" content="wclimb的个人博客--分享">
+<meta property="og:description" content="写在前面使用webpack或者自己配置研究过webpack的人都知道plugin，也就是webpack的插件，对于大多数人来说，经常使用的插件诸如：clean-webpack-plugin、html-webpack-plugin等等，在很多情况下，我们只会去用它，知道他是干什么的，但是其内部做的操作缺知之甚少，今天我们就来写一个plugin 基础首先我们看看插件是怎么使用在webpack上的 12">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-27T08:21:04.706Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webpack系列之编写一个plugin">
+<meta name="twitter:description" content="写在前面使用webpack或者自己配置研究过webpack的人都知道plugin，也就是webpack的插件，对于大多数人来说，经常使用的插件诸如：clean-webpack-plugin、html-webpack-plugin等等，在很多情况下，我们只会去用它，知道他是干什么的，但是其内部做的操作缺知之甚少，今天我们就来写一个plugin 基础首先我们看看插件是怎么使用在webpack上的 12">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.wclimb.site/2019/06/21/webpack系列之编写一个plugin/">
+
+
+
+
+
+  <title>webpack系列之编写一个plugin | wclimb的个人博客--分享</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">wclimb的个人博客--分享</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.wclimb.site/2019/06/21/webpack系列之编写一个plugin/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wclimb">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wclimb的个人博客--分享">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">webpack系列之编写一个plugin</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-21T09:17:19+08:00">
+                2019-06-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/webpack/" itemprop="url" rel="index">
+                    <span itemprop="name">webpack</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>   浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon" style="margin-left:4px;">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">约</span>
+                
+                <span title="约">
+                  9 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>使用<code>webpack</code>或者自己配置研究过<code>webpack</code>的人都知道<code>plugin</code>，也就是<code>webpack</code>的插件，对于大多数人来说，经常使用的插件诸如：<code>clean-webpack-plugin</code>、<code>html-webpack-plugin</code>等等，在很多情况下，我们只会去用它，知道他是干什么的，但是其内部做的操作缺知之甚少，今天我们就来写一个<code>plugin</code></p>
+<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p>首先我们看看插件是怎么使用在<code>webpack</code>上的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; CleanWebpackPlugin &#125; = <span class="built_in">require</span>(<span class="string">'clean-webpack-plugin'</span>);</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: <span class="string">'...'</span>,</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> CleanWebpackPlugin(),</span><br><span class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">      filename: <span class="string">'index.html'</span>,</span><br><span class="line">      template: <span class="string">'./index.html'</span>,</span><br><span class="line">    &#125;),</span><br><span class="line">  ]  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>我们经常使用的插件是长这样的，每个插件都是一个构造函数，通过<code>new</code>一个它的实例来使用。知道了插件是一个构造函数，那么我们可以推断出下面的结构<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestPlguin</span></span>&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>webpack 插件由以下组成：</p>
+<ul>
+<li>一个 JavaScript 命名函数。</li>
+<li>在插件函数的 prototype 上定义一个 apply 方法。</li>
+<li>指定一个绑定到 webpack 自身的事件钩子。</li>
+<li>处理 webpack 内部实例的特定数据。</li>
+<li>功能完成后调用 webpack 提供的回调。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestPlguin</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>()&#123;</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">  apply(compiler)&#123;</span><br><span class="line">    compiler.plugin(<span class="string">'webpacksEventHook'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">compilation <span class="regexp">/* 处理 webpack 内部实例的特定数据。*/</span>, callback</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"This is an example plugin!!!"</span>);</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 功能完成后调用 webpack 提供的回调。</span></span><br><span class="line">      callback();</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面是官网上的示例，插件一定会有<code>apply</code>方法，传递一个<code>compiler</code>参数，通过 <code>CLI</code> 或 <code>Node API</code> 传递的所有选项，创建出一个 <code>compilation</code> 实例。</p>
+<p>在插件开发中最重要的两个资源就是 <code>compiler</code> 和 <code>compilation</code> 对象。理解它们的角色是扩展 <code>webpack</code> 引擎重要的第一步。</p>
+<ul>
+<li><code>compiler</code> 对象代表了完整的 <code>webpack</code> 环境配置。这个对象在启动 <code>webpack</code> 时被一次性建立，并配置好所有可操作的设置，包括 <code>options</code>，<code>loader</code> 和 <code>plugin</code>。当在 <code>webpack</code> 环境中应用一个插件时，插件将收到此 <code>compiler</code> 对象的引用。可以使用它来访问 <code>webpack</code> 的主环境。</li>
+<li><code>compilation</code> 对象代表了一次资源版本构建。当运行 <code>webpack</code> 开发环境中间件时，每当检测到一个文件变化，就会创建一个新的 <code>compilation</code>，从而生成一组新的编译资源。一个 <code>compilation</code> 对象表现了当前的模块资源、编译生成资源、变化的文件、以及被跟踪依赖的状态信息。<code>compilation</code> 对象也提供了很多关键时机的回调，以供插件做自定义处理时选择使用。</li>
+</ul>
+<p><code>Compiler</code> 和 <code>Compilation</code> 的区别在于：<code>Compiler</code> 代表了整个 <code>Webpack</code> 从启动到关闭的生命周期，而 <code>Compilation</code> 只是代表了一次新的编译</p>
+<h2 id="钩子"><a href="#钩子" class="headerlink" title="钩子"></a>钩子</h2><p><code>Compiler</code>和<code>Compilation</code>都有生命周期</p>
+<h3 id="Compiler"><a href="#Compiler" class="headerlink" title="Compiler"></a>Compiler</h3><p>举几个例子</p>
+<ol>
+<li><code>entryOption</code>：在 <code>entry</code> 配置项处理过之后，执行插件</li>
+<li><code>emit</code>：生成资源到 <code>output</code> 目录之前。</li>
+<li><code>failed</code>：编译(compilation)失败</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestPlguin</span> </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  apply(compiler)&#123;</span><br><span class="line">    compiler.hooks.emit.tap(<span class="string">'MyPlugin'</span>, params =&gt; &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'我会在生成资源到 output 目录之前执行'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的例子意思是，当<code>webpack</code>执行到最终要输出文件得时候，我在这个操作之前去打印一段话，通常是我们输出文件到<code>dist</code>文件夹之前那一步<br>如果你实现写好了这些钩子，那么<code>webpack</code>在编译的流程里都会执行上面几个钩子。想了解更多访问 <a href="https://www.webpackjs.com/api/compiler-hooks/" target="_blank" rel="noopener">https://www.webpackjs.com/api/compiler-hooks/</a></p>
+<h3 id="Compilation"><a href="#Compilation" class="headerlink" title="Compilation"></a>Compilation</h3><p><code>Compilation</code> 模块会被 <code>Compiler</code> 用来创建新的编译（或新的构建）。<code>compilation</code>实例能够访问所有的模块和它们的依赖（大部分是循环依赖）。它会对应用程序的依赖图中所有模块进行字面上的编译(literal compilation)。在编译阶段，模块会被加载(loaded)、封存(sealed)、优化(optimized)、分块(chunked)、哈希(hashed)和重新创建(restored)</p>
+<p>简单的理解就是，当编译期间文件发生各种变化的时候，我们可以通过 <code>Compilation</code> 钩子里的生命周期函数去拦截，然后做你想做的事情</p>
+<p>举几个例子</p>
+<ol>
+<li><code>buildModule</code>：在模块构建开始之前触发。</li>
+<li><code>optimize</code>：优化阶段开始时触发。</li>
+<li><code>beforeChunkAssets</code>：在创建 chunk 资源(asset)之前</li>
+<li><code>additionalAssets</code>：为编译(compilation)创建附加资源(asset)</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestPlguin</span> </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  apply(compiler)&#123;</span><br><span class="line">    compiler.hooks.emit.tap(<span class="string">'MyPlugin'</span>, compilation =&gt; &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'我会在生成资源到 output 目录之前执行'</span>)</span><br><span class="line">      <span class="comment">// 以下开始调用compilation钩子，当模块处在优化阶段开始时会执行以下回调</span></span><br><span class="line">      compilation.plugin(<span class="string">"optimize"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"我在优化阶段开始时触发了"</span>);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>想了解更多访问 <a href="https://www.webpackjs.com/api/compilation-hooks/" target="_blank" rel="noopener">https://www.webpackjs.com/api/compilation-hooks/</a></p>
+<h2 id="编写插件"><a href="#编写插件" class="headerlink" title="编写插件"></a>编写插件</h2><p>我们现在假定有一个这么个需求：我需要在打包的时候把一个外部的<code>js</code>文件导入到项目中，并且在<code>index.html</code>引入，你可能会问了，那你直接在主入口引入不就行了吗？确实，感觉做这件事情很没有意义，但是我就要这个需求，原因在于我在使用<code>DllPlugin</code>的时候，提前生成好了一堆文件，这些文件是不会在正常打包的过程引入的，所以我需要在最后打包生成文件之前把他们导入到<code>dist</code>文件夹下，并且引入他们。</p>
+<p>那么我们现在开始编写，先写个简单的，一个文件的导入，抛砖引玉。</p>
+<p>首先我们思考一下🤔，这个插件得有配置呀，和<code>html-webpack-plugin</code>一样可以传参数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  plugin: [</span><br><span class="line">    <span class="keyword">new</span> TestPlugin(&#123;</span><br><span class="line">      filename: <span class="string">'test.js'</span>,</span><br><span class="line">      template: path.resolve(__dirname, <span class="string">'./otherFile/test.js'</span>),</span><br><span class="line">    &#125;),</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们在项目里新建文件夹<code>plugin</code>，文件夹下新建<code>TestPlugin.js</code>。然后在项目里再新建文件夹<code>otherFile</code>，文件夹下新建<code>test.js</code>，这里文件内容随便</p>
+<p>上面我们说了需要传递参数，所以有了下面这段<code>js</code>，<code>options</code>是我们传递的对象，<code>apply</code>就不多说了，每个插件都有这个方法，然后我们把这个插件暴露出来<br><code>TestPlugin.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestPlugin</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(options = &#123;&#125;) &#123;</span><br><span class="line">    <span class="keyword">this</span>.options = options;</span><br><span class="line">  &#125;</span><br><span class="line">  apply(compiler) &#123;</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = TestPlugin;</span><br></pre></td></tr></table></figure></p>
+<p>接下来我们开始写内部方法</p>
+<p>我们又要思考一下，我需要在打包完成之前做这个操作，那么<code>compiler</code>钩子的生命周期函数是哪个呢？没错，是emit，之前讲过，于是乎有了下面这段js<br><code>TestPlugin.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestPlugin</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(options = &#123;&#125;) &#123;</span><br><span class="line">    <span class="keyword">this</span>.options = options;</span><br><span class="line">  &#125;</span><br><span class="line">  apply(compiler) &#123;</span><br><span class="line">    compiler.hooks.emit.tapAsync(<span class="string">'TestPlugin'</span>, (compilation, callback) =&gt; &#123;</span><br><span class="line">      callback();</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = TestPlugin;</span><br></pre></td></tr></table></figure></p>
+<p>上面代码，我们注册了一个<code>emit</code>，<code>webpack</code>在执行打包的最后，会触发这个内部得方法</p>
+<p>接下来就是对文件得处理了，需要用到<code>compilation</code></p>
+<p>我们思考一下，怎么处理文件？我们需要用到<code>compilation</code>下的<code>asset</code>，来处理资源文件。<br>我们先把文件导入到<code>dist</code>文件夹下，于是乎有了下面这段js<br><code>TestPlugin.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestPlugin</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(options = &#123;&#125;) &#123;</span><br><span class="line">    <span class="keyword">this</span>.options = options;</span><br><span class="line">  &#125;</span><br><span class="line">  apply(compiler) &#123;</span><br><span class="line">    compiler.hooks.emit.tapAsync(<span class="string">'TestPlugin'</span>, (compilation, callback) =&gt; &#123;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">let</span> template = fs.readFileSync(<span class="keyword">this</span>.options.template, <span class="string">'UTF-8'</span>);</span><br><span class="line">      compilation.assets[<span class="keyword">this</span>.options.filename || <span class="string">'test.js'</span>] = &#123;</span><br><span class="line">        source: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="keyword">return</span> template;</span><br><span class="line">        &#125;,</span><br><span class="line">        size: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="keyword">return</span> template.length;</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;;</span><br><span class="line"></span><br><span class="line">      callback();</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = TestPlugin;</span><br></pre></td></tr></table></figure></p>
+<p>上面代码，我们读取了插件实例传递过来的参数<code>filename</code>，调用<code>compilation</code>钩子下的<code>assets</code>，这个<code>assets</code>是一个键值对的形式，<code>key</code>是资源文件得名称，<code>value</code>是资源文件的内容，也是一个对象。执行<code>compilation.assets</code>，如果键值是一个已经存在的文件，<code>webpack</code>不会帮你重新创建，你可以去尝试修改一个文件</p>
+<p>好了，文件导入了，但是我们还需要在<code>index.html</code>去引入这个文件，思考一下，这个<code>index.html</code>是已经存在的，我们同样可以使用<code>compilation.assets</code>去修改它的文件内容，所以有了下面这段<code>js</code></p>
+<p><code>TestPlugin.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestPlugin</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(options = &#123;&#125;) &#123;</span><br><span class="line">    <span class="keyword">this</span>.options = options;</span><br><span class="line">  &#125;</span><br><span class="line">  apply(compiler) &#123;</span><br><span class="line">    compiler.hooks.emit.tapAsync(<span class="string">'TestPlugin'</span>, (compilation, callback) =&gt; &#123;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">let</span> template = fs.readFileSync(<span class="keyword">this</span>.options.template, <span class="string">'UTF-8'</span>);</span><br><span class="line">      compilation.assets[<span class="keyword">this</span>.options.filename || <span class="string">'test.js'</span>] = &#123;</span><br><span class="line">        source: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="keyword">return</span> template;</span><br><span class="line">        &#125;,</span><br><span class="line">        size: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="keyword">return</span> template.length;</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;;</span><br><span class="line">      <span class="comment">// 这里是新加的</span></span><br><span class="line">      <span class="keyword">let</span> source = compilation.assets[<span class="string">'index.html'</span>].source();</span><br><span class="line">      source = source.replace(</span><br><span class="line">        /<span class="xml"><span class="tag">&lt;<span class="name">\</span>/(<span class="attr">.</span>*?)&gt;</span>(.*?)<span class="tag">&lt;<span class="name">\</span>/<span class="attr">body</span>&gt;</span>$/m,</span></span><br><span class="line">        `&lt;/$1&gt;&lt;script src="$&#123;this.options.filename ||</span><br><span class="line"><span class="xml">          'test.js'&#125;"&gt;<span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><span class="string">`,</span></span><br><span class="line"><span class="string">      );</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">      compilation.assets['index.html'] = &#123;</span></span><br><span class="line"><span class="string">        source: function() &#123;</span></span><br><span class="line"><span class="string">          return source;</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        size: function() &#123;</span></span><br><span class="line"><span class="string">          return source.length;</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">      &#125;;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">      callback();</span></span><br><span class="line"><span class="string">    &#125;);</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">module.exports = TestPlugin;</span></span><br></pre></td></tr></table></figure></p>
+<p>我们通过修改文件的<code>source</code>，把一段<code>script</code>插入到<code>body</code>之前来修改文件</p>
+<p>插件写好了，我们在<code>webpack</code>去引入吧</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; CleanWebpackPlugin &#125; = <span class="built_in">require</span>(<span class="string">'clean-webpack-plugin'</span>);</span><br><span class="line"><span class="keyword">const</span> TestPlugin = <span class="built_in">require</span>(<span class="string">'./plugin/TestPlugin'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  mode: <span class="string">'production'</span>,</span><br><span class="line">  entry: &#123;</span><br><span class="line">    app: <span class="string">'./src/index.js'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">'[name].[hash].js'</span>,</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'dist/'</span>),</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> CleanWebpackPlugin(),</span><br><span class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123; <span class="attr">template</span>: <span class="string">'index.html'</span> &#125;),</span><br><span class="line">    <span class="keyword">new</span> TestPlugin(&#123;</span><br><span class="line">      filename: <span class="string">'test.js'</span>,</span><br><span class="line">      template: path.resolve(__dirname, <span class="string">'./otherFile/test.js'</span>),</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>打包运行一下，看看效果吧</p>
+<p>插件代码仓库：<a href="https://github.com/wclimb/webpack-plugin" target="_blank" rel="noopener">https://github.com/wclimb/webpack-plugin</a></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>今天我们学习了一如何编写一个插件，当然只是简单的操作了，可以思考一下，要实现<code>clean-webpack-plugin</code>或者<code>html-webpack-plugin</code>插件，我们该怎么做？</p>
+<p>本文地址 <a href="http://www.wclimb.site/2019/06/21/webpack系列之编写一个plugin/">webpack系列之编写一个plugin</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay">
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay">
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/原创/" rel="tag"># 原创</a>
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+            <a href="/tags/webpack/" rel="tag"># webpack</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/19/webpack系列之输出文件分析/" rel="next" title="webpack系列之输出文件分析">
+                <i class="fa fa-chevron-left"></i> webpack系列之输出文件分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/05/webpack系列之编写一个loader/" rel="prev" title="webpack系列之编写一个loader">
+                webpack系列之编写一个loader <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="wclimb">
+          <p class="site-author-name" itemprop="name">wclimb</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wclimb" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://shang.qq.com/wpa/qunwpa?idkey=e6c66b1ee584a90b52dec3545622e988afcf900144eff03cab6d473c50a31d59" target="_blank" title="QQ群">
+                  
+                    <i class="fa fa-fw fa-qq"></i>
+                  
+                  QQ群
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.wclimb.site/cdn/xcx.jpeg" target="_blank" title="小程序">
+                  
+                    <i class="fa fa-fw fa-weixin"></i>
+                  
+                  小程序
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="/img/gzh.jpg" target="_blank" title="公众号">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  公众号
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.lsnsh.site/" title="Lsnsh" target="_blank">Lsnsh</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.curtaintan.club" title="curtain Tan" target="_blank">curtain Tan</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://eraylee.com/" title="eraylee" target="_blank">eraylee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://dcdcdog.com" title="flutter体验" target="_blank">flutter体验</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.jspeng.com" title="技术鹏" target="_blank">技术鹏</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.suchenqiang.cn/" title="苏博客" target="_blank">苏博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.phpojbk.com" title="Blog Luo" target="_blank">Blog Luo</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础"><span class="nav-number">2.</span> <span class="nav-text">基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#钩子"><span class="nav-number">3.</span> <span class="nav-text">钩子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Compiler"><span class="nav-number">3.1.</span> <span class="nav-text">Compiler</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Compilation"><span class="nav-number">3.2.</span> <span class="nav-text">Compilation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写插件"><span class="nav-number">4.</span> <span class="nav-text">编写插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wclimb</span>
+</div>
+
+
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<span id="showDays"></span>
+<script>
+var birthDay = new Date("6/27/2017");
+var now = new Date();
+var duration = now.getTime() - birthDay.getTime();
+var total= Math.floor(duration / (1000 * 60 * 60 * 24));
+document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
+</script>
+
+<span>赣ICP备 17009321号</span> 
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>  访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <script src="https://cdn.bootcss.com/clipboard.js/2.0.6/clipboard.min.js"></script>
+  <style>
+  </style>
+  <script>
+    !function(){var initCopyCode=function(){var copyHtml='<div class="btn-copy" data-clipboard-snippet="">复制代码</div>';$(".highlight .code pre").before(copyHtml);$('.highlight table').wrap('<div style="overflow: auto;"></div>');var clipboard=new ClipboardJS(".btn-copy",{target:function(trigger){return trigger.nextElementSibling}});clipboard.on("success",function(e){e.clearSelection();e.trigger.innerHTML = '复制成功^_^';setTimeout(function(){e.trigger.innerHTML = '复制代码'},3000)})};initCopyCode()}();
+  </script>
+</body>
+</html>

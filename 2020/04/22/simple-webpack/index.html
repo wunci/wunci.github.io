@@ -1,0 +1,1308 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="原创,javascript,webpack,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico?v=5.1.1">
+
+
+
+
+
+
+<meta name="description" content="实现功能 支持 esModule  支持 import() 异步加载文件 支持 loader  准备工作我们需要借助 babel 来解析，先 npm init -y1npm i @babel/parser @babel/traverse @babel/core @babel/preset-env -D 最终的文件目录结构12345678910111213141516|-- dist">
+<meta name="keywords" content="原创,javascript,webpack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编写一个webpack">
+<meta property="og:url" content="http://www.wclimb.site/2020/04/22/simple-webpack/index.html">
+<meta property="og:site_name" content="wclimb的个人博客--分享">
+<meta property="og:description" content="实现功能 支持 esModule  支持 import() 异步加载文件 支持 loader  准备工作我们需要借助 babel 来解析，先 npm init -y1npm i @babel/parser @babel/traverse @babel/core @babel/preset-env -D 最终的文件目录结构12345678910111213141516|-- dist">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.wclimb.site/img/gzh.jpg">
+<meta property="og:updated_time" content="2020-04-22T12:31:56.725Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="编写一个webpack">
+<meta name="twitter:description" content="实现功能 支持 esModule  支持 import() 异步加载文件 支持 loader  准备工作我们需要借助 babel 来解析，先 npm init -y1npm i @babel/parser @babel/traverse @babel/core @babel/preset-env -D 最终的文件目录结构12345678910111213141516|-- dist">
+<meta name="twitter:image" content="http://www.wclimb.site/img/gzh.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.wclimb.site/2020/04/22/simple-webpack/">
+
+
+
+
+
+  <title>编写一个webpack | wclimb的个人博客--分享</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">wclimb的个人博客--分享</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.wclimb.site/2020/04/22/simple-webpack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wclimb">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wclimb的个人博客--分享">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">编写一个webpack</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-22T15:24:11+08:00">
+                2020-04-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/webpack/" itemprop="url" rel="index">
+                    <span itemprop="name">webpack</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>   浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon" style="margin-left:4px;">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">约</span>
+                
+                <span title="约">
+                  12 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="实现功能"><a href="#实现功能" class="headerlink" title="实现功能"></a>实现功能</h2><ol>
+<li>支持 <code>esModule</code> </li>
+<li>支持 <code>import()</code> 异步加载文件</li>
+<li>支持 <code>loader</code></li>
+</ol>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>我们需要借助 <code>babel</code> 来解析，先 <code>npm init -y</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i @babel/parser @babel/traverse @babel/core @babel/preset-env -D</span><br></pre></td></tr></table></figure></p>
+<p>最终的文件目录结构<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">|-- dist           // 打包目标文件夹 </span><br><span class="line">|   |-- 0.bundle.js                       </span><br><span class="line">|   |-- 1.bundle.js                    </span><br><span class="line">|   |-- result.js                       </span><br><span class="line">|-- src            // 项目测试代码                         </span><br><span class="line">|   |-- entry.js                   </span><br><span class="line">|   |-- messgae.js            </span><br><span class="line">|   |-- name.js            </span><br><span class="line">|   |-- a.js              </span><br><span class="line">|   |-- b.js            </span><br><span class="line">|-- index.html      // 加载文件打包出的文件             </span><br><span class="line">|-- app.js          // 启动文件         </span><br><span class="line">|-- init.js         // 打包项目需要的初始化代码</span><br><span class="line">|-- babel-plugin.js // babel插件</span><br><span class="line">|-- loader.js       // loader</span><br><span class="line">|-- package.json</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>文件内容<br><code>entry.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> message <span class="keyword">from</span> <span class="string">"./message.js"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(message);</span><br><span class="line"><span class="keyword">import</span>(<span class="string">"./a.js"</span>).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"a done"</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p><code>message.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; name &#125; <span class="keyword">from</span> <span class="string">"./name.js"</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="string">`hello <span class="subst">$&#123;name&#125;</span>!`</span>;</span><br><span class="line"><span class="keyword">import</span>(<span class="string">"./a.js"</span>).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"copy a done"</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p><code>name.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> name = <span class="string">"world"</span>;</span><br><span class="line"><span class="keyword">import</span>(<span class="string">"./b.js"</span>).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"b done"</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p><code>a.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">"import a"</span>);</span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">document</span>.body.style = <span class="string">"background:red;"</span>;</span><br><span class="line">&#125;, <span class="number">3000</span>);</span><br></pre></td></tr></table></figure></p>
+<p><code>b.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">"import b"</span>);</span><br></pre></td></tr></table></figure></p>
+<h2 id="编写"><a href="#编写" class="headerlink" title="编写"></a>编写</h2><p>我在之前写的 <a href="http://www.wclimb.site/2019/06/19/webpack%E7%B3%BB%E5%88%97%E4%B9%8B%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6%E5%88%86%E6%9E%90/">webpack系列之输出文件分析</a> 文章说过，<code>webpack</code>打包出来的代码大致的样子是👇<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">modules</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">__webpack_require__</span>(<span class="params">moduleId</span>) </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">return</span> __webpack_require__(__webpack_require__.s = <span class="string">"./src/main.js"</span>);</span><br><span class="line">&#125;)(&#123;</span><br><span class="line">  <span class="string">"./src/a.js"</span>: (<span class="function"><span class="keyword">function</span>(<span class="params">module, __webpack_exports__, __webpack_require__</span>) </span>&#123;&#125;</span><br><span class="line">  <span class="string">"./src/b.js"</span>: (<span class="function"><span class="keyword">function</span>(<span class="params">module, __webpack_exports__, __webpack_require__</span>) </span>&#123;&#125;</span><br><span class="line">  <span class="string">"./src/main.js"</span>: (<span class="function"><span class="keyword">function</span>(<span class="params">module, __webpack_exports__, __webpack_require__</span>) </span>&#123;&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>借鉴他的思路，我们也可以很快写出来一个简单的 <code>webpack</code>，首先 <code>(function(modules) {...})</code> 内部的代码基本上可以写死，也就是我们等会需要写的 <code>init.js</code>，接着看，这是一个自执行的函数， 传入的是一个对象，首先执行的是主入口的文件，然后再分别去找他们的依赖去执行相应的文件。</p>
+<h3 id="热身"><a href="#热身" class="headerlink" title="热身"></a>热身</h3><p>我们这里借助bable来编译代码<br>先简单看一下👇这个示例<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>);</span><br><span class="line"><span class="keyword">const</span> parser = <span class="built_in">require</span>(<span class="string">"@babel/parser"</span>);</span><br><span class="line"><span class="keyword">const</span> traverse = <span class="built_in">require</span>(<span class="string">"@babel/traverse"</span>).default;</span><br><span class="line"><span class="keyword">const</span> babel = <span class="built_in">require</span>(<span class="string">"@babel/core"</span>);</span><br><span class="line"><span class="keyword">let</span> id = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> resolve = <span class="function"><span class="keyword">function</span>(<span class="params">filename</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> content = <span class="string">""</span>;</span><br><span class="line">  content = fs.readFileSync(path.resolve(__dirname, filename), <span class="string">"utf-8"</span>);</span><br><span class="line">  <span class="comment">// 转ast树</span></span><br><span class="line">  <span class="keyword">const</span> ast = parser.parse(content, &#123;</span><br><span class="line">    sourceType: <span class="string">"module"</span>,</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="comment">// 依赖</span></span><br><span class="line">  <span class="keyword">const</span> dependencies = [];</span><br><span class="line">  traverse(ast, &#123;</span><br><span class="line">    ImportDeclaration(&#123; node &#125;) &#123;</span><br><span class="line">      <span class="comment">// import '' from ''</span></span><br><span class="line">      dependencies.push(node.source.value);</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="comment">// ES6转成ES5</span></span><br><span class="line">  <span class="keyword">const</span> &#123; code &#125; = babel.transformFromAstSync(ast, <span class="literal">null</span>, &#123;</span><br><span class="line">    presets: [<span class="string">"@babel/preset-env"</span>],</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    id: id++,</span><br><span class="line">    dependencies,</span><br><span class="line">    filename,</span><br><span class="line">    code,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> result = resolve(<span class="string">"./src/entry.js"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(result);</span><br></pre></td></tr></table></figure></p>
+<p>打印结果<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">id</span>: <span class="number">0</span>,</span><br><span class="line">  dependencies: [ <span class="string">'./message.js'</span> ],</span><br><span class="line">  filename: <span class="string">'./src/entry.js'</span>,</span><br><span class="line">  code: <span class="string">'"use strict";\n\nvar _message = _interopRequireDefault(require( ....."</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>我们这里解析了一个入口文件，然后通过 <code>babel</code> 转成 <code>ast</code>，<code>ImportDeclaration</code> 拦截到 <code>import</code>，将它添加到 <code>dependencies</code> 依赖内，处理完 <code>import</code>后把代码转成 <code>es5</code>，最后输出对象，包含当前的文件的<code>id</code>，依赖关系，文件名，以及编译后的源代码。这段代码是整篇的精髓，不过现在只处理了一个文件，我们刚刚找到了当前文件的依赖，接着需要递归查找下一个文件的依赖关系，最后把他们组合起来，跟之前看 <code>webpack</code> 输出的文件思想差不多。</p>
+<h3 id="递归查找所有依赖"><a href="#递归查找所有依赖" class="headerlink" title="递归查找所有依赖"></a>递归查找所有依赖</h3><p>在下面添加以下代码👇，顺便删除最后两行 <code>const result = resolve(&quot;./src/entry.js&quot;); console.log(result);</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> start = <span class="function"><span class="keyword">function</span>(<span class="params">filename</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> entry = resolve(filename);</span><br><span class="line">  <span class="keyword">const</span> queue = [entry];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> asset <span class="keyword">of</span> queue) &#123;</span><br><span class="line">    <span class="keyword">const</span> dependencies = asset.dependencies;</span><br><span class="line">    <span class="keyword">const</span> dirname = path.dirname(asset.filename);</span><br><span class="line">    asset.mapping = &#123;&#125;;</span><br><span class="line">    dependencies.forEach(<span class="function">(<span class="params">val</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> result = resolve(path.join(dirname, val));</span><br><span class="line">      asset.mapping[val] = result.id;</span><br><span class="line">      queue.push(result);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> queue;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> fileDependenceList = start(<span class="string">"./src/entry.js"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(fileDependenceList);</span><br></pre></td></tr></table></figure></p>
+<p>执行后结果，我们捋一捋<br>入口 <code>entry.js</code> import 👉 <code>message.js</code><br><code>message.js</code> import 👉 <code>name.js</code><br><code>name.js</code> 没有 <code>import</code> 别的文件所以依赖是空的<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    id: <span class="number">0</span>,</span><br><span class="line">    dependencies: [ <span class="string">'./message.js'</span> ],</span><br><span class="line">    filename: <span class="string">'./src/entry.js'</span>,</span><br><span class="line">    code: <span class="string">'"use strict";\n\nvar _message = _interopRequireDefault(require( ....."'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    id: <span class="number">1</span>,</span><br><span class="line">    dependencies: [ <span class="string">'./name.js'</span> ],</span><br><span class="line">    filename: <span class="string">'src/message.js'</span>,</span><br><span class="line">    code: <span class="string">'"..."'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    id: <span class="number">2</span>,</span><br><span class="line">    dependencies: [],</span><br><span class="line">    filename: <span class="string">'src/name.js'</span>,</span><br><span class="line">    code: <span class="string">'"..."'</span></span><br><span class="line">  &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>结果我们得到了，目前还不是之前想要的那个结构，继续添加以下代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> moduleStr = <span class="string">""</span>;</span><br><span class="line">fileDependenceList.forEach(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">  moduleStr += <span class="string">`<span class="subst">$&#123;value.id&#125;</span>:[</span></span><br><span class="line"><span class="string">    function(require, module, exports) &#123;</span></span><br><span class="line"><span class="string">      <span class="subst">$&#123;value.code&#125;</span>;</span></span><br><span class="line"><span class="string">    &#125;,</span></span><br><span class="line"><span class="string">    <span class="subst">$&#123;<span class="built_in">JSON</span>.stringify(value.mapping)&#125;</span></span></span><br><span class="line"><span class="string">  ],`</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">const</span> result = <span class="string">`(<span class="subst">$&#123;fs.readFileSync(<span class="string">"./init.js"</span>, <span class="string">"utf-8"</span>)&#125;</span>)(&#123;<span class="subst">$&#123;moduleStr&#125;</span>&#125;)`</span>;</span><br><span class="line">fs.writeFileSync(<span class="string">"./dist/result.js"</span>, result); <span class="comment">// 注意这里需要有dist文件夹</span></span><br></pre></td></tr></table></figure></p>
+<p>这里把 <code>init.js</code> 引入了，内容如下<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params">modules</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">require</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> [fn, mapping] = modules[id];</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">localRequire</span>(<span class="params">relativePath</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">require</span>(mapping[relativePath]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> <span class="built_in">module</span> = &#123; <span class="attr">exports</span>: &#123;&#125; &#125;;</span><br><span class="line">    fn(localRequire, <span class="built_in">module</span>, <span class="built_in">module</span>.exports);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">module</span>.exports;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//执行入口文件，</span></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">require</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>执行之后在 <code>dist/</code> 下有一个 <code>result</code> 文件，我们放到浏览器去执行，<code>index.html</code> 加载</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>webpack<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./dist/result.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>不出意外控制台输出 <code>hello world</code>，接着会有三个报错，没错，因为我们没有处理 <code>import().then()</code> 这种代码，这个需要单独处理，如果你想把错误去掉，去 <code>src</code> 文件夹把 <code>import()</code> 都注释就完事了。</p>
+<p>你去看 <code>result</code> 的代码内容，会发现代码我们首先执行 <code>require(0)</code>，从入口触发，然后递归调用 <code>require</code> 来完成整个流程，看我们之前 <code>moduleStr</code> 输出的代码，结构跟 <code>webpack</code> 输入的有点区别，思路差不多<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="number">0</span>: [</span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params">require, module, exports</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> _message = _interopRequireDefault(<span class="built_in">require</span>(<span class="string">"./message.js"</span>));</span><br><span class="line">      <span class="function"><span class="keyword">function</span> <span class="title">_interopRequireDefault</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> obj &amp;&amp; obj.__esModule ? obj : &#123; <span class="attr">default</span>: obj &#125;;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="built_in">console</span>.log(_message[<span class="string">"default"</span>]);</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123; <span class="string">"./message.js"</span>: <span class="number">1</span> &#125;,</span><br><span class="line">  ],</span><br><span class="line">  <span class="number">1</span>: [<span class="function"><span class="keyword">function</span>(<span class="params">require, module, exports</span>) </span>&#123; ... &#125;, &#123; <span class="string">"./name.js"</span>: <span class="number">2</span> &#125;],</span><br><span class="line">  <span class="number">2</span>: [<span class="function"><span class="keyword">function</span>(<span class="params">require, module, exports</span>) </span>&#123; ... &#125;, &#123;&#125;],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们 <code>require</code> 都是当前文件的 <code>id</code>，但是我们看内部有一段 <code>require(&quot;./message.js&quot;)</code> ，其实它执行的是 <code>localRequire</code> 方法，通过当前文件数组的第二个值 <code>{ &quot;./message.js&quot;: 1 }</code> 来定位它要执行的 <code>id</code> 是什么，这里的 <code>id</code> 是1，下面就是它的逻辑，通过文件名<code>filename</code>，去查找 <code>mapping</code> 对应的 <code>id</code>。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> [fn, mapping] = modules[id];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">localRequire</span>(<span class="params">relativePath</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">require</span>(mapping[relativePath]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="支持-import-异步加载"><a href="#支持-import-异步加载" class="headerlink" title="支持 import() 异步加载"></a>支持 import() 异步加载</h3><p>首先先来解释以下如何异步加载，我们需要先生成 <code>0.bundle.js</code> <code>1.bundle.js</code>这样的文件，然后通过 <code>document.createElement(&quot;script&quot;)</code> 把它 <code>push</code> 到页面的 <code>head</code> 内完成加载。<br>修改<code>babel</code>部分<br><figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">....</span><br><span class="line"></span><br><span class="line"><span class="addition">+ let bundleId = 0;</span></span><br><span class="line"><span class="addition">+ const installedChunks = &#123;&#125;;</span></span><br><span class="line">const resolve = function(filename) &#123;</span><br><span class="line">  let content = "";</span><br><span class="line">  content = fs.readFileSync(path.resolve(__dirname, filename), "utf-8");</span><br><span class="line">  const ast = parser.parse(content, &#123;</span><br><span class="line">    sourceType: "module",</span><br><span class="line">  &#125;);</span><br><span class="line">  const dependencies = [];</span><br><span class="line">  traverse(ast, &#123;</span><br><span class="line">    ImportDeclaration(&#123; node &#125;) &#123;</span><br><span class="line">      // import '' from ''</span><br><span class="line">      dependencies.push(node.source.value);</span><br><span class="line">    &#125;,</span><br><span class="line"><span class="addition">+    CallExpression(&#123; node &#125;) &#123;</span></span><br><span class="line"><span class="addition">+      // import()</span></span><br><span class="line"><span class="addition">+      if (node.callee.type === "Import") &#123;</span></span><br><span class="line"><span class="addition">+        const realPath = path.join(</span></span><br><span class="line"><span class="addition">+          path.dirname(filename),</span></span><br><span class="line"><span class="addition">+          node.arguments[0].value</span></span><br><span class="line"><span class="addition">+        );</span></span><br><span class="line"><span class="addition">+        if (installedChunks[realPath] !== undefined) return;</span></span><br><span class="line"><span class="addition">+        let sourse = fs.readFileSync(realPath, "utf-8");</span></span><br><span class="line"><span class="addition">+         // 转es5</span></span><br><span class="line"><span class="addition">+        const &#123; code &#125; = babel.transform(sourse, &#123;</span></span><br><span class="line"><span class="addition">+          presets: ["@babel/preset-env"]</span></span><br><span class="line"><span class="addition">+        &#125;);</span></span><br><span class="line"><span class="addition">+        sourse = `jsonp.load([$&#123;bundleId&#125;, function()&#123;$&#123;code&#125;&#125;])`;</span></span><br><span class="line"><span class="addition">+        fs.writeFileSync(`./dist/$&#123;bundleId&#125;.bundle.js`, sourse);</span></span><br><span class="line"><span class="addition">+        installedChunks[realPath] = bundleId;</span></span><br><span class="line"><span class="addition">+        bundleId++;</span></span><br><span class="line"><span class="addition">+        process.installedChunks = &#123;</span></span><br><span class="line"><span class="addition">+          nowPath: path.dirname(filename),</span></span><br><span class="line"><span class="addition">+          ...installedChunks,</span></span><br><span class="line"><span class="addition">+        &#125;;</span></span><br><span class="line"><span class="addition">+      &#125;</span></span><br><span class="line"><span class="addition">+    &#125;,</span></span><br><span class="line">  &#125;);</span><br><span class="line">  // ES6转成ES5</span><br><span class="line">  const &#123; code &#125; = babel.transformFromAstSync(ast, null, &#123;</span><br><span class="line"><span class="addition">+    plugins: ["./babel-plugin.js"],</span></span><br><span class="line">    presets: ["@babel/preset-env"],</span><br><span class="line">  &#125;);</span><br><span class="line">  return &#123;</span><br><span class="line">    id: id++,</span><br><span class="line">    dependencies,</span><br><span class="line">    filename,</span><br><span class="line">    code,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>我们看到上面我们新增使用 <code>babel</code> 插件 <code>plugins: [&quot;./babel-plugin.js&quot;]</code>，不懂的可以看<a href="https://github.com/jamiebuilds/babel-handbook" target="_blank" rel="noopener">babel-handbook</a></p>
+<p><code>babel-plugin.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> nodePath = <span class="built_in">require</span>(<span class="string">"path"</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">&#123; types: t &#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    visitor: &#123;</span><br><span class="line">      CallExpression(path) &#123;</span><br><span class="line">        <span class="keyword">if</span> (path.node.callee.type === <span class="string">"Import"</span>) &#123;</span><br><span class="line">          path.replaceWith(</span><br><span class="line">            t.callExpression(</span><br><span class="line">              t.memberExpression(</span><br><span class="line">                t.identifier(<span class="string">"require"</span>),</span><br><span class="line">                t.identifier(<span class="string">"import"</span>)</span><br><span class="line">              ),</span><br><span class="line">              [</span><br><span class="line">                t.numericLiteral(</span><br><span class="line">                  process.installedChunks[</span><br><span class="line">                    nodePath.join(</span><br><span class="line">                      process.installedChunks[<span class="string">"nowPath"</span>],</span><br><span class="line">                      path.node.arguments[<span class="number">0</span>].value</span><br><span class="line">                    )</span><br><span class="line">                  ]</span><br><span class="line">                ),</span><br><span class="line">              ]</span><br><span class="line">            )</span><br><span class="line">          );</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>上面插件的功能就是把 <code>import(&#39;./a.js&#39;)</code> 转成 <code>require.import(0)</code></p>
+<p>修改 <code>init.js</code>，主要是新增 <code>import</code> 方法，借鉴自 <code>webpack</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params">modules</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">require</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> [fn, mapping] = modules[id];</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">localRequire</span>(<span class="params">relativePath</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">require</span>(mapping[relativePath]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> <span class="built_in">module</span> = &#123; <span class="attr">exports</span>: &#123;&#125; &#125;;</span><br><span class="line">    localRequire.import = <span class="built_in">require</span>.import; <span class="comment">// 新增</span></span><br><span class="line">    fn(localRequire, <span class="built_in">module</span>, <span class="built_in">module</span>.exports);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">module</span>.exports;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> installedChunks = &#123;&#125;; <span class="comment">// 当前新增</span></span><br><span class="line">  <span class="built_in">require</span>.import = <span class="function"><span class="keyword">function</span>(<span class="params">chunkId</span>) </span>&#123; <span class="comment">// 当前新增</span></span><br><span class="line">    <span class="keyword">var</span> promises = [];</span><br><span class="line">    <span class="keyword">var</span> installedChunkData = installedChunks[chunkId];</span><br><span class="line">    <span class="comment">// 如果没有加载</span></span><br><span class="line">    <span class="keyword">if</span> (installedChunkData !== <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (installedChunkData) &#123;</span><br><span class="line">        promises.push(installedChunkData[<span class="number">2</span>]);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">var</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">          installedChunkData = installedChunks[chunkId] = [resolve, reject];</span><br><span class="line">        &#125;);</span><br><span class="line">        promises.push((installedChunkData[<span class="number">2</span>] = promise));</span><br><span class="line">        <span class="comment">// start chunk loading</span></span><br><span class="line">        <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</span><br><span class="line">        <span class="keyword">var</span> onScriptComplete;</span><br><span class="line">        script.charset = <span class="string">"utf-8"</span>;</span><br><span class="line">        script.src = <span class="string">"dist/"</span> + chunkId + <span class="string">".bundle.js"</span>;</span><br><span class="line">        <span class="keyword">var</span> error = <span class="keyword">new</span> <span class="built_in">Error</span>();</span><br><span class="line">        onScriptComplete = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">          <span class="comment">// avoid mem leaks in IE.</span></span><br><span class="line">          script.onerror = script.onload = <span class="literal">null</span>;</span><br><span class="line">          clearTimeout(timeout);</span><br><span class="line">          <span class="keyword">var</span> chunk = installedChunks[chunkId];</span><br><span class="line">          <span class="keyword">if</span> (chunk !== <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (chunk) &#123;</span><br><span class="line">              <span class="keyword">var</span> errorType =</span><br><span class="line">                event &amp;&amp; (event.type === <span class="string">"load"</span> ? <span class="string">"missing"</span> : event.type);</span><br><span class="line">              <span class="keyword">var</span> realSrc = event &amp;&amp; event.target &amp;&amp; event.target.src;</span><br><span class="line">              error.message =</span><br><span class="line">                <span class="string">"Loading chunk "</span> +</span><br><span class="line">                chunkId +</span><br><span class="line">                <span class="string">" failed.\n("</span> +</span><br><span class="line">                errorType +</span><br><span class="line">                <span class="string">": "</span> +</span><br><span class="line">                realSrc +</span><br><span class="line">                <span class="string">")"</span>;</span><br><span class="line">              error.name = <span class="string">"ChunkLoadError"</span>;</span><br><span class="line">              error.type = errorType;</span><br><span class="line">              error.request = realSrc;</span><br><span class="line">              chunk[<span class="number">1</span>](error);</span><br><span class="line">            &#125;</span><br><span class="line">            installedChunks[chunkId] = <span class="literal">undefined</span>;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">var</span> timeout = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">          onScriptComplete(&#123; <span class="attr">type</span>: <span class="string">"timeout"</span>, <span class="attr">target</span>: script &#125;);</span><br><span class="line">        &#125;, <span class="number">120000</span>);</span><br><span class="line">        script.onerror = script.onload = onScriptComplete;</span><br><span class="line">        <span class="built_in">document</span>.head.appendChild(script);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.all(promises);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="built_in">window</span>.jsonp = &#123;&#125;; <span class="comment">// 当前新增</span></span><br><span class="line">  jsonp.load = <span class="function"><span class="keyword">function</span>(<span class="params">bundle</span>) </span>&#123; <span class="comment">// 当前新增</span></span><br><span class="line">    <span class="keyword">var</span> chunkId = bundle[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">var</span> fn = bundle[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">var</span> resolve = installedChunks[chunkId][<span class="number">0</span>];</span><br><span class="line">    installedChunks[chunkId] = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 执行异步加载文件代码</span></span><br><span class="line">    fn();</span><br><span class="line">    <span class="comment">// 执行resolve</span></span><br><span class="line">    resolve();</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">//执行入口文件，</span></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">require</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们异步加载的文件都会执行 <code>jsonp.load</code> 方法，，在生成文件 <code>*.bunnd.js</code> 之前都会把代码改装一下，得到下面的结构，这样就可以控制执行源代码及 <code>.then() .catch()</code> 等操作了<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">jsonp.load([</span><br><span class="line">  <span class="number">0</span>,</span><br><span class="line">  <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="comment">// 原文件代码</span></span><br><span class="line">  &#125;,</span><br><span class="line">]);</span><br></pre></td></tr></table></figure></p>
+<p>然后执行，你会发现 <code>dist</code> 多了两个文件，<code>0.bundle.js</code> <code>1.bundle.js</code>，前提是你没有注释之前 <code>import()</code> 写的代码，然后去浏览器控制台查看，分别打印以下，接着3秒后页面背景变为红色<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hello world!</span><br><span class="line">import b</span><br><span class="line">b done</span><br><span class="line">import a</span><br><span class="line">copy a done</span><br><span class="line">a done</span><br></pre></td></tr></table></figure></p>
+<p>等等，我们使用了三个 <code>import</code>，为什么只有两个文件，因为有一个 <code>import(&#39;./a.js&#39;)</code> 使用了两次，这里我做了缓存，所以重复异步引入的文件会缓存利用</p>
+<h3 id="支持loader"><a href="#支持loader" class="headerlink" title="支持loader"></a>支持loader</h3><p><code>loader</code> 支持很简单，其实就是把文件的内容交给它单独处理返回新的结果，我们新建文件 <code>loader.js</code>，内容如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">content</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> content + <span class="string">"; console.log('loader')"</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>在每个js文件后都加上打印loader的代码</p>
+<p>接着修改resolve方法内的代码<br><figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="addition">+ const loader = require("./loader");</span></span><br><span class="line">const resolve = function(filename) &#123;</span><br><span class="line">  let content = "";</span><br><span class="line">  content = fs.readFileSync(path.resolve(__dirname, filename), "utf-8");</span><br><span class="line"><span class="addition">+  content = loader(content);</span></span><br><span class="line">  const ast = parser.parse(content, &#123;</span><br><span class="line">    sourceType: "module",</span><br><span class="line">  &#125;);</span><br><span class="line">  ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后运行代码，浏览器控制台会打印是三个 <code>loader</code></p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>至此，我们完成了 <code>esModule</code> 的支持，文件异步加载的支持、<code>loader</code> 的支持，我们顺便还写了一个 <code>babel</code> 插件，整个流程没有什么难理解的地方，一个 <code>webpack</code> 就这样完成了，当然还可以再把功能完善。支持插件？把 <code>tapable</code> 加入？等等，时间有限，点到为止，如有错误还望指正</p>
+<p>本章代码部分借鉴 <code>webpack</code> 输出的 <code>bundle</code> 及 <code>You Gotta Love Frontend</code> 的视频 <a href="https://www.youtube.com/watch?v=Gc9-7PBqOC8&amp;list=LLHK1mTHpwrUeYgF5gu-Kd4g" target="_blank" rel="noopener">Ronen Amiel - Build Your Own Webpack</a></p>
+<p>代码已上传至 <code>GitHub</code>： <a href="https://github.com/wclimb/my-webpack" target="_blank" rel="noopener">https://github.com/wclimb/my-webpack</a></p>
+<p>本文地址 <a href="http://www.wclimb.site/2020/04/22/simple-webpack/">http://www.wclimb.site/2020/04/22/simple-webpack/</a></p>
+<h2 id="公众号"><a href="#公众号" class="headerlink" title="公众号"></a>公众号</h2><p><img src="/img/gzh.jpg" alt="img"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay">
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay">
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/原创/" rel="tag"># 原创</a>
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+            <a href="/tags/webpack/" rel="tag"># webpack</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/15/node-process/" rel="next" title="Nodejs之进程">
+                <i class="fa fa-chevron-left"></i> Nodejs之进程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/26/write-euv/" rel="prev" title="编写一个较为强大的Vue">
+                编写一个较为强大的Vue <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="wclimb">
+          <p class="site-author-name" itemprop="name">wclimb</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wclimb" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://shang.qq.com/wpa/qunwpa?idkey=e6c66b1ee584a90b52dec3545622e988afcf900144eff03cab6d473c50a31d59" target="_blank" title="QQ群">
+                  
+                    <i class="fa fa-fw fa-qq"></i>
+                  
+                  QQ群
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.wclimb.site/cdn/xcx.jpeg" target="_blank" title="小程序">
+                  
+                    <i class="fa fa-fw fa-weixin"></i>
+                  
+                  小程序
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="/img/gzh.jpg" target="_blank" title="公众号">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  公众号
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.lsnsh.site/" title="Lsnsh" target="_blank">Lsnsh</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.curtaintan.club" title="curtain Tan" target="_blank">curtain Tan</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://eraylee.com/" title="eraylee" target="_blank">eraylee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://dcdcdog.com" title="flutter体验" target="_blank">flutter体验</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.jspeng.com" title="技术鹏" target="_blank">技术鹏</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.suchenqiang.cn/" title="苏博客" target="_blank">苏博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.phpojbk.com" title="Blog Luo" target="_blank">Blog Luo</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#实现功能"><span class="nav-number">1.</span> <span class="nav-text">实现功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备工作"><span class="nav-number">2.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写"><span class="nav-number">3.</span> <span class="nav-text">编写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#热身"><span class="nav-number">3.1.</span> <span class="nav-text">热身</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#递归查找所有依赖"><span class="nav-number">3.2.</span> <span class="nav-text">递归查找所有依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#支持-import-异步加载"><span class="nav-number">3.3.</span> <span class="nav-text">支持 import() 异步加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#支持loader"><span class="nav-number">3.4.</span> <span class="nav-text">支持loader</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">4.</span> <span class="nav-text">最后</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#公众号"><span class="nav-number">5.</span> <span class="nav-text">公众号</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wclimb</span>
+</div>
+
+
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<span id="showDays"></span>
+<script>
+var birthDay = new Date("6/27/2017");
+var now = new Date();
+var duration = now.getTime() - birthDay.getTime();
+var total= Math.floor(duration / (1000 * 60 * 60 * 24));
+document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
+</script>
+
+<span>赣ICP备 17009321号</span> 
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>  访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <script src="https://cdn.bootcss.com/clipboard.js/2.0.6/clipboard.min.js"></script>
+  <style>
+  </style>
+  <script>
+    !function(){var initCopyCode=function(){var copyHtml='<div class="btn-copy" data-clipboard-snippet="">复制代码</div>';$(".highlight .code pre").before(copyHtml);$('.highlight table').wrap('<div style="overflow: auto;"></div>');var clipboard=new ClipboardJS(".btn-copy",{target:function(trigger){return trigger.nextElementSibling}});clipboard.on("success",function(e){e.clearSelection();e.trigger.innerHTML = '复制成功^_^';setTimeout(function(){e.trigger.innerHTML = '复制代码'},3000)})};initCopyCode()}();
+  </script>
+</body>
+</html>
