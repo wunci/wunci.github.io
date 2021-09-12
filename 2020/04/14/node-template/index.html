@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
 
@@ -19,8 +19,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
   
     
   
-  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -76,21 +76,21 @@
 
   
 
-<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
-
-
-  <meta name="keywords" content="原创,javascript,Node,">
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
+  <meta name="keywords" content="原创,javascript,Node," />
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico?v=5.1.1">
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico?v=5.1.1" />
 
 
 
@@ -104,8 +104,7 @@
 <meta property="og:url" content="http://www.wclimb.site/2020/04/14/node-template/index.html">
 <meta property="og:site_name" content="wclimb的个人博客--分享">
 <meta property="og:description" content="前言最近看完了朴大的 《深入浅出Node.js》 这本书，在里面学到了许多，也推荐大家可以去看一下，看完感觉可以写几篇文章记录总结一下，提升一下印象，毕竟学到的东西感觉不记下来过不久就容易忘记，大家也要养成学习记录的习惯，方便以后重温，今天来实现一个 node 的模版引擎，当然这个模版引擎在前端也可以用。 借鉴ejs标签标签借鉴 ejs，用过的同学肯定知道，例如使用 &amp;lt;%= name %&amp;g">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-15T16:05:41.618Z">
+<meta property="og:updated_time" content="2021-09-12T07:52:45.016Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nodejs之实现一个模版引擎">
 <meta name="twitter:description" content="前言最近看完了朴大的 《深入浅出Node.js》 这本书，在里面学到了许多，也推荐大家可以去看一下，看完感觉可以写几篇文章记录总结一下，提升一下印象，毕竟学到的东西感觉不记下来过不久就容易忘记，大家也要养成学习记录的习惯，方便以后重温，今天来实现一个 node 的模版引擎，当然这个模版引擎在前端也可以用。 借鉴ejs标签标签借鉴 ejs，用过的同学肯定知道，例如使用 &amp;lt;%= name %&amp;g">
@@ -136,7 +135,7 @@
 
 
 
-  <link rel="canonical" href="http://www.wclimb.site/2020/04/14/node-template/">
+  <link rel="canonical" href="http://www.wclimb.site/2020/04/14/node-template/"/>
 
 
 
@@ -176,7 +175,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">wclimb的个人博客--分享</span>
         <span class="logo-line-after"><i></i></span>
@@ -206,7 +205,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -216,7 +215,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -226,7 +225,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -236,7 +235,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -246,7 +245,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -259,7 +258,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
             搜索
           </a>
@@ -280,7 +279,9 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -317,7 +318,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wclimb">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
@@ -353,7 +354,7 @@
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -397,7 +398,7 @@
           
             <span class="post-meta-divider">|</span>
             <span class="page-pv"><i class="fa fa-file-o"></i>   浏览
-            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
             </span>
           
 
@@ -436,27 +437,27 @@
 
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近看完了朴大的 《深入浅出Node.js》 这本书，在里面学到了许多，也推荐大家可以去看一下，看完感觉可以写几篇文章记录总结一下，提升一下印象，毕竟学到的东西感觉不记下来过不久就容易忘记，大家也要养成学习记录的习惯，方便以后重温，今天来实现一个 <code>node</code> 的模版引擎，当然这个模版引擎在前端也可以用。</p>
-<h2 id="借鉴ejs标签"><a href="#借鉴ejs标签" class="headerlink" title="借鉴ejs标签"></a>借鉴ejs标签</h2><p>标签借鉴 <code>ejs</code>，用过的同学肯定知道，例如使用 <code>&lt;%= name %&gt;</code> 这种标签来展示数据，使用 <code>&lt;% if(name){ %&gt;</code> 这种标签来做 <code>js</code> 操作，如 <code>if</code> 判断/ <code>for</code>循环，比如下面<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">%</span> <span class="attr">if</span> (<span class="attr">name</span>) &#123; %&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;<span class="name">%=name%</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%</span> &#125; <span class="attr">else</span> &#123; %&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>请登陆<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%</span> &#125; %&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="渲染方法"><a href="#渲染方法" class="headerlink" title="渲染方法"></a>渲染方法</h2><p>我们先来看个简单的渲染<a id="more"></a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'hello &lt;%=name%&gt;'</span></span><br></pre></td></tr></table></figure></p>
-<p>假如我们的有一个字段 <code>name = &#39;wclimb&#39;;</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="string">'wclimb'</span>;</span><br><span class="line"><span class="keyword">let</span> str = <span class="string">'hello &lt;%=name%&gt;'</span>;</span><br><span class="line">str.replace(<span class="regexp">/&lt;%=([\S\s]+?)%&gt;/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params">match,value</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> name</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hello wclimb</span><br></pre></td></tr></table></figure></p>
-<p>按照这个思路就很简单了，我们先来思考🤔一个问题，数据渲染简单，直接替换就可以来了，那么 <code>js</code> 的逻辑判断这种怎么处理呢，我们拿到的都是字符串，这里需要借助 <code>Function</code> 来实现，具体渲染成如下样式<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> tpl = <span class="string">''</span>;</span><br><span class="line"><span class="keyword">if</span> (name)&#123;</span><br><span class="line">  tpl += <span class="string">'&lt;h1&gt;'</span> + name <span class="string">' +&lt;/h1&gt;'</span></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  tpl += <span class="string">'&lt;h1&gt;请登陆&lt;/h1&gt;'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>然后使用 <code>new Function</code> ,<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> complied = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'name'</span>,tpl); </span><br><span class="line"><span class="keyword">const</span> result = complied()</span><br><span class="line"><span class="built_in">console</span>.log(result)</span><br></pre></td></tr></table></figure></p>
-<p>直接上代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> render = <span class="function"><span class="keyword">function</span>(<span class="params">str, data</span>) </span>&#123;</span><br><span class="line">  str = str</span><br><span class="line">    .replace(<span class="regexp">/\n/g</span>, <span class="string">""</span>)</span><br><span class="line">    .replace(<span class="regexp">/\s&#123;2,&#125;/g</span>, <span class="string">""</span>)</span><br><span class="line">    .replace(<span class="regexp">/&lt;%=([\S\s]+?)%&gt;/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params">match, val</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">`'+ <span class="subst">$&#123;val&#125;</span> +'`</span>;</span><br><span class="line">    &#125;)</span><br><span class="line">    .replace(<span class="regexp">/&lt;%([\S\s]+?)%&gt;/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params">match, val</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">`';\n<span class="subst">$&#123;val&#125;</span>\ntpl +='`</span>;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">  str = <span class="string">`let tpl = '<span class="subst">$&#123;str&#125;</span>';return tpl;`</span>;</span><br><span class="line">  str = <span class="string">`with(option)&#123;<span class="subst">$&#123;str&#125;</span>;return tpl;&#125;`</span>;</span><br><span class="line">  <span class="keyword">const</span> complied = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"option"</span>, str);</span><br><span class="line">  <span class="keyword">let</span> result;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    result = complied(data);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>看着整个代码感觉没什么，等等，<code>with</code> 是什么？知道的同学可以忽略后面的，<code>with</code> 的作用就是通常我们取数据都是 <code>let people = obj.name +&#39;-&#39;+ obj.age</code> 这样，每次都需要拿 <code>obj</code>，为了简化我们可以这样写：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;<span class="attr">name</span>:<span class="string">'wclimb'</span>, <span class="attr">age</span>: <span class="number">26</span>&#125;</span><br><span class="line"><span class="keyword">let</span> people</span><br><span class="line"><span class="keyword">with</span>(obj)&#123;</span><br><span class="line">  people = name +<span class="string">'-'</span>+ age</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>但是不推荐用 <code>with</code>，容易引起作用域混乱，但是我看 <code>Vue</code> 源码也用到了，还是谨慎一点。比如如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> (obj) &#123; </span><br><span class="line">  foo = bar;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="借鉴ejs标签"><a href="#借鉴ejs标签" class="headerlink" title="借鉴ejs标签"></a>借鉴ejs标签</h2><p>标签借鉴 <code>ejs</code>，用过的同学肯定知道，例如使用 <code>&lt;%= name %&gt;</code> 这种标签来展示数据，使用 <code>&lt;% if(name){ %&gt;</code> 这种标签来做 <code>js</code> 操作，如 <code>if</code> 判断/ <code>for</code>循环，比如下面<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">%</span> <span class="attr">if</span> (<span class="attr">name</span>) &#123; %&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;<span class="name">%=name%</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">%</span> &#125; <span class="attr">else</span> &#123; %&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>请登陆<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">%</span> &#125; %&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="渲染方法"><a href="#渲染方法" class="headerlink" title="渲染方法"></a>渲染方法</h2><p>我们先来看个简单的渲染<a id="more"></a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> str = <span class="string">'hello &lt;%=name%&gt;'</span></div></pre></td></tr></table></figure></p>
+<p>假如我们的有一个字段 <code>name = &#39;wclimb&#39;;</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> name = <span class="string">'wclimb'</span>;</div><div class="line"><span class="keyword">let</span> str = <span class="string">'hello &lt;%=name%&gt;'</span>;</div><div class="line">str.replace(<span class="regexp">/&lt;%=([\S\s]+?)%&gt;/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params">match,value</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> name</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hello wclimb</div></pre></td></tr></table></figure></p>
+<p>按照这个思路就很简单了，我们先来思考🤔一个问题，数据渲染简单，直接替换就可以来了，那么 <code>js</code> 的逻辑判断这种怎么处理呢，我们拿到的都是字符串，这里需要借助 <code>Function</code> 来实现，具体渲染成如下样式<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> tpl = <span class="string">''</span>;</div><div class="line"><span class="keyword">if</span> (name)&#123;</div><div class="line">  tpl += <span class="string">'&lt;h1&gt;'</span> + name <span class="string">' +&lt;/h1&gt;'</span></div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">  tpl += <span class="string">'&lt;h1&gt;请登陆&lt;/h1&gt;'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后使用 <code>new Function</code> ,<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> complied = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'name'</span>,tpl); </div><div class="line"><span class="keyword">const</span> result = complied()</div><div class="line"><span class="built_in">console</span>.log(result)</div></pre></td></tr></table></figure></p>
+<p>直接上代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> render = <span class="function"><span class="keyword">function</span>(<span class="params">str, data</span>) </span>&#123;</div><div class="line">  str = str</div><div class="line">    .replace(<span class="regexp">/\n/g</span>, <span class="string">""</span>)</div><div class="line">    .replace(<span class="regexp">/\s&#123;2,&#125;/g</span>, <span class="string">""</span>)</div><div class="line">    .replace(<span class="regexp">/&lt;%=([\S\s]+?)%&gt;/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params">match, val</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> <span class="string">`'+ <span class="subst">$&#123;val&#125;</span> +'`</span>;</div><div class="line">    &#125;)</div><div class="line">    .replace(<span class="regexp">/&lt;%([\S\s]+?)%&gt;/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params">match, val</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> <span class="string">`';\n<span class="subst">$&#123;val&#125;</span>\ntpl +='`</span>;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">  str = <span class="string">`let tpl = '<span class="subst">$&#123;str&#125;</span>';return tpl;`</span>;</div><div class="line">  str = <span class="string">`with(option)&#123;<span class="subst">$&#123;str&#125;</span>;return tpl;&#125;`</span>;</div><div class="line">  <span class="keyword">const</span> complied = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"option"</span>, str);</div><div class="line">  <span class="keyword">let</span> result;</div><div class="line">  <span class="keyword">try</span> &#123;</div><div class="line">    result = complied(data);</div><div class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</div><div class="line">    <span class="built_in">console</span>.log(error);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> result;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>看着整个代码感觉没什么，等等，<code>with</code> 是什么？知道的同学可以忽略后面的，<code>with</code> 的作用就是通常我们取数据都是 <code>let people = obj.name +&#39;-&#39;+ obj.age</code> 这样，每次都需要拿 <code>obj</code>，为了简化我们可以这样写：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> obj = &#123;<span class="attr">name</span>:<span class="string">'wclimb'</span>, <span class="attr">age</span>: <span class="number">26</span>&#125;</div><div class="line"><span class="keyword">let</span> people</div><div class="line"><span class="keyword">with</span>(obj)&#123;</div><div class="line">  people = name +<span class="string">'-'</span>+ age</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>但是不推荐用 <code>with</code>，容易引起作用域混乱，但是我看 <code>Vue</code> 源码也用到了，还是谨慎一点。比如如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> (obj) &#123; </div><div class="line">  foo = bar;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>它的结果有可能是如下四种之一: <code>obj.foo = obj.bar;</code>、<code>obj.foo = bar;</code>、<code>foo = bar;</code>、<code>foo = obj.bar;</code>，这些结果取决于它的作用域。如果作用域链上没有导致冲突的变量存在，使用它则是 安全的。但在多人合作的项目中，这并不容易保证，所以要慎用 <code>with</code></p>
 <h3 id="xss攻击"><a href="#xss攻击" class="headerlink" title="xss攻击"></a>xss攻击</h3><p>我们需要时刻关注安全，在上面的模版上，如果 <code>name</code> 是 <code>&lt;script&gt;alert(&#39;xss攻击&#39;)&lt;/script</code>&gt;，那么我们渲染到页面上100%会显示一个弹窗，很危险。因此我们需要对尖括号进行转义，我们单独写一个方法处理</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="built_in">escape</span> = <span class="function"><span class="keyword">function</span>(<span class="params">html</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">String</span>(html)</span><br><span class="line">    .replace(<span class="regexp">/&amp;(?!\w+;)/g</span>, <span class="string">"&amp;amp;"</span>)</span><br><span class="line">    .replace(<span class="regexp">/&lt;/g</span>, <span class="string">"&amp;lt;"</span>)</span><br><span class="line">    .replace(<span class="regexp">/&gt;/g</span>, <span class="string">"&amp;gt;"</span>)</span><br><span class="line">    .replace(<span class="regexp">/"/g</span>, <span class="string">"&amp;quot;"</span>)</span><br><span class="line">    .replace(<span class="regexp">/'/g</span>, <span class="string">"&amp;#039;"</span>); <span class="comment">// IE下不支持&amp;apos;(单引号)转义</span></span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
-<p>当然，并不是所有的都需要转义，比如我就是想让他输出有格式的标签 <code>&lt;h1&gt;h1&lt;/h1&gt;</code>，所以我们需要提供两种不同的标签，<code>ejs</code> 就提供了,如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;%= name %&gt; 会转义</span><br><span class="line">&lt;%- name %&gt; 原始输出</span><br><span class="line"></span><br><span class="line">如果输入&lt;h1&gt;h1&lt;/h1&gt;，他们的对应结果是</span><br><span class="line">&lt;%= name %&gt; &lt;h1&gt;h1&lt;/h1&gt;</span><br><span class="line">&lt;%- name %&gt; 有格式的 h1</span><br></pre></td></tr></table></figure></p>
-<p>然后完善一下<br><figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">const render = function(str, data) &#123;</span><br><span class="line"><span class="addition">+  const escape = function(html) &#123;</span></span><br><span class="line"><span class="addition">+    return String(html)</span></span><br><span class="line"><span class="addition">+      .replace(/&amp;(?!\w+;)/g, "&amp;amp;")</span></span><br><span class="line"><span class="addition">+      .replace(/&lt;/g, "&amp;lt;")</span></span><br><span class="line"><span class="addition">+      .replace(/&gt;/g, "&amp;gt;")</span></span><br><span class="line"><span class="addition">+      .replace(/"/g, "&amp;quot;")</span></span><br><span class="line"><span class="addition">+      .replace(/'/g, "&amp;#039;"); // IE下不支持&amp;apos;(单引号)转义</span></span><br><span class="line"><span class="addition">+  &#125;;</span></span><br><span class="line">  str = str</span><br><span class="line">    .replace(/\n/g, "")</span><br><span class="line">    .replace(/\s&#123;2,&#125;/g, "")</span><br><span class="line">    .replace(/&lt;%-([\S\s]+?)%&gt;/g, function(match, val) &#123;</span><br><span class="line">      return `'+ $&#123;val&#125; +'`;</span><br><span class="line">    &#125;)</span><br><span class="line"><span class="addition">+    .replace(/&lt;%=([\S\s]+?)%&gt;/g, function(match, val) &#123;</span></span><br><span class="line"><span class="addition">+      return `'+ escape($&#123;val&#125;) +'`;</span></span><br><span class="line"><span class="addition">+    &#125;)</span></span><br><span class="line">    .replace(/&lt;%([\S\s]+?)%&gt;/g, function(match, val) &#123;</span><br><span class="line">      return `';\n$&#123;val&#125;\ntpl +='`;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">  str = `let tpl = '$&#123;str&#125;';return tpl;`;</span><br><span class="line">  str = `with(option)&#123;$&#123;str&#125;;return tpl;&#125;`;</span><br><span class="line">  const complied = new Function("option", str);</span><br><span class="line">  let result;</span><br><span class="line">  try &#123;</span><br><span class="line">    result = complied(data);</span><br><span class="line">  &#125; catch (error) &#123;</span><br><span class="line">    console.log(error);</span><br><span class="line">  &#125;</span><br><span class="line">  return result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">`</span></span><br><span class="line"><span class="string">  &lt;% for (var i = 0; i &lt; users.length; i++) &#123; %&gt; </span></span><br><span class="line"><span class="string">    &lt;% var item = users[i];%&gt;</span></span><br><span class="line"><span class="string">    &lt;p&gt;&lt;%= (i+1) %&gt;、&lt;%-item.name%&gt;&lt;/p&gt;</span></span><br><span class="line"><span class="string">  &lt;% &#125; %&gt;`</span>;</span><br><span class="line"><span class="keyword">const</span> result = render(str, &#123;<span class="attr">users</span>: [&#123; <span class="attr">name</span>: <span class="string">"wclimb"</span> &#125;, &#123; <span class="attr">name</span>: <span class="string">"other"</span> &#125;]&#125;);</span><br></pre></td></tr></table></figure>
-<p>结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;1、wclimb&lt;/p&gt;&lt;p&gt;2、other&lt;/p&gt;</span><br></pre></td></tr></table></figure></p>
-<p>上面可能不好复制，下面是完整代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> render = <span class="function"><span class="keyword">function</span>(<span class="params">str, data</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">const</span> <span class="built_in">escape</span> = <span class="function"><span class="keyword">function</span>(<span class="params">html</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> <span class="built_in">String</span>(html)</span><br><span class="line">     .replace(<span class="regexp">/&amp;(?!\w+;)/g</span>, <span class="string">"&amp;amp;"</span>)</span><br><span class="line">     .replace(<span class="regexp">/&lt;/g</span>, <span class="string">"&amp;lt;"</span>)</span><br><span class="line">     .replace(<span class="regexp">/&gt;/g</span>, <span class="string">"&amp;gt;"</span>)</span><br><span class="line">     .replace(<span class="regexp">/"/g</span>, <span class="string">"&amp;quot;"</span>)</span><br><span class="line">     .replace(<span class="regexp">/'/g</span>, <span class="string">"&amp;#039;"</span>); <span class="comment">// IE下不支持&amp;apos;(单引号)转义</span></span><br><span class="line"> &#125;;</span><br><span class="line">  str = str</span><br><span class="line">    .replace(<span class="regexp">/\n/g</span>, <span class="string">""</span>)</span><br><span class="line">    .replace(<span class="regexp">/\s&#123;2,&#125;/g</span>, <span class="string">""</span>)</span><br><span class="line">    .replace(<span class="regexp">/&lt;%-([\S\s]+?)%&gt;/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params">match, val</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">`'+ <span class="subst">$&#123;val&#125;</span> +'`</span>;</span><br><span class="line">    &#125;)</span><br><span class="line">    .replace(<span class="regexp">/&lt;%=([\S\s]+?)%&gt;/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params">match, val</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">`'+ escape(<span class="subst">$&#123;val&#125;</span>) +'`</span>;</span><br><span class="line">    &#125;)</span><br><span class="line">    .replace(<span class="regexp">/&lt;%([\S\s]+?)%&gt;/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params">match, val</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">`';\n<span class="subst">$&#123;val&#125;</span>\ntpl +='`</span>;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">  str = <span class="string">`let tpl = '<span class="subst">$&#123;str&#125;</span>';return tpl;`</span>;</span><br><span class="line">  str = <span class="string">`with(option)&#123;<span class="subst">$&#123;str&#125;</span>;return tpl;&#125;`</span>;</span><br><span class="line">  <span class="keyword">const</span> complied = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"option"</span>, str);</span><br><span class="line">  <span class="keyword">let</span> result;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    result = complied(data);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h3 id="使用文件模版"><a href="#使用文件模版" class="headerlink" title="使用文件模版"></a>使用文件模版</h3><p>我们可以新建一个模版 <code>test.ejs</code> 文件，内容为之前的测试内容<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">render(fs.readFileSync(<span class="string">`test.ejs`</span>, <span class="string">"utf8"</span>) ,&#123;<span class="attr">users</span>: [&#123; <span class="attr">name</span>: <span class="string">"wclimb"</span> &#125;, &#123; <span class="attr">name</span>: <span class="string">"other"</span> &#125;]&#125;);</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="built_in">escape</span> = <span class="function"><span class="keyword">function</span>(<span class="params">html</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">String</span>(html)</div><div class="line">    .replace(<span class="regexp">/&amp;(?!\w+;)/g</span>, <span class="string">"&amp;amp;"</span>)</div><div class="line">    .replace(<span class="regexp">/&lt;/g</span>, <span class="string">"&amp;lt;"</span>)</div><div class="line">    .replace(<span class="regexp">/&gt;/g</span>, <span class="string">"&amp;gt;"</span>)</div><div class="line">    .replace(<span class="regexp">/"/g</span>, <span class="string">"&amp;quot;"</span>)</div><div class="line">    .replace(<span class="regexp">/'/g</span>, <span class="string">"&amp;#039;"</span>); <span class="comment">// IE下不支持&amp;apos;(单引号)转义</span></div><div class="line">  &#125;;</div></pre></td></tr></table></figure>
+<p>当然，并不是所有的都需要转义，比如我就是想让他输出有格式的标签 <code>&lt;h1&gt;h1&lt;/h1&gt;</code>，所以我们需要提供两种不同的标签，<code>ejs</code> 就提供了,如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;%= name %&gt; 会转义</div><div class="line">&lt;%- name %&gt; 原始输出</div><div class="line"></div><div class="line">如果输入&lt;h1&gt;h1&lt;/h1&gt;，他们的对应结果是</div><div class="line">&lt;%= name %&gt; &lt;h1&gt;h1&lt;/h1&gt;</div><div class="line">&lt;%- name %&gt; 有格式的 h1</div></pre></td></tr></table></figure></p>
+<p>然后完善一下<br><figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">const render = function(str, data) &#123;</div><div class="line"><span class="addition">+  const escape = function(html) &#123;</span></div><div class="line"><span class="addition">+    return String(html)</span></div><div class="line"><span class="addition">+      .replace(/&amp;(?!\w+;)/g, "&amp;amp;")</span></div><div class="line"><span class="addition">+      .replace(/&lt;/g, "&amp;lt;")</span></div><div class="line"><span class="addition">+      .replace(/&gt;/g, "&amp;gt;")</span></div><div class="line"><span class="addition">+      .replace(/"/g, "&amp;quot;")</span></div><div class="line"><span class="addition">+      .replace(/'/g, "&amp;#039;"); // IE下不支持&amp;apos;(单引号)转义</span></div><div class="line"><span class="addition">+  &#125;;</span></div><div class="line">  str = str</div><div class="line">    .replace(/\n/g, "")</div><div class="line">    .replace(/\s&#123;2,&#125;/g, "")</div><div class="line">    .replace(/&lt;%-([\S\s]+?)%&gt;/g, function(match, val) &#123;</div><div class="line">      return `'+ $&#123;val&#125; +'`;</div><div class="line">    &#125;)</div><div class="line"><span class="addition">+    .replace(/&lt;%=([\S\s]+?)%&gt;/g, function(match, val) &#123;</span></div><div class="line"><span class="addition">+      return `'+ escape($&#123;val&#125;) +'`;</span></div><div class="line"><span class="addition">+    &#125;)</span></div><div class="line">    .replace(/&lt;%([\S\s]+?)%&gt;/g, function(match, val) &#123;</div><div class="line">      return `';\n$&#123;val&#125;\ntpl +='`;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">  str = `let tpl = '$&#123;str&#125;';return tpl;`;</div><div class="line">  str = `with(option)&#123;$&#123;str&#125;;return tpl;&#125;`;</div><div class="line">  const complied = new Function("option", str);</div><div class="line">  let result;</div><div class="line">  try &#123;</div><div class="line">    result = complied(data);</div><div class="line">  &#125; catch (error) &#123;</div><div class="line">    console.log(error);</div><div class="line">  &#125;</div><div class="line">  return result;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> str = <span class="string">`</span></div><div class="line">  &lt;% for (var i = 0; i &lt; users.length; i++) &#123; %&gt; </div><div class="line">    &lt;% var item = users[i];%&gt;</div><div class="line">    &lt;p&gt;&lt;%= (i+1) %&gt;、&lt;%-item.name%&gt;&lt;/p&gt;</div><div class="line">  &lt;% &#125; %&gt;`;</div><div class="line"><span class="keyword">const</span> result = render(str, &#123;<span class="attr">users</span>: [&#123; <span class="attr">name</span>: <span class="string">"wclimb"</span> &#125;, &#123; <span class="attr">name</span>: <span class="string">"other"</span> &#125;]&#125;);</div></pre></td></tr></table></figure>
+<p>结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;p&gt;1、wclimb&lt;/p&gt;&lt;p&gt;2、other&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<p>上面可能不好复制，下面是完整代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> render = <span class="function"><span class="keyword">function</span>(<span class="params">str, data</span>) </span>&#123;</div><div class="line"> <span class="keyword">const</span> <span class="built_in">escape</span> = <span class="function"><span class="keyword">function</span>(<span class="params">html</span>) </span>&#123;</div><div class="line">   <span class="keyword">return</span> <span class="built_in">String</span>(html)</div><div class="line">     .replace(<span class="regexp">/&amp;(?!\w+;)/g</span>, <span class="string">"&amp;amp;"</span>)</div><div class="line">     .replace(<span class="regexp">/&lt;/g</span>, <span class="string">"&amp;lt;"</span>)</div><div class="line">     .replace(<span class="regexp">/&gt;/g</span>, <span class="string">"&amp;gt;"</span>)</div><div class="line">     .replace(<span class="regexp">/"/g</span>, <span class="string">"&amp;quot;"</span>)</div><div class="line">     .replace(<span class="regexp">/'/g</span>, <span class="string">"&amp;#039;"</span>); <span class="comment">// IE下不支持&amp;apos;(单引号)转义</span></div><div class="line"> &#125;;</div><div class="line">  str = str</div><div class="line">    .replace(<span class="regexp">/\n/g</span>, <span class="string">""</span>)</div><div class="line">    .replace(<span class="regexp">/\s&#123;2,&#125;/g</span>, <span class="string">""</span>)</div><div class="line">    .replace(<span class="regexp">/&lt;%-([\S\s]+?)%&gt;/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params">match, val</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> <span class="string">`'+ <span class="subst">$&#123;val&#125;</span> +'`</span>;</div><div class="line">    &#125;)</div><div class="line">    .replace(<span class="regexp">/&lt;%=([\S\s]+?)%&gt;/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params">match, val</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> <span class="string">`'+ escape(<span class="subst">$&#123;val&#125;</span>) +'`</span>;</div><div class="line">    &#125;)</div><div class="line">    .replace(<span class="regexp">/&lt;%([\S\s]+?)%&gt;/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params">match, val</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> <span class="string">`';\n<span class="subst">$&#123;val&#125;</span>\ntpl +='`</span>;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">  str = <span class="string">`let tpl = '<span class="subst">$&#123;str&#125;</span>';return tpl;`</span>;</div><div class="line">  str = <span class="string">`with(option)&#123;<span class="subst">$&#123;str&#125;</span>;return tpl;&#125;`</span>;</div><div class="line">  <span class="keyword">const</span> complied = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"option"</span>, str);</div><div class="line">  <span class="keyword">let</span> result;</div><div class="line">  <span class="keyword">try</span> &#123;</div><div class="line">    result = complied(data);</div><div class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</div><div class="line">    <span class="built_in">console</span>.log(error);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> result;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h3 id="使用文件模版"><a href="#使用文件模版" class="headerlink" title="使用文件模版"></a>使用文件模版</h3><p>我们可以新建一个模版 <code>test.ejs</code> 文件，内容为之前的测试内容<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">render(fs.readFileSync(<span class="string">`test.ejs`</span>, <span class="string">"utf8"</span>) ,&#123;<span class="attr">users</span>: [&#123; <span class="attr">name</span>: <span class="string">"wclimb"</span> &#125;, &#123; <span class="attr">name</span>: <span class="string">"other"</span> &#125;]&#125;);</div></pre></td></tr></table></figure></p>
 <h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>一个模版引擎就完成了，挺简单的，说得有点多了，下一篇带大家实现一个路由和中间件</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="https://book.douban.com/subject/25768396/" target="_blank" rel="noopener">深入浅出Node.js</a></li>
+<li><a href="https://book.douban.com/subject/25768396/" target="_blank" rel="external">深入浅出Node.js</a></li>
 </ul>
 <p>本文地址 <a href="http://www.wclimb.site/2020/04/14/node-template/">Nodejs之实现一个模版引擎</a></p>
 
@@ -481,13 +482,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay">
+          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay"/>
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay">
+          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay"/>
           <p>支付宝打赏</p>
         </div>
       
@@ -586,7 +587,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -597,7 +598,9 @@
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="wclimb">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="wclimb" />
           <p class="site-author-name" itemprop="name">wclimb</p>
            
               <p class="site-description motion-element" itemprop="description"></p>
@@ -608,7 +611,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -619,7 +622,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -630,7 +633,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -761,7 +764,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">
+        <div class="copyright" >
   
   &copy;  2017 - 
   <span itemprop="copyrightYear">2021</span>

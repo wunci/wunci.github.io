@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
 
@@ -19,8 +19,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
   
     
   
-  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -76,21 +76,21 @@
 
   
 
-<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
-
-
-  <meta name="keywords" content="原创,javascript,Node,Egg,">
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
+  <meta name="keywords" content="原创,javascript,Node,Egg," />
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico?v=5.1.1">
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico?v=5.1.1" />
 
 
 
@@ -104,9 +104,8 @@
 <meta property="og:url" content="http://www.wclimb.site/2018/02/14/nodejs微信支付之扫码支付/index.html">
 <meta property="og:site_name" content="wclimb的个人博客--分享">
 <meta property="og:description" content="前言本篇文章主要是记录本人在微信扫码支付过程中所遇到的问题，给大家一个借鉴作用，希望对你们有帮助 开发环境 nodejs v8.1.0 egg v1.1.0  准备工作 微信公众号-appid 微信商户号-mch_id key值(签名算法所需,其实就是一个32位的密码，可以用md5生成一个)(key设置路径：微信商户平台(pay.weixin.qq.com)–&amp;gt;账户设置–&amp;gt;API安全–">
-<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.wclimb.site/cdn/xcx.jpeg">
-<meta property="og:updated_time" content="2020-05-26T07:04:33.998Z">
+<meta property="og:updated_time" content="2021-09-12T07:52:45.016Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nodejs微信支付之扫码支付">
 <meta name="twitter:description" content="前言本篇文章主要是记录本人在微信扫码支付过程中所遇到的问题，给大家一个借鉴作用，希望对你们有帮助 开发环境 nodejs v8.1.0 egg v1.1.0  准备工作 微信公众号-appid 微信商户号-mch_id key值(签名算法所需,其实就是一个32位的密码，可以用md5生成一个)(key设置路径：微信商户平台(pay.weixin.qq.com)–&amp;gt;账户设置–&amp;gt;API安全–">
@@ -138,7 +137,7 @@
 
 
 
-  <link rel="canonical" href="http://www.wclimb.site/2018/02/14/nodejs微信支付之扫码支付/">
+  <link rel="canonical" href="http://www.wclimb.site/2018/02/14/nodejs微信支付之扫码支付/"/>
 
 
 
@@ -178,7 +177,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">wclimb的个人博客--分享</span>
         <span class="logo-line-after"><i></i></span>
@@ -208,7 +207,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -218,7 +217,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -228,7 +227,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -238,7 +237,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -248,7 +247,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -261,7 +260,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
             搜索
           </a>
@@ -282,7 +281,9 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -319,7 +320,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wclimb">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
@@ -355,7 +356,7 @@
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -399,7 +400,7 @@
           
             <span class="post-meta-divider">|</span>
             <span class="page-pv"><i class="fa fa-file-o"></i>   浏览
-            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
             </span>
           
 
@@ -447,10 +448,10 @@
 <li>微信商户号-mch_id</li>
 <li>key值(签名算法所需,其实就是一个32位的密码，可以用md5生成一个)(key设置路径：微信商户平台(pay.weixin.qq.com)–&gt;账户设置–&gt;API安全–&gt;密钥设置)</li>
 </ul>
-<h2 id="扫码支付-统一下单"><a href="#扫码支付-统一下单" class="headerlink" title="扫码支付-统一下单"></a>扫码支付-统一下单</h2><p>以下才用的是微信模式二，因为比较简单<br><a id="more"></a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> MD5 = <span class="built_in">require</span>(<span class="string">'md5'</span>),</span><br><span class="line">  xml2js = <span class="built_in">require</span>(<span class="string">'xml2js'</span>),</span><br><span class="line">  url = <span class="string">"https://api.mch.weixin.qq.com/pay/unifiedorder"</span>,<span class="comment">// 下单请求地址</span></span><br><span class="line">  appid = <span class="string">'公众号id'</span>,</span><br><span class="line">  mch_id = <span class="string">'微信商户号'</span>；</span><br><span class="line">  notify_url = <span class="string">'回调地址'</span>,</span><br><span class="line">  out_trade_no = <span class="string">'自己设置的订单号'</span>,<span class="comment">// 微信会有自己订单号、我们自己的系统需要设置自己的订单号</span></span><br><span class="line">  total_fee = <span class="string">'订单金额'</span>,<span class="comment">// 注意，单位为分</span></span><br><span class="line">  body = <span class="string">'商品简单描述'</span>, </span><br><span class="line">  trade_type = <span class="string">'NATIVE'</span>,<span class="comment">// 交易类型，JSAPI--公众号支付、NATIVE--原生扫码支付、APP--app支付</span></span><br><span class="line">  nonce_str = moment().format(<span class="string">'YYYYMMDDHHmmssSSS'</span>),<span class="comment">// 随机字符串32位以下</span></span><br><span class="line">  stringA = <span class="string">`appid=<span class="subst">$&#123;公众号id&#125;</span>&amp;body=<span class="subst">$&#123;body&#125;</span>&amp;mch_id=<span class="subst">$&#123;微信商户号&#125;</span>&amp;nonce_str=<span class="subst">$&#123;nonce_str&#125;</span>&amp;notify_url=<span class="subst">$&#123;</span></span></span><br><span class="line"><span class="string"><span class="subst">  notify_url&#125;</span>&amp;out_trade_no=<span class="subst">$&#123;out_trade_no&#125;</span>&amp;spbill_create_ip=<span class="subst">$&#123;ctx.request.ip&#125;</span>&amp;total_fee=<span class="subst">$&#123;total_fee&#125;</span>&amp;trade_type=<span class="subst">$&#123;trade_type&#125;</span>`</span>,</span><br><span class="line">  stringSignTemp = stringA + <span class="string">"&amp;key=xxxxxxxxxxxxxxxxx"</span>, <span class="comment">//注：key为商户平台设置的密钥key</span></span><br><span class="line">  sign = MD5(stringSignTemp).toUpperCase();  <span class="comment">//注：MD5签名方式</span></span><br></pre></td></tr></table></figure></p>
-<p>以上就是我们所需要的一些参数<br>签名生成算法见<a href="https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=4_3" target="_blank" rel="noopener">微信官方</a><br>spbill_create_ip 是 终端ip地址</p>
-<p>下面把所有的参数拼接成xml<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> formData = <span class="string">"&lt;xml&gt;"</span>;</span><br><span class="line">formData += <span class="string">"&lt;appid&gt;"</span> + appid + <span class="string">"&lt;/appid&gt;"</span>; <span class="comment">//appid</span></span><br><span class="line">formData += <span class="string">"&lt;body&gt;"</span> + body + <span class="string">"&lt;/body&gt;"</span>; <span class="comment">//商品或支付单简要描述</span></span><br><span class="line">formData += <span class="string">"&lt;mch_id&gt;"</span> + mch_id + <span class="string">"&lt;/mch_id&gt;"</span>; <span class="comment">//商户号</span></span><br><span class="line">formData += <span class="string">"&lt;nonce_str&gt;"</span> + nonce_str + <span class="string">"&lt;/nonce_str&gt;"</span>; <span class="comment">//随机字符串，不长于32位</span></span><br><span class="line">formData += <span class="string">"&lt;notify_url&gt;"</span> + notify_url + <span class="string">"&lt;/notify_url&gt;"</span>; <span class="comment">//支付成功后微信服务器通过POST请求通知这个地址</span></span><br><span class="line">formData += <span class="string">"&lt;out_trade_no&gt;"</span> + out_trade_no + <span class="string">"&lt;/out_trade_no&gt;"</span>; <span class="comment">//订单号</span></span><br><span class="line">formData += <span class="string">"&lt;total_fee&gt;"</span> + total_fee + <span class="string">"&lt;/total_fee&gt;"</span>; <span class="comment">//金额</span></span><br><span class="line">formData += <span class="string">"&lt;spbill_create_ip&gt;"</span> + ctx.request.ip + <span class="string">"&lt;/spbill_create_ip&gt;"</span>; <span class="comment">//ip</span></span><br><span class="line">formData += <span class="string">"&lt;trade_type&gt;NATIVE&lt;/trade_type&gt;"</span>; <span class="comment">//NATIVE会返回code_url ，JSAPI不会返回</span></span><br><span class="line">formData += <span class="string">"&lt;sign&gt;"</span> + sign + <span class="string">"&lt;/sign&gt;"</span>;</span><br><span class="line">formData += <span class="string">"&lt;/xml&gt;"</span>;</span><br><span class="line"><span class="comment">// 这里使用了egg里面请求的方式</span></span><br><span class="line"><span class="keyword">const</span> resultData = <span class="keyword">yield</span> ctx.curl(url, &#123;</span><br><span class="line">  method: <span class="string">"POST"</span>,</span><br><span class="line">  content: formData,</span><br><span class="line">  headers: &#123;</span><br><span class="line">    <span class="string">"content-type"</span>: <span class="string">"text/html"</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// xml转json格式</span></span><br><span class="line">xml2js.parseString(resultData.data, <span class="function"><span class="keyword">function</span> (<span class="params">err, json</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (err) &#123;</span><br><span class="line">    <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"解析xml报错"</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> result = formMessage(json.xml); <span class="comment">// 转换成正常的json 数据</span></span><br><span class="line">    <span class="built_in">console</span>.log(result); <span class="comment">//打印出返回的结果</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> formMessage = <span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> message = &#123;&#125;;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> result === <span class="string">"object"</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> keys = <span class="built_in">Object</span>.keys(result);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; keys.length; i++) &#123;</span><br><span class="line">      <span class="keyword">var</span> item = result[keys[i]];</span><br><span class="line">      <span class="keyword">var</span> key = keys[i];</span><br><span class="line">      <span class="keyword">if</span> (!(item <span class="keyword">instanceof</span> <span class="built_in">Array</span>) || item.length === <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (item.length === <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> val = item[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> val === <span class="string">"object"</span>) &#123;</span><br><span class="line">          message[key] = formMessage(val);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          message[key] = (val || <span class="string">""</span>).trim();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        message[key] = [];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>, k = item.length; j &lt; k; j++) &#123;</span><br><span class="line">          message[key].push(formMessage(itemp[j]));</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> message;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>上面使用了egg的请求方式，node可以使用request和axios<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> request = <span class="built_in">require</span>(<span class="string">'request'</span>);</span><br><span class="line">request(&#123;</span><br><span class="line">  url: url,</span><br><span class="line">  method: <span class="string">"POST"</span>,</span><br><span class="line">  body: formData</span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">error, response, body</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!error &amp;&amp; response.statusCode == <span class="number">200</span>) &#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="扫码支付-统一下单"><a href="#扫码支付-统一下单" class="headerlink" title="扫码支付-统一下单"></a>扫码支付-统一下单</h2><p>以下才用的是微信模式二，因为比较简单<br><a id="more"></a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> MD5 = <span class="built_in">require</span>(<span class="string">'md5'</span>),</div><div class="line">  xml2js = <span class="built_in">require</span>(<span class="string">'xml2js'</span>),</div><div class="line">  url = <span class="string">"https://api.mch.weixin.qq.com/pay/unifiedorder"</span>,<span class="comment">// 下单请求地址</span></div><div class="line">  appid = <span class="string">'公众号id'</span>,</div><div class="line">  mch_id = <span class="string">'微信商户号'</span>；</div><div class="line">  notify_url = <span class="string">'回调地址'</span>,</div><div class="line">  out_trade_no = <span class="string">'自己设置的订单号'</span>,<span class="comment">// 微信会有自己订单号、我们自己的系统需要设置自己的订单号</span></div><div class="line">  total_fee = <span class="string">'订单金额'</span>,<span class="comment">// 注意，单位为分</span></div><div class="line">  body = <span class="string">'商品简单描述'</span>, </div><div class="line">  trade_type = <span class="string">'NATIVE'</span>,<span class="comment">// 交易类型，JSAPI--公众号支付、NATIVE--原生扫码支付、APP--app支付</span></div><div class="line">  nonce_str = moment().format(<span class="string">'YYYYMMDDHHmmssSSS'</span>),<span class="comment">// 随机字符串32位以下</span></div><div class="line">  stringA = <span class="string">`appid=<span class="subst">$&#123;公众号id&#125;</span>&amp;body=<span class="subst">$&#123;body&#125;</span>&amp;mch_id=<span class="subst">$&#123;微信商户号&#125;</span>&amp;nonce_str=<span class="subst">$&#123;nonce_str&#125;</span>&amp;notify_url=<span class="subst">$&#123;</span></span></div><div class="line">  notify_url&#125;&amp;out_trade_no=<span class="subst">$&#123;out_trade_no&#125;</span>&amp;spbill_create_ip=<span class="subst">$&#123;ctx.request.ip&#125;</span>&amp;total_fee=<span class="subst">$&#123;total_fee&#125;</span>&amp;trade_type=<span class="subst">$&#123;trade_type&#125;</span>`,</div><div class="line">  stringSignTemp = stringA + <span class="string">"&amp;key=xxxxxxxxxxxxxxxxx"</span>, <span class="comment">//注：key为商户平台设置的密钥key</span></div><div class="line">  sign = MD5(stringSignTemp).toUpperCase();  <span class="comment">//注：MD5签名方式</span></div></pre></td></tr></table></figure></p>
+<p>以上就是我们所需要的一些参数<br>签名生成算法见<a href="https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=4_3" target="_blank" rel="external">微信官方</a><br>spbill_create_ip 是 终端ip地址</p>
+<p>下面把所有的参数拼接成xml<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> formData = <span class="string">"&lt;xml&gt;"</span>;</div><div class="line">formData += <span class="string">"&lt;appid&gt;"</span> + appid + <span class="string">"&lt;/appid&gt;"</span>; <span class="comment">//appid</span></div><div class="line">formData += <span class="string">"&lt;body&gt;"</span> + body + <span class="string">"&lt;/body&gt;"</span>; <span class="comment">//商品或支付单简要描述</span></div><div class="line">formData += <span class="string">"&lt;mch_id&gt;"</span> + mch_id + <span class="string">"&lt;/mch_id&gt;"</span>; <span class="comment">//商户号</span></div><div class="line">formData += <span class="string">"&lt;nonce_str&gt;"</span> + nonce_str + <span class="string">"&lt;/nonce_str&gt;"</span>; <span class="comment">//随机字符串，不长于32位</span></div><div class="line">formData += <span class="string">"&lt;notify_url&gt;"</span> + notify_url + <span class="string">"&lt;/notify_url&gt;"</span>; <span class="comment">//支付成功后微信服务器通过POST请求通知这个地址</span></div><div class="line">formData += <span class="string">"&lt;out_trade_no&gt;"</span> + out_trade_no + <span class="string">"&lt;/out_trade_no&gt;"</span>; <span class="comment">//订单号</span></div><div class="line">formData += <span class="string">"&lt;total_fee&gt;"</span> + total_fee + <span class="string">"&lt;/total_fee&gt;"</span>; <span class="comment">//金额</span></div><div class="line">formData += <span class="string">"&lt;spbill_create_ip&gt;"</span> + ctx.request.ip + <span class="string">"&lt;/spbill_create_ip&gt;"</span>; <span class="comment">//ip</span></div><div class="line">formData += <span class="string">"&lt;trade_type&gt;NATIVE&lt;/trade_type&gt;"</span>; <span class="comment">//NATIVE会返回code_url ，JSAPI不会返回</span></div><div class="line">formData += <span class="string">"&lt;sign&gt;"</span> + sign + <span class="string">"&lt;/sign&gt;"</span>;</div><div class="line">formData += <span class="string">"&lt;/xml&gt;"</span>;</div><div class="line"><span class="comment">// 这里使用了egg里面请求的方式</span></div><div class="line"><span class="keyword">const</span> resultData = <span class="keyword">yield</span> ctx.curl(url, &#123;</div><div class="line">  <span class="attr">method</span>: <span class="string">"POST"</span>,</div><div class="line">  <span class="attr">content</span>: formData,</div><div class="line">  <span class="attr">headers</span>: &#123;</div><div class="line">    <span class="string">"content-type"</span>: <span class="string">"text/html"</span>,</div><div class="line">  &#125;,</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// xml转json格式</span></div><div class="line">xml2js.parseString(resultData.data, <span class="function"><span class="keyword">function</span> (<span class="params">err, json</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (err) &#123;</div><div class="line">    <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"解析xml报错"</span>);</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">var</span> result = formMessage(json.xml); <span class="comment">// 转换成正常的json 数据</span></div><div class="line">    <span class="built_in">console</span>.log(result); <span class="comment">//打印出返回的结果</span></div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"><span class="keyword">var</span> formMessage = <span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> message = &#123;&#125;;</div><div class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> result === <span class="string">"object"</span>) &#123;</div><div class="line">    <span class="keyword">var</span> keys = <span class="built_in">Object</span>.keys(result);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; keys.length; i++) &#123;</div><div class="line">      <span class="keyword">var</span> item = result[keys[i]];</div><div class="line">      <span class="keyword">var</span> key = keys[i];</div><div class="line">      <span class="keyword">if</span> (!(item <span class="keyword">instanceof</span> <span class="built_in">Array</span>) || item.length === <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">continue</span>;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">if</span> (item.length === <span class="number">1</span>) &#123;</div><div class="line">        <span class="keyword">var</span> val = item[<span class="number">0</span>];</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> val === <span class="string">"object"</span>) &#123;</div><div class="line">          message[key] = formMessage(val);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">          message[key] = (val || <span class="string">""</span>).trim();</div><div class="line">        &#125;</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        message[key] = [];</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>, k = item.length; j &lt; k; j++) &#123;</div><div class="line">          message[key].push(formMessage(itemp[j]));</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> message;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>上面使用了egg的请求方式，node可以使用request和axios<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> request = <span class="built_in">require</span>(<span class="string">'request'</span>);</div><div class="line">request(&#123;</div><div class="line">  <span class="attr">url</span>: url,</div><div class="line">  <span class="attr">method</span>: <span class="string">"POST"</span>,</div><div class="line">  <span class="attr">body</span>: formData</div><div class="line">&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">error, response, body</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (!error &amp;&amp; response.statusCode == <span class="number">200</span>) &#123;</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 <p>如果请求成功会最终返回一个xml,然后我们进行解析成json的格式,里面会有一个<code>code_url</code>和<code>out_trade_no</code>,我们需要把这两个返回给前端，然后通过生成二维码展示给用户扫码，完成支付</p>
 <h2 id="监听支付是否成功"><a href="#监听支付是否成功" class="headerlink" title="监听支付是否成功"></a>监听支付是否成功</h2><p>上面操作完成之后，我们需要知道用户是否完成支付，因为用户会停留在该页面，我们需要在用户付完款之后，通知用户支付成功。<br>首先，用户发起支付的时候我们会生成二维码，让用户完成扫码支付，我们还要做的是，开一个定时器，每隔一段时间去发送一个请求，这个时候，我们node后台就需要写一个查询订单的接口，之前我们拿到了<code>out_trade_no</code>，也就是我们系统内部的订单号，我们把这个数据发送给后台查询订单的接口，然后后台接收到之后会请求微信的查询接口地址<code>https://api.mch.weixin.qq.com/pay/orderquery</code>,流程跟上面一样，只是接口地址和微信返回的xml不一样而已，返回的字段会有一个状态即<code>SUCCESS</code>和<code>NOTPAY</code>，我们可以通过判断是否支付返回给前端，成功之后提示给用户支付成功，关闭定时器。</p>
 <h2 id="回调地址"><a href="#回调地址" class="headerlink" title="回调地址"></a>回调地址</h2><p>这个是非常重要的一环，大部分的操作其实在上面就可以完成，但是有特殊的情况，比如用户电脑断网发送不了请求，但是手机付款了，这就会导致我们记录不到用户支付的信息。这个时候回调地址就很重要了</p>
@@ -486,13 +487,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay">
+          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay"/>
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay">
+          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay"/>
           <p>支付宝打赏</p>
         </div>
       
@@ -593,7 +594,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -604,7 +605,9 @@
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="wclimb">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="wclimb" />
           <p class="site-author-name" itemprop="name">wclimb</p>
            
               <p class="site-description motion-element" itemprop="description"></p>
@@ -615,7 +618,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -626,7 +629,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -637,7 +640,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -768,7 +771,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">
+        <div class="copyright" >
   
   &copy;  2017 - 
   <span itemprop="copyrightYear">2021</span>

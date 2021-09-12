@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
 
@@ -19,8 +19,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
   
     
   
-  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -76,21 +76,21 @@
 
   
 
-<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
-
-
-  <meta name="keywords" content="原创,javascript,webpack,">
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
+  <meta name="keywords" content="原创,javascript,webpack," />
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico?v=5.1.1">
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico?v=5.1.1" />
 
 
 
@@ -104,10 +104,9 @@
 <meta property="og:url" content="http://www.wclimb.site/2019/06/19/webpack系列之输出文件分析/index.html">
 <meta property="og:site_name" content="wclimb的个人博客--分享">
 <meta property="og:description" content="写在前面上一篇文章我们讲了如何使用 webpack，执行打包会在 dist 生成一堆文件，那么 webpack 输出的文件里面到底长啥样呢？用过的人100%看过，大部分的还是压缩混淆后的代码，一般我们不会去关心它，只管当前持续运行正常就行了。今天我们来看看 webpack 输出的文件 配置安装开发环境 webpack: 4.34.0 12&amp;gt; npm init -y&amp;gt; cnpm i we">
-<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.wclimb.site/img/webpack-bundle-a-js.jpg">
 <meta property="og:image" content="http://www.wclimb.site/img/webpack-bundle-b-js.jpg">
-<meta property="og:updated_time" content="2019-07-27T09:58:56.269Z">
+<meta property="og:updated_time" content="2021-09-12T07:52:45.018Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack系列之输出文件分析">
 <meta name="twitter:description" content="写在前面上一篇文章我们讲了如何使用 webpack，执行打包会在 dist 生成一堆文件，那么 webpack 输出的文件里面到底长啥样呢？用过的人100%看过，大部分的还是压缩混淆后的代码，一般我们不会去关心它，只管当前持续运行正常就行了。今天我们来看看 webpack 输出的文件 配置安装开发环境 webpack: 4.34.0 12&amp;gt; npm init -y&amp;gt; cnpm i we">
@@ -139,7 +138,7 @@
 
 
 
-  <link rel="canonical" href="http://www.wclimb.site/2019/06/19/webpack系列之输出文件分析/">
+  <link rel="canonical" href="http://www.wclimb.site/2019/06/19/webpack系列之输出文件分析/"/>
 
 
 
@@ -179,7 +178,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">wclimb的个人博客--分享</span>
         <span class="logo-line-after"><i></i></span>
@@ -209,7 +208,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -219,7 +218,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -229,7 +228,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -239,7 +238,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -249,7 +248,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -262,7 +261,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
             搜索
           </a>
@@ -283,7 +282,9 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -320,7 +321,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wclimb">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
@@ -356,7 +357,7 @@
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -400,7 +401,7 @@
           
             <span class="post-meta-divider">|</span>
             <span class="page-pv"><i class="fa fa-file-o"></i>   浏览
-            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
             </span>
           
 
@@ -440,35 +441,35 @@
       
         <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>上一篇文章我们讲了如何使用 <code>webpack</code>，执行打包会在 <code>dist</code> 生成一堆文件，那么 <code>webpack</code> 输出的文件里面到底长啥样呢？用过的人100%看过，大部分的还是压缩混淆后的代码，一般我们不会去关心它，只管当前持续运行正常就行了。今天我们来看看 <code>webpack</code> 输出的文件</p>
 <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>开发环境 <code>webpack: 4.34.0</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; npm init -y</span><br><span class="line">&gt; cnpm i webpack webpack-cli -D</span><br></pre></td></tr></table></figure>
-<h3 id="新建文件"><a href="#新建文件" class="headerlink" title="新建文件"></a>新建文件</h3><p>新建文件 <code>webpack.config.js</code><br>新建文件夹 <code>src</code><br><code>webpack.config.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  devtool: <span class="string">'inline-source-map'</span>,</span><br><span class="line">  mode: <span class="string">'development'</span>,</span><br><span class="line">  entry: <span class="string">'./src/main.js'</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'./dist'</span>),</span><br><span class="line">    filename: <span class="string">'bundle.js'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; npm init -y</div><div class="line">&gt; cnpm i webpack webpack-cli -D</div></pre></td></tr></table></figure>
+<h3 id="新建文件"><a href="#新建文件" class="headerlink" title="新建文件"></a>新建文件</h3><p>新建文件 <code>webpack.config.js</code><br>新建文件夹 <code>src</code><br><code>webpack.config.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="attr">devtool</span>: <span class="string">'inline-source-map'</span>,</div><div class="line">  <span class="attr">mode</span>: <span class="string">'development'</span>,</div><div class="line">  <span class="attr">entry</span>: <span class="string">'./src/main.js'</span>,</div><div class="line">  <span class="attr">output</span>: &#123;</div><div class="line">    <span class="attr">path</span>: path.resolve(__dirname, <span class="string">'./dist'</span>),</div><div class="line">    <span class="attr">filename</span>: <span class="string">'bundle.js'</span>,</div><div class="line">  &#125;,</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<p><code>src</code> 文件夹下，新增三个文件 <code>main.js</code>（入口文件） <code>a.js</code> <code>b.js</code><br><code>main.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; A1, A2 &#125; <span class="keyword">from</span> <span class="string">'./a'</span>;</span><br><span class="line"><span class="keyword">import</span> B <span class="keyword">from</span> <span class="string">'./b'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(A1, A2);</span><br><span class="line">B();</span><br></pre></td></tr></table></figure></p>
-<p>a.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> A1 = <span class="string">'a1'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> A2 = <span class="string">'a2'</span>;</span><br></pre></td></tr></table></figure></p>
-<p>b.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'b'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx webpack --config webpack.config.js</span><br></pre></td></tr></table></figure>
+<p><code>src</code> 文件夹下，新增三个文件 <code>main.js</code>（入口文件） <code>a.js</code> <code>b.js</code><br><code>main.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; A1, A2 &#125; <span class="keyword">from</span> <span class="string">'./a'</span>;</div><div class="line"><span class="keyword">import</span> B <span class="keyword">from</span> <span class="string">'./b'</span>;</div><div class="line"><span class="built_in">console</span>.log(A1, A2);</div><div class="line">B();</div></pre></td></tr></table></figure></p>
+<p>a.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> A1 = <span class="string">'a1'</span>;</div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> A2 = <span class="string">'a2'</span>;</div></pre></td></tr></table></figure></p>
+<p>b.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'b'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npx webpack --config webpack.config.js</div></pre></td></tr></table></figure>
 <p>然后就会在 <code>dist</code> 下生成一个 <code>bundle.js</code> 文件，接下来开始分析文件</p>
-<h2 id="文件分析"><a href="#文件分析" class="headerlink" title="文件分析"></a>文件分析</h2><p>首先先来看看大致的结果<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">modules</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">__webpack_require__</span>(<span class="params">moduleId</span>) </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">return</span> __webpack_require__(__webpack_require__.s = <span class="string">"./src/main.js"</span>);</span><br><span class="line">&#125;)(&#123;</span><br><span class="line">  <span class="string">"./src/a.js"</span>: (<span class="function"><span class="keyword">function</span>(<span class="params">module, __webpack_exports__, __webpack_require__</span>) </span>&#123;&#125;</span><br><span class="line">  <span class="string">"./src/b.js"</span>: (<span class="function"><span class="keyword">function</span>(<span class="params">module, __webpack_exports__, __webpack_require__</span>) </span>&#123;&#125;</span><br><span class="line">  <span class="string">"./src/main.js"</span>: (<span class="function"><span class="keyword">function</span>(<span class="params">module, __webpack_exports__, __webpack_require__</span>) </span>&#123;&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h2 id="文件分析"><a href="#文件分析" class="headerlink" title="文件分析"></a>文件分析</h2><p>首先先来看看大致的结果<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">modules</span>) </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">__webpack_require__</span>(<span class="params">moduleId</span>) </span>&#123;</div><div class="line">    ...</div><div class="line">  &#125;</div><div class="line">  ...</div><div class="line">  return __webpack_require__(__webpack_require__.s = <span class="string">"./src/main.js"</span>);</div><div class="line">&#125;)(&#123;</div><div class="line">  <span class="string">"./src/a.js"</span>: (<span class="function"><span class="keyword">function</span>(<span class="params">module, __webpack_exports__, __webpack_require__</span>) </span>&#123;&#125;</div><div class="line">  <span class="string">"./src/b.js"</span>: (<span class="function"><span class="keyword">function</span>(<span class="params">module, __webpack_exports__, __webpack_require__</span>) </span>&#123;&#125;</div><div class="line">  <span class="string">"./src/main.js"</span>: (<span class="function"><span class="keyword">function</span>(<span class="params">module, __webpack_exports__, __webpack_require__</span>) </span>&#123;&#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
 <p>从上面我们可以看到一个立即执行的函数，传递了一个对象，也就是 <code>modules</code> 的值，最终执行了 <code>__webpack_require__</code> 函数，执行的这个方法其实是我们在 <code>webpack</code> 里面设置的 <code>entry: ./src/main.js</code>，对象里还有<code>key</code>，<code>./src/a.js</code> 、<code>./src/b.js</code>，也就是我们的 <code>a.js</code> 和 <code>b.js</code></p>
 <p>我们知道最开始执行了 <code>__webpack_require__(__webpack_require__.s = &quot;./src/main.js&quot;)</code> 方法，也就是 <code>__webpack_require__(&quot;./src/main.js&quot;)</code>，那么这个 <code>__webpack_require__</code> 方法又做了什么的</p>
-<p>原始的 <code>__webpack_require__</code> 方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// The module cache</span></span><br><span class="line"><span class="keyword">var</span> installedModules = &#123;&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">__webpack_require__</span>(<span class="params">moduleId</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Check if module is in cache</span></span><br><span class="line">  <span class="keyword">if</span>(installedModules[moduleId]) &#123;</span><br><span class="line">    <span class="keyword">return</span> installedModules[moduleId].exports;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// Create a new module (and put it into the cache)</span></span><br><span class="line">  <span class="keyword">var</span> <span class="built_in">module</span> = installedModules[moduleId] = &#123;</span><br><span class="line">    i: moduleId,</span><br><span class="line">    l: <span class="literal">false</span>,</span><br><span class="line">    exports: &#123;&#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">// Execute the module function</span></span><br><span class="line">  modules[moduleId].call(<span class="built_in">module</span>.exports, <span class="built_in">module</span>, <span class="built_in">module</span>.exports, __webpack_require__);</span><br><span class="line">  <span class="comment">// Flag the module as loaded</span></span><br><span class="line">  <span class="built_in">module</span>.l = <span class="literal">true</span>;</span><br><span class="line">  <span class="comment">// Return the exports of the module</span></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">module</span>.exports;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>现在我在这上面写上注释<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 模块缓存</span></span><br><span class="line"><span class="keyword">var</span> installedModules = &#123;&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">__webpack_require__</span>(<span class="params">moduleId</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 首先全局有一个模块对象，最先判断是否存在这个模块，是否做过相应操作，如果有则直接返回当前模块的一个对象，这里的exports其实就是一个对象</span></span><br><span class="line">  <span class="keyword">if</span>(installedModules[moduleId]) &#123;</span><br><span class="line">    <span class="keyword">return</span> installedModules[moduleId].exports;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 这里就直接创建了一个模块，并且缓存在全局的模块中，这里重点关注这个exports，</span></span><br><span class="line">  <span class="comment">// i 指的是模块的名称，比如 './src/main.js'</span></span><br><span class="line">  <span class="comment">// l 意思是当前模块是否加载</span></span><br><span class="line">  <span class="comment">// exports 就是返回出去的对象内容</span></span><br><span class="line">  <span class="keyword">var</span> <span class="built_in">module</span> = installedModules[moduleId] = &#123;</span><br><span class="line">    i: moduleId,</span><br><span class="line">    l: <span class="literal">false</span>,</span><br><span class="line">    exports: &#123;&#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">// 到这里就开始通过key去执行 modules（就是刚开始立即执行函数传过来的对象）对象的方法</span></span><br><span class="line">  <span class="comment">// 然后使用call来指向 对象的方法 的this，并且把 module, module.exports, __webpack_require__ 三个值传过去，</span></span><br><span class="line">  <span class="comment">// 这里先做预告，module这个参数传过去其实是没有用到的，主要使用 module.exports 对象, 以及__webpack_require__方法</span></span><br><span class="line">  modules[moduleId].call(<span class="built_in">module</span>.exports, <span class="built_in">module</span>, <span class="built_in">module</span>.exports, __webpack_require__);</span><br><span class="line">  <span class="comment">// 上面说到有一个参数 l，到这里当前模块已经加载</span></span><br><span class="line">  <span class="built_in">module</span>.l = <span class="literal">true</span>;</span><br><span class="line">  <span class="comment">// 最后把module.exports这个模块返回出去</span></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">module</span>.exports;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>原始的 <code>__webpack_require__</code> 方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// The module cache</span></div><div class="line"><span class="keyword">var</span> installedModules = &#123;&#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">__webpack_require__</span>(<span class="params">moduleId</span>) </span>&#123;</div><div class="line">  <span class="comment">// Check if module is in cache</span></div><div class="line">  <span class="keyword">if</span>(installedModules[moduleId]) &#123;</div><div class="line">    <span class="keyword">return</span> installedModules[moduleId].exports;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// Create a new module (and put it into the cache)</span></div><div class="line">  <span class="keyword">var</span> <span class="built_in">module</span> = installedModules[moduleId] = &#123;</div><div class="line">    <span class="attr">i</span>: moduleId,</div><div class="line">    <span class="attr">l</span>: <span class="literal">false</span>,</div><div class="line">    <span class="attr">exports</span>: &#123;&#125;</div><div class="line">  &#125;;</div><div class="line">  <span class="comment">// Execute the module function</span></div><div class="line">  modules[moduleId].call(<span class="built_in">module</span>.exports, <span class="built_in">module</span>, <span class="built_in">module</span>.exports, __webpack_require__);</div><div class="line">  <span class="comment">// Flag the module as loaded</span></div><div class="line">  <span class="built_in">module</span>.l = <span class="literal">true</span>;</div><div class="line">  <span class="comment">// Return the exports of the module</span></div><div class="line">  <span class="keyword">return</span> <span class="built_in">module</span>.exports;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>现在我在这上面写上注释<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 模块缓存</span></div><div class="line"><span class="keyword">var</span> installedModules = &#123;&#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">__webpack_require__</span>(<span class="params">moduleId</span>) </span>&#123;</div><div class="line">  <span class="comment">// 首先全局有一个模块对象，最先判断是否存在这个模块，是否做过相应操作，如果有则直接返回当前模块的一个对象，这里的exports其实就是一个对象</span></div><div class="line">  <span class="keyword">if</span>(installedModules[moduleId]) &#123;</div><div class="line">    <span class="keyword">return</span> installedModules[moduleId].exports;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// 这里就直接创建了一个模块，并且缓存在全局的模块中，这里重点关注这个exports，</span></div><div class="line">  <span class="comment">// i 指的是模块的名称，比如 './src/main.js'</span></div><div class="line">  <span class="comment">// l 意思是当前模块是否加载</span></div><div class="line">  <span class="comment">// exports 就是返回出去的对象内容</span></div><div class="line">  <span class="keyword">var</span> <span class="built_in">module</span> = installedModules[moduleId] = &#123;</div><div class="line">    <span class="attr">i</span>: moduleId,</div><div class="line">    <span class="attr">l</span>: <span class="literal">false</span>,</div><div class="line">    <span class="attr">exports</span>: &#123;&#125;</div><div class="line">  &#125;;</div><div class="line">  <span class="comment">// 到这里就开始通过key去执行 modules（就是刚开始立即执行函数传过来的对象）对象的方法</span></div><div class="line">  <span class="comment">// 然后使用call来指向 对象的方法 的this，并且把 module, module.exports, __webpack_require__ 三个值传过去，</span></div><div class="line">  <span class="comment">// 这里先做预告，module这个参数传过去其实是没有用到的，主要使用 module.exports 对象, 以及__webpack_require__方法</span></div><div class="line">  modules[moduleId].call(<span class="built_in">module</span>.exports, <span class="built_in">module</span>, <span class="built_in">module</span>.exports, __webpack_require__);</div><div class="line">  <span class="comment">// 上面说到有一个参数 l，到这里当前模块已经加载</span></div><div class="line">  <span class="built_in">module</span>.l = <span class="literal">true</span>;</div><div class="line">  <span class="comment">// 最后把module.exports这个模块返回出去</span></div><div class="line">  <span class="keyword">return</span> <span class="built_in">module</span>.exports;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>接下来我们看看主入口 <code>./src/main.js</code> 这个 <code>key</code> 的值的内容</p>
-<p><code>./src/main.js</code>，原内容是这样的，接下来来解释一下<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"./src/main.js"</span>: (<span class="function"><span class="keyword">function</span>(<span class="params">module, __webpack_exports__, __webpack_require__</span>) </span>&#123;</span><br><span class="line"><span class="meta">    "use strict"</span>;</span><br><span class="line">    __webpack_require__.r(__webpack_exports__);</span><br><span class="line">    <span class="comment">/* harmony import */</span> <span class="keyword">var</span> _a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(<span class="comment">/*! ./a */</span> <span class="string">"./src/a.js"</span>);</span><br><span class="line">    <span class="comment">/* harmony import */</span> <span class="keyword">var</span> _b__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(<span class="comment">/*! ./b */</span> <span class="string">"./src/b.js"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(_a__WEBPACK_IMPORTED_MODULE_0__[<span class="string">"A1"</span>], _a__WEBPACK_IMPORTED_MODULE_0__[<span class="string">"A2"</span>]);</span><br><span class="line">    <span class="built_in">Object</span>(_b__WEBPACK_IMPORTED_MODULE_1__[<span class="string">"default"</span>])();</span><br><span class="line"></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"./src/main.js"</span>: (<span class="function"><span class="keyword">function</span>(<span class="params">module, __webpack_exports__, __webpack_require__</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 上面我们说到 __webpack_require__ 方法内部会执行 modules[moduleId].call，并传递了三个参数，那么他执行的方法就是这个内部方法</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 这段代码可以先忽略，在当前项目没有作用</span></span><br><span class="line">    __webpack_require__.r(__webpack_exports__);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 我们看到下面有两段__webpack_require__函数代码的执行，你可以回顾一下main.js的内容，我们是不是做了 import &#123; A1, A2 &#125; from './a';并且 console.log(A1, A2);</span></span><br><span class="line">    <span class="comment">/* harmony import */</span> <span class="keyword">var</span> _a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(<span class="comment">/*! ./a */</span> <span class="string">"./src/a.js"</span>);</span><br><span class="line">    <span class="comment">/* harmony import */</span> <span class="keyword">var</span> _b__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(<span class="comment">/*! ./b */</span> <span class="string">"./src/b.js"</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(_a__WEBPACK_IMPORTED_MODULE_0__[<span class="string">"A1"</span>], _a__WEBPACK_IMPORTED_MODULE_0__[<span class="string">"A2"</span>]);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 这段代码其实是 import B from './b'; B();代码的执行</span></span><br><span class="line">    <span class="built_in">Object</span>(_b__WEBPACK_IMPORTED_MODULE_1__[<span class="string">"default"</span>])();</span><br><span class="line"></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>好了，现在来分析一下 <code>__webpack_require__(&quot;./src/a.js&quot;)</code> 做了哪些操作，我们先来看看 模块<code>./src/a.js</code> 的内容<br><code>./src/a.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"./src/a.js"</span>: (<span class="function"><span class="keyword">function</span>(<span class="params">module, __webpack_exports__, __webpack_require__</span>) </span>&#123;</span><br><span class="line">      __webpack_require__.r(__webpack_exports__);</span><br><span class="line">      <span class="comment">/* harmony export (binding) */</span> __webpack_require__.d(__webpack_exports__, <span class="string">"A1"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> A1; &#125;);</span><br><span class="line">      <span class="comment">/* harmony export (binding) */</span> __webpack_require__.d(__webpack_exports__, <span class="string">"A2"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> A2; &#125;);</span><br><span class="line">      <span class="keyword">const</span> A1 = <span class="string">'a1'</span>;</span><br><span class="line">      <span class="keyword">const</span> A2 = <span class="string">'a2'</span>;</span><br><span class="line"> &#125;),</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>代码内容很简单，首先 <code>__webpack_require__(&quot;./src/a.js&quot;)</code> 执行之后，会创建一个模块，然后去执行模块 <code>./src/a.js</code> 内部得方法，也是是上面这段，执行完成之后最终会把 <code>module.exports</code> 返回处理，<br>那么 <code>module.exports</code> 这个是什么内容呢？<br>看看 <strong>webpack_require</strong> 内部<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="built_in">module</span> = installedModules[moduleId] = &#123;</span><br><span class="line">    i: moduleId,</span><br><span class="line">    l: <span class="literal">false</span>,</span><br><span class="line">    exports: &#123;&#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">// Execute the module function</span></span><br><span class="line">  modules[moduleId].call(<span class="built_in">module</span>.exports, <span class="built_in">module</span>, <span class="built_in">module</span>.exports, __webpack_require__);</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">module</span>.exports</span><br></pre></td></tr></table></figure></p>
+<p><code>./src/main.js</code>，原内容是这样的，接下来来解释一下<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"./src/main.js"</span>: (<span class="function"><span class="keyword">function</span>(<span class="params">module, __webpack_exports__, __webpack_require__</span>) </span>&#123;</div><div class="line"><span class="meta">    "use strict"</span>;</div><div class="line">    __webpack_require__.r(__webpack_exports__);</div><div class="line">    <span class="comment">/* harmony import */</span> <span class="keyword">var</span> _a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(<span class="comment">/*! ./a */</span> <span class="string">"./src/a.js"</span>);</div><div class="line">    <span class="comment">/* harmony import */</span> <span class="keyword">var</span> _b__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(<span class="comment">/*! ./b */</span> <span class="string">"./src/b.js"</span>);</div><div class="line"></div><div class="line">    <span class="built_in">console</span>.log(_a__WEBPACK_IMPORTED_MODULE_0__[<span class="string">"A1"</span>], _a__WEBPACK_IMPORTED_MODULE_0__[<span class="string">"A2"</span>]);</div><div class="line">    <span class="built_in">Object</span>(_b__WEBPACK_IMPORTED_MODULE_1__[<span class="string">"default"</span>])();</div><div class="line"></div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"./src/main.js"</span>: (<span class="function"><span class="keyword">function</span>(<span class="params">module, __webpack_exports__, __webpack_require__</span>) </span>&#123;</div><div class="line">    <span class="comment">// 上面我们说到 __webpack_require__ 方法内部会执行 modules[moduleId].call，并传递了三个参数，那么他执行的方法就是这个内部方法</span></div><div class="line"></div><div class="line">    <span class="comment">// 这段代码可以先忽略，在当前项目没有作用</span></div><div class="line">    __webpack_require__.r(__webpack_exports__);</div><div class="line"></div><div class="line">    <span class="comment">// 我们看到下面有两段__webpack_require__函数代码的执行，你可以回顾一下main.js的内容，我们是不是做了 import &#123; A1, A2 &#125; from './a';并且 console.log(A1, A2);</span></div><div class="line">    <span class="comment">/* harmony import */</span> <span class="keyword">var</span> _a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(<span class="comment">/*! ./a */</span> <span class="string">"./src/a.js"</span>);</div><div class="line">    <span class="comment">/* harmony import */</span> <span class="keyword">var</span> _b__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(<span class="comment">/*! ./b */</span> <span class="string">"./src/b.js"</span>);</div><div class="line">    <span class="built_in">console</span>.log(_a__WEBPACK_IMPORTED_MODULE_0__[<span class="string">"A1"</span>], _a__WEBPACK_IMPORTED_MODULE_0__[<span class="string">"A2"</span>]);</div><div class="line"></div><div class="line">    <span class="comment">// 这段代码其实是 import B from './b'; B();代码的执行</span></div><div class="line">    <span class="built_in">Object</span>(_b__WEBPACK_IMPORTED_MODULE_1__[<span class="string">"default"</span>])();</div><div class="line"></div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>好了，现在来分析一下 <code>__webpack_require__(&quot;./src/a.js&quot;)</code> 做了哪些操作，我们先来看看 模块<code>./src/a.js</code> 的内容<br><code>./src/a.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"./src/a.js"</span>: (<span class="function"><span class="keyword">function</span>(<span class="params">module, __webpack_exports__, __webpack_require__</span>) </span>&#123;</div><div class="line">      __webpack_require__.r(__webpack_exports__);</div><div class="line">      <span class="comment">/* harmony export (binding) */</span> __webpack_require__.d(__webpack_exports__, <span class="string">"A1"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> A1; &#125;);</div><div class="line">      <span class="comment">/* harmony export (binding) */</span> __webpack_require__.d(__webpack_exports__, <span class="string">"A2"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> A2; &#125;);</div><div class="line">      <span class="keyword">const</span> A1 = <span class="string">'a1'</span>;</div><div class="line">      <span class="keyword">const</span> A2 = <span class="string">'a2'</span>;</div><div class="line"> &#125;),</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>代码内容很简单，首先 <code>__webpack_require__(&quot;./src/a.js&quot;)</code> 执行之后，会创建一个模块，然后去执行模块 <code>./src/a.js</code> 内部得方法，也是是上面这段，执行完成之后最终会把 <code>module.exports</code> 返回处理，<br>那么 <code>module.exports</code> 这个是什么内容呢？<br>看看 <strong>webpack_require</strong> 内部<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> <span class="built_in">module</span> = installedModules[moduleId] = &#123;</div><div class="line">    <span class="attr">i</span>: moduleId,</div><div class="line">    <span class="attr">l</span>: <span class="literal">false</span>,</div><div class="line">    <span class="attr">exports</span>: &#123;&#125;</div><div class="line">  &#125;;</div><div class="line">  <span class="comment">// Execute the module function</span></div><div class="line">  modules[moduleId].call(<span class="built_in">module</span>.exports, <span class="built_in">module</span>, <span class="built_in">module</span>.exports, __webpack_require__);</div><div class="line">  <span class="keyword">return</span> <span class="built_in">module</span>.exports</div></pre></td></tr></table></figure></p>
 <p>其实就是我们创建模块时的 <code>exports</code>，然后执行到了模块 <code>./src/a.js</code> 内部得方法，它内部方法关键的地方在于又调用了 <code>__webpack_require__.d</code> 方法</p>
-<p><code>__webpack_require__.d</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__webpack_require__.d = <span class="function"><span class="keyword">function</span>(<span class="params">exports, name, getter</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(!__webpack_require__.o(exports, name)) &#123;</span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(exports, name, &#123; <span class="attr">enumerable</span>: <span class="literal">true</span>, <span class="attr">get</span>: getter &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p><code>__webpack_require__.d</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">__webpack_require__.d = <span class="function"><span class="keyword">function</span>(<span class="params">exports, name, getter</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span>(!__webpack_require__.o(exports, name)) &#123;</div><div class="line">    <span class="built_in">Object</span>.defineProperty(exports, name, &#123; <span class="attr">enumerable</span>: <span class="literal">true</span>, <span class="attr">get</span>: getter &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <p>执行 <code>__webpack_require__.d(__webpack_exports__, &quot;A1&quot;, function() { return A1; })</code>; 可以看出来他给 <code>module.exports</code> 定义了一个 <code>key</code> 值 <code>&quot;key&quot;</code>，然后取值 <code>get</code> 的时候返回的是 A1(也就是a1)</p>
 <p>所以最终 <code>return module.exports</code> 的值为 <code>{A1: &#39;a1&#39;}</code>，</p>
 <p>我们回到 <code>./src/main.js</code> 模块，所以这段代码：<code>var _a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./a */ &quot;./src/a.js&quot;)</code>;</p>
 <p> <code>_a__WEBPACK_IMPORTED_MODULE_0__</code> 其实就是等于 <code>{A1: &#39;a1&#39;}</code> <code>console.log(_a__WEBPACK_IMPORTED_MODULE_0__[&quot;A1&quot;])</code>，取值为 <code>a1</code>，<code>A2</code> 同理</p>
 <p><img src="/img/webpack-bundle-a-js.jpg" alt="bundle-a-js"></p>
-<p> 接下来我们看看模块 <code>./src/b.js</code>，在主模块它做了什么呢？看看 <code>./src/main.js</code><br> <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">var</span> _b__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(<span class="comment">/*! ./b */</span> <span class="string">"./src/b.js"</span>);</span><br><span class="line"><span class="built_in">Object</span>(_b__WEBPACK_IMPORTED_MODULE_1__[<span class="string">"default"</span>])();</span><br></pre></td></tr></table></figure></p>
+<p> 接下来我们看看模块 <code>./src/b.js</code>，在主模块它做了什么呢？看看 <code>./src/main.js</code><br> <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">var _b__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(<span class="comment">/*! ./b */</span> <span class="string">"./src/b.js"</span>);</div><div class="line"><span class="built_in">Object</span>(_b__WEBPACK_IMPORTED_MODULE_1__[<span class="string">"default"</span>])();</div></pre></td></tr></table></figure></p>
 <p> 看上面模块 <code>./src/b.js</code> 在主模块的执行第一段代码和之前介绍的一样，第二段代码直接执行了一个方法，这里我们可以猜测出 <code>_b__WEBPACK_IMPORTED_MODULE_1__</code> 其实就是一个对象，访问了它的 <code>key: default</code><br>然后它的key值其实是一个函数，最后执行了这个函数</p>
-<p>同理我们可以看看模块 <code>./src/b.js</code> 内部的方法，以及我们在 <code>src</code> 文件夹下的 <code>b.js</code> 是怎么写的<br>模块 <code>./src/b.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"./src/b.js"</span>: (<span class="function"><span class="keyword">function</span>(<span class="params">module, __webpack_exports__, __webpack_require__</span>) </span>&#123;</span><br><span class="line">    __webpack_require__.r(__webpack_exports__);</span><br><span class="line">    <span class="comment">/* harmony default export */</span> __webpack_exports__[<span class="string">"default"</span>] = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'b'</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><code>b.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'b'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>同理我们可以看看模块 <code>./src/b.js</code> 内部的方法，以及我们在 <code>src</code> 文件夹下的 <code>b.js</code> 是怎么写的<br>模块 <code>./src/b.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"./src/b.js"</span>: (<span class="function"><span class="keyword">function</span>(<span class="params">module, __webpack_exports__, __webpack_require__</span>) </span>&#123;</div><div class="line">    __webpack_require__.r(__webpack_exports__);</div><div class="line">    <span class="comment">/* harmony default export */</span> __webpack_exports__[<span class="string">"default"</span>] = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'b'</span>);</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><code>b.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'b'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>从我们源代码看出，我们是直接导出了一个方法，内部执行了打印字符串<code>b</code>，然后再来看看 <code>webapck</code> 的源码部分，<code>__webpack_require__.r(__webpack_exports__)</code>; 这段可以忽略，解释一下，其实这段代码在对象里定义了一个 <code>__esModule: true</code>，接着看下面一段，我们从之前讲的知道知道 <code>__webpack_exports__</code> 其实就是一个单纯的空对象（其实不是，执行了 <code>__webpack_require__.r(__webpack_exports__</code> )就变成了 <code>{__esModule: true}</code>)，然后它又在对象里增加了一个 <code>default</code> 属性，然后把一个方法赋值给它(其实就是我们打包之前写的一个方法)，最终在主入口里执行的模块 <code>var _b__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./b */ &quot;./src/b.js&quot;)</code>；其实就等于 <code>{&quot;default&quot;: function{}}</code>，然后下一步执行访问对象 <code>default</code> 的值去执行函数</p>
 <p><img src="/img/webpack-bundle-b-js.jpg" alt="bundle-b-js"></p>
 <h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><p>可能现在你可能会思考🤔，通过上面的比较可以得出一个结论</p>
@@ -498,13 +499,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay">
+          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay"/>
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay">
+          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay"/>
           <p>支付宝打赏</p>
         </div>
       
@@ -603,7 +604,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -614,7 +615,9 @@
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="wclimb">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="wclimb" />
           <p class="site-author-name" itemprop="name">wclimb</p>
            
               <p class="site-description motion-element" itemprop="description"></p>
@@ -625,7 +628,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -636,7 +639,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -647,7 +650,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -778,7 +781,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">
+        <div class="copyright" >
   
   &copy;  2017 - 
   <span itemprop="copyrightYear">2021</span>

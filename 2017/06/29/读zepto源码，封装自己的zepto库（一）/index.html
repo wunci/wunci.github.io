@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
 
@@ -19,8 +19,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
   
     
   
-  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -76,21 +76,21 @@
 
   
 
-<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
-
-
-  <meta name="keywords" content="原创,javascript,zepto,">
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
+  <meta name="keywords" content="原创,javascript,zepto," />
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico?v=5.1.1">
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico?v=5.1.1" />
 
 
 
@@ -104,8 +104,7 @@
 <meta property="og:url" content="http://www.wclimb.site/2017/06/29/读zepto源码，封装自己的zepto库（一）/index.html">
 <meta property="og:site_name" content="wclimb的个人博客--分享">
 <meta property="og:description" content="写在前面 读zepto源码，封装自己的zepto库系列是自己在读zepto源码的一些理解，有错误的地方还望指出。如果觉得本系列对你有所帮助，还请持续关注wclimb，谢谢。  zepto的整体架构首先来看看整体代码结构 123456789101112131415161718192021222324252627282930313233(function()&amp;#123;	var wclimb = &amp;#">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-06T01:06:26.422Z">
+<meta property="og:updated_time" content="2021-09-12T07:52:45.019Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读zepto源码，封装自己的zepto库（一）">
 <meta name="twitter:description" content="写在前面 读zepto源码，封装自己的zepto库系列是自己在读zepto源码的一些理解，有错误的地方还望指出。如果觉得本系列对你有所帮助，还请持续关注wclimb，谢谢。  zepto的整体架构首先来看看整体代码结构 123456789101112131415161718192021222324252627282930313233(function()&amp;#123;	var wclimb = &amp;#">
@@ -136,7 +135,7 @@
 
 
 
-  <link rel="canonical" href="http://www.wclimb.site/2017/06/29/读zepto源码，封装自己的zepto库（一）/">
+  <link rel="canonical" href="http://www.wclimb.site/2017/06/29/读zepto源码，封装自己的zepto库（一）/"/>
 
 
 
@@ -176,7 +175,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">wclimb的个人博客--分享</span>
         <span class="logo-line-after"><i></i></span>
@@ -206,7 +205,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -216,7 +215,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -226,7 +225,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -236,7 +235,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -246,7 +245,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -259,7 +258,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
             搜索
           </a>
@@ -280,7 +279,9 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -317,7 +318,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wclimb">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
@@ -364,7 +365,7 @@
           
             <span class="post-meta-divider">|</span>
             <span class="page-pv"><i class="fa fa-file-o"></i>   浏览
-            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
             </span>
           
 
@@ -406,26 +407,26 @@
 <p>读zepto源码，封装自己的zepto库系列是自己在读zepto源码的一些理解，有错误的地方还望指出。如果觉得本系列对你有所帮助，还请持续关注wclimb，谢谢。</p>
 </blockquote>
 <h2 id="zepto的整体架构"><a href="#zepto的整体架构" class="headerlink" title="zepto的整体架构"></a>zepto的整体架构</h2><p>首先来看看整体代码结构</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> wclimb = &#123;&#125;,$</span><br><span class="line"></span><br><span class="line">	$ = <span class="function"><span class="keyword">function</span>(<span class="params">selector</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> wclimb.init(selector)</span><br><span class="line">	&#125;</span><br><span class="line">	wclimb.init = <span class="function"><span class="keyword">function</span>(<span class="params">selector</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> dom;</span><br><span class="line">		dom = <span class="built_in">document</span>.querySelectorAll(selector);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> wclimb.Z(dom,selector)</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	wclimb.Z = <span class="function"><span class="keyword">function</span>(<span class="params">dom,selector</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> Z(dom,selector)</span><br><span class="line">	&#125;</span><br><span class="line">	wclimb.Z.prototype  =  Z.prototype  =  &#123;</span><br><span class="line">		test:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			alert(<span class="number">1</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">Z</span>(<span class="params">dom,selector</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> i  =  <span class="number">0</span>; i &lt; dom.length; i++) &#123;</span><br><span class="line">			<span class="keyword">this</span>[i] = dom[i]</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">this</span>.selector = selector;</span><br><span class="line">		<span class="keyword">this</span>.length = dom.length</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">window</span>.$ = <span class="built_in">window</span>.wclimb = $</span><br><span class="line"></span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
-<p>首先我们设置了一个闭包，避免产生全局变量<br><a id="more"></a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">var</span> wclimb = &#123;&#125;,$</div><div class="line"></div><div class="line">	$ = <span class="function"><span class="keyword">function</span>(<span class="params">selector</span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> wclimb.init(selector)</div><div class="line">	&#125;</div><div class="line">	wclimb.init = <span class="function"><span class="keyword">function</span>(<span class="params">selector</span>)</span>&#123;</div><div class="line">		<span class="keyword">var</span> dom;</div><div class="line">		dom = <span class="built_in">document</span>.querySelectorAll(selector);</div><div class="line"></div><div class="line">		<span class="keyword">return</span> wclimb.Z(dom,selector)</div><div class="line"></div><div class="line">	&#125;</div><div class="line">	wclimb.Z = <span class="function"><span class="keyword">function</span>(<span class="params">dom,selector</span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">new</span> Z(dom,selector)</div><div class="line">	&#125;</div><div class="line">	wclimb.Z.prototype  =  Z.prototype  =  &#123;</div><div class="line">		<span class="attr">test</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">			alert(<span class="number">1</span>)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">Z</span>(<span class="params">dom,selector</span>) </span>&#123;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> i  =  <span class="number">0</span>; i &lt; dom.length; i++) &#123;</div><div class="line">			<span class="keyword">this</span>[i] = dom[i]</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">this</span>.selector = selector;</div><div class="line">		<span class="keyword">this</span>.length = dom.length</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="built_in">window</span>.$ = <span class="built_in">window</span>.wclimb = $</div><div class="line"></div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<p>首先我们设置了一个闭包，避免产生全局变量<br><a id="more"></a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	...</div><div class="line">&#125;)()</div></pre></td></tr></table></figure></p>
 <p>我们定义一个对象wclimb和$，以便后面使用</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> wclimb = &#123;&#125;,$</span><br></pre></td></tr></table></figure>
-<p>$函数返回了wclimb.init(selector),我们知道使用zepto的时候，一般是$(‘p’)，而selector就是p元素，当然不止这一种情况如$(function(){}),所以对选择器后面我们要做判断<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ = <span class="function"><span class="keyword">function</span>(<span class="params">selector</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> wclimb.init(selector)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> wclimb = &#123;&#125;,$</div></pre></td></tr></table></figure>
+<p>$函数返回了wclimb.init(selector),我们知道使用zepto的时候，一般是$(‘p’)，而selector就是p元素，当然不止这一种情况如$(function(){}),所以对选择器后面我们要做判断<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ = <span class="function"><span class="keyword">function</span>(<span class="params">selector</span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span> wclimb.init(selector)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>而wclimb.init首先定义了一个dom，通过选择器选取的元素赋值给dom，最后返回wclimb.init，传入dom和选择元素selector</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wclimb.init = <span class="function"><span class="keyword">function</span>(<span class="params">selector</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> dom;</span><br><span class="line">	dom = <span class="built_in">document</span>.querySelector(selector);</span><br><span class="line">	<span class="keyword">return</span> wclimb.Z(dom,selector)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">wclimb.init = <span class="function"><span class="keyword">function</span>(<span class="params">selector</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> dom;</div><div class="line">	dom = <span class="built_in">document</span>.querySelector(selector);</div><div class="line">	<span class="keyword">return</span> wclimb.Z(dom,selector)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>我们可以看到之前我们定义了对象wclimb，而后我们就往里面添加了一些方法，就像：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">wclimb = &#123;</span><br><span class="line">	init：<span class="function"><span class="keyword">function</span>(<span class="params">selector</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> dom;</span><br><span class="line">		dom = <span class="built_in">document</span>.querySelector(selector);</span><br><span class="line">		<span class="keyword">return</span> wclimb.Z(dom,selector)</span><br><span class="line">	&#125;,</span><br><span class="line">	Z: <span class="function"><span class="keyword">function</span>(<span class="params">dom,selector</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> Z(dom,selector)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">wclimb = &#123;</div><div class="line">	init：<span class="function"><span class="keyword">function</span>(<span class="params">selector</span>)</span>&#123;</div><div class="line">		<span class="keyword">var</span> dom;</div><div class="line">		dom = <span class="built_in">document</span>.querySelector(selector);</div><div class="line">		<span class="keyword">return</span> wclimb.Z(dom,selector)</div><div class="line">	&#125;,</div><div class="line">	<span class="attr">Z</span>: <span class="function"><span class="keyword">function</span>(<span class="params">dom,selector</span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">new</span> Z(dom,selector)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>通过wclimb.Z，如果有看过zepto源码的同学应该对此有了解.每次用$调用的时候,将直接返回一个Z的实例.达到无new调用的效果,$(‘p’)返回一个实例，然后$(‘p’).test()调用他的原形方法，这里的方法是test</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">wclimb.Z = <span class="function"><span class="keyword">function</span>(<span class="params">dom,selector</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> Z(dom,selector)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Z</span>(<span class="params">dom,selector</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; dom.length; i++) &#123;</span><br><span class="line">		<span class="keyword">this</span>[i] = dom[i]</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">this</span>.selector = selector;</span><br><span class="line">	<span class="keyword">this</span>.length = dom.length</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">wclimb.Z = <span class="function"><span class="keyword">function</span>(<span class="params">dom,selector</span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span> <span class="keyword">new</span> Z(dom,selector)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Z</span>(<span class="params">dom,selector</span>) </span>&#123;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; dom.length; i++) &#123;</div><div class="line">		<span class="keyword">this</span>[i] = dom[i]</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">this</span>.selector = selector;</div><div class="line">	<span class="keyword">this</span>.length = dom.length</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>由于我们是return new Z(dom,selector),那自然,我们需要手动的把wclimb.Z的prototype指向Z的prototype</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">wclimb.Z.prototype = Z.prototype&#123;&#125;</span><br><span class="line"></span><br><span class="line">我们可以在里面添加方法了，如addClass eq等，我们试试加一个test</span><br><span class="line"></span><br><span class="line">wclimb.Z.prototype = Z.prototype&#123;</span><br><span class="line">	test: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'test'</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">wclimb.Z.prototype = Z.prototype&#123;&#125;</div><div class="line"></div><div class="line">我们可以在里面添加方法了，如addClass eq等，我们试试加一个test</div><div class="line"></div><div class="line">wclimb.Z.prototype = Z.prototype&#123;</div><div class="line">	<span class="attr">test</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">'test'</span>)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>Z函数是这样的，因为我们选择器选择的元素是一个数组（其实不是）我们把this指向选择的元素，然后添加两个元素selector和length，分别代表选择的元素名和元素的长度</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Z</span>(<span class="params">dom,selector</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; dom.length; i++) &#123;</span><br><span class="line">		<span class="keyword">this</span>[i] = dom[i]</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">this</span>.selector = selector;</span><br><span class="line">	<span class="keyword">this</span>.length = dom.length</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Z</span>(<span class="params">dom,selector</span>) </span>&#123;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; dom.length; i++) &#123;</div><div class="line">		<span class="keyword">this</span>[i] = dom[i]</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">this</span>.selector = selector;</div><div class="line">	<span class="keyword">this</span>.length = dom.length</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>最后我们在window上对外暴露一个接口,我们就可以用 $(‘p’) 或者wclimb(‘p’) 即可调用.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.$ = <span class="built_in">window</span>.wclimb = $</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.$ = <span class="built_in">window</span>.wclimb = $</div></pre></td></tr></table></figure>
 <p>现在可以试试能不能运行</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">html：&lt;p&gt;test&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">js：$('p')  调用方法试试 $('p').test()</span></span><br></pre></td></tr></table></figure>
-<p>我们的zepto已经完成了，是不是很简单？骗你的，还差得远呢，后面会慢慢完善。待续。。。<br>如果你觉得该文章帮助到了你，不妨star一下<a href="https://github.com/wclimb/wclimb.github.io" target="_blank" rel="noopener">https://github.com/wclimb/wclimb.github.io</a> ，感谢</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">html：&lt;p&gt;test&lt;/p&gt;</div><div class="line"></div><div class="line">js：$('p')  调用方法试试 $('p').test()</div></pre></td></tr></table></figure>
+<p>我们的zepto已经完成了，是不是很简单？骗你的，还差得远呢，后面会慢慢完善。待续。。。<br>如果你觉得该文章帮助到了你，不妨star一下<a href="https://github.com/wclimb/wclimb.github.io" target="_blank" rel="external">https://github.com/wclimb/wclimb.github.io</a> ，感谢</p>
 
       
     </div>
@@ -448,13 +449,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay">
+          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay"/>
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay">
+          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay"/>
           <p>支付宝打赏</p>
         </div>
       
@@ -553,7 +554,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -564,7 +565,9 @@
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="wclimb">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="wclimb" />
           <p class="site-author-name" itemprop="name">wclimb</p>
            
               <p class="site-description motion-element" itemprop="description"></p>
@@ -575,7 +578,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -586,7 +589,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -597,7 +600,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -728,7 +731,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">
+        <div class="copyright" >
   
   &copy;  2017 - 
   <span itemprop="copyrightYear">2021</span>

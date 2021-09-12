@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
 
@@ -19,8 +19,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
   
     
   
-  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -76,21 +76,21 @@
 
   
 
-<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
-
-
-  <meta name="keywords" content="原创,javascript,">
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
+  <meta name="keywords" content="原创,javascript," />
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico?v=5.1.1">
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico?v=5.1.1" />
 
 
 
@@ -104,9 +104,8 @@
 <meta property="og:url" content="http://www.wclimb.site/2018/06/12/JavaScript之节流与防抖/index.html">
 <meta property="og:site_name" content="wclimb的个人博客--分享">
 <meta property="og:description" content="背景我们在开发的过程中会经常使用如scroll、resize、touchmove等事件，如果正常绑定事件处理函数的话，有可能在很短的时间内多次连续触发事件，十分影响性能。因此针对这类事件要进行节流或者防抖处理 节流节流的意思是，在规定的时间内只会触发一次函数，如我们设置函数500ms触发一次，之后你无论你触发了多少次函数，在这个时间内也只会有一次执行效果 先来看一个例子 See the Pen g">
-<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.wclimb.site/cdn/xcx.jpeg">
-<meta property="og:updated_time" content="2019-06-06T01:06:26.411Z">
+<meta property="og:updated_time" content="2021-09-12T07:52:45.002Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript之节流与防抖">
 <meta name="twitter:description" content="背景我们在开发的过程中会经常使用如scroll、resize、touchmove等事件，如果正常绑定事件处理函数的话，有可能在很短的时间内多次连续触发事件，十分影响性能。因此针对这类事件要进行节流或者防抖处理 节流节流的意思是，在规定的时间内只会触发一次函数，如我们设置函数500ms触发一次，之后你无论你触发了多少次函数，在这个时间内也只会有一次执行效果 先来看一个例子 See the Pen g">
@@ -138,7 +137,7 @@
 
 
 
-  <link rel="canonical" href="http://www.wclimb.site/2018/06/12/JavaScript之节流与防抖/">
+  <link rel="canonical" href="http://www.wclimb.site/2018/06/12/JavaScript之节流与防抖/"/>
 
 
 
@@ -178,7 +177,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">wclimb的个人博客--分享</span>
         <span class="logo-line-after"><i></i></span>
@@ -208,7 +207,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -218,7 +217,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -228,7 +227,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -238,7 +237,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -248,7 +247,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -261,7 +260,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
             搜索
           </a>
@@ -282,7 +281,9 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -319,7 +320,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wclimb">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
@@ -355,7 +356,7 @@
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -388,7 +389,7 @@
           
             <span class="post-meta-divider">|</span>
             <span class="page-pv"><i class="fa fa-file-o"></i>   浏览
-            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
             </span>
           
 
@@ -429,26 +430,26 @@
         <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>我们在开发的过程中会经常使用如scroll、resize、touchmove等事件，如果正常绑定事件处理函数的话，有可能在很短的时间内多次连续触发事件，十分影响性能。<br>因此针对这类事件要进行节流或者防抖处理</p>
 <h1 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h1><p>节流的意思是，在规定的时间内只会触发一次函数，如我们设置函数<code>500ms</code>触发一次，之后你无论你触发了多少次函数，在这个时间内也只会有一次执行效果</p>
 <p>先来看一个例子</p>
-<p></p><p data-height="373" data-theme-id="0" data-slug-hash="gKWLpO" data-default-tab="html,result" data-user="wclimb" data-embed-version="2" data-pen-title="gKWLpO" class="codepen">See the Pen <a href="https://codepen.io/wclimb/pen/gKWLpO/" target="_blank" rel="noopener">gKWLpO</a> by wclimb (<a href="https://codepen.io/wclimb" target="_blank" rel="noopener">@wclimb</a>) on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</p><p></p>
+<p></p><p data-height="373" data-theme-id="0" data-slug-hash="gKWLpO" data-default-tab="html,result" data-user="wclimb" data-embed-version="2" data-pen-title="gKWLpO" class="codepen">See the Pen <a href="https://codepen.io/wclimb/pen/gKWLpO/" target="_blank" rel="external">gKWLpO</a> by wclimb (<a href="https://codepen.io/wclimb" target="_blank" rel="external">@wclimb</a>) on <a href="https://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
 <p>我们看到使用了节流的在<code>1000ms</code>内只触发了一次，而没有使用节流的则频繁触发了调用的函数</p>
-<p>接下来看看代码实现<br>v1 第一次不触发，不传参实现<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fn,interval</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> timer;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(timer)&#123;</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            clearTimeout(timer)</span><br><span class="line">            timer = <span class="literal">null</span></span><br><span class="line">            fn()</span><br><span class="line">        &#125;, interval || <span class="number">1000</span>);</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>效果是实现了，但是我在尝试在执行函数里<code>console.log(this)</code>，结果发现<code>this</code>指向的是<code>window</code>，而且还发现我们不能传递参数，下面就来改进一下<br><a id="more"></a><br>v2 第一次触发函数，接收参数<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fn,interval</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> timer,</span><br><span class="line">        isFirst = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> args = <span class="built_in">arguments</span>,</span><br><span class="line">            that = <span class="keyword">this</span>;</span><br><span class="line">        <span class="keyword">if</span>(isFirst)&#123;</span><br><span class="line">            fn.apply(that,args)</span><br><span class="line">            <span class="keyword">return</span> isFirst = <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(timer)&#123;</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            clearTimeout(timer)</span><br><span class="line">            timer = <span class="literal">null</span></span><br><span class="line">            fn.apply(that,args)</span><br><span class="line">        &#125;, interval || <span class="number">1000</span>);</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>接下来看看代码实现<br>v1 第一次不触发，不传参实现<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fn,interval</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> timer;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span>(timer)&#123;</div><div class="line">            <span class="keyword">return</span></div><div class="line">        &#125;</div><div class="line">        timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            clearTimeout(timer)</div><div class="line">            timer = <span class="literal">null</span></div><div class="line">            fn()</div><div class="line">        &#125;, interval || <span class="number">1000</span>);</div><div class="line">    &#125;   </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>效果是实现了，但是我在尝试在执行函数里<code>console.log(this)</code>，结果发现<code>this</code>指向的是<code>window</code>，而且还发现我们不能传递参数，下面就来改进一下<br><a id="more"></a><br>v2 第一次触发函数，接收参数<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fn,interval</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> timer,</div><div class="line">        isFirst = <span class="literal">true</span>;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> args = <span class="built_in">arguments</span>,</div><div class="line">            that = <span class="keyword">this</span>;</div><div class="line">        <span class="keyword">if</span>(isFirst)&#123;</div><div class="line">            fn.apply(that,args)</div><div class="line">            <span class="keyword">return</span> isFirst = <span class="literal">false</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(timer)&#123;</div><div class="line">            <span class="keyword">return</span></div><div class="line">        &#125;</div><div class="line">        timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            clearTimeout(timer)</div><div class="line">            timer = <span class="literal">null</span></div><div class="line">            fn.apply(that,args)</div><div class="line">        &#125;, interval || <span class="number">1000</span>);</div><div class="line">    &#125;   </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h1 id="防抖"><a href="#防抖" class="headerlink" title="防抖"></a>防抖</h1><p>防抖的意思是无论你触发多少次函数，只会触发最后一次函数。最常用的就是在表单提交的时候，用户可能会一段时间内点击很多次，这个时候可以增加防抖处理，我们只需要最后一次触发的事件</p>
 <p>先来看一个例子</p>
-<p></p><p data-height="424" data-theme-id="0" data-slug-hash="pKPeyv" data-default-tab="js,result" data-user="wclimb" data-embed-version="2" data-pen-title="pKPeyv" class="codepen">See the Pen <a href="https://codepen.io/wclimb/pen/pKPeyv/" target="_blank" rel="noopener">pKPeyv</a> by wclimb (<a href="https://codepen.io/wclimb" target="_blank" rel="noopener">@wclimb</a>) on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</p><p></p>
+<p></p><p data-height="424" data-theme-id="0" data-slug-hash="pKPeyv" data-default-tab="js,result" data-user="wclimb" data-embed-version="2" data-pen-title="pKPeyv" class="codepen">See the Pen <a href="https://codepen.io/wclimb/pen/pKPeyv/" target="_blank" rel="external">pKPeyv</a> by wclimb (<a href="https://codepen.io/wclimb" target="_blank" rel="external">@wclimb</a>) on <a href="https://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
 <p>我们看到使用了防抖的方框，无论你在里面触发了多少次函数，都只会触发最后的那一次函数，而没有使用防抖的则频繁触发了调用的函数</p>
 <p>v1 第一次不触发函数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fn,interval</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> timer;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> args = <span class="built_in">arguments</span>,</span><br><span class="line">            that = <span class="keyword">this</span>;</span><br><span class="line">        <span class="keyword">if</span>(timer)&#123;</span><br><span class="line">            clearTimeout(timer)</span><br><span class="line">            timer = <span class="literal">null</span></span><br><span class="line">        &#125;</span><br><span class="line">        timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            fn.apply(<span class="literal">null</span>,args)</span><br><span class="line">        &#125;, interval || <span class="number">1000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fn,interval</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> timer;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> args = <span class="built_in">arguments</span>,</div><div class="line">            that = <span class="keyword">this</span>;</div><div class="line">        <span class="keyword">if</span>(timer)&#123;</div><div class="line">            clearTimeout(timer)</div><div class="line">            timer = <span class="literal">null</span></div><div class="line">        &#125;</div><div class="line">        timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            fn.apply(<span class="literal">null</span>,args)</div><div class="line">        &#125;, interval || <span class="number">1000</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>上面这段代码仍然可以正常执行，但是我们并没有指定他的<code>this</code></p>
-<p>v2 第一次就触发函数<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fn,interval</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> timer,</span><br><span class="line">        isFirst  = <span class="literal">true</span>,</span><br><span class="line">            can = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> args = <span class="built_in">arguments</span>,</span><br><span class="line">            that = <span class="keyword">this</span>;</span><br><span class="line">        <span class="keyword">if</span>(timer)&#123;</span><br><span class="line">            clearTimeout(timer)</span><br><span class="line">            timer = <span class="literal">null</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(isFirst)&#123;</span><br><span class="line">            fn.apply(that,args)</span><br><span class="line">            isFirst = <span class="literal">false</span></span><br><span class="line">            setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                can = <span class="literal">true</span></span><br><span class="line">            &#125;, interval || <span class="number">1000</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(can)&#123;</span><br><span class="line">            timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                fn.apply(<span class="literal">null</span>,args)</span><br><span class="line">            &#125;, interval || <span class="number">1000</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>v2 第一次就触发函数<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fn,interval</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> timer,</div><div class="line">        isFirst  = <span class="literal">true</span>,</div><div class="line">            can = <span class="literal">false</span>;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> args = <span class="built_in">arguments</span>,</div><div class="line">            that = <span class="keyword">this</span>;</div><div class="line">        <span class="keyword">if</span>(timer)&#123;</div><div class="line">            clearTimeout(timer)</div><div class="line">            timer = <span class="literal">null</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(isFirst)&#123;</div><div class="line">            fn.apply(that,args)</div><div class="line">            isFirst = <span class="literal">false</span></div><div class="line">            setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">                can = <span class="literal">true</span></div><div class="line">            &#125;, interval || <span class="number">1000</span>);</div><div class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(can)&#123;</div><div class="line">            timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">                fn.apply(<span class="literal">null</span>,args)</div><div class="line">            &#125;, interval || <span class="number">1000</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>如有雷同，纯属抄我（开玩笑）</p>
 <p>如有错误，还望指正，仅供参考</p>
-<p>GitHub：<a href="https://github.com/wclimb" target="_blank" rel="noopener">wclimb</a></p>
-<h2 id="QQ群"><a href="#QQ群" class="headerlink" title="QQ群"></a>QQ群</h2><p>有兴趣的同学可以加qq群: 725165362 <a href="http://shang.qq.com/wpa/qunwpa?idkey=e6c66b1ee584a90b52dec3545622e988afcf900144eff03cab6d473c50a31d59" target="_blank" rel="noopener">点击加入</a></p>
+<p>GitHub：<a href="https://github.com/wclimb" target="_blank" rel="external">wclimb</a></p>
+<h2 id="QQ群"><a href="#QQ群" class="headerlink" title="QQ群"></a>QQ群</h2><p>有兴趣的同学可以加qq群: 725165362 <a href="http://shang.qq.com/wpa/qunwpa?idkey=e6c66b1ee584a90b52dec3545622e988afcf900144eff03cab6d473c50a31d59" target="_blank" rel="external">点击加入</a></p>
 <h2 id="个人小程序"><a href="#个人小程序" class="headerlink" title="个人小程序"></a>个人小程序</h2><p><img src="http://www.wclimb.site/cdn/xcx.jpeg" alt="img"></p>
 
       
@@ -472,13 +473,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay">
+          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay"/>
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay">
+          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay"/>
           <p>支付宝打赏</p>
         </div>
       
@@ -575,7 +576,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -586,7 +587,9 @@
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="wclimb">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="wclimb" />
           <p class="site-author-name" itemprop="name">wclimb</p>
            
               <p class="site-description motion-element" itemprop="description"></p>
@@ -597,7 +600,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -608,7 +611,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -619,7 +622,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -750,7 +753,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">
+        <div class="copyright" >
   
   &copy;  2017 - 
   <span itemprop="copyrightYear">2021</span>

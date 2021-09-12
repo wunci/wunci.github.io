@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
 
@@ -19,8 +19,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
   
     
   
-  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -76,21 +76,21 @@
 
   
 
-<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
-
-
-  <meta name="keywords" content="原创,javascript,">
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
+  <meta name="keywords" content="原创,javascript," />
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico?v=5.1.1">
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico?v=5.1.1" />
 
 
 
@@ -104,12 +104,11 @@
 <meta property="og:url" content="http://www.wclimb.site/2018/06/13/JavaScript之原型与原型链/index.html">
 <meta property="og:site_name" content="wclimb的个人博客--分享">
 <meta property="og:description" content="万物皆对象在JavaScript中除值类型之外，其他的都是对象，为了说明这点，我们举几个例子我们可以使用typeof来做类型判断 123456789typeof a;             // undefinedtypeof 1;             // numbertypeof &apos;wclimb&apos;;      // stringtypeof true;          // boole">
-<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.wclimb.site/img/prototype.png">
 <meta property="og:image" content="http://www.wclimb.site/img/proto.png">
 <meta property="og:image" content="http://www.wclimb.site/img/allProto.png">
 <meta property="og:image" content="http://www.wclimb.site/cdn/xcx.jpeg">
-<meta property="og:updated_time" content="2019-06-06T01:06:26.407Z">
+<meta property="og:updated_time" content="2021-09-12T07:52:45.002Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript之原型与原型链">
 <meta name="twitter:description" content="万物皆对象在JavaScript中除值类型之外，其他的都是对象，为了说明这点，我们举几个例子我们可以使用typeof来做类型判断 123456789typeof a;             // undefinedtypeof 1;             // numbertypeof &apos;wclimb&apos;;      // stringtypeof true;          // boole">
@@ -141,7 +140,7 @@
 
 
 
-  <link rel="canonical" href="http://www.wclimb.site/2018/06/13/JavaScript之原型与原型链/">
+  <link rel="canonical" href="http://www.wclimb.site/2018/06/13/JavaScript之原型与原型链/"/>
 
 
 
@@ -181,7 +180,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">wclimb的个人博客--分享</span>
         <span class="logo-line-after"><i></i></span>
@@ -211,7 +210,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -221,7 +220,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -231,7 +230,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -241,7 +240,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -251,7 +250,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -264,7 +263,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
             搜索
           </a>
@@ -285,7 +284,9 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -322,7 +323,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wclimb">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
@@ -358,7 +359,7 @@
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -391,7 +392,7 @@
           
             <span class="post-meta-divider">|</span>
             <span class="page-pv"><i class="fa fa-file-o"></i>   浏览
-            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
             </span>
           
 
@@ -430,27 +431,27 @@
 
       
         <h1 id="万物皆对象"><a href="#万物皆对象" class="headerlink" title="万物皆对象"></a>万物皆对象</h1><p>在JavaScript中除值类型之外，其他的都是对象，为了说明这点，我们举几个例子<br>我们可以使用<code>typeof</code>来做类型判断</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> a;             <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="number">1</span>;             <span class="comment">// number</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="string">'wclimb'</span>;      <span class="comment">// string</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">true</span>;          <span class="comment">// boolean</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;  <span class="comment">// function</span></span><br><span class="line"><span class="keyword">typeof</span> [];            <span class="comment">// object</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span>;          <span class="comment">// object</span></span><br><span class="line"><span class="keyword">typeof</span> &#123;&#125;;            <span class="comment">// object</span></span><br></pre></td></tr></table></figure>
-<p>除了<code>undefined</code>、<code>number</code>、<code>string</code>、<code>boolean</code>属于值类型之外，其他都是对象。你可能要问了，不是还有一个是<code>function</code>吗？要校验他是不是应该对象可以这样做:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">fn <span class="keyword">instanceof</span> <span class="built_in">Object</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
-<p>由上面的例子所示，函数确实是对象，为什么呢？我们看一下下面的例子<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name; </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person(<span class="string">'wclimb'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(person) <span class="comment">// Person &#123;name: "wclimb"&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>由此我们可以得知，对象都是通过函数创建的，这么说你可能又会说不对，你看下面的就不是函数创建的<br><a id="more"></a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;<span class="attr">name</span>:<span class="string">'wclimb'</span>&#125;</span><br></pre></td></tr></table></figure></p>
-<p>你咋就这么飘呢？我竟无言以对，没错，这是个意外、意外、意外。但是归根结底他还是通过函数创建的<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> <span class="built_in">Object</span>()</span><br><span class="line">person.name = <span class="string">'wclimb'</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typeof</span> a;             <span class="comment">// undefined</span></div><div class="line"><span class="keyword">typeof</span> <span class="number">1</span>;             <span class="comment">// number</span></div><div class="line"><span class="keyword">typeof</span> <span class="string">'wclimb'</span>;      <span class="comment">// string</span></div><div class="line"><span class="keyword">typeof</span> <span class="literal">true</span>;          <span class="comment">// boolean</span></div><div class="line"></div><div class="line"><span class="keyword">typeof</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;  <span class="comment">// function</span></div><div class="line"><span class="keyword">typeof</span> [];            <span class="comment">// object</span></div><div class="line"><span class="keyword">typeof</span> <span class="literal">null</span>;          <span class="comment">// object</span></div><div class="line"><span class="keyword">typeof</span> &#123;&#125;;            <span class="comment">// object</span></div></pre></td></tr></table></figure>
+<p>除了<code>undefined</code>、<code>number</code>、<code>string</code>、<code>boolean</code>属于值类型之外，其他都是对象。你可能要问了，不是还有一个是<code>function</code>吗？要校验他是不是应该对象可以这样做:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">fn <span class="keyword">instanceof</span> <span class="built_in">Object</span> <span class="comment">// true</span></div></pre></td></tr></table></figure></p>
+<p>由上面的例子所示，函数确实是对象，为什么呢？我们看一下下面的例子<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name; </div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person(<span class="string">'wclimb'</span>);</div><div class="line"><span class="built_in">console</span>.log(person) <span class="comment">// Person &#123;name: "wclimb"&#125;</span></div></pre></td></tr></table></figure></p>
+<p>由此我们可以得知，对象都是通过函数创建的，这么说你可能又会说不对，你看下面的就不是函数创建的<br><a id="more"></a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = &#123;<span class="attr">name</span>:<span class="string">'wclimb'</span>&#125;</div></pre></td></tr></table></figure></p>
+<p>你咋就这么飘呢？我竟无言以对，没错，这是个意外、意外、意外。但是归根结底他还是通过函数创建的<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> <span class="built_in">Object</span>()</div><div class="line">person.name = <span class="string">'wclimb'</span></div></pre></td></tr></table></figure></p>
 <p>so，现在你只要知道对象是通过函数创建的就可以了，来跟着我读：<br>第一遍 对象都是通过函数创建的<br>第二遍 对象都是通过函数创建的<br>第三遍 对象都是通过函数创建的</p>
-<h1 id="构造函数-constructor"><a href="#构造函数-constructor" class="headerlink" title="构造函数(constructor)"></a>构造函数(constructor)</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person(<span class="string">'wclimb 1'</span>)</span><br><span class="line"><span class="keyword">var</span> person2 = <span class="keyword">new</span> Person(<span class="string">'wclimb 2'</span>)</span><br></pre></td></tr></table></figure>
-<p>上面<code>Person</code>就是一个构造函数，我们通过<code>new</code>的方式创建了一个实例对象<code>person</code><br>我们来看看person1和person2的<code>constructor</code>(构造函数)是不是指向Person的<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">person1.constructor === Person <span class="comment">// true</span></span><br><span class="line">person2.constructor === Person <span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
-<h1 id="原型-prototype"><a href="#原型-prototype" class="headerlink" title="原型(prototype)"></a>原型(prototype)</h1><p>在JavaScript中，每定义一个函数都会产生一个<code>prototype</code>(原型)属性，这个属性指向函数的原型对象<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">Person.prototype.name = <span class="string">'wclimb'</span></span><br><span class="line">Person.prototype.age = <span class="string">'24'</span></span><br><span class="line">Person.prototype.sayAge = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.age)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person()</span><br><span class="line">person.sayAge(); <span class="comment">//  24</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="构造函数-constructor"><a href="#构造函数-constructor" class="headerlink" title="构造函数(constructor)"></a>构造函数(constructor)</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person(<span class="string">'wclimb 1'</span>)</div><div class="line"><span class="keyword">var</span> person2 = <span class="keyword">new</span> Person(<span class="string">'wclimb 2'</span>)</div></pre></td></tr></table></figure>
+<p>上面<code>Person</code>就是一个构造函数，我们通过<code>new</code>的方式创建了一个实例对象<code>person</code><br>我们来看看person1和person2的<code>constructor</code>(构造函数)是不是指向Person的<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">person1.constructor === Person <span class="comment">// true</span></div><div class="line">person2.constructor === Person <span class="comment">// true</span></div></pre></td></tr></table></figure></p>
+<h1 id="原型-prototype"><a href="#原型-prototype" class="headerlink" title="原型(prototype)"></a>原型(prototype)</h1><p>在JavaScript中，每定义一个函数都会产生一个<code>prototype</code>(原型)属性，这个属性指向函数的原型对象<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">Person.prototype.name = <span class="string">'wclimb'</span></div><div class="line">Person.prototype.age = <span class="string">'24'</span></div><div class="line">Person.prototype.sayAge = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.age)</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person()</div><div class="line">person.sayAge(); <span class="comment">//  24</span></div></pre></td></tr></table></figure></p>
 <p>那么这个<code>prototype</code>到底是什么呢？跟构造函数有关系吗？</p>
-<p><img src="/img/prototype.png" alt></p>
+<p><img src="/img/prototype.png" alt=""></p>
 <p>上图就可以反映出他们之间的关系</p>
-<p>其实函数的<code>prototype</code>指向函数的原型对象，每个对象都会关联另外一个对象，也就是原型，上面的例子改成：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype = &#123;</span><br><span class="line">    name: <span class="string">'wclimb'</span>,</span><br><span class="line">    age: <span class="number">24</span>,</span><br><span class="line">    satAge: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.age)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="隐式原型-proto"><a href="#隐式原型-proto" class="headerlink" title="隐式原型(__proto__)"></a>隐式原型(<code>__proto__</code>)</h1><p>上面我们说到每定义一个函数都会产生一个原型，每个函数它不止有原型，还有一个<code>__proto__</code>(隐式原型)<br>每个对象都有一个<code>__proto__</code>属性，指向创建该对象函数的<code>prototype</code>，我们可以来试试，还是上面的例子：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person()</span><br><span class="line">person.__proto__ === Person.prototype <span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
+<p>其实函数的<code>prototype</code>指向函数的原型对象，每个对象都会关联另外一个对象，也就是原型，上面的例子改成：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Person.prototype = &#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">'wclimb'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">24</span>,</div><div class="line">    <span class="attr">satAge</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.age)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="隐式原型-proto"><a href="#隐式原型-proto" class="headerlink" title="隐式原型(__proto__)"></a>隐式原型(<code>__proto__</code>)</h1><p>上面我们说到每定义一个函数都会产生一个原型，每个函数它不止有原型，还有一个<code>__proto__</code>(隐式原型)<br>每个对象都有一个<code>__proto__</code>属性，指向创建该对象函数的<code>prototype</code>，我们可以来试试，还是上面的例子：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person()</div><div class="line">person.__proto__ === Person.prototype <span class="comment">// true</span></div></pre></td></tr></table></figure></p>
 <p>现在他们的关系图如下</p>
-<p><img src="/img/proto.png" alt></p>
-<p>由上图我们可以知道：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.constructor = Person</span><br><span class="line">person.__proto__ = Person.prototype</span><br><span class="line">person.constructor = Person</span><br></pre></td></tr></table></figure></p>
-<p>我们可以看到<code>person.__proto__</code>指向构造函数的原型，那么构造函数的原型即<code>Person</code>的<code>__proto__</code>指向哪里呢？<br>我们知道构造函数其实就是由<code>Function</code>来创建的，由此得出:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Person.__proto__ === <span class="built_in">Function</span>.prototype</span><br></pre></td></tr></table></figure></p>
-<p>那么构造函数的原型即<code>Person.prototype</code>的<code>__proto__</code>指向哪里呢？<br>原型对象其实是通过<code>Object</code>生成的，自然而然的得出:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.__proto__ === <span class="built_in">Object</span>.prototype</span><br></pre></td></tr></table></figure></p>
+<p><img src="/img/proto.png" alt=""></p>
+<p>由上图我们可以知道：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Person.prototype.constructor = Person</div><div class="line">person.__proto__ = Person.prototype</div><div class="line">person.constructor = Person</div></pre></td></tr></table></figure></p>
+<p>我们可以看到<code>person.__proto__</code>指向构造函数的原型，那么构造函数的原型即<code>Person</code>的<code>__proto__</code>指向哪里呢？<br>我们知道构造函数其实就是由<code>Function</code>来创建的，由此得出:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Person.__proto__ === <span class="built_in">Function</span>.prototype</div></pre></td></tr></table></figure></p>
+<p>那么构造函数的原型即<code>Person.prototype</code>的<code>__proto__</code>指向哪里呢？<br>原型对象其实是通过<code>Object</code>生成的，自然而然的得出:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Person.prototype.__proto__ === <span class="built_in">Object</span>.prototype</div></pre></td></tr></table></figure></p>
 <p>那么<code>Object.prototype</code>的<code>__proto__</code>指向哪里呢？答案是<code>null</code>，最终得到下面的图</p>
-<p><img src="/img/allProto.png" alt></p>
+<p><img src="/img/allProto.png" alt=""></p>
 <p>抛开这张图，来看看下面几道题</p>
 <ol>
 <li><code>person.__proto__</code></li>
@@ -468,12 +469,12 @@
 <li>虽然<code>Object.prototype</code>是一个对象但是他的<code>__proto__</code>为<code>null</code></li>
 </ol>
 <h1 id="实例和原型"><a href="#实例和原型" class="headerlink" title="实例和原型"></a>实例和原型</h1><p>当我们要取一个值的时候，会先从实例中取，如果实例中存在，则取实例的值，如果实例不存在，则会顺着原型里找，直到找到</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">Person.prototype.name = <span class="string">'我来自原型'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person()</span><br><span class="line">person.name = <span class="string">'我来自实例'</span></span><br><span class="line"><span class="built_in">console</span>.log(person.name); <span class="comment">// 我来自实例</span></span><br><span class="line"><span class="keyword">delete</span> person.name</span><br><span class="line"><span class="built_in">console</span>.log(person.name)); <span class="comment">// 我来自原型</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">Person.prototype.name = <span class="string">'我来自原型'</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person()</div><div class="line">person.name = <span class="string">'我来自实例'</span></div><div class="line"><span class="built_in">console</span>.log(person.name); <span class="comment">// 我来自实例</span></div><div class="line"><span class="keyword">delete</span> person.name</div><div class="line"><span class="built_in">console</span>.log(person.name)); <span class="comment">// 我来自原型</span></div></pre></td></tr></table></figure>
 <p>首先person实例中有这个属性，返回<code>我来自实例</code>,然后将它删除之后，会从原型中招，也就是<code>person.__proto__</code>，因为<code>Person.prototype === person.__proto__</code>，所以得到<code>我来自原型</code></p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>原型和原型链基本已经讲解完，不过还有待完善，如有错误，还望指正</p>
-<p>GitHub：<a href="https://github.com/wclimb" target="_blank" rel="noopener">wclimb</a></p>
+<p>GitHub：<a href="https://github.com/wclimb" target="_blank" rel="external">wclimb</a></p>
 <h1 id="个人小程序"><a href="#个人小程序" class="headerlink" title="个人小程序"></a>个人小程序</h1><p><img src="http://www.wclimb.site/cdn/xcx.jpeg" alt="img"></p>
-<h1 id="QQ群"><a href="#QQ群" class="headerlink" title="QQ群"></a>QQ群</h1><p>有兴趣的同学可以加qq群: 725165362 <a href="http://shang.qq.com/wpa/qunwpa?idkey=e6c66b1ee584a90b52dec3545622e988afcf900144eff03cab6d473c50a31d59" target="_blank" rel="noopener">点击加入</a></p>
+<h1 id="QQ群"><a href="#QQ群" class="headerlink" title="QQ群"></a>QQ群</h1><p>有兴趣的同学可以加qq群: 725165362 <a href="http://shang.qq.com/wpa/qunwpa?idkey=e6c66b1ee584a90b52dec3545622e988afcf900144eff03cab6d473c50a31d59" target="_blank" rel="external">点击加入</a></p>
 
       
     </div>
@@ -496,13 +497,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay">
+          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay"/>
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay">
+          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay"/>
           <p>支付宝打赏</p>
         </div>
       
@@ -599,7 +600,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -610,7 +611,9 @@
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="wclimb">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="wclimb" />
           <p class="site-author-name" itemprop="name">wclimb</p>
            
               <p class="site-description motion-element" itemprop="description"></p>
@@ -621,7 +624,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -632,7 +635,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -643,7 +646,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -774,7 +777,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">
+        <div class="copyright" >
   
   &copy;  2017 - 
   <span itemprop="copyrightYear">2021</span>

@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
 
@@ -19,8 +19,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
   
     
   
-  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -76,21 +76,21 @@
 
   
 
-<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
-
-
-  <meta name="keywords" content="原创,javascript,webpack,">
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
+  <meta name="keywords" content="原创,javascript,webpack," />
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico?v=5.1.1">
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico?v=5.1.1" />
 
 
 
@@ -104,8 +104,7 @@
 <meta property="og:url" content="http://www.wclimb.site/2019/07/05/webpack系列之编写一个loader/index.html">
 <meta property="og:site_name" content="wclimb的个人博客--分享">
 <meta property="og:description" content="写在前面webpack的loader的应用是非常广泛的，完全离不开它，我们开发的过程往往都是使用别人编写好的loader来处理文件，今天我们就来编写一个loader。 基础首先我们看看loader是怎么使用在webpack上的 1234567891011module.exports = &amp;#123;  entry: &apos;...&apos;,  module: &amp;#123;    rules: [      &amp;">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-08T01:29:59.622Z">
+<meta property="og:updated_time" content="2021-09-12T07:52:45.018Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack系列之编写一个loader">
 <meta name="twitter:description" content="写在前面webpack的loader的应用是非常广泛的，完全离不开它，我们开发的过程往往都是使用别人编写好的loader来处理文件，今天我们就来编写一个loader。 基础首先我们看看loader是怎么使用在webpack上的 1234567891011module.exports = &amp;#123;  entry: &apos;...&apos;,  module: &amp;#123;    rules: [      &amp;">
@@ -136,7 +135,7 @@
 
 
 
-  <link rel="canonical" href="http://www.wclimb.site/2019/07/05/webpack系列之编写一个loader/">
+  <link rel="canonical" href="http://www.wclimb.site/2019/07/05/webpack系列之编写一个loader/"/>
 
 
 
@@ -176,7 +175,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">wclimb的个人博客--分享</span>
         <span class="logo-line-after"><i></i></span>
@@ -206,7 +205,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -216,7 +215,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -226,7 +225,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -236,7 +235,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -246,7 +245,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -259,7 +258,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
             搜索
           </a>
@@ -280,7 +279,9 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -317,7 +318,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wclimb">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
@@ -353,7 +354,7 @@
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -397,7 +398,7 @@
           
             <span class="post-meta-divider">|</span>
             <span class="page-pv"><i class="fa fa-file-o"></i>   浏览
-            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
             </span>
           
 
@@ -437,20 +438,20 @@
       
         <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p><code>webpack</code>的<code>loader</code>的应用是非常广泛的，完全离不开它，我们开发的过程往往都是使用别人编写好的<code>loader</code>来处理文件，今天我们就来编写一个<code>loader</code>。</p>
 <h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p>首先我们看看<code>loader</code>是怎么使用在<code>webpack</code>上的</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: <span class="string">'...'</span>,</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        use: <span class="string">'css-loader'</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="attr">entry</span>: <span class="string">'...'</span>,</div><div class="line">  <span class="attr">module</span>: &#123;</div><div class="line">    <span class="attr">rules</span>: [</div><div class="line">      &#123;</div><div class="line">        <span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</div><div class="line">        <span class="attr">use</span>: <span class="string">'css-loader'</span>,</div><div class="line">      &#125;,</div><div class="line">    ],</div><div class="line">  &#125;,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>使用起来很简单，如果你需要处理<code>css</code>文件，那么安装好<code>css-loader</code>包，然后正则匹配到所有<code>.css</code>的文件，使用<code>css-loader</code>进行文件得处理</p>
 <a id="more"></a>
 <h2 id="编写"><a href="#编写" class="headerlink" title="编写"></a>编写</h2><p>编写之前我们先给定个需求吧，设想我们能不能像vue那样编写，处理<code>style/script/template</code>，这样，我们先只处理<code>style</code>的内容，把他提取处理。</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; npm init -y</span><br><span class="line">&gt; cnpm i webpack webpack-cli webpack-dev-server clean-webpack-plugin html-webpack-plugin -D</span><br></pre></td></tr></table></figure>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; npm init -y</div><div class="line">&gt; cnpm i webpack webpack-cli webpack-dev-server clean-webpack-plugin html-webpack-plugin -D</div></pre></td></tr></table></figure>
 <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>先来编写一个配置文件</p>
-<p>新建文件 <code>webpack.config.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; CleanWebpackPlugin &#125; = <span class="built_in">require</span>(<span class="string">'clean-webpack-plugin'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: <span class="string">'./src/main.js'</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'./dist'</span>),</span><br><span class="line">    filename: <span class="string">'bundle.js'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> CleanWebpackPlugin(),</span><br><span class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123; <span class="attr">template</span>: <span class="string">'index.html'</span> &#125;),</span><br><span class="line">  ],</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.css/</span>,</span><br><span class="line">        use: path.resolve(__dirname, <span class="string">'loader/loader.js'</span>),</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>新建文件 <code>webpack.config.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</div><div class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</div><div class="line"><span class="keyword">const</span> &#123; CleanWebpackPlugin &#125; = <span class="built_in">require</span>(<span class="string">'clean-webpack-plugin'</span>);</div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="attr">entry</span>: <span class="string">'./src/main.js'</span>,</div><div class="line">  <span class="attr">output</span>: &#123;</div><div class="line">    <span class="attr">path</span>: path.resolve(__dirname, <span class="string">'./dist'</span>),</div><div class="line">    <span class="attr">filename</span>: <span class="string">'bundle.js'</span>,</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">plugins</span>: [</div><div class="line">    <span class="keyword">new</span> CleanWebpackPlugin(),</div><div class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123; <span class="attr">template</span>: <span class="string">'index.html'</span> &#125;),</div><div class="line">  ],</div><div class="line">  <span class="attr">module</span>: &#123;</div><div class="line">    <span class="attr">rules</span>: [</div><div class="line">      &#123;</div><div class="line">        <span class="attr">test</span>: <span class="regexp">/\.css/</span>,</div><div class="line">        <span class="attr">use</span>: path.resolve(__dirname, <span class="string">'loader/loader.js'</span>),</div><div class="line">      &#125;,</div><div class="line">    ],</div><div class="line">  &#125;,</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <p>项目下新建<code>src</code>文件夹，<code>src</code>项目新建<code>main.js</code>、<code>a.test</code>文件</p>
-<p><code>main.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'./a.test'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'loader test'</span>);</span><br></pre></td></tr></table></figure></p>
-<p><code>a.test</code><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">style</span>&gt;</span><br><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#ccc</span></span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></p>
+<p><code>main.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> <span class="string">'./a.test'</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'loader test'</span>);</div></pre></td></tr></table></figure></p>
+<p><code>a.test</code><br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">body&#123;</div><div class="line">  background: #ccc</div><div class="line">&#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure></p>
 <p>我们重点是<code>a.test</code>文件，等会我会用<code>loader</code>处理他，让他显示到页面中</p>
 <p>———–分割线———–</p>
 <p>现在我们在项目下新建<code>loader</code>文件夹，文件夹下面新建<code>loader.js</code>，这就是我们编写的<code>loader</code></p>
-<p><code>loader/loader.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">sSource</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> sStyleString = sSource</span><br><span class="line">    .match(<span class="regexp">/&lt;style&gt;([\s\S]*)&lt;\/style&gt;/</span>)[<span class="number">1</span>]</span><br><span class="line">    .replace(<span class="regexp">/\n/g</span>, <span class="string">''</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`</span></span><br><span class="line"><span class="string">      let head = document.querySelector('head');</span></span><br><span class="line"><span class="string">      let style = document.createElement('style');</span></span><br><span class="line"><span class="string">      style.type = 'text/css';</span></span><br><span class="line"><span class="string">      let cssNode = document.createTextNode('<span class="subst">$&#123;sStyleString&#125;</span>');</span></span><br><span class="line"><span class="string">      style.appendChild(cssNode);</span></span><br><span class="line"><span class="string">      head.appendChild(style);`</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p><code>loader/loader.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">sSource</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> sStyleString = sSource</div><div class="line">    .match(<span class="regexp">/&lt;style&gt;([\s\S]*)&lt;\/style&gt;/</span>)[<span class="number">1</span>]</div><div class="line">    .replace(<span class="regexp">/\n/g</span>, <span class="string">''</span>);</div><div class="line">  <span class="keyword">return</span> <span class="string">`</span></div><div class="line">      let head = document.querySelector('head');</div><div class="line">      let style = document.createElement('style');</div><div class="line">      style.type = 'text/css';</div><div class="line">      let cssNode = document.createTextNode('<span class="subst">$&#123;sStyleString&#125;</span>');</div><div class="line">      style.appendChild(cssNode);</div><div class="line">      head.appendChild(style);`;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <p>没错，就这么多，<code>loader</code>接收一个参数，也就是<code>sSource</code>，内容就是<code>.test</code>后缀下的文件内容，我们只需要获取内容，然后做我们想做的一切事情，比如，我提取了文件里<code>css</code>的部分，像<code>.vue</code>那样，然后去写一段<code>js</code>，把这段<code>css</code>通过<code>&lt;style&gt;&lt;/style&gt;</code>的方式放到页面上去</p>
 <p>现在你运行一下这个项目，然后查看浏览器，浏览器的背景是否变了颜色？</p>
 <h2 id="api"><a href="#api" class="headerlink" title="api"></a>api</h2><p><code>loader</code>的上下文通过<code>this</code>访问，举几个例子</p>
@@ -459,7 +460,7 @@
 <li>如果 <code>loader</code> 中没有 <code>options</code>，而是以 <code>query</code> 字符串作为参数调用时，<code>this.query</code> 就是一个以 <code>?</code> 开头的字符串</li>
 </ol>
 <h3 id="this-context"><a href="#this-context" class="headerlink" title="this.context"></a>this.context</h3><p>模块所在的目录</p>
-<h3 id="this-emitFile"><a href="#this-emitFile" class="headerlink" title="this.emitFile"></a>this.emitFile</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emitFile(name: string, <span class="attr">content</span>: Buffer|string, <span class="attr">sourceMap</span>: &#123;...&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="this-emitFile"><a href="#this-emitFile" class="headerlink" title="this.emitFile"></a>this.emitFile</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">emitFile(name: string, <span class="attr">content</span>: Buffer|string, <span class="attr">sourceMap</span>: &#123;...&#125;)</div></pre></td></tr></table></figure>
 <p>可以通过用它来生成一个文件</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>写一个<code>loader</code>很简单，只需要你有对文件内容处理的能力，还是很容易上手的，关键不在<code>loader</code>，而在于你的需求复杂程度</p>
 <p>本文地址 <a href="http://www.wclimb.site/2019/07/05/webpack系列之编写一个loader/">webpack系列之编写一个loader</a></p>
@@ -485,13 +486,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay">
+          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay"/>
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay">
+          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay"/>
           <p>支付宝打赏</p>
         </div>
       
@@ -590,7 +591,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -601,7 +602,9 @@
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="wclimb">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="wclimb" />
           <p class="site-author-name" itemprop="name">wclimb</p>
            
               <p class="site-description motion-element" itemprop="description"></p>
@@ -612,7 +615,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -623,7 +626,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -634,7 +637,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -765,7 +768,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">
+        <div class="copyright" >
   
   &copy;  2017 - 
   <span itemprop="copyrightYear">2021</span>

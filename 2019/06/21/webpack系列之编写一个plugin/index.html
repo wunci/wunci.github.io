@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
 
@@ -19,8 +19,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
   
     
   
-  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -76,21 +76,21 @@
 
   
 
-<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
-
-
-  <meta name="keywords" content="原创,javascript,webpack,">
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
+  <meta name="keywords" content="原创,javascript,webpack," />
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico?v=5.1.1">
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico?v=5.1.1" />
 
 
 
@@ -104,8 +104,7 @@
 <meta property="og:url" content="http://www.wclimb.site/2019/06/21/webpack系列之编写一个plugin/index.html">
 <meta property="og:site_name" content="wclimb的个人博客--分享">
 <meta property="og:description" content="写在前面使用webpack或者自己配置研究过webpack的人都知道plugin，也就是webpack的插件，对于大多数人来说，经常使用的插件诸如：clean-webpack-plugin、html-webpack-plugin等等，在很多情况下，我们只会去用它，知道他是干什么的，但是其内部做的操作缺知之甚少，今天我们就来写一个plugin 基础首先我们看看插件是怎么使用在webpack上的 12">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-27T08:21:04.706Z">
+<meta property="og:updated_time" content="2021-09-12T07:52:45.018Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack系列之编写一个plugin">
 <meta name="twitter:description" content="写在前面使用webpack或者自己配置研究过webpack的人都知道plugin，也就是webpack的插件，对于大多数人来说，经常使用的插件诸如：clean-webpack-plugin、html-webpack-plugin等等，在很多情况下，我们只会去用它，知道他是干什么的，但是其内部做的操作缺知之甚少，今天我们就来写一个plugin 基础首先我们看看插件是怎么使用在webpack上的 12">
@@ -136,7 +135,7 @@
 
 
 
-  <link rel="canonical" href="http://www.wclimb.site/2019/06/21/webpack系列之编写一个plugin/">
+  <link rel="canonical" href="http://www.wclimb.site/2019/06/21/webpack系列之编写一个plugin/"/>
 
 
 
@@ -176,7 +175,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">wclimb的个人博客--分享</span>
         <span class="logo-line-after"><i></i></span>
@@ -206,7 +205,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -216,7 +215,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -226,7 +225,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -236,7 +235,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -246,7 +245,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -259,7 +258,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
             搜索
           </a>
@@ -280,7 +279,9 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -317,7 +318,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wclimb">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
@@ -353,7 +354,7 @@
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -397,7 +398,7 @@
           
             <span class="post-meta-divider">|</span>
             <span class="page-pv"><i class="fa fa-file-o"></i>   浏览
-            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
             </span>
           
 
@@ -437,9 +438,9 @@
       
         <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>使用<code>webpack</code>或者自己配置研究过<code>webpack</code>的人都知道<code>plugin</code>，也就是<code>webpack</code>的插件，对于大多数人来说，经常使用的插件诸如：<code>clean-webpack-plugin</code>、<code>html-webpack-plugin</code>等等，在很多情况下，我们只会去用它，知道他是干什么的，但是其内部做的操作缺知之甚少，今天我们就来写一个<code>plugin</code></p>
 <h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p>首先我们看看插件是怎么使用在<code>webpack</code>上的</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; CleanWebpackPlugin &#125; = <span class="built_in">require</span>(<span class="string">'clean-webpack-plugin'</span>);</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: <span class="string">'...'</span>,</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> CleanWebpackPlugin(),</span><br><span class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">      filename: <span class="string">'index.html'</span>,</span><br><span class="line">      template: <span class="string">'./index.html'</span>,</span><br><span class="line">    &#125;),</span><br><span class="line">  ]  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> &#123; CleanWebpackPlugin &#125; = <span class="built_in">require</span>(<span class="string">'clean-webpack-plugin'</span>);</div><div class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="attr">entry</span>: <span class="string">'...'</span>,</div><div class="line">  <span class="attr">plugins</span>: [</div><div class="line">    <span class="keyword">new</span> CleanWebpackPlugin(),</div><div class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</div><div class="line">      <span class="attr">filename</span>: <span class="string">'index.html'</span>,</div><div class="line">      <span class="attr">template</span>: <span class="string">'./index.html'</span>,</div><div class="line">    &#125;),</div><div class="line">  ]  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <a id="more"></a>
-<p>我们经常使用的插件是长这样的，每个插件都是一个构造函数，通过<code>new</code>一个它的实例来使用。知道了插件是一个构造函数，那么我们可以推断出下面的结构<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestPlguin</span></span>&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们经常使用的插件是长这样的，每个插件都是一个构造函数，通过<code>new</code>一个它的实例来使用。知道了插件是一个构造函数，那么我们可以推断出下面的结构<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestPlguin</span></span>&#123;</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>webpack 插件由以下组成：</p>
 <ul>
 <li>一个 JavaScript 命名函数。</li>
@@ -448,7 +449,7 @@
 <li>处理 webpack 内部实例的特定数据。</li>
 <li>功能完成后调用 webpack 提供的回调。</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestPlguin</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>()&#123;</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">  apply(compiler)&#123;</span><br><span class="line">    compiler.plugin(<span class="string">'webpacksEventHook'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">compilation <span class="regexp">/* 处理 webpack 内部实例的特定数据。*/</span>, callback</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"This is an example plugin!!!"</span>);</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 功能完成后调用 webpack 提供的回调。</span></span><br><span class="line">      callback();</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestPlguin</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>()&#123;</div><div class="line">    </div><div class="line">  &#125;</div><div class="line">  apply(compiler)&#123;</div><div class="line">    compiler.plugin(<span class="string">'webpacksEventHook'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">compilation <span class="regexp">/* 处理 webpack 内部实例的特定数据。*/</span>, callback</span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">"This is an example plugin!!!"</span>);</div><div class="line"></div><div class="line">      <span class="comment">// 功能完成后调用 webpack 提供的回调。</span></div><div class="line">      callback();</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>上面是官网上的示例，插件一定会有<code>apply</code>方法，传递一个<code>compiler</code>参数，通过 <code>CLI</code> 或 <code>Node API</code> 传递的所有选项，创建出一个 <code>compilation</code> 实例。</p>
 <p>在插件开发中最重要的两个资源就是 <code>compiler</code> 和 <code>compilation</code> 对象。理解它们的角色是扩展 <code>webpack</code> 引擎重要的第一步。</p>
 <ul>
@@ -463,8 +464,8 @@
 <li><code>emit</code>：生成资源到 <code>output</code> 目录之前。</li>
 <li><code>failed</code>：编译(compilation)失败</li>
 </ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestPlguin</span> </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  apply(compiler)&#123;</span><br><span class="line">    compiler.hooks.emit.tap(<span class="string">'MyPlugin'</span>, params =&gt; &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'我会在生成资源到 output 目录之前执行'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上面的例子意思是，当<code>webpack</code>执行到最终要输出文件得时候，我在这个操作之前去打印一段话，通常是我们输出文件到<code>dist</code>文件夹之前那一步<br>如果你实现写好了这些钩子，那么<code>webpack</code>在编译的流程里都会执行上面几个钩子。想了解更多访问 <a href="https://www.webpackjs.com/api/compiler-hooks/" target="_blank" rel="noopener">https://www.webpackjs.com/api/compiler-hooks/</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestPlguin</span> </span>&#123;</div><div class="line">  ...</div><div class="line">  apply(compiler)&#123;</div><div class="line">    compiler.hooks.emit.tap(<span class="string">'MyPlugin'</span>, params =&gt; &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'我会在生成资源到 output 目录之前执行'</span>)</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的例子意思是，当<code>webpack</code>执行到最终要输出文件得时候，我在这个操作之前去打印一段话，通常是我们输出文件到<code>dist</code>文件夹之前那一步<br>如果你实现写好了这些钩子，那么<code>webpack</code>在编译的流程里都会执行上面几个钩子。想了解更多访问 <a href="https://www.webpackjs.com/api/compiler-hooks/" target="_blank" rel="external">https://www.webpackjs.com/api/compiler-hooks/</a></p>
 <h3 id="Compilation"><a href="#Compilation" class="headerlink" title="Compilation"></a>Compilation</h3><p><code>Compilation</code> 模块会被 <code>Compiler</code> 用来创建新的编译（或新的构建）。<code>compilation</code>实例能够访问所有的模块和它们的依赖（大部分是循环依赖）。它会对应用程序的依赖图中所有模块进行字面上的编译(literal compilation)。在编译阶段，模块会被加载(loaded)、封存(sealed)、优化(optimized)、分块(chunked)、哈希(hashed)和重新创建(restored)</p>
 <p>简单的理解就是，当编译期间文件发生各种变化的时候，我们可以通过 <code>Compilation</code> 钩子里的生命周期函数去拦截，然后做你想做的事情</p>
 <p>举几个例子</p>
@@ -474,27 +475,27 @@
 <li><code>beforeChunkAssets</code>：在创建 chunk 资源(asset)之前</li>
 <li><code>additionalAssets</code>：为编译(compilation)创建附加资源(asset)</li>
 </ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestPlguin</span> </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  apply(compiler)&#123;</span><br><span class="line">    compiler.hooks.emit.tap(<span class="string">'MyPlugin'</span>, compilation =&gt; &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'我会在生成资源到 output 目录之前执行'</span>)</span><br><span class="line">      <span class="comment">// 以下开始调用compilation钩子，当模块处在优化阶段开始时会执行以下回调</span></span><br><span class="line">      compilation.plugin(<span class="string">"optimize"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"我在优化阶段开始时触发了"</span>);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>想了解更多访问 <a href="https://www.webpackjs.com/api/compilation-hooks/" target="_blank" rel="noopener">https://www.webpackjs.com/api/compilation-hooks/</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestPlguin</span> </span>&#123;</div><div class="line">  ...</div><div class="line">  apply(compiler)&#123;</div><div class="line">    compiler.hooks.emit.tap(<span class="string">'MyPlugin'</span>, compilation =&gt; &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'我会在生成资源到 output 目录之前执行'</span>)</div><div class="line">      <span class="comment">// 以下开始调用compilation钩子，当模块处在优化阶段开始时会执行以下回调</span></div><div class="line">      compilation.plugin(<span class="string">"optimize"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"我在优化阶段开始时触发了"</span>);</div><div class="line">      &#125;);</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>想了解更多访问 <a href="https://www.webpackjs.com/api/compilation-hooks/" target="_blank" rel="external">https://www.webpackjs.com/api/compilation-hooks/</a></p>
 <h2 id="编写插件"><a href="#编写插件" class="headerlink" title="编写插件"></a>编写插件</h2><p>我们现在假定有一个这么个需求：我需要在打包的时候把一个外部的<code>js</code>文件导入到项目中，并且在<code>index.html</code>引入，你可能会问了，那你直接在主入口引入不就行了吗？确实，感觉做这件事情很没有意义，但是我就要这个需求，原因在于我在使用<code>DllPlugin</code>的时候，提前生成好了一堆文件，这些文件是不会在正常打包的过程引入的，所以我需要在最后打包生成文件之前把他们导入到<code>dist</code>文件夹下，并且引入他们。</p>
 <p>那么我们现在开始编写，先写个简单的，一个文件的导入，抛砖引玉。</p>
 <p>首先我们思考一下🤔，这个插件得有配置呀，和<code>html-webpack-plugin</code>一样可以传参数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  plugin: [</span><br><span class="line">    <span class="keyword">new</span> TestPlugin(&#123;</span><br><span class="line">      filename: <span class="string">'test.js'</span>,</span><br><span class="line">      template: path.resolve(__dirname, <span class="string">'./otherFile/test.js'</span>),</span><br><span class="line">    &#125;),</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="attr">plugin</span>: [</div><div class="line">    <span class="keyword">new</span> TestPlugin(&#123;</div><div class="line">      <span class="attr">filename</span>: <span class="string">'test.js'</span>,</div><div class="line">      <span class="attr">template</span>: path.resolve(__dirname, <span class="string">'./otherFile/test.js'</span>),</div><div class="line">    &#125;),</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>我们在项目里新建文件夹<code>plugin</code>，文件夹下新建<code>TestPlugin.js</code>。然后在项目里再新建文件夹<code>otherFile</code>，文件夹下新建<code>test.js</code>，这里文件内容随便</p>
-<p>上面我们说了需要传递参数，所以有了下面这段<code>js</code>，<code>options</code>是我们传递的对象，<code>apply</code>就不多说了，每个插件都有这个方法，然后我们把这个插件暴露出来<br><code>TestPlugin.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestPlugin</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(options = &#123;&#125;) &#123;</span><br><span class="line">    <span class="keyword">this</span>.options = options;</span><br><span class="line">  &#125;</span><br><span class="line">  apply(compiler) &#123;</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = TestPlugin;</span><br></pre></td></tr></table></figure></p>
+<p>上面我们说了需要传递参数，所以有了下面这段<code>js</code>，<code>options</code>是我们传递的对象，<code>apply</code>就不多说了，每个插件都有这个方法，然后我们把这个插件暴露出来<br><code>TestPlugin.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestPlugin</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(options = &#123;&#125;) &#123;</div><div class="line">    <span class="keyword">this</span>.options = options;</div><div class="line">  &#125;</div><div class="line">  apply(compiler) &#123;</div><div class="line">    </div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="built_in">module</span>.exports = TestPlugin;</div></pre></td></tr></table></figure></p>
 <p>接下来我们开始写内部方法</p>
-<p>我们又要思考一下，我需要在打包完成之前做这个操作，那么<code>compiler</code>钩子的生命周期函数是哪个呢？没错，是emit，之前讲过，于是乎有了下面这段js<br><code>TestPlugin.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestPlugin</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(options = &#123;&#125;) &#123;</span><br><span class="line">    <span class="keyword">this</span>.options = options;</span><br><span class="line">  &#125;</span><br><span class="line">  apply(compiler) &#123;</span><br><span class="line">    compiler.hooks.emit.tapAsync(<span class="string">'TestPlugin'</span>, (compilation, callback) =&gt; &#123;</span><br><span class="line">      callback();</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = TestPlugin;</span><br></pre></td></tr></table></figure></p>
+<p>我们又要思考一下，我需要在打包完成之前做这个操作，那么<code>compiler</code>钩子的生命周期函数是哪个呢？没错，是emit，之前讲过，于是乎有了下面这段js<br><code>TestPlugin.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestPlugin</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(options = &#123;&#125;) &#123;</div><div class="line">    <span class="keyword">this</span>.options = options;</div><div class="line">  &#125;</div><div class="line">  apply(compiler) &#123;</div><div class="line">    compiler.hooks.emit.tapAsync(<span class="string">'TestPlugin'</span>, (compilation, callback) =&gt; &#123;</div><div class="line">      callback();</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="built_in">module</span>.exports = TestPlugin;</div></pre></td></tr></table></figure></p>
 <p>上面代码，我们注册了一个<code>emit</code>，<code>webpack</code>在执行打包的最后，会触发这个内部得方法</p>
 <p>接下来就是对文件得处理了，需要用到<code>compilation</code></p>
-<p>我们思考一下，怎么处理文件？我们需要用到<code>compilation</code>下的<code>asset</code>，来处理资源文件。<br>我们先把文件导入到<code>dist</code>文件夹下，于是乎有了下面这段js<br><code>TestPlugin.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestPlugin</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(options = &#123;&#125;) &#123;</span><br><span class="line">    <span class="keyword">this</span>.options = options;</span><br><span class="line">  &#125;</span><br><span class="line">  apply(compiler) &#123;</span><br><span class="line">    compiler.hooks.emit.tapAsync(<span class="string">'TestPlugin'</span>, (compilation, callback) =&gt; &#123;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">let</span> template = fs.readFileSync(<span class="keyword">this</span>.options.template, <span class="string">'UTF-8'</span>);</span><br><span class="line">      compilation.assets[<span class="keyword">this</span>.options.filename || <span class="string">'test.js'</span>] = &#123;</span><br><span class="line">        source: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="keyword">return</span> template;</span><br><span class="line">        &#125;,</span><br><span class="line">        size: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="keyword">return</span> template.length;</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;;</span><br><span class="line"></span><br><span class="line">      callback();</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = TestPlugin;</span><br></pre></td></tr></table></figure></p>
+<p>我们思考一下，怎么处理文件？我们需要用到<code>compilation</code>下的<code>asset</code>，来处理资源文件。<br>我们先把文件导入到<code>dist</code>文件夹下，于是乎有了下面这段js<br><code>TestPlugin.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestPlugin</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(options = &#123;&#125;) &#123;</div><div class="line">    <span class="keyword">this</span>.options = options;</div><div class="line">  &#125;</div><div class="line">  apply(compiler) &#123;</div><div class="line">    compiler.hooks.emit.tapAsync(<span class="string">'TestPlugin'</span>, (compilation, callback) =&gt; &#123;</div><div class="line"></div><div class="line">      <span class="keyword">let</span> template = fs.readFileSync(<span class="keyword">this</span>.options.template, <span class="string">'UTF-8'</span>);</div><div class="line">      compilation.assets[<span class="keyword">this</span>.options.filename || <span class="string">'test.js'</span>] = &#123;</div><div class="line">        <span class="attr">source</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">          <span class="keyword">return</span> template;</div><div class="line">        &#125;,</div><div class="line">        <span class="attr">size</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">          <span class="keyword">return</span> template.length;</div><div class="line">        &#125;,</div><div class="line">      &#125;;</div><div class="line"></div><div class="line">      callback();</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="built_in">module</span>.exports = TestPlugin;</div></pre></td></tr></table></figure></p>
 <p>上面代码，我们读取了插件实例传递过来的参数<code>filename</code>，调用<code>compilation</code>钩子下的<code>assets</code>，这个<code>assets</code>是一个键值对的形式，<code>key</code>是资源文件得名称，<code>value</code>是资源文件的内容，也是一个对象。执行<code>compilation.assets</code>，如果键值是一个已经存在的文件，<code>webpack</code>不会帮你重新创建，你可以去尝试修改一个文件</p>
 <p>好了，文件导入了，但是我们还需要在<code>index.html</code>去引入这个文件，思考一下，这个<code>index.html</code>是已经存在的，我们同样可以使用<code>compilation.assets</code>去修改它的文件内容，所以有了下面这段<code>js</code></p>
-<p><code>TestPlugin.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestPlugin</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(options = &#123;&#125;) &#123;</span><br><span class="line">    <span class="keyword">this</span>.options = options;</span><br><span class="line">  &#125;</span><br><span class="line">  apply(compiler) &#123;</span><br><span class="line">    compiler.hooks.emit.tapAsync(<span class="string">'TestPlugin'</span>, (compilation, callback) =&gt; &#123;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">let</span> template = fs.readFileSync(<span class="keyword">this</span>.options.template, <span class="string">'UTF-8'</span>);</span><br><span class="line">      compilation.assets[<span class="keyword">this</span>.options.filename || <span class="string">'test.js'</span>] = &#123;</span><br><span class="line">        source: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="keyword">return</span> template;</span><br><span class="line">        &#125;,</span><br><span class="line">        size: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="keyword">return</span> template.length;</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;;</span><br><span class="line">      <span class="comment">// 这里是新加的</span></span><br><span class="line">      <span class="keyword">let</span> source = compilation.assets[<span class="string">'index.html'</span>].source();</span><br><span class="line">      source = source.replace(</span><br><span class="line">        /<span class="xml"><span class="tag">&lt;<span class="name">\</span>/(<span class="attr">.</span>*?)&gt;</span>(.*?)<span class="tag">&lt;<span class="name">\</span>/<span class="attr">body</span>&gt;</span>$/m,</span></span><br><span class="line">        `&lt;/$1&gt;&lt;script src="$&#123;this.options.filename ||</span><br><span class="line"><span class="xml">          'test.js'&#125;"&gt;<span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><span class="string">`,</span></span><br><span class="line"><span class="string">      );</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">      compilation.assets['index.html'] = &#123;</span></span><br><span class="line"><span class="string">        source: function() &#123;</span></span><br><span class="line"><span class="string">          return source;</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        size: function() &#123;</span></span><br><span class="line"><span class="string">          return source.length;</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">      &#125;;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">      callback();</span></span><br><span class="line"><span class="string">    &#125;);</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">module.exports = TestPlugin;</span></span><br></pre></td></tr></table></figure></p>
+<p><code>TestPlugin.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestPlugin</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(options = &#123;&#125;) &#123;</div><div class="line">    <span class="keyword">this</span>.options = options;</div><div class="line">  &#125;</div><div class="line">  apply(compiler) &#123;</div><div class="line">    compiler.hooks.emit.tapAsync(<span class="string">'TestPlugin'</span>, (compilation, callback) =&gt; &#123;</div><div class="line"></div><div class="line">      <span class="keyword">let</span> template = fs.readFileSync(<span class="keyword">this</span>.options.template, <span class="string">'UTF-8'</span>);</div><div class="line">      compilation.assets[<span class="keyword">this</span>.options.filename || <span class="string">'test.js'</span>] = &#123;</div><div class="line">        <span class="attr">source</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">          <span class="keyword">return</span> template;</div><div class="line">        &#125;,</div><div class="line">        <span class="attr">size</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">          <span class="keyword">return</span> template.length;</div><div class="line">        &#125;,</div><div class="line">      &#125;;</div><div class="line">      <span class="comment">// 这里是新加的</span></div><div class="line">      <span class="keyword">let</span> source = compilation.assets[<span class="string">'index.html'</span>].source();</div><div class="line">      source = source.replace(</div><div class="line">        <span class="regexp">/&lt;\/(.*?)&gt;(.*?)&lt;\/body&gt;$/m</span>,</div><div class="line">        <span class="string">`&lt;/$1&gt;&lt;script src="<span class="subst">$&#123;<span class="keyword">this</span>.options.filename ||</span></span></div><div class="line">          <span class="string">'test.js'</span>&#125;"&gt;&lt;/script&gt;&lt;/body&gt;`,</div><div class="line">      );</div><div class="line"></div><div class="line">      compilation.assets[<span class="string">'index.html'</span>] = &#123;</div><div class="line">        <span class="attr">source</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">          <span class="keyword">return</span> source;</div><div class="line">        &#125;,</div><div class="line">        <span class="attr">size</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">          <span class="keyword">return</span> source.length;</div><div class="line">        &#125;,</div><div class="line">      &#125;;</div><div class="line"></div><div class="line">      callback();</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="built_in">module</span>.exports = TestPlugin;</div></pre></td></tr></table></figure></p>
 <p>我们通过修改文件的<code>source</code>，把一段<code>script</code>插入到<code>body</code>之前来修改文件</p>
 <p>插件写好了，我们在<code>webpack</code>去引入吧</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; CleanWebpackPlugin &#125; = <span class="built_in">require</span>(<span class="string">'clean-webpack-plugin'</span>);</span><br><span class="line"><span class="keyword">const</span> TestPlugin = <span class="built_in">require</span>(<span class="string">'./plugin/TestPlugin'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  mode: <span class="string">'production'</span>,</span><br><span class="line">  entry: &#123;</span><br><span class="line">    app: <span class="string">'./src/index.js'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">'[name].[hash].js'</span>,</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'dist/'</span>),</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> CleanWebpackPlugin(),</span><br><span class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123; <span class="attr">template</span>: <span class="string">'index.html'</span> &#125;),</span><br><span class="line">    <span class="keyword">new</span> TestPlugin(&#123;</span><br><span class="line">      filename: <span class="string">'test.js'</span>,</span><br><span class="line">      template: path.resolve(__dirname, <span class="string">'./otherFile/test.js'</span>),</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</div><div class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</div><div class="line"><span class="keyword">const</span> &#123; CleanWebpackPlugin &#125; = <span class="built_in">require</span>(<span class="string">'clean-webpack-plugin'</span>);</div><div class="line"><span class="keyword">const</span> TestPlugin = <span class="built_in">require</span>(<span class="string">'./plugin/TestPlugin'</span>);</div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="attr">mode</span>: <span class="string">'production'</span>,</div><div class="line">  <span class="attr">entry</span>: &#123;</div><div class="line">    <span class="attr">app</span>: <span class="string">'./src/index.js'</span>,</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">output</span>: &#123;</div><div class="line">    <span class="attr">filename</span>: <span class="string">'[name].[hash].js'</span>,</div><div class="line">    <span class="attr">path</span>: path.resolve(__dirname, <span class="string">'dist/'</span>),</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">plugins</span>: [</div><div class="line">    <span class="keyword">new</span> CleanWebpackPlugin(),</div><div class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123; <span class="attr">template</span>: <span class="string">'index.html'</span> &#125;),</div><div class="line">    <span class="keyword">new</span> TestPlugin(&#123;</div><div class="line">      <span class="attr">filename</span>: <span class="string">'test.js'</span>,</div><div class="line">      <span class="attr">template</span>: path.resolve(__dirname, <span class="string">'./otherFile/test.js'</span>),</div><div class="line">    &#125;),</div><div class="line">  ],</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>打包运行一下，看看效果吧</p>
-<p>插件代码仓库：<a href="https://github.com/wclimb/webpack-plugin" target="_blank" rel="noopener">https://github.com/wclimb/webpack-plugin</a></p>
+<p>插件代码仓库：<a href="https://github.com/wclimb/webpack-plugin" target="_blank" rel="external">https://github.com/wclimb/webpack-plugin</a></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>今天我们学习了一如何编写一个插件，当然只是简单的操作了，可以思考一下，要实现<code>clean-webpack-plugin</code>或者<code>html-webpack-plugin</code>插件，我们该怎么做？</p>
 <p>本文地址 <a href="http://www.wclimb.site/2019/06/21/webpack系列之编写一个plugin/">webpack系列之编写一个plugin</a></p>
 
@@ -519,13 +520,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay">
+          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay"/>
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay">
+          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay"/>
           <p>支付宝打赏</p>
         </div>
       
@@ -624,7 +625,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -635,7 +636,9 @@
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="wclimb">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="wclimb" />
           <p class="site-author-name" itemprop="name">wclimb</p>
            
               <p class="site-description motion-element" itemprop="description"></p>
@@ -646,7 +649,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -657,7 +660,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -668,7 +671,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -799,7 +802,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">
+        <div class="copyright" >
   
   &copy;  2017 - 
   <span itemprop="copyrightYear">2021</span>

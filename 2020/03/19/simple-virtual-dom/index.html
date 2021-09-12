@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
 
@@ -19,8 +19,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
   
     
   
-  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -76,21 +76,21 @@
 
   
 
-<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
-
-
-  <meta name="keywords" content="原创,javascript,vue,源码,">
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
+  <meta name="keywords" content="原创,javascript,vue,源码," />
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico?v=5.1.1">
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico?v=5.1.1" />
 
 
 
@@ -104,12 +104,11 @@
 <meta property="og:url" content="http://www.wclimb.site/2020/03/19/simple-virtual-dom/index.html">
 <meta property="og:site_name" content="wclimb的个人博客--分享">
 <meta property="og:description" content="前言上一篇我们讲了一下 Vue 的 虚拟DOM，从创建到更新整个流程。今天带大家撸一个简易的虚拟DOM，本文的大部分借鉴 Vue 源码 浏览器渲染流程 摘自浏览器工作原理与实践    渲染进程将 HTML 内容转换为能够读懂的 DOM 树结构。 渲染引擎将 CSS 样式表转化为浏览器可以理解的 styleSheets，计算出 DOM 节点的样式。 创建布局树，并计算元素的布局信息。 对布局树进行分">
-<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.wclimb.site/img/virtual-dom/brower-dom-render.png">
 <meta property="og:image" content="http://www.wclimb.site/img/virtual-dom/vnode.png">
 <meta property="og:image" content="http://www.wclimb.site/img/virtual-dom/old.png">
 <meta property="og:image" content="http://www.wclimb.site/img/virtual-dom/new.png">
-<meta property="og:updated_time" content="2020-03-25T12:01:44.558Z">
+<meta property="og:updated_time" content="2021-09-12T07:52:45.017Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="撸一个简易Virtual DOM">
 <meta name="twitter:description" content="前言上一篇我们讲了一下 Vue 的 虚拟DOM，从创建到更新整个流程。今天带大家撸一个简易的虚拟DOM，本文的大部分借鉴 Vue 源码 浏览器渲染流程 摘自浏览器工作原理与实践    渲染进程将 HTML 内容转换为能够读懂的 DOM 树结构。 渲染引擎将 CSS 样式表转化为浏览器可以理解的 styleSheets，计算出 DOM 节点的样式。 创建布局树，并计算元素的布局信息。 对布局树进行分">
@@ -141,7 +140,7 @@
 
 
 
-  <link rel="canonical" href="http://www.wclimb.site/2020/03/19/simple-virtual-dom/">
+  <link rel="canonical" href="http://www.wclimb.site/2020/03/19/simple-virtual-dom/"/>
 
 
 
@@ -181,7 +180,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">wclimb的个人博客--分享</span>
         <span class="logo-line-after"><i></i></span>
@@ -211,7 +210,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -221,7 +220,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -231,7 +230,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -241,7 +240,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -251,7 +250,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -264,7 +263,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
             搜索
           </a>
@@ -285,7 +284,9 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -322,7 +323,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wclimb">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
@@ -358,7 +359,7 @@
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -402,7 +403,7 @@
           
             <span class="post-meta-divider">|</span>
             <span class="page-pv"><i class="fa fa-file-o"></i>   浏览
-            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
             </span>
           
 
@@ -442,9 +443,9 @@
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><a href="http://www.wclimb.site/2020/03/17/vue-source-code-virtual-dom/">上一篇</a>我们讲了一下 <code>Vue</code> 的 <code>虚拟DOM</code>，从创建到更新整个流程。今天带大家撸一个简易的<code>虚拟DOM</code>，本文的大部分借鉴 <code>Vue</code> 源码</p>
 <h2 id="浏览器渲染流程"><a href="#浏览器渲染流程" class="headerlink" title="浏览器渲染流程"></a>浏览器渲染流程</h2><blockquote>
-<p>摘自<a href="https://time.geekbang.org/column/article/118826" target="_blank" rel="noopener">浏览器工作原理与实践</a></p>
+<p>摘自<a href="https://time.geekbang.org/column/article/118826" target="_blank" rel="external">浏览器工作原理与实践</a></p>
 </blockquote>
-<p><img src="/img/virtual-dom/brower-dom-render.png" alt></p>
+<p><img src="/img/virtual-dom/brower-dom-render.png" alt=""></p>
 <ol>
 <li>渲染进程将 <code>HTML</code> 内容转换为能够读懂的 <code>DOM</code> 树结构。</li>
 <li>渲染引擎将 <code>CSS</code> 样式表转化为浏览器可以理解的 <code>styleSheets</code>，计算出 <code>DOM</code> 节点的样式。</li>
@@ -456,11 +457,11 @@
 <li>浏览器进程根据 <code>DrawQuad</code> 消息生成页面，并显示到显示器上。</li>
 </ol>
 <h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>首先我们要明白什么是<code>虚拟DOM</code>，为什么要用到它，<code>虚拟DOM</code> 是使用 <code>javascript</code> 对象来描述 <code>DOM</code> 树，一切的更新修改都是在更改这个对象，然后反应到真实的 <code>DOM</code> 下。要说为什么要用到它，肯定是因为性能好，因为直接操作 <code>DOM</code> 的代价是很大的，比如，一次操作中有 <code>10</code> 次更新 <code>DOM</code> 的动作，<code>虚拟DOM</code> 不会立即操作 <code>DOM</code>，而是将这 <code>10</code> 次更新的 <code>diff</code> 内容保存到本地一个 <code>js</code> 对象中，最终将这个 <code>js</code> 对象一次性 反应到 <code>DOM</code> 树上，再进行后续操作，避免大量无谓的计算。也有人反驳说，使用 <code>虚拟DOM</code> 比起操作真实 <code>DOM</code> 要慢，的确如此，使用 <code>虚拟DOM</code> 确实没有原生操作快，但是既然使用了框架，优化框架都会帮你做，你不用自己去手动做DOM的优化，不用处处去考虑操作 <code>DOM</code> 带来的性能问题，使用 <code>虚拟DOM</code> 可以让性能得到有力的保证。</p>
-<p>可以参考知乎问题 <a href="https://www.zhihu.com/question/31809713" target="_blank" rel="noopener">网上都说操作真实 DOM 慢，但测试结果却比 React 更快，为什么？</a></p>
+<p>可以参考知乎问题 <a href="https://www.zhihu.com/question/31809713" target="_blank" rel="external">网上都说操作真实 DOM 慢，但测试结果却比 React 更快，为什么？</a></p>
 <h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="使用js对象模拟DOM树"><a href="#使用js对象模拟DOM树" class="headerlink" title="使用js对象模拟DOM树"></a>使用js对象模拟DOM树</h3><p>这里我们不使用 <code>Vue</code> 的那种根据 <code>template</code> 生成 <code>虚拟DOM</code> 的方法，那样太复杂了，这里只讲简单的方法，我们直接使用 <code>js</code> 对象来描述 <code>DOM</code></p>
-<p>比如如下 的<code>html</code> 代码<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span> <span class="attr">data-title</span>=<span class="string">"header"</span>&gt;</span>Virtual Dom<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"ul1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>比如如下 的<code>html</code> 代码<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">h1</span> <span class="attr">data-title</span>=<span class="string">"header"</span>&gt;</span>Virtual Dom<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"ul1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<p>使用 <code>js</code> 对象表示<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">vnode</span>(<span class="params">tag, data, children</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    tag,</span><br><span class="line">    data,</span><br><span class="line">    children,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createElement</span>(<span class="params">vNode</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> el;</span><br><span class="line">  <span class="keyword">if</span> (vNode.tag === <span class="string">'textNode'</span>) &#123;</span><br><span class="line">    el = <span class="built_in">document</span>.createTextNode(vNode.children[<span class="number">0</span>]);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    el = <span class="built_in">document</span>.createElement(vNode.tag);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">in</span> vNode.data) &#123;</span><br><span class="line">      <span class="keyword">if</span> (vNode.data.hasOwnProperty(key)) &#123;</span><br><span class="line">        el.setAttribute(key, vNode.data[key]);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(vNode.children) &amp;&amp; vNode.children.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      vNode.children.forEach(<span class="function"><span class="params">val</span> =&gt;</span> &#123;</span><br><span class="line">        el.appendChild(createElement(val));</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  vNode.$el = el;</span><br><span class="line">  <span class="keyword">return</span> el;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>使用 <code>js</code> 对象表示<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">vnode</span>(<span class="params">tag, data, children</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    tag,</div><div class="line">    data,</div><div class="line">    children,</div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createElement</span>(<span class="params">vNode</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> el;</div><div class="line">  <span class="keyword">if</span> (vNode.tag === <span class="string">'textNode'</span>) &#123;</div><div class="line">    el = <span class="built_in">document</span>.createTextNode(vNode.children[<span class="number">0</span>]);</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    el = <span class="built_in">document</span>.createElement(vNode.tag);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">in</span> vNode.data) &#123;</div><div class="line">      <span class="keyword">if</span> (vNode.data.hasOwnProperty(key)) &#123;</div><div class="line">        el.setAttribute(key, vNode.data[key]);</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(vNode.children) &amp;&amp; vNode.children.length &gt; <span class="number">0</span>) &#123;</div><div class="line">      vNode.children.forEach(<span class="function"><span class="params">val</span> =&gt;</span> &#123;</div><div class="line">        el.appendChild(createElement(val));</div><div class="line">      &#125;);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  vNode.$el = el;</div><div class="line">  <span class="keyword">return</span> el;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <ul>
 <li><code>tag</code>：表示当前元素的标签名，后面会看到有 <code>textNode</code> 的标签名，实际上没有，在这里特指文本节点</li>
 <li><code>data</code>：表示当前元素上的 <code>attribute</code></li>
@@ -469,27 +470,27 @@
 <li><p><code>createElement</code>：使用该方法渲染到页面上</p>
 </li>
 </ul>
-<p>生成 <code>vNode</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> vNode1 = vnode(<span class="string">'div'</span>, &#123; <span class="attr">id</span>: <span class="string">'app'</span> &#125;, [</span><br><span class="line">  vnode(<span class="string">'h1'</span>, &#123; <span class="string">'data-title'</span>: <span class="string">'header'</span> &#125;, [</span><br><span class="line">    vnode(<span class="string">'textNode'</span>, &#123;&#125;, [<span class="string">'Virtual Dom'</span>]),</span><br><span class="line">  ]),</span><br><span class="line">  vnode(<span class="string">'ul'</span>, &#123; <span class="attr">class</span>: <span class="string">'ul1'</span> &#125;, [</span><br><span class="line">    vnode(<span class="string">'li'</span>, &#123;&#125;, [vnode(<span class="string">'textNode'</span>, &#123;&#125;, [<span class="string">'1'</span>])]),</span><br><span class="line">    vnode(<span class="string">'li'</span>, &#123;&#125;, [vnode(<span class="string">'textNode'</span>, &#123;&#125;, [<span class="string">'2'</span>])]),</span><br><span class="line">    vnode(<span class="string">'li'</span>, &#123;&#125;, [vnode(<span class="string">'textNode'</span>, &#123;&#125;, [<span class="string">'3'</span>])]),</span><br><span class="line">  ]),</span><br><span class="line">]);</span><br></pre></td></tr></table></figure></p>
-<p><img src="/img/virtual-dom/vnode.png" alt></p>
-<p>反应到页面上，把结果放到 <code>body</code> 下<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.body.appendChild(createElement(vNode1))</span><br></pre></td></tr></table></figure></p>
-<p>效果<br><img src="/img/virtual-dom/old.png" alt></p>
+<p>生成 <code>vNode</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> vNode1 = vnode(<span class="string">'div'</span>, &#123; <span class="attr">id</span>: <span class="string">'app'</span> &#125;, [</div><div class="line">  vnode(<span class="string">'h1'</span>, &#123; <span class="string">'data-title'</span>: <span class="string">'header'</span> &#125;, [</div><div class="line">    vnode(<span class="string">'textNode'</span>, &#123;&#125;, [<span class="string">'Virtual Dom'</span>]),</div><div class="line">  ]),</div><div class="line">  vnode(<span class="string">'ul'</span>, &#123; <span class="attr">class</span>: <span class="string">'ul1'</span> &#125;, [</div><div class="line">    vnode(<span class="string">'li'</span>, &#123;&#125;, [vnode(<span class="string">'textNode'</span>, &#123;&#125;, [<span class="string">'1'</span>])]),</div><div class="line">    vnode(<span class="string">'li'</span>, &#123;&#125;, [vnode(<span class="string">'textNode'</span>, &#123;&#125;, [<span class="string">'2'</span>])]),</div><div class="line">    vnode(<span class="string">'li'</span>, &#123;&#125;, [vnode(<span class="string">'textNode'</span>, &#123;&#125;, [<span class="string">'3'</span>])]),</div><div class="line">  ]),</div><div class="line">]);</div></pre></td></tr></table></figure></p>
+<p><img src="/img/virtual-dom/vnode.png" alt=""></p>
+<p>反应到页面上，把结果放到 <code>body</code> 下<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.body.appendChild(createElement(vNode1))</div></pre></td></tr></table></figure></p>
+<p>效果<br><img src="/img/virtual-dom/old.png" alt=""></p>
 <h3 id="更新Virtual-Dom"><a href="#更新Virtual-Dom" class="headerlink" title="更新Virtual Dom"></a>更新Virtual Dom</h3><p>更新之前我们把之前的旧的<code>虚拟DOM</code> <code>li</code>列表上的 <code>key</code>值加上</p>
-<p><code>oldVNode</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> vNode1 = vnode(<span class="string">'div'</span>, &#123; <span class="attr">id</span>: <span class="string">'app'</span> &#125;, [</span><br><span class="line">  vnode(<span class="string">'h1'</span>, &#123; <span class="string">'data-title'</span>: <span class="string">'header'</span> &#125;, [</span><br><span class="line">    vnode(<span class="string">'textNode'</span>, &#123;&#125;, [<span class="string">'Virtual Dom'</span>]),</span><br><span class="line">  ]),</span><br><span class="line">  vnode(<span class="string">'ul'</span>, &#123; <span class="attr">class</span>: <span class="string">'ul1'</span> &#125;, [</span><br><span class="line">    vnode(<span class="string">'li'</span>, &#123;<span class="attr">key</span>: <span class="number">1</span>&#125;, [vnode(<span class="string">'textNode'</span>, &#123;&#125;, [<span class="string">'1'</span>])]),</span><br><span class="line">    vnode(<span class="string">'li'</span>, &#123;<span class="attr">key</span>: <span class="number">2</span>&#125;, [vnode(<span class="string">'textNode'</span>, &#123;&#125;, [<span class="string">'2'</span>])]),</span><br><span class="line">    vnode(<span class="string">'li'</span>, &#123;<span class="attr">key</span>: <span class="number">3</span>&#125;, [vnode(<span class="string">'textNode'</span>, &#123;&#125;, [<span class="string">'3'</span>])]),</span><br><span class="line">  ]),</span><br><span class="line">]);</span><br></pre></td></tr></table></figure></p>
-<p><code>newVNode</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> vNode2 = vnode(<span class="string">'div'</span>, &#123; <span class="attr">id</span>: <span class="string">'app'</span> &#125;, [</span><br><span class="line">  vnode(<span class="string">'h4'</span>, &#123; <span class="attr">id</span>: <span class="string">'header'</span>&#125;, [</span><br><span class="line">    vnode(<span class="string">'textNode'</span>, &#123;&#125;, [<span class="string">'元素标签改变了'</span>]),</span><br><span class="line">  ]),</span><br><span class="line">  vnode(<span class="string">'ul'</span>, &#123; <span class="attr">class</span>: <span class="string">'ul2'</span> &#125;, [</span><br><span class="line">    vnode(<span class="string">'li'</span>, &#123;<span class="attr">key</span>: <span class="number">5</span>&#125;, [vnode(<span class="string">'textNode'</span>, &#123;&#125;, [<span class="string">'5'</span>])]),</span><br><span class="line">    vnode(<span class="string">'li'</span>, &#123;<span class="attr">key</span>: <span class="number">2</span>&#125;, [vnode(<span class="string">'textNode'</span>, &#123;&#125;, [<span class="string">'2'</span>])]),</span><br><span class="line">    vnode(<span class="string">'li'</span>, &#123;<span class="attr">key</span>: <span class="number">1</span>&#125;, [vnode(<span class="string">'textNode'</span>, &#123;&#125;, [<span class="string">'1'</span>])]),</span><br><span class="line">    vnode(<span class="string">'li'</span>, &#123;<span class="attr">key</span>: <span class="number">4</span>&#125;, [vnode(<span class="string">'textNode'</span>, &#123;&#125;, [<span class="string">'4'</span>])]),</span><br><span class="line">  ]),</span><br><span class="line">]);</span><br></pre></td></tr></table></figure></p>
+<p><code>oldVNode</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> vNode1 = vnode(<span class="string">'div'</span>, &#123; <span class="attr">id</span>: <span class="string">'app'</span> &#125;, [</div><div class="line">  vnode(<span class="string">'h1'</span>, &#123; <span class="string">'data-title'</span>: <span class="string">'header'</span> &#125;, [</div><div class="line">    vnode(<span class="string">'textNode'</span>, &#123;&#125;, [<span class="string">'Virtual Dom'</span>]),</div><div class="line">  ]),</div><div class="line">  vnode(<span class="string">'ul'</span>, &#123; <span class="attr">class</span>: <span class="string">'ul1'</span> &#125;, [</div><div class="line">    vnode(<span class="string">'li'</span>, &#123;<span class="attr">key</span>: <span class="number">1</span>&#125;, [vnode(<span class="string">'textNode'</span>, &#123;&#125;, [<span class="string">'1'</span>])]),</div><div class="line">    vnode(<span class="string">'li'</span>, &#123;<span class="attr">key</span>: <span class="number">2</span>&#125;, [vnode(<span class="string">'textNode'</span>, &#123;&#125;, [<span class="string">'2'</span>])]),</div><div class="line">    vnode(<span class="string">'li'</span>, &#123;<span class="attr">key</span>: <span class="number">3</span>&#125;, [vnode(<span class="string">'textNode'</span>, &#123;&#125;, [<span class="string">'3'</span>])]),</div><div class="line">  ]),</div><div class="line">]);</div></pre></td></tr></table></figure></p>
+<p><code>newVNode</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> vNode2 = vnode(<span class="string">'div'</span>, &#123; <span class="attr">id</span>: <span class="string">'app'</span> &#125;, [</div><div class="line">  vnode(<span class="string">'h4'</span>, &#123; <span class="attr">id</span>: <span class="string">'header'</span>&#125;, [</div><div class="line">    vnode(<span class="string">'textNode'</span>, &#123;&#125;, [<span class="string">'元素标签改变了'</span>]),</div><div class="line">  ]),</div><div class="line">  vnode(<span class="string">'ul'</span>, &#123; <span class="attr">class</span>: <span class="string">'ul2'</span> &#125;, [</div><div class="line">    vnode(<span class="string">'li'</span>, &#123;<span class="attr">key</span>: <span class="number">5</span>&#125;, [vnode(<span class="string">'textNode'</span>, &#123;&#125;, [<span class="string">'5'</span>])]),</div><div class="line">    vnode(<span class="string">'li'</span>, &#123;<span class="attr">key</span>: <span class="number">2</span>&#125;, [vnode(<span class="string">'textNode'</span>, &#123;&#125;, [<span class="string">'2'</span>])]),</div><div class="line">    vnode(<span class="string">'li'</span>, &#123;<span class="attr">key</span>: <span class="number">1</span>&#125;, [vnode(<span class="string">'textNode'</span>, &#123;&#125;, [<span class="string">'1'</span>])]),</div><div class="line">    vnode(<span class="string">'li'</span>, &#123;<span class="attr">key</span>: <span class="number">4</span>&#125;, [vnode(<span class="string">'textNode'</span>, &#123;&#125;, [<span class="string">'4'</span>])]),</div><div class="line">  ]),</div><div class="line">]);</div></pre></td></tr></table></figure></p>
 <p>你会发现为把 <code>h1</code> 标签改成了 <code>h4</code>,文本那样也改变了，在 <code>ul</code> 列表里，把他们的顺序改变了，并插入删除了部分元素。当然你也可以定制更复杂的结构</p>
-<p>开始 <code>diff</code>，调用 <code>patchVnode</code> 方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">patchVnode(vNode1, vNode2);</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">patchVnode</span>(<span class="params">oldVnode, vnode</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 1. 文本节点都一样</span></span><br><span class="line">  <span class="keyword">if</span> (oldVnode.tag === <span class="string">'textNode'</span> || vnode.tag === <span class="string">'textNode'</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (oldVnode.children[<span class="number">0</span>] !== vnode.children[<span class="number">0</span>]) &#123;</span><br><span class="line">      oldVnode.$el.textContent = vnode.children[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 2. data是否被改变</span></span><br><span class="line">  <span class="keyword">if</span> (dataChanged(oldVnode.data, vnode.data)) &#123;</span><br><span class="line">    <span class="keyword">const</span> oldData = oldVnode.data;</span><br><span class="line">    <span class="keyword">const</span> newData = vnode.data;</span><br><span class="line">    <span class="keyword">const</span> oldDataKeys = <span class="built_in">Object</span>.keys(oldData);</span><br><span class="line">    <span class="keyword">const</span> newDataKeys = <span class="built_in">Object</span>.keys(newData);</span><br><span class="line">    <span class="keyword">if</span> (oldDataKeys.length === <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; oldDataKeys.length; i++) &#123;</span><br><span class="line">        oldVnode.$el.removeAttribute(oldData[i]);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> filterKeys = <span class="keyword">new</span> <span class="built_in">Set</span>([...oldDataKeys, ...newDataKeys]);</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">of</span> filterKeys) &#123;</span><br><span class="line">        <span class="keyword">if</span> (isUndef(newData[key])) &#123;</span><br><span class="line">          oldVnode.$el.removeAttribute(oldData[key]);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (newData[key] !== oldData[key]) &#123;</span><br><span class="line">          oldVnode.$el.setAttribute(key, newData[key]);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> oldCh = oldVnode.children;</span><br><span class="line">  <span class="keyword">var</span> ch = vnode.children;</span><br><span class="line">  <span class="comment">// 如果新旧子节点仍然存在，则继续diff它的子节点</span></span><br><span class="line">  <span class="keyword">if</span> (oldCh.length || ch.length) &#123;</span><br><span class="line">    updateChildren(oldVnode.$el, oldCh, ch);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>开始 <code>diff</code>，调用 <code>patchVnode</code> 方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">patchVnode(vNode1, vNode2);</div></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">patchVnode</span>(<span class="params">oldVnode, vnode</span>) </span>&#123;</div><div class="line">  <span class="comment">// 1. 文本节点都一样</span></div><div class="line">  <span class="keyword">if</span> (oldVnode.tag === <span class="string">'textNode'</span> || vnode.tag === <span class="string">'textNode'</span>) &#123;</div><div class="line">    <span class="keyword">if</span> (oldVnode.children[<span class="number">0</span>] !== vnode.children[<span class="number">0</span>]) &#123;</div><div class="line">      oldVnode.$el.textContent = vnode.children[<span class="number">0</span>];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// 2. data是否被改变</span></div><div class="line">  <span class="keyword">if</span> (dataChanged(oldVnode.data, vnode.data)) &#123;</div><div class="line">    <span class="keyword">const</span> oldData = oldVnode.data;</div><div class="line">    <span class="keyword">const</span> newData = vnode.data;</div><div class="line">    <span class="keyword">const</span> oldDataKeys = <span class="built_in">Object</span>.keys(oldData);</div><div class="line">    <span class="keyword">const</span> newDataKeys = <span class="built_in">Object</span>.keys(newData);</div><div class="line">    <span class="keyword">if</span> (oldDataKeys.length === <span class="number">0</span>) &#123;</div><div class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; oldDataKeys.length; i++) &#123;</div><div class="line">        oldVnode.$el.removeAttribute(oldData[i]);</div><div class="line">      &#125;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">const</span> filterKeys = <span class="keyword">new</span> <span class="built_in">Set</span>([...oldDataKeys, ...newDataKeys]);</div><div class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">of</span> filterKeys) &#123;</div><div class="line">        <span class="keyword">if</span> (isUndef(newData[key])) &#123;</div><div class="line">          oldVnode.$el.removeAttribute(oldData[key]);</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (newData[key] !== oldData[key]) &#123;</div><div class="line">          oldVnode.$el.setAttribute(key, newData[key]);</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">var</span> oldCh = oldVnode.children;</div><div class="line">  <span class="keyword">var</span> ch = vnode.children;</div><div class="line">  <span class="comment">// 如果新旧子节点仍然存在，则继续diff它的子节点</span></div><div class="line">  <span class="keyword">if</span> (oldCh.length || ch.length) &#123;</div><div class="line">    updateChildren(oldVnode.$el, oldCh, ch);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>上面先对最外层进行比较，</p>
 <ol>
 <li>如果是文本，说明已经是当前最后的一个元素了，后面不需要继续执行，发现不一样则改变他们</li>
 <li>判断 <code>data</code> 是否变更，如果变更则进行插入或者删除修改操作</li>
 <li>继续找它的子元素是否操作，如果存在进行子元素的 <code>diff</code>，使用 <code>updateChildren</code></li>
 </ol>
-<p><code>updateChildren</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateChildren</span>(<span class="params">parentElm, oldCh, newCh</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (oldCh) <span class="keyword">var</span> oldStartIdx = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">var</span> newStartIdx = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">var</span> oldEndIdx = oldCh.length - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">var</span> oldStartVnode = oldCh[<span class="number">0</span>];</span><br><span class="line">  <span class="keyword">var</span> oldEndVnode = oldCh[oldEndIdx];</span><br><span class="line">  <span class="keyword">var</span> newEndIdx = newCh.length - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">var</span> newStartVnode = newCh[<span class="number">0</span>];</span><br><span class="line">  <span class="keyword">var</span> newEndVnode = newCh[newEndIdx];</span><br><span class="line">  <span class="keyword">var</span> oldKeyToIdx, idxInOld, vnodeToMove, refElm;</span><br><span class="line">  <span class="keyword">while</span> (oldStartIdx &lt;= oldEndIdx &amp;&amp; newStartIdx &lt;= newEndIdx) &#123;</span><br><span class="line">    <span class="keyword">if</span> (isUndef(oldStartVnode)) &#123;</span><br><span class="line">      oldStartVnode = oldCh[++oldStartIdx];</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isUndef(oldEndVnode)) &#123;</span><br><span class="line">      oldEndVnode = oldCh[--oldEndIdx];</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (sameVnode(oldStartVnode, newStartVnode)) &#123;</span><br><span class="line">      patchVnode(oldStartVnode, newStartVnode);</span><br><span class="line">      oldStartVnode = oldCh[++oldStartIdx];</span><br><span class="line">      newStartVnode = newCh[++newStartIdx];</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (sameVnode(oldEndVnode, newEndVnode)) &#123;</span><br><span class="line">      patchVnode(oldEndVnode, newEndVnode);</span><br><span class="line">      oldEndVnode = oldCh[--oldEndIdx];</span><br><span class="line">      newEndVnode = newCh[--newEndIdx];</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (sameVnode(oldStartVnode, newEndVnode)) &#123;</span><br><span class="line">      patchVnode(oldStartVnode, newEndVnode);</span><br><span class="line">      parentElm.insertBefore(oldStartVnode.$el, oldEndVnode.$el.nextSibling);</span><br><span class="line">      oldStartVnode = oldCh[++oldStartIdx];</span><br><span class="line">      newEndVnode = newCh[--newEndIdx];</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (sameVnode(oldEndVnode, newStartVnode)) &#123;</span><br><span class="line">      patchVnode(oldEndVnode, newStartVnode);</span><br><span class="line">      parentElm.insertBefore(oldEndVnode.$el, oldStartVnode.$el);</span><br><span class="line">      oldEndVnode = oldCh[--oldEndIdx];</span><br><span class="line">      newStartVnode = newCh[++newStartIdx];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (isUndef(oldKeyToIdx)) &#123;</span><br><span class="line">        oldKeyToIdx = createKeyToOldIdx(oldCh, oldStartIdx, oldEndIdx);</span><br><span class="line">      &#125;</span><br><span class="line">      idxInOld = isDef(newStartVnode.key)</span><br><span class="line">        ? oldKeyToIdx[newStartVnode.key]</span><br><span class="line">        : findIdxInOld(newStartVnode, oldCh, oldStartIdx, oldEndIdx);</span><br><span class="line">      <span class="keyword">if</span> (isUndef(idxInOld)) &#123;</span><br><span class="line">        parentElm.insertBefore(createElement(newStartVnode), oldStartVnode.$el);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        vnodeToMove = oldCh[idxInOld];</span><br><span class="line">        <span class="keyword">if</span> (sameVnode(vnodeToMove, newStartVnode)) &#123;</span><br><span class="line">          patchVnode(vnodeToMove, newStartVnode);</span><br><span class="line">          oldCh[idxInOld] = <span class="literal">undefined</span>;</span><br><span class="line">          parentElm.insertBefore(vnodeToMove.$el, oldStartVnode.$el);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          parentElm.insertBefore(</span><br><span class="line">            createElement(newStartVnode),</span><br><span class="line">            oldStartVnode.$el,</span><br><span class="line">          );</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      newStartVnode = newCh[++newStartIdx];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (oldStartIdx &gt; oldEndIdx) &#123;</span><br><span class="line">    addVnodes(parentElm, newCh, newStartIdx, newEndIdx);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (newStartIdx &gt; newEndIdx) &#123;</span><br><span class="line">    removeVnodes(parentElm, oldCh, oldStartIdx, oldEndIdx);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>updateChildren</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateChildren</span>(<span class="params">parentElm, oldCh, newCh</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (oldCh) <span class="keyword">var</span> oldStartIdx = <span class="number">0</span>;</div><div class="line">  <span class="keyword">var</span> newStartIdx = <span class="number">0</span>;</div><div class="line">  <span class="keyword">var</span> oldEndIdx = oldCh.length - <span class="number">1</span>;</div><div class="line">  <span class="keyword">var</span> oldStartVnode = oldCh[<span class="number">0</span>];</div><div class="line">  <span class="keyword">var</span> oldEndVnode = oldCh[oldEndIdx];</div><div class="line">  <span class="keyword">var</span> newEndIdx = newCh.length - <span class="number">1</span>;</div><div class="line">  <span class="keyword">var</span> newStartVnode = newCh[<span class="number">0</span>];</div><div class="line">  <span class="keyword">var</span> newEndVnode = newCh[newEndIdx];</div><div class="line">  <span class="keyword">var</span> oldKeyToIdx, idxInOld, vnodeToMove, refElm;</div><div class="line">  <span class="keyword">while</span> (oldStartIdx &lt;= oldEndIdx &amp;&amp; newStartIdx &lt;= newEndIdx) &#123;</div><div class="line">    <span class="keyword">if</span> (isUndef(oldStartVnode)) &#123;</div><div class="line">      oldStartVnode = oldCh[++oldStartIdx];</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isUndef(oldEndVnode)) &#123;</div><div class="line">      oldEndVnode = oldCh[--oldEndIdx];</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (sameVnode(oldStartVnode, newStartVnode)) &#123;</div><div class="line">      patchVnode(oldStartVnode, newStartVnode);</div><div class="line">      oldStartVnode = oldCh[++oldStartIdx];</div><div class="line">      newStartVnode = newCh[++newStartIdx];</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (sameVnode(oldEndVnode, newEndVnode)) &#123;</div><div class="line">      patchVnode(oldEndVnode, newEndVnode);</div><div class="line">      oldEndVnode = oldCh[--oldEndIdx];</div><div class="line">      newEndVnode = newCh[--newEndIdx];</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (sameVnode(oldStartVnode, newEndVnode)) &#123;</div><div class="line">      patchVnode(oldStartVnode, newEndVnode);</div><div class="line">      parentElm.insertBefore(oldStartVnode.$el, oldEndVnode.$el.nextSibling);</div><div class="line">      oldStartVnode = oldCh[++oldStartIdx];</div><div class="line">      newEndVnode = newCh[--newEndIdx];</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (sameVnode(oldEndVnode, newStartVnode)) &#123;</div><div class="line">      patchVnode(oldEndVnode, newStartVnode);</div><div class="line">      parentElm.insertBefore(oldEndVnode.$el, oldStartVnode.$el);</div><div class="line">      oldEndVnode = oldCh[--oldEndIdx];</div><div class="line">      newStartVnode = newCh[++newStartIdx];</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">if</span> (isUndef(oldKeyToIdx)) &#123;</div><div class="line">        oldKeyToIdx = createKeyToOldIdx(oldCh, oldStartIdx, oldEndIdx);</div><div class="line">      &#125;</div><div class="line">      idxInOld = isDef(newStartVnode.key)</div><div class="line">        ? oldKeyToIdx[newStartVnode.key]</div><div class="line">        : findIdxInOld(newStartVnode, oldCh, oldStartIdx, oldEndIdx);</div><div class="line">      <span class="keyword">if</span> (isUndef(idxInOld)) &#123;</div><div class="line">        parentElm.insertBefore(createElement(newStartVnode), oldStartVnode.$el);</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        vnodeToMove = oldCh[idxInOld];</div><div class="line">        <span class="keyword">if</span> (sameVnode(vnodeToMove, newStartVnode)) &#123;</div><div class="line">          patchVnode(vnodeToMove, newStartVnode);</div><div class="line">          oldCh[idxInOld] = <span class="literal">undefined</span>;</div><div class="line">          parentElm.insertBefore(vnodeToMove.$el, oldStartVnode.$el);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">          parentElm.insertBefore(</div><div class="line">            createElement(newStartVnode),</div><div class="line">            oldStartVnode.$el,</div><div class="line">          );</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      newStartVnode = newCh[++newStartIdx];</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (oldStartIdx &gt; oldEndIdx) &#123;</div><div class="line">    addVnodes(parentElm, newCh, newStartIdx, newEndIdx);</div><div class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (newStartIdx &gt; newEndIdx) &#123;</div><div class="line">    removeVnodes(parentElm, oldCh, oldStartIdx, oldEndIdx);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>上面代码基本参照 <code>Vue</code> 源码的方法，如果你阅读过我<a href="http://www.wclimb.site/2020/03/17/vue-source-code-virtual-dom/">之前发的文章</a>，肯定有印象，代码内就不多作解释了，上一篇文章的注释说得很明白，感兴趣可以去翻阅一下。</p>
 <p>看一下结果，一切都正常</p>
-<p><img src="/img/virtual-dom/new.png" alt></p>
-<p>相关源码已经放在 <code>GitHub:</code> <a href="https://github.com/wclimb/simple-virtual-dom" target="_blank" rel="noopener">https://github.com/wclimb/simple-virtual-dom</a></p>
+<p><img src="/img/virtual-dom/new.png" alt=""></p>
+<p>相关源码已经放在 <code>GitHub:</code> <a href="https://github.com/wclimb/simple-virtual-dom" target="_blank" rel="external">https://github.com/wclimb/simple-virtual-dom</a></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文带大家撸了一个 <code>虚拟DOM</code>，代码大部分参照 <code>Vue</code> 的源码改造，并没有过多的去阐述代码内的运行流程，因为上一篇已经大致讲过了，本文意在抛砖引玉，如有问题还望指出</p>
 <p>本文地址 <a href="http://www.wclimb.site/2020/03/19/simple-virtual-dom/">撸一个简易Virtual Dom</a></p>
 
@@ -514,13 +515,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay">
+          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay"/>
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay">
+          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay"/>
           <p>支付宝打赏</p>
         </div>
       
@@ -621,7 +622,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -632,7 +633,9 @@
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="wclimb">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="wclimb" />
           <p class="site-author-name" itemprop="name">wclimb</p>
            
               <p class="site-description motion-element" itemprop="description"></p>
@@ -643,7 +646,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -654,7 +657,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -665,7 +668,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -796,7 +799,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">
+        <div class="copyright" >
   
   &copy;  2017 - 
   <span itemprop="copyrightYear">2021</span>

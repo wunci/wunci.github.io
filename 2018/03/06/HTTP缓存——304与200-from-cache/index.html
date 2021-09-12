@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
 
@@ -19,8 +19,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
   
     
   
-  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -76,21 +76,21 @@
 
   
 
-<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
-
-
-  <meta name="keywords" content="原创,HTTP,缓存,Mysql,javascript,">
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
+  <meta name="keywords" content="原创,HTTP,缓存,Mysql,javascript," />
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico?v=5.1.1">
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico?v=5.1.1" />
 
 
 
@@ -104,10 +104,9 @@
 <meta property="og:url" content="http://www.wclimb.site/2018/03/06/HTTP缓存——304与200-from-cache/index.html">
 <meta property="og:site_name" content="wclimb的个人博客--分享">
 <meta property="og:description" content="HTTP与缓存相关的字段1. 通用字段   字段名称 释义     Cache-Control 控制缓存具体的行为   Pragma HTTP1.0时的遗留字段，当值为”no-cache”时强制验证缓存   Date 创建报文的日期时间(启发式缓存阶段所用)    2. response字段   字段名称 释义     ETag 服务器生成资源的唯一标识   Vary 代理服务器缓存的管理信息">
-<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.wclimb.site/cdn/cache.png">
 <meta property="og:image" content="http://www.wclimb.site/cdn/xcx.jpeg">
-<meta property="og:updated_time" content="2020-05-26T07:05:34.770Z">
+<meta property="og:updated_time" content="2021-09-12T07:52:45.002Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP缓存——304与200 from cache">
 <meta name="twitter:description" content="HTTP与缓存相关的字段1. 通用字段   字段名称 释义     Cache-Control 控制缓存具体的行为   Pragma HTTP1.0时的遗留字段，当值为”no-cache”时强制验证缓存   Date 创建报文的日期时间(启发式缓存阶段所用)    2. response字段   字段名称 释义     ETag 服务器生成资源的唯一标识   Vary 代理服务器缓存的管理信息">
@@ -139,7 +138,7 @@
 
 
 
-  <link rel="canonical" href="http://www.wclimb.site/2018/03/06/HTTP缓存——304与200-from-cache/">
+  <link rel="canonical" href="http://www.wclimb.site/2018/03/06/HTTP缓存——304与200-from-cache/"/>
 
 
 
@@ -179,7 +178,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">wclimb的个人博客--分享</span>
         <span class="logo-line-after"><i></i></span>
@@ -209,7 +208,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -219,7 +218,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -229,7 +228,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -239,7 +238,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -249,7 +248,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -262,7 +261,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
             搜索
           </a>
@@ -283,7 +282,9 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -320,7 +321,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wclimb">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
@@ -356,7 +357,7 @@
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -389,7 +390,7 @@
           
             <span class="post-meta-divider">|</span>
             <span class="page-pv"><i class="fa fa-file-o"></i>   浏览
-            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
             </span>
           
 
@@ -519,7 +520,7 @@
 <p>If-modified-Since/Last-Modified</p>
 </blockquote>
 <ul>
-<li>浏览器在发送请求的时候服务器会检查请求头<code>request header</code>里面的<code>If-modified-Since</code>，如果最后修改时间相同则返回304，否则给返回头(<code>response header</code>)添加<code>last-Modified</code>并且返回数据(<code>response body</code>)。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if-modified-since:Wed, 31 May 2017 03:21:09 GMT</span><br><span class="line">if-none-match:&quot;42DD5684635105372FE7720E3B39B96A&quot;</span><br></pre></td></tr></table></figure>
+<li>浏览器在发送请求的时候服务器会检查请求头<code>request header</code>里面的<code>If-modified-Since</code>，如果最后修改时间相同则返回304，否则给返回头(<code>response header</code>)添加<code>last-Modified</code>并且返回数据(<code>response body</code>)。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">if-modified-since:Wed, 31 May 2017 03:21:09 GMT</div><div class="line">if-none-match:&quot;42DD5684635105372FE7720E3B39B96A&quot;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <a id="more"></a>
@@ -527,7 +528,7 @@
 <p>If-None-Match/Etag</p>
 </blockquote>
 <ul>
-<li>浏览器在发送请求的时候服务器会检查请求头(<code>request header</code>)里面的<code>if-none-match</code>的值与当前文件的内容通过hash算法（<code>例如 nodejs: cryto.createHash(&#39;sha1&#39;)</code>）生成的内容摘要字符对比，相同则直接返回<code>304</code>，否则给返回头(<code>response header</code>)添加<code>etag</code>属性为当前的内容摘要字符，并且返回内容。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">etag:&quot;42DD5684635105372FE7720E3B39B96A&quot;</span><br><span class="line">last-modified:Wed, 31 May 2017 03:21:09 GMT</span><br></pre></td></tr></table></figure>
+<li>浏览器在发送请求的时候服务器会检查请求头(<code>request header</code>)里面的<code>if-none-match</code>的值与当前文件的内容通过hash算法（<code>例如 nodejs: cryto.createHash(&#39;sha1&#39;)</code>）生成的内容摘要字符对比，相同则直接返回<code>304</code>，否则给返回头(<code>response header</code>)添加<code>etag</code>属性为当前的内容摘要字符，并且返回内容。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">etag:&quot;42DD5684635105372FE7720E3B39B96A&quot;</div><div class="line">last-modified:Wed, 31 May 2017 03:21:09 GMT</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>请求头last-modified的日期与响应头的last-modified一致<br>请求头if-none-match的hash与响应头的etag一致<br>所用会返回<code>Status Code: 304</code></p>
@@ -557,7 +558,7 @@
 <li>设置了长缓存、但Entity Tags没有移除时触发</li>
 </ol>
 <h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><p><img src="http://www.wclimb.site/cdn/cache.png" alt="流程图"></p>
-<p>GitHub：<a href="https://github.com/wclimb" target="_blank" rel="noopener">wclimb</a></p>
+<p>GitHub：<a href="https://github.com/wclimb" target="_blank" rel="external">wclimb</a></p>
 <h2 id="个人小程序"><a href="#个人小程序" class="headerlink" title="个人小程序"></a>个人小程序</h2><p><img src="http://www.wclimb.site/cdn/xcx.jpeg" alt="img"></p>
 
       
@@ -581,13 +582,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay">
+          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay"/>
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay">
+          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay"/>
           <p>支付宝打赏</p>
         </div>
       
@@ -690,7 +691,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -701,7 +702,9 @@
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="wclimb">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="wclimb" />
           <p class="site-author-name" itemprop="name">wclimb</p>
            
               <p class="site-description motion-element" itemprop="description"></p>
@@ -712,7 +715,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -723,7 +726,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -734,7 +737,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -865,7 +868,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">
+        <div class="copyright" >
   
   &copy;  2017 - 
   <span itemprop="copyrightYear">2021</span>
