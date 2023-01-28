@@ -2,7 +2,7 @@
 
 
 
-  
+
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
@@ -36,45 +36,45 @@
 
 
 
-  
-  
-    
-  
+
+
+
+
   <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
 
-  
-  
-  
-  
 
-  
-    
-    
-  
 
-  
 
-  
 
-  
 
-  
 
-  
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
 
 
 
-  
+
+
 
 <link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
@@ -101,15 +101,15 @@
 <meta name="keywords" content="原创,javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavsScript之浅拷贝与深拷贝">
-<meta property="og:url" content="http://www.wclimb.site/2018/07/29/JavsScript之浅拷贝与深拷贝/index.html">
-<meta property="og:site_name" content="wclimb的个人博客--分享">
+<meta property="og:url" content="http://wunci.github.io/2018/07/29/JavsScript之浅拷贝与深拷贝/index.html">
+<meta property="og:site_name" content="wunci的个人博客--分享">
 <meta property="og:description" content="在开发的过程中，我们往往需要复制一个数据，在复制基本数据类型的时候不会出现问题，如string、number、null等。但是我们复制一个引用类型的数据时，往往会出现问题，如array、object。 浅拷贝看下面这段代码123var arr1 = [1,2,3];var arr2 = arr1;arr2.push(4) 我们打印一下看看arr1 arr2的结果12arr1: [1, 2, 3,">
-<meta property="og:image" content="http://www.wclimb.site/cdn/xcx.jpeg">
+<meta property="og:image" content="http://wunci.github.io/cdn/xcx.jpeg">
 <meta property="og:updated_time" content="2021-09-12T07:52:45.002Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavsScript之浅拷贝与深拷贝">
 <meta name="twitter:description" content="在开发的过程中，我们往往需要复制一个数据，在复制基本数据类型的时候不会出现问题，如string、number、null等。但是我们复制一个引用类型的数据时，往往会出现问题，如array、object。 浅拷贝看下面这段代码123var arr1 = [1,2,3];var arr2 = arr1;arr2.push(4) 我们打印一下看看arr1 arr2的结果12arr1: [1, 2, 3,">
-<meta name="twitter:image" content="http://www.wclimb.site/cdn/xcx.jpeg">
+<meta name="twitter:image" content="http://wunci.github.io/cdn/xcx.jpeg">
 
 
 
@@ -137,14 +137,14 @@
 
 
 
-  <link rel="canonical" href="http://www.wclimb.site/2018/07/29/JavsScript之浅拷贝与深拷贝/"/>
+  <link rel="canonical" href="http://wunci.github.io/2018/07/29/JavsScript之浅拷贝与深拷贝/"/>
 
 
 
 
 
-  <title>JavsScript之浅拷贝与深拷贝 | wclimb的个人博客--分享</title>
-  
+  <title>JavsScript之浅拷贝与深拷贝 | wunci的个人博客--分享</title>
+
 
 
 
@@ -163,10 +163,10 @@
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  
-  
-    
-  
+
+
+
+
 
   <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
@@ -174,18 +174,18 @@
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
-    
+
 
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">wclimb的个人博客--分享</span>
+        <span class="site-title">wunci的个人博客--分享</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
+
         <p class="site-subtitle"></p>
-      
+
   </div>
 
   <div class="site-nav-toggle">
@@ -198,80 +198,80 @@
 </div>
 
 <nav class="site-nav">
-  
 
-  
+
+
     <ul id="menu" class="menu">
-      
-        
+
+
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
+
             首页
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
+
             分类
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
+
             关于
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
+
             归档
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
+
             标签
           </a>
         </li>
-      
 
-      
+
+
         <li class="menu-item menu-item-search">
-          
+
             <a href="javascript:;" class="popup-trigger">
-          
-            
+
+
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
+
             搜索
           </a>
         </li>
-      
-    </ul>
-  
 
-  
+    </ul>
+
+
+
     <div class="site-search">
-      
+
   <div class="popup search-popup local-search-popup">
   <div class="local-search-header clearfix">
     <span class="search-icon">
@@ -292,7 +292,7 @@
 
 
     </div>
-  
+
 </nav>
 
 
@@ -304,136 +304,136 @@
       <div class="main-inner">
         <div class="content-wrap">
           <div id="content" class="content">
-            
+
 
   <div id="posts" class="posts-expand">
-    
 
-  
 
-  
-  
-  
+
+
+
+
+
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.wclimb.site/2018/07/29/JavsScript之浅拷贝与深拷贝/">
+    <link itemprop="mainEntityOfPage" href="http://wunci.github.io/2018/07/29/JavsScript之浅拷贝与深拷贝/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wclimb">
+      <meta itemprop="name" content="wunci">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wclimb的个人博客--分享">
+      <meta itemprop="name" content="wunci的个人博客--分享">
     </span>
 
-    
+
       <header class="post-header">
 
-        
-        
+
+
           <h1 class="post-title" itemprop="name headline">JavsScript之浅拷贝与深拷贝</h1>
-        
+
 
         <div class="post-meta">
           <span class="post-time">
-            
+
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
+
                 <span class="post-meta-item-text">发表于</span>
-              
+
               <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-29T16:04:57+08:00">
                 2018-07-29
               </time>
-            
 
-            
 
-            
+
+
+
           </span>
 
-          
+
             <span class="post-category" >
-            
+
               <span class="post-meta-divider">|</span>
-            
+
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
+
                 <span class="post-meta-item-text">分类于</span>
-              
-              
+
+
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/javascript/" itemprop="url" rel="index">
                     <span itemprop="name">javascript</span>
                   </a>
                 </span>
 
-                
-                
-              
+
+
+
             </span>
-          
 
-          
-            
-          
 
-          
-          
 
-          
+
+
+
+
+
+
+
             <span class="post-meta-divider">|</span>
             <span class="page-pv"><i class="fa fa-file-o"></i>   浏览
             <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
             </span>
-          
 
-          
+
+
             <div class="post-wordcount">
-              
 
-              
+
+
                 <span class="post-meta-divider">|</span>
-              
 
-              
+
+
                 <span class="post-meta-item-icon" style="margin-left:4px;">
                   <i class="fa fa-clock-o"></i>
                 </span>
-                
+
                   <span class="post-meta-item-text">约</span>
-                
+
                 <span title="约">
                   4 分钟
                 </span>
-              
-            </div>
-          
 
-          
+            </div>
+
+
+
 
         </div>
       </header>
-    
+
 
     <div class="post-body" itemprop="articleBody">
 
-      
-      
 
-      
+
+
+
         <p>在开发的过程中，我们往往需要复制一个数据，在复制基本数据类型的时候不会出现问题，如<code>string</code>、<code>number</code>、<code>null</code>等。<br>但是我们复制一个引用类型的数据时，往往会出现问题，如<code>array</code>、<code>object</code>。</p>
 <h2 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h2><p>看下面这段代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line"><span class="keyword">var</span> arr2 = arr1;</div><div class="line">arr2.push(<span class="number">4</span>)</div></pre></td></tr></table></figure></p>
 <p>我们打印一下看看<code>arr1</code> <code>arr2</code>的结果<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">arr1: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</div><div class="line">arr2: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</div></pre></td></tr></table></figure></p>
 <p>我们发现，改变<code>arr2</code>的同时也改变了<code>arr1</code>，WTF？</p>
-<p>接下来我们看看对象<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;</div><div class="line">        <span class="attr">name</span>:<span class="string">'wclimb'</span></div><div class="line">    &#125;;</div><div class="line"><span class="keyword">var</span> obj2 = obj1</div><div class="line">obj2.age = <span class="number">24</span></div></pre></td></tr></table></figure></p>
+<p>接下来我们看看对象<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;</div><div class="line">        <span class="attr">name</span>:<span class="string">'wunci'</span></div><div class="line">    &#125;;</div><div class="line"><span class="keyword">var</span> obj2 = obj1</div><div class="line">obj2.age = <span class="number">24</span></div></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<p>我们打印一下看看<code>arr1``arr2</code>的结果<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">obj1: &#123;<span class="attr">name</span>: <span class="string">"wclimb"</span>, <span class="attr">age</span>: <span class="number">24</span>&#125;</div><div class="line">obj2: &#123;<span class="attr">name</span>: <span class="string">"wclimb"</span>, <span class="attr">age</span>: <span class="number">24</span>&#125;</div></pre></td></tr></table></figure></p>
+<p>我们打印一下看看<code>arr1``arr2</code>的结果<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">obj1: &#123;<span class="attr">name</span>: <span class="string">"wunci"</span>, <span class="attr">age</span>: <span class="number">24</span>&#125;</div><div class="line">obj2: &#123;<span class="attr">name</span>: <span class="string">"wunci"</span>, <span class="attr">age</span>: <span class="number">24</span>&#125;</div></pre></td></tr></table></figure></p>
 <p>和预想的一样，都被影响了。<br>why?<br>因为引用类型的复制，两个引用类型的指针都指向同一个堆内存</p>
 <p>网上偶尔会看到有人说<code>slice</code>、<code>concat</code>是深拷贝，其实这两个是浅复制，如下<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line"><span class="keyword">var</span> arr2 = arr1.slice();</div><div class="line">arr2.push(<span class="number">4</span>)</div></pre></td></tr></table></figure></p>
 <p>结果：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">arr1 [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line">arr2 [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</div></pre></td></tr></table></figure></p>
@@ -441,129 +441,129 @@
 <p>结果<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">arr1: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,[<span class="number">4</span>,<span class="number">5</span>]]   &lt;-----  被影响了</div><div class="line">arr2: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,[<span class="number">4</span>,<span class="number">5</span>]]</div></pre></td></tr></table></figure></p>
 <p>即使使用了<code>slice</code>, 两个数组也相互影响了，类似方法除了<code>slice</code>、<code>concat</code>还有<code>Array.from</code>、<code>...</code></p>
 <p><strong>深拷贝和浅拷贝最根本的区别在于是否是真正获取了一个对象的拷贝实体，而不是引用</strong></p>
-<h2 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h2><h3 id="Object-assign"><a href="#Object-assign" class="headerlink" title="Object.assign"></a>Object.assign</h3><p>Object.assign可以进行一层的深度拷贝，也就是跟slice类型的效果<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'wclimb'</span>,</div><div class="line">        <span class="attr">test1</span>: <span class="literal">null</span>,</div><div class="line">        <span class="attr">test2</span>: <span class="literal">undefined</span>,</div><div class="line">        <span class="attr">test3</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">1</span>)&#125;,</div><div class="line">		<span class="attr">test4</span>: &#123;&#125;</div><div class="line">    &#125;;</div><div class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.assign(&#123;&#125;, obj1)</div><div class="line">obj2.age = <span class="number">24</span></div><div class="line"></div><div class="line">结果：</div><div class="line">obj1: &#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'wclimb'</span>,</div><div class="line">        <span class="attr">test1</span>: <span class="literal">null</span>,</div><div class="line">        <span class="attr">test2</span>: <span class="literal">undefined</span>,</div><div class="line">        <span class="attr">test3</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">1</span>)&#125;,</div><div class="line">        <span class="attr">test4</span>: &#123;&#125;</div><div class="line">    &#125;;</div><div class="line">obj2: &#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'wclimb'</span>,</div><div class="line">        <span class="attr">test1</span>: <span class="literal">null</span>,</div><div class="line">        <span class="attr">test2</span>: <span class="literal">undefined</span>,</div><div class="line">        <span class="attr">test3</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">1</span>)&#125;,</div><div class="line">        <span class="attr">test4</span>: &#123;&#125;,</div><div class="line">        <span class="attr">age</span>: <span class="number">24</span></div><div class="line">    &#125;;</div></pre></td></tr></table></figure></p>
-<p>但是我们看下面的例子<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'wclimb'</span>,</div><div class="line">        <span class="attr">test1</span>: <span class="literal">null</span>,</div><div class="line">        <span class="attr">test2</span>: <span class="literal">undefined</span>,</div><div class="line">        <span class="attr">test3</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">1</span>)&#125;,</div><div class="line">        <span class="attr">test4</span>: &#123;&#125;</div><div class="line">    &#125;;</div><div class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.assign(&#123;&#125;, obj1)</div><div class="line">obj2.age = <span class="number">24</span></div><div class="line">obj2.test4.val = <span class="string">'1'</span>;</div><div class="line"></div><div class="line">结果： </div><div class="line"></div><div class="line">obj1: &#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'wclimb'</span>,</div><div class="line">        <span class="attr">test1</span>: <span class="literal">null</span>,</div><div class="line">        <span class="attr">test2</span>: <span class="literal">undefined</span>,</div><div class="line">        <span class="attr">test3</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">1</span>)&#125;,</div><div class="line">        <span class="attr">test4</span>: &#123;<span class="attr">val</span>: <span class="number">1</span>&#125;   &lt;-----  被影响了</div><div class="line">    &#125;;</div><div class="line">obj2: &#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'wclimb'</span>,</div><div class="line">        <span class="attr">test1</span>: <span class="literal">null</span>,</div><div class="line">        <span class="attr">test2</span>: <span class="literal">undefined</span>,</div><div class="line">        <span class="attr">test3</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">1</span>)&#125;,</div><div class="line">        <span class="attr">test4</span>: &#123;<span class="attr">val</span>: <span class="number">1</span>&#125;,</div><div class="line">        <span class="attr">age</span>: <span class="number">24</span></div><div class="line">    &#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h2><h3 id="Object-assign"><a href="#Object-assign" class="headerlink" title="Object.assign"></a>Object.assign</h3><p>Object.assign可以进行一层的深度拷贝，也就是跟slice类型的效果<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'wunci'</span>,</div><div class="line">        <span class="attr">test1</span>: <span class="literal">null</span>,</div><div class="line">        <span class="attr">test2</span>: <span class="literal">undefined</span>,</div><div class="line">        <span class="attr">test3</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">1</span>)&#125;,</div><div class="line">		<span class="attr">test4</span>: &#123;&#125;</div><div class="line">    &#125;;</div><div class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.assign(&#123;&#125;, obj1)</div><div class="line">obj2.age = <span class="number">24</span></div><div class="line"></div><div class="line">结果：</div><div class="line">obj1: &#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'wunci'</span>,</div><div class="line">        <span class="attr">test1</span>: <span class="literal">null</span>,</div><div class="line">        <span class="attr">test2</span>: <span class="literal">undefined</span>,</div><div class="line">        <span class="attr">test3</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">1</span>)&#125;,</div><div class="line">        <span class="attr">test4</span>: &#123;&#125;</div><div class="line">    &#125;;</div><div class="line">obj2: &#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'wunci'</span>,</div><div class="line">        <span class="attr">test1</span>: <span class="literal">null</span>,</div><div class="line">        <span class="attr">test2</span>: <span class="literal">undefined</span>,</div><div class="line">        <span class="attr">test3</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">1</span>)&#125;,</div><div class="line">        <span class="attr">test4</span>: &#123;&#125;,</div><div class="line">        <span class="attr">age</span>: <span class="number">24</span></div><div class="line">    &#125;;</div></pre></td></tr></table></figure></p>
+<p>但是我们看下面的例子<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'wunci'</span>,</div><div class="line">        <span class="attr">test1</span>: <span class="literal">null</span>,</div><div class="line">        <span class="attr">test2</span>: <span class="literal">undefined</span>,</div><div class="line">        <span class="attr">test3</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">1</span>)&#125;,</div><div class="line">        <span class="attr">test4</span>: &#123;&#125;</div><div class="line">    &#125;;</div><div class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.assign(&#123;&#125;, obj1)</div><div class="line">obj2.age = <span class="number">24</span></div><div class="line">obj2.test4.val = <span class="string">'1'</span>;</div><div class="line"></div><div class="line">结果： </div><div class="line"></div><div class="line">obj1: &#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'wunci'</span>,</div><div class="line">        <span class="attr">test1</span>: <span class="literal">null</span>,</div><div class="line">        <span class="attr">test2</span>: <span class="literal">undefined</span>,</div><div class="line">        <span class="attr">test3</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">1</span>)&#125;,</div><div class="line">        <span class="attr">test4</span>: &#123;<span class="attr">val</span>: <span class="number">1</span>&#125;   &lt;-----  被影响了</div><div class="line">    &#125;;</div><div class="line">obj2: &#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'wunci'</span>,</div><div class="line">        <span class="attr">test1</span>: <span class="literal">null</span>,</div><div class="line">        <span class="attr">test2</span>: <span class="literal">undefined</span>,</div><div class="line">        <span class="attr">test3</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">1</span>)&#125;,</div><div class="line">        <span class="attr">test4</span>: &#123;<span class="attr">val</span>: <span class="number">1</span>&#125;,</div><div class="line">        <span class="attr">age</span>: <span class="number">24</span></div><div class="line">    &#125;;</div></pre></td></tr></table></figure></p>
 <h3 id="JSON-parse-JSON-stringify-obj"><a href="#JSON-parse-JSON-stringify-obj" class="headerlink" title="JSON.parse(JSON.stringify(obj))"></a>JSON.parse(JSON.stringify(obj))</h3><p>说到深拷贝，你一定会想到<code>JSON.parse(JSON.stringify(obj))</code>;<br>没错，这样可以完成一个深拷贝，看下面的例子：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'wclimb'</span></div><div class="line">    &#125;;</div><div class="line"><span class="keyword">var</span> obj2 = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(obj1))</div><div class="line">obj2.age = <span class="number">24</span></div></pre></td></tr></table></figure>
-<p>结果<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">obj1: &#123;<span class="attr">name</span>: <span class="string">"wclimb"</span>&#125;   &lt;-----  没有被影响了</div><div class="line">obj2: &#123;<span class="attr">name</span>: <span class="string">"wclimb"</span>, <span class="attr">age</span>: <span class="number">24</span>&#125;</div></pre></td></tr></table></figure></p>
-<p>perfect，但是这个方法会有一个问题，如下例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> <span class="keyword">var</span> obj1 = &#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'wclimb'</span>,</div><div class="line">        <span class="attr">test1</span>: <span class="literal">null</span>,</div><div class="line">        <span class="attr">test2</span>: <span class="literal">undefined</span>,</div><div class="line">        <span class="attr">test3</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">1</span>)&#125;,</div><div class="line">        <span class="attr">test4</span>: &#123;&#125;</div><div class="line">    &#125;;</div><div class="line"><span class="keyword">var</span> obj2 = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(obj1))</div><div class="line">obj2.age = <span class="number">24</span></div></pre></td></tr></table></figure></p>
-<p>结果<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">obj1: &#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'wclimb'</span>,</div><div class="line">        <span class="attr">test1</span>: <span class="literal">null</span>,</div><div class="line">        <span class="attr">test2</span>: <span class="literal">undefined</span>,</div><div class="line">        <span class="attr">test3</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">1</span>)&#125;,</div><div class="line">        <span class="attr">test4</span>: &#123;&#125;</div><div class="line">    &#125;;</div><div class="line">obj2: &#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">"wclimb"</span>,</div><div class="line">        <span class="attr">age</span>: <span class="number">24</span>, </div><div class="line">        <span class="attr">test1</span>: <span class="literal">null</span>,</div><div class="line">        <span class="attr">test4</span>: &#123;&#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'wunci'</span></div><div class="line">    &#125;;</div><div class="line"><span class="keyword">var</span> obj2 = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(obj1))</div><div class="line">obj2.age = <span class="number">24</span></div></pre></td></tr></table></figure>
+<p>结果<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">obj1: &#123;<span class="attr">name</span>: <span class="string">"wunci"</span>&#125;   &lt;-----  没有被影响了</div><div class="line">obj2: &#123;<span class="attr">name</span>: <span class="string">"wunci"</span>, <span class="attr">age</span>: <span class="number">24</span>&#125;</div></pre></td></tr></table></figure></p>
+<p>perfect，但是这个方法会有一个问题，如下例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> <span class="keyword">var</span> obj1 = &#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'wunci'</span>,</div><div class="line">        <span class="attr">test1</span>: <span class="literal">null</span>,</div><div class="line">        <span class="attr">test2</span>: <span class="literal">undefined</span>,</div><div class="line">        <span class="attr">test3</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">1</span>)&#125;,</div><div class="line">        <span class="attr">test4</span>: &#123;&#125;</div><div class="line">    &#125;;</div><div class="line"><span class="keyword">var</span> obj2 = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(obj1))</div><div class="line">obj2.age = <span class="number">24</span></div></pre></td></tr></table></figure></p>
+<p>结果<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">obj1: &#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'wunci'</span>,</div><div class="line">        <span class="attr">test1</span>: <span class="literal">null</span>,</div><div class="line">        <span class="attr">test2</span>: <span class="literal">undefined</span>,</div><div class="line">        <span class="attr">test3</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">1</span>)&#125;,</div><div class="line">        <span class="attr">test4</span>: &#123;&#125;</div><div class="line">    &#125;;</div><div class="line">obj2: &#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">"wunci"</span>,</div><div class="line">        <span class="attr">age</span>: <span class="number">24</span>, </div><div class="line">        <span class="attr">test1</span>: <span class="literal">null</span>,</div><div class="line">        <span class="attr">test4</span>: &#123;&#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
 <p>WTF，那两个个跑哪去了？所以这个方法不能够拷贝值为<code>undefined</code>、<code>function</code></p>
-<h3 id="深拷贝实现"><a href="#深拷贝实现" class="headerlink" title="深拷贝实现"></a>深拷贝实现</h3><p>那么怎么进行深拷贝呢？我的方法是：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepCopy</span>(<span class="params">obj</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> result;</div><div class="line">    <span class="keyword">var</span> toString = <span class="built_in">Object</span>.prototype.toString</div><div class="line">    <span class="keyword">if</span>(toString.call(obj) === <span class="string">'[object Array]'</span>)&#123;</div><div class="line">        result = []</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ;i &lt; obj.length; i++)&#123;</div><div class="line">            result[i] = deepCopy(obj[i])</div><div class="line">        &#125;</div><div class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(toString.call(obj) === <span class="string">'[object Object]'</span>)&#123;</div><div class="line">        result = &#123;&#125;;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj) &#123;</div><div class="line">            <span class="keyword">if</span> (obj.hasOwnProperty(key)) &#123;</div><div class="line">                result[key] = deepCopy(obj[key])</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">return</span> obj</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> result</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">测试一下：</div><div class="line"></div><div class="line"><span class="keyword">var</span> obj1 = &#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'wclimb'</span>,</div><div class="line">        <span class="attr">test1</span>: <span class="literal">null</span>,</div><div class="line">        <span class="attr">test2</span>: <span class="literal">undefined</span>,</div><div class="line">        <span class="attr">test3</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">1</span>)&#125;,</div><div class="line">        <span class="attr">test4</span>: &#123;&#125;</div><div class="line">    &#125;;</div><div class="line"><span class="keyword">var</span> obj2 = deepCopy(obj1)</div><div class="line">obj2.age = <span class="number">24</span></div><div class="line">obj2.test4.val = <span class="string">'1'</span>;</div><div class="line"></div><div class="line">返回： </div><div class="line"></div><div class="line">obj1: &#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'wclimb'</span>,</div><div class="line">        <span class="attr">test1</span>: <span class="literal">null</span>,</div><div class="line">        <span class="attr">test2</span>: <span class="literal">undefined</span>,</div><div class="line">        <span class="attr">test3</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">1</span>)&#125;,</div><div class="line">        <span class="attr">test4</span>: &#123;&#125;   &lt;-----  没有被影响了</div><div class="line">    &#125;;</div><div class="line">obj2: &#123;</div><div class="line">        <span class="attr">age</span>: <span class="number">24</span>,</div><div class="line">        <span class="attr">name</span>: <span class="string">'wclimb'</span>,</div><div class="line">        <span class="attr">test1</span>: <span class="literal">null</span>,</div><div class="line">        <span class="attr">test2</span>: <span class="literal">undefined</span>,</div><div class="line">        <span class="attr">test3</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">1</span>)&#125;,</div><div class="line">        <span class="attr">test4</span>: &#123;<span class="attr">val</span>: <span class="string">'1'</span>&#125;</div><div class="line">    &#125;;</div></pre></td></tr></table></figure></p>
-<h3 id="jQuery的实现"><a href="#jQuery的实现" class="headerlink" title="jQuery的实现"></a>jQuery的实现</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'wclimb'</span>,</div><div class="line">        <span class="attr">test1</span>: <span class="literal">null</span>,</div><div class="line">        <span class="attr">test2</span>: <span class="literal">undefined</span>,</div><div class="line">        <span class="attr">test3</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">1</span>)&#125;,</div><div class="line">        <span class="attr">test4</span>: &#123;&#125;</div><div class="line">    &#125;;</div><div class="line"><span class="keyword">var</span> obj2 = $.extend(<span class="literal">true</span>, &#123;&#125;, obj1)</div><div class="line">obj2.age = <span class="number">24</span></div></pre></td></tr></table></figure>
-<h3 id="lodash的实现"><a href="#lodash的实现" class="headerlink" title="lodash的实现"></a>lodash的实现</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'wclimb'</span>,</div><div class="line">        <span class="attr">test1</span>: <span class="literal">null</span>,</div><div class="line">        <span class="attr">test2</span>: <span class="literal">undefined</span>,</div><div class="line">        <span class="attr">test3</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">1</span>)&#125;,</div><div class="line">        <span class="attr">test4</span>: &#123;&#125;</div><div class="line">    &#125;;</div><div class="line"><span class="keyword">var</span> obj2 = _.cloneDeep(obj1)</div><div class="line">obj2.age = <span class="number">24</span></div></pre></td></tr></table></figure>
-<p>GitHub：<a href="https://github.com/wclimb" target="_blank" rel="external">wclimb</a></p>
-<h2 id="个人小程序"><a href="#个人小程序" class="headerlink" title="个人小程序"></a>个人小程序</h2><p><img src="http://www.wclimb.site/cdn/xcx.jpeg" alt="img"></p>
+<h3 id="深拷贝实现"><a href="#深拷贝实现" class="headerlink" title="深拷贝实现"></a>深拷贝实现</h3><p>那么怎么进行深拷贝呢？我的方法是：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepCopy</span>(<span class="params">obj</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> result;</div><div class="line">    <span class="keyword">var</span> toString = <span class="built_in">Object</span>.prototype.toString</div><div class="line">    <span class="keyword">if</span>(toString.call(obj) === <span class="string">'[object Array]'</span>)&#123;</div><div class="line">        result = []</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ;i &lt; obj.length; i++)&#123;</div><div class="line">            result[i] = deepCopy(obj[i])</div><div class="line">        &#125;</div><div class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(toString.call(obj) === <span class="string">'[object Object]'</span>)&#123;</div><div class="line">        result = &#123;&#125;;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj) &#123;</div><div class="line">            <span class="keyword">if</span> (obj.hasOwnProperty(key)) &#123;</div><div class="line">                result[key] = deepCopy(obj[key])</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">return</span> obj</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> result</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">测试一下：</div><div class="line"></div><div class="line"><span class="keyword">var</span> obj1 = &#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'wunci'</span>,</div><div class="line">        <span class="attr">test1</span>: <span class="literal">null</span>,</div><div class="line">        <span class="attr">test2</span>: <span class="literal">undefined</span>,</div><div class="line">        <span class="attr">test3</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">1</span>)&#125;,</div><div class="line">        <span class="attr">test4</span>: &#123;&#125;</div><div class="line">    &#125;;</div><div class="line"><span class="keyword">var</span> obj2 = deepCopy(obj1)</div><div class="line">obj2.age = <span class="number">24</span></div><div class="line">obj2.test4.val = <span class="string">'1'</span>;</div><div class="line"></div><div class="line">返回： </div><div class="line"></div><div class="line">obj1: &#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'wunci'</span>,</div><div class="line">        <span class="attr">test1</span>: <span class="literal">null</span>,</div><div class="line">        <span class="attr">test2</span>: <span class="literal">undefined</span>,</div><div class="line">        <span class="attr">test3</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">1</span>)&#125;,</div><div class="line">        <span class="attr">test4</span>: &#123;&#125;   &lt;-----  没有被影响了</div><div class="line">    &#125;;</div><div class="line">obj2: &#123;</div><div class="line">        <span class="attr">age</span>: <span class="number">24</span>,</div><div class="line">        <span class="attr">name</span>: <span class="string">'wunci'</span>,</div><div class="line">        <span class="attr">test1</span>: <span class="literal">null</span>,</div><div class="line">        <span class="attr">test2</span>: <span class="literal">undefined</span>,</div><div class="line">        <span class="attr">test3</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">1</span>)&#125;,</div><div class="line">        <span class="attr">test4</span>: &#123;<span class="attr">val</span>: <span class="string">'1'</span>&#125;</div><div class="line">    &#125;;</div></pre></td></tr></table></figure></p>
+<h3 id="jQuery的实现"><a href="#jQuery的实现" class="headerlink" title="jQuery的实现"></a>jQuery的实现</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'wunci'</span>,</div><div class="line">        <span class="attr">test1</span>: <span class="literal">null</span>,</div><div class="line">        <span class="attr">test2</span>: <span class="literal">undefined</span>,</div><div class="line">        <span class="attr">test3</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">1</span>)&#125;,</div><div class="line">        <span class="attr">test4</span>: &#123;&#125;</div><div class="line">    &#125;;</div><div class="line"><span class="keyword">var</span> obj2 = $.extend(<span class="literal">true</span>, &#123;&#125;, obj1)</div><div class="line">obj2.age = <span class="number">24</span></div></pre></td></tr></table></figure>
+<h3 id="lodash的实现"><a href="#lodash的实现" class="headerlink" title="lodash的实现"></a>lodash的实现</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'wunci'</span>,</div><div class="line">        <span class="attr">test1</span>: <span class="literal">null</span>,</div><div class="line">        <span class="attr">test2</span>: <span class="literal">undefined</span>,</div><div class="line">        <span class="attr">test3</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="number">1</span>)&#125;,</div><div class="line">        <span class="attr">test4</span>: &#123;&#125;</div><div class="line">    &#125;;</div><div class="line"><span class="keyword">var</span> obj2 = _.cloneDeep(obj1)</div><div class="line">obj2.age = <span class="number">24</span></div></pre></td></tr></table></figure>
+<p>GitHub：<a href="https://github.com/wunci" target="_blank" rel="external">wunci</a></p>
+<h2 id="个人小程序"><a href="#个人小程序" class="headerlink" title="个人小程序"></a>个人小程序</h2><p><img src="http://wunci.github.io/cdn/xcx.jpeg" alt="img"></p>
 
-      
+
     </div>
 
     <div>
-      
-        
 
-      
+
+
+
     </div>
 
     <div>
-      
-        
+
+
   <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
     <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
     <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
       <span>赏</span>
     </button>
     <div id="QR" style="display: none;">
-      
+
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay"/>
+          <img id="wechat_qr" src="/img/wx.png" alt="wunci WeChat Pay"/>
           <p>微信打赏</p>
         </div>
-      
-      
+
+
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay"/>
+          <img id="alipay_qr" src="/img/alipay.png" alt="wunci Alipay"/>
           <p>支付宝打赏</p>
         </div>
-      
+
     </div>
   </div>
 
 
-      
+
     </div>
 
     <div>
-      
-        
 
-      
+
+
+
     </div>
 
     <footer class="post-footer">
-      
+
         <div class="post-tags">
-          
+
             <a href="/tags/原创/" rel="tag"># 原创</a>
-          
+
             <a href="/tags/javascript/" rel="tag"># javascript</a>
-          
+
         </div>
-      
 
-      
-      
-      
 
-      
+
+
+
+
+
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-            
+
               <a href="/2018/07/28/node项目服务器部署-新手教程/" rel="next" title="node项目服务器部署(新手教程)">
                 <i class="fa fa-chevron-left"></i> node项目服务器部署(新手教程)
               </a>
-            
+
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
+
               <a href="/2018/09/09/JavaScript之实现一个简单的promise/" rel="prev" title="JavaScript之实现一个简单的promise">
                 JavaScript之实现一个简单的promise <i class="fa fa-chevron-right"></i>
               </a>
-            
+
           </div>
         </div>
-      
 
-      
-      
+
+
+
     </footer>
   </article>
 
 
 
     <div class="post-spread">
-      
+
     </div>
   </div>
 
 
           </div>
-          
 
 
-          
+
+
   <div class="comments" id="comments">
-    
+
   </div>
 
 
         </div>
-        
-          
-  
+
+
+
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
       <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
@@ -575,9 +575,9 @@
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
-      
 
-      
+
+
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
             文章目录
@@ -586,184 +586,184 @@
             站点概览
           </li>
         </ul>
-      
+
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
-               alt="wclimb" />
-          <p class="site-author-name" itemprop="name">wclimb</p>
-           
+               alt="wunci" />
+          <p class="site-author-name" itemprop="name">wunci</p>
+
               <p class="site-description motion-element" itemprop="description"></p>
-          
+
         </div>
         <nav class="site-state motion-element">
 
-          
+
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
                 <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
-          
 
-          
-            
-            
+
+
+
+
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
                 <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
-          
 
-          
-            
-            
+
+
+
+
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
                 <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
-          
+
 
         </nav>
 
-        
+
 
         <div class="links-of-author motion-element">
-          
-            
+
+
               <span class="links-of-author-item">
-                <a href="https://github.com/wclimb" target="_blank" title="GitHub">
-                  
+                <a href="https://github.com/wunci" target="_blank" title="GitHub">
+
                     <i class="fa fa-fw fa-github"></i>
-                  
+
                   GitHub
                 </a>
               </span>
-            
+
               <span class="links-of-author-item">
                 <a href="http://shang.qq.com/wpa/qunwpa?idkey=e6c66b1ee584a90b52dec3545622e988afcf900144eff03cab6d473c50a31d59" target="_blank" title="QQ群">
-                  
+
                     <i class="fa fa-fw fa-qq"></i>
-                  
+
                   QQ群
                 </a>
               </span>
-            
+
               <span class="links-of-author-item">
-                <a href="http://www.wclimb.site/cdn/xcx.jpeg" target="_blank" title="小程序">
-                  
+                <a href="http://wunci.github.io/cdn/xcx.jpeg" target="_blank" title="小程序">
+
                     <i class="fa fa-fw fa-weixin"></i>
-                  
+
                   小程序
                 </a>
               </span>
-            
+
               <span class="links-of-author-item">
                 <a href="/img/gzh.jpg" target="_blank" title="公众号">
-                  
+
                     <i class="fa fa-fw fa-globe"></i>
-                  
+
                   公众号
                 </a>
               </span>
-            
-          
+
+
         </div>
 
-        
-        
 
-        
-        
+
+
+
+
           <div class="links-of-blogroll motion-element links-of-blogroll-inline">
             <div class="links-of-blogroll-title">
               <i class="fa  fa-fw fa-globe"></i>
               Links
             </div>
             <ul class="links-of-blogroll-list">
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="https://www.lsnsh.site/" title="Lsnsh" target="_blank">Lsnsh</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://blog.curtaintan.club" title="curtain Tan" target="_blank">curtain Tan</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://eraylee.com/" title="eraylee" target="_blank">eraylee</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="https://dcdcdog.com" title="flutter体验" target="_blank">flutter体验</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://www.jspeng.com" title="技术鹏" target="_blank">技术鹏</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://www.suchenqiang.cn/" title="苏博客" target="_blank">苏博客</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="https://www.phpojbk.com" title="Blog Luo" target="_blank">Blog Luo</a>
                 </li>
-              
+
             </ul>
           </div>
-        
 
-        
+
+
 
 
       </section>
 
-      
+
       <!--noindex-->
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
-            
-              
-            
 
-            
+
+
+
+
               <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#浅拷贝"><span class="nav-number">1.</span> <span class="nav-text">浅拷贝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深拷贝"><span class="nav-number">2.</span> <span class="nav-text">深拷贝</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-assign"><span class="nav-number">2.1.</span> <span class="nav-text">Object.assign</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON-parse-JSON-stringify-obj"><span class="nav-number">2.2.</span> <span class="nav-text">JSON.parse(JSON.stringify(obj))</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深拷贝实现"><span class="nav-number">2.3.</span> <span class="nav-text">深拷贝实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery的实现"><span class="nav-number">2.4.</span> <span class="nav-text">jQuery的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lodash的实现"><span class="nav-number">2.5.</span> <span class="nav-text">lodash的实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个人小程序"><span class="nav-number">3.</span> <span class="nav-text">个人小程序</span></a></li></ol></div>
-            
+
 
           </div>
         </section>
       <!--/noindex-->
-      
 
-      
+
+
 
     </div>
   </aside>
 
 
-        
+
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright" >
-  
-  &copy;  2017 - 
+
+  &copy;  2017 -
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">wclimb</span>
+  <span class="author" itemprop="copyrightHolder">wunci</span>
 </div>
 
 
@@ -793,37 +793,37 @@ var total= Math.floor(duration / (1000 * 60 * 60 * 24));
 document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 </script>
 
-<span>赣ICP备 17009321号</span> 
-        
+<span>赣ICP备 17009321号</span>
+
 <div class="busuanzi-count">
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-  
+
     <span class="site-uv">
       <i class="fa fa-user"></i>  访问人数
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
       人次
     </span>
-  
 
-  
+
+
 </div>
 
 
-        
+
       </div>
     </footer>
 
-    
+
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
-        
+
       </div>
-    
+
 
   </div>
 
-  
+
 
 <script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
@@ -839,7 +839,6 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
 
 
 
@@ -852,26 +851,27 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
+
+
   <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
 
 
-  
+
 
 
   <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
@@ -880,8 +880,8 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
-  
+
+
 
 
   <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
@@ -890,53 +890,53 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
+
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
 
 
-  
+
 
 
   <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-  
 
 
 
 
 
 
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <script type="text/javascript">
     // Popup Window;
@@ -1259,17 +1259,17 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
+
+
+
+
+
+
 
   <script src="https://cdn.bootcss.com/clipboard.js/2.0.6/clipboard.min.js"></script>
   <style>

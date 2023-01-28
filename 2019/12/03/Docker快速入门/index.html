@@ -2,7 +2,7 @@
 
 
 
-  
+
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
@@ -36,45 +36,45 @@
 
 
 
-  
-  
-    
-  
+
+
+
+
   <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
 
-  
-  
-  
-  
 
-  
-    
-    
-  
 
-  
 
-  
 
-  
 
-  
 
-  
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
 
 
 
-  
+
+
 
 <link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
@@ -101,8 +101,8 @@
 <meta name="keywords" content="原创,教程,Docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker快速入门">
-<meta property="og:url" content="http://www.wclimb.site/2019/12/03/Docker快速入门/index.html">
-<meta property="og:site_name" content="wclimb的个人博客--分享">
+<meta property="og:url" content="http://wunci.github.io/2019/12/03/Docker快速入门/index.html">
+<meta property="og:site_name" content="wunci的个人博客--分享">
 <meta property="og:description" content="什么是Docker？Docker 是一个开源的应用容器引擎，可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化 为什么要用Docker更高效的利用系统资源  由于容器不需要进行硬件虚拟以及运行完整操作系统等额外开销，Docker 对系统资源的利用率更高。无论是应用执行速度、内存损耗或者文件存储速度，都要比传统虚拟机技术更高效">
 <meta property="og:updated_time" content="2021-09-12T07:52:45.001Z">
 <meta name="twitter:card" content="summary">
@@ -135,14 +135,14 @@
 
 
 
-  <link rel="canonical" href="http://www.wclimb.site/2019/12/03/Docker快速入门/"/>
+  <link rel="canonical" href="http://wunci.github.io/2019/12/03/Docker快速入门/"/>
 
 
 
 
 
-  <title>Docker快速入门 | wclimb的个人博客--分享</title>
-  
+  <title>Docker快速入门 | wunci的个人博客--分享</title>
+
 
 
 
@@ -161,10 +161,10 @@
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  
-  
-    
-  
+
+
+
+
 
   <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
@@ -172,18 +172,18 @@
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
-    
+
 
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">wclimb的个人博客--分享</span>
+        <span class="site-title">wunci的个人博客--分享</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
+
         <p class="site-subtitle"></p>
-      
+
   </div>
 
   <div class="site-nav-toggle">
@@ -196,80 +196,80 @@
 </div>
 
 <nav class="site-nav">
-  
 
-  
+
+
     <ul id="menu" class="menu">
-      
-        
+
+
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
+
             首页
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
+
             分类
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
+
             关于
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
+
             归档
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
+
             标签
           </a>
         </li>
-      
 
-      
+
+
         <li class="menu-item menu-item-search">
-          
+
             <a href="javascript:;" class="popup-trigger">
-          
-            
+
+
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
+
             搜索
           </a>
         </li>
-      
-    </ul>
-  
 
-  
+    </ul>
+
+
+
     <div class="site-search">
-      
+
   <div class="popup search-popup local-search-popup">
   <div class="local-search-header clearfix">
     <span class="search-icon">
@@ -290,7 +290,7 @@
 
 
     </div>
-  
+
 </nav>
 
 
@@ -302,140 +302,140 @@
       <div class="main-inner">
         <div class="content-wrap">
           <div id="content" class="content">
-            
+
 
   <div id="posts" class="posts-expand">
-    
 
-  
 
-  
-  
-  
+
+
+
+
+
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.wclimb.site/2019/12/03/Docker快速入门/">
+    <link itemprop="mainEntityOfPage" href="http://wunci.github.io/2019/12/03/Docker快速入门/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wclimb">
+      <meta itemprop="name" content="wunci">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wclimb的个人博客--分享">
+      <meta itemprop="name" content="wunci的个人博客--分享">
     </span>
 
-    
+
       <header class="post-header">
 
-        
-        
+
+
           <h1 class="post-title" itemprop="name headline">Docker快速入门</h1>
-        
+
 
         <div class="post-meta">
           <span class="post-time">
-            
+
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
+
                 <span class="post-meta-item-text">发表于</span>
-              
+
               <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-03T09:18:04+08:00">
                 2019-12-03
               </time>
-            
 
-            
 
-            
+
+
+
           </span>
 
-          
+
             <span class="post-category" >
-            
+
               <span class="post-meta-divider">|</span>
-            
+
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
+
                 <span class="post-meta-item-text">分类于</span>
-              
-              
+
+
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Docker/" itemprop="url" rel="index">
                     <span itemprop="name">Docker</span>
                   </a>
                 </span>
 
-                
-                
-                  ， 
-                
-              
+
+
+                  ，
+
+
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Docker/教程/" itemprop="url" rel="index">
                     <span itemprop="name">教程</span>
                   </a>
                 </span>
 
-                
-                
-              
+
+
+
             </span>
-          
 
-          
-            
-          
 
-          
-          
 
-          
+
+
+
+
+
+
+
             <span class="post-meta-divider">|</span>
             <span class="page-pv"><i class="fa fa-file-o"></i>   浏览
             <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
             </span>
-          
 
-          
+
+
             <div class="post-wordcount">
-              
 
-              
+
+
                 <span class="post-meta-divider">|</span>
-              
 
-              
+
+
                 <span class="post-meta-item-icon" style="margin-left:4px;">
                   <i class="fa fa-clock-o"></i>
                 </span>
-                
+
                   <span class="post-meta-item-text">约</span>
-                
+
                 <span title="约">
                   10 分钟
                 </span>
-              
-            </div>
-          
 
-          
+            </div>
+
+
+
 
         </div>
       </header>
-    
+
 
     <div class="post-body" itemprop="articleBody">
 
-      
-      
 
-      
+
+
+
         <h2 id="什么是Docker？"><a href="#什么是Docker？" class="headerlink" title="什么是Docker？"></a>什么是Docker？</h2><p><code>Docker</code> 是一个开源的应用容器引擎，可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 <code>Linux</code> 机器上，也可以实现虚拟化</p>
 <h2 id="为什么要用Docker"><a href="#为什么要用Docker" class="headerlink" title="为什么要用Docker"></a>为什么要用Docker</h2><h3 id="更高效的利用系统资源"><a href="#更高效的利用系统资源" class="headerlink" title="更高效的利用系统资源"></a>更高效的利用系统资源</h3><p>  由于容器不需要进行硬件虚拟以及运行完整操作系统等额外开销，<code>Docker</code> 对系统资源的利用率更高。无论是应用执行速度、内存损耗或者文件存储速度，都要比传统虚拟机技术更高效。因此，相比虚拟机技术，一个相同配置的主机，往往可以运行更多数量的应用。</p>
 <h3 id="更快速的启动时间"><a href="#更快速的启动时间" class="headerlink" title="更快速的启动时间"></a>更快速的启动时间</h3><p>  传统的虚拟机技术启动应用服务往往需要数分钟，而 <code>Docker</code> 容器应用，由于直接运行于宿主内核，无需启动完整的操作系统，因此可以做到秒级、甚至毫秒级的启动时间。大大的节约了开发、测试、部署的时间。<br><a id="more"></a></p>
@@ -522,130 +522,130 @@
 <p>Dockerfile<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"># node版本为10的镜像</div><div class="line">FROM node:10</div><div class="line"></div><div class="line"># 应用程序工作目录</div><div class="line">WORKDIR /usr/src/app</div><div class="line"></div><div class="line"># 拷贝文件，有两种方法ADD、COPY，用法都一样，唯一不同的是 ADD  支持将归档文件（tar, gzip, bzip2, etc）做提取和解压操作</div><div class="line"># 注意的是，COPY 指令需要复制的目录一定要放在 Dockerfile 文件的同级目录下。</div><div class="line">COPY package*.json ./</div><div class="line"></div><div class="line"># 执行命令</div><div class="line">RUN npm install</div><div class="line"></div><div class="line">COPY . .</div><div class="line"></div><div class="line"># 暴露端口</div><div class="line">EXPOSE 8080</div><div class="line"></div><div class="line"># 执行命令 node server.js</div><div class="line">CMD [ &quot;node&quot;, &quot;server.js&quot; ]</div></pre></td></tr></table></figure></p>
 <h3 id="dockerignore-文件"><a href="#dockerignore-文件" class="headerlink" title=".dockerignore 文件"></a>.dockerignore 文件</h3><p>在 <code>Dockerfile</code> 的同一个文件夹中创建一个 <code>.dockerignore</code> 文件，带有以下内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">node_modules</div><div class="line">npm-debug.log</div></pre></td></tr></table></figure></p>
 <p>这将避免你的本地模块以及调试日志被拷贝进入到你的 <code>Docker</code> 镜像中，以至于把你镜像原有安装的模块给覆盖了</p>
-<h3 id="构建你的镜像"><a href="#构建你的镜像" class="headerlink" title="构建你的镜像"></a>构建你的镜像</h3><p>构建需要一点时间<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker build -t wclimb/node-web-app .</div></pre></td></tr></table></figure></p>
+<h3 id="构建你的镜像"><a href="#构建你的镜像" class="headerlink" title="构建你的镜像"></a>构建你的镜像</h3><p>构建需要一点时间<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker build -t wunci/node-web-app .</div></pre></td></tr></table></figure></p>
 <p>然后查看刚刚构建的镜像</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">docker images</div><div class="line"></div><div class="line">REPOSITORY            TAG                 IMAGE ID            CREATED             SIZE</div><div class="line">wclimb/node-web-app   latest              04fe1cd8e0b2        49 seconds ago      907MB</div></pre></td></tr></table></figure>
-<h3 id="运行镜像"><a href="#运行镜像" class="headerlink" title="运行镜像"></a>运行镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -p 49160:8080 -d wclimb/node-web-app</div></pre></td></tr></table></figure>
-<p>查看刚刚运行的容器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">docker ps </div><div class="line">CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                               NAMES</div><div class="line">ffe453510350        wclimb/node-web-app   &quot;docker-entrypoint.s…&quot;   4 seconds ago       Up 3 seconds        8081/tcp, 0.0.0.0:49160-&gt;8080/tcp   unruffled_kare</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">docker images</div><div class="line"></div><div class="line">REPOSITORY            TAG                 IMAGE ID            CREATED             SIZE</div><div class="line">wunci/node-web-app   latest              04fe1cd8e0b2        49 seconds ago      907MB</div></pre></td></tr></table></figure>
+<h3 id="运行镜像"><a href="#运行镜像" class="headerlink" title="运行镜像"></a>运行镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -p 49160:8080 -d wunci/node-web-app</div></pre></td></tr></table></figure>
+<p>查看刚刚运行的容器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">docker ps </div><div class="line">CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                               NAMES</div><div class="line">ffe453510350        wunci/node-web-app   &quot;docker-entrypoint.s…&quot;   4 seconds ago       Up 3 seconds        8081/tcp, 0.0.0.0:49160-&gt;8080/tcp   unruffled_kare</div></pre></td></tr></table></figure></p>
 <p>查看容器内的<code>log</code>信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">docker logs CONTAINER ID</div><div class="line">打印出</div><div class="line">Running on http://0.0.0.0:8080</div></pre></td></tr></table></figure></p>
 <p>访问 <a href="http://0.0.0.0:8080" target="_blank" rel="external">http://0.0.0.0:8080</a> 出现<code>hello world</code></p>
-<h3 id="将镜像推送到远程仓库"><a href="#将镜像推送到远程仓库" class="headerlink" title="将镜像推送到远程仓库"></a>将镜像推送到远程仓库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker push wclimb/node-web-app:v1</div></pre></td></tr></table></figure>
+<h3 id="将镜像推送到远程仓库"><a href="#将镜像推送到远程仓库" class="headerlink" title="将镜像推送到远程仓库"></a>将镜像推送到远程仓库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker push wunci/node-web-app:v1</div></pre></td></tr></table></figure>
 <p>格式为 <code>docker push [OPTIONS] NAME[:TAG]</code>，这里<code>TAG</code>为<code>v1</code></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>至此简单入门的<code>docker</code>教程就全部结束了，我们首先安装docker -&gt; 创建容器 -&gt; 搜索拉取镜像 -&gt; 构建自己的镜像(<code>Dockerfile</code>) -&gt; 发布镜像，文章大部分其实参阅了各个平台的教程或者文档。简单的<code>docker</code>就这样跑起来了，但是真正我们去使用的时候往往会有很多问题，用法也不是直接这么暴力的去使用，例如直接拉取 <code>centos</code> 镜像往里面安装 <code>nginx</code>，会很浪费资源，也没有做到真正的隔离环境。下一篇讲使用<code>docker-compose</code>讲多个容器组合起来，尽可能实战操作</p>
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://nodejs.org/zh-cn/docs/guides/nodejs-docker-webapp/" target="_blank" rel="external">把一个 Node.js web 应用程序给 Docker 化</a><br><a href="https://juejin.im/post/5cacbfd7e51d456e8833390" target="_blank" rel="external">30 分钟快速入门 Docker 教程</a><br><a href="https://yeasy.gitbooks.io/docker_practice/" target="_blank" rel="external">Docker — 从入门到实践</a></p>
-<p>本文地址： <a href="http://www.wclimb.site/2019/12/03/Docker快速入门/">http://www.wclimb.site/2019/12/03/Docker快速入门/</a></p>
+<p>本文地址： <a href="http://wunci.github.io/2019/12/03/Docker快速入门/">http://wunci.github.io/2019/12/03/Docker快速入门/</a></p>
 
-      
+
     </div>
 
     <div>
-      
-        
 
-      
+
+
+
     </div>
 
     <div>
-      
-        
+
+
   <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
     <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
     <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
       <span>赏</span>
     </button>
     <div id="QR" style="display: none;">
-      
+
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay"/>
+          <img id="wechat_qr" src="/img/wx.png" alt="wunci WeChat Pay"/>
           <p>微信打赏</p>
         </div>
-      
-      
+
+
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay"/>
+          <img id="alipay_qr" src="/img/alipay.png" alt="wunci Alipay"/>
           <p>支付宝打赏</p>
         </div>
-      
+
     </div>
   </div>
 
 
-      
+
     </div>
 
     <div>
-      
-        
 
-      
+
+
+
     </div>
 
     <footer class="post-footer">
-      
+
         <div class="post-tags">
-          
+
             <a href="/tags/原创/" rel="tag"># 原创</a>
-          
+
             <a href="/tags/教程/" rel="tag"># 教程</a>
-          
+
             <a href="/tags/Docker/" rel="tag"># Docker</a>
-          
+
         </div>
-      
 
-      
-      
-      
 
-      
+
+
+
+
+
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-            
+
               <a href="/2019/10/16/Gitlab-CI初探/" rel="next" title="Gitlab-CI初探">
                 <i class="fa fa-chevron-left"></i> Gitlab-CI初探
               </a>
-            
+
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
+
               <a href="/2019/12/11/Koa源码系列之koa-compose/" rel="prev" title="Koa源码系列之koa-compose">
                 Koa源码系列之koa-compose <i class="fa fa-chevron-right"></i>
               </a>
-            
+
           </div>
         </div>
-      
 
-      
-      
+
+
+
     </footer>
   </article>
 
 
 
     <div class="post-spread">
-      
+
     </div>
   </div>
 
 
           </div>
-          
 
 
-          
+
+
   <div class="comments" id="comments">
-    
+
   </div>
 
 
         </div>
-        
-          
-  
+
+
+
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
       <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
@@ -657,9 +657,9 @@
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
-      
 
-      
+
+
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
             文章目录
@@ -668,184 +668,184 @@
             站点概览
           </li>
         </ul>
-      
+
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
-               alt="wclimb" />
-          <p class="site-author-name" itemprop="name">wclimb</p>
-           
+               alt="wunci" />
+          <p class="site-author-name" itemprop="name">wunci</p>
+
               <p class="site-description motion-element" itemprop="description"></p>
-          
+
         </div>
         <nav class="site-state motion-element">
 
-          
+
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
                 <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
-          
 
-          
-            
-            
+
+
+
+
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
                 <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
-          
 
-          
-            
-            
+
+
+
+
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
                 <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
-          
+
 
         </nav>
 
-        
+
 
         <div class="links-of-author motion-element">
-          
-            
+
+
               <span class="links-of-author-item">
-                <a href="https://github.com/wclimb" target="_blank" title="GitHub">
-                  
+                <a href="https://github.com/wunci" target="_blank" title="GitHub">
+
                     <i class="fa fa-fw fa-github"></i>
-                  
+
                   GitHub
                 </a>
               </span>
-            
+
               <span class="links-of-author-item">
                 <a href="http://shang.qq.com/wpa/qunwpa?idkey=e6c66b1ee584a90b52dec3545622e988afcf900144eff03cab6d473c50a31d59" target="_blank" title="QQ群">
-                  
+
                     <i class="fa fa-fw fa-qq"></i>
-                  
+
                   QQ群
                 </a>
               </span>
-            
+
               <span class="links-of-author-item">
-                <a href="http://www.wclimb.site/cdn/xcx.jpeg" target="_blank" title="小程序">
-                  
+                <a href="http://wunci.github.io/cdn/xcx.jpeg" target="_blank" title="小程序">
+
                     <i class="fa fa-fw fa-weixin"></i>
-                  
+
                   小程序
                 </a>
               </span>
-            
+
               <span class="links-of-author-item">
                 <a href="/img/gzh.jpg" target="_blank" title="公众号">
-                  
+
                     <i class="fa fa-fw fa-globe"></i>
-                  
+
                   公众号
                 </a>
               </span>
-            
-          
+
+
         </div>
 
-        
-        
 
-        
-        
+
+
+
+
           <div class="links-of-blogroll motion-element links-of-blogroll-inline">
             <div class="links-of-blogroll-title">
               <i class="fa  fa-fw fa-globe"></i>
               Links
             </div>
             <ul class="links-of-blogroll-list">
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="https://www.lsnsh.site/" title="Lsnsh" target="_blank">Lsnsh</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://blog.curtaintan.club" title="curtain Tan" target="_blank">curtain Tan</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://eraylee.com/" title="eraylee" target="_blank">eraylee</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="https://dcdcdog.com" title="flutter体验" target="_blank">flutter体验</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://www.jspeng.com" title="技术鹏" target="_blank">技术鹏</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://www.suchenqiang.cn/" title="苏博客" target="_blank">苏博客</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="https://www.phpojbk.com" title="Blog Luo" target="_blank">Blog Luo</a>
                 </li>
-              
+
             </ul>
           </div>
-        
 
-        
+
+
 
 
       </section>
 
-      
+
       <!--noindex-->
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
-            
-              
-            
 
-            
+
+
+
+
               <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是Docker？"><span class="nav-number">1.</span> <span class="nav-text">什么是Docker？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要用Docker"><span class="nav-number">2.</span> <span class="nav-text">为什么要用Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#更高效的利用系统资源"><span class="nav-number">2.1.</span> <span class="nav-text">更高效的利用系统资源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更快速的启动时间"><span class="nav-number">2.2.</span> <span class="nav-text">更快速的启动时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一致的运行环境"><span class="nav-number">2.3.</span> <span class="nav-text">一致的运行环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#持续交付和部署"><span class="nav-number">2.4.</span> <span class="nav-text">持续交付和部署</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更轻松的迁移"><span class="nav-number">2.5.</span> <span class="nav-text">更轻松的迁移</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更轻松的维护和扩展"><span class="nav-number">2.6.</span> <span class="nav-text">更轻松的维护和扩展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对比传统虚拟机总结"><span class="nav-number">2.7.</span> <span class="nav-text">对比传统虚拟机总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">3.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实战"><span class="nav-number">4.</span> <span class="nav-text">实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#镜像"><span class="nav-number">5.</span> <span class="nav-text">镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建自己的镜像"><span class="nav-number">6.</span> <span class="nav-text">构建自己的镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建-Node-js-应用"><span class="nav-number">6.1.</span> <span class="nav-text">创建 Node.js 应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dockerfile"><span class="nav-number">6.2.</span> <span class="nav-text">Dockerfile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dockerignore-文件"><span class="nav-number">6.3.</span> <span class="nav-text">.dockerignore 文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构建你的镜像"><span class="nav-number">6.4.</span> <span class="nav-text">构建你的镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行镜像"><span class="nav-number">6.5.</span> <span class="nav-text">运行镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将镜像推送到远程仓库"><span class="nav-number">6.6.</span> <span class="nav-text">将镜像推送到远程仓库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">8.</span> <span class="nav-text">reference</span></a></li></ol></div>
-            
+
 
           </div>
         </section>
       <!--/noindex-->
-      
 
-      
+
+
 
     </div>
   </aside>
 
 
-        
+
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright" >
-  
-  &copy;  2017 - 
+
+  &copy;  2017 -
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">wclimb</span>
+  <span class="author" itemprop="copyrightHolder">wunci</span>
 </div>
 
 
@@ -875,37 +875,37 @@ var total= Math.floor(duration / (1000 * 60 * 60 * 24));
 document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 </script>
 
-<span>赣ICP备 17009321号</span> 
-        
+<span>赣ICP备 17009321号</span>
+
 <div class="busuanzi-count">
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-  
+
     <span class="site-uv">
       <i class="fa fa-user"></i>  访问人数
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
       人次
     </span>
-  
 
-  
+
+
 </div>
 
 
-        
+
       </div>
     </footer>
 
-    
+
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
-        
+
       </div>
-    
+
 
   </div>
 
-  
+
 
 <script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
@@ -921,7 +921,6 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
 
 
 
@@ -934,26 +933,27 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
+
+
   <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
 
 
-  
+
 
 
   <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
@@ -962,8 +962,8 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
-  
+
+
 
 
   <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
@@ -972,53 +972,53 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
+
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
 
 
-  
+
 
 
   <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-  
 
 
 
 
 
 
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <script type="text/javascript">
     // Popup Window;
@@ -1341,17 +1341,17 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
+
+
+
+
+
+
 
   <script src="https://cdn.bootcss.com/clipboard.js/2.0.6/clipboard.min.js"></script>
   <style>

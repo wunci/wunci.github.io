@@ -2,7 +2,7 @@
 
 
 
-  
+
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
@@ -36,45 +36,45 @@
 
 
 
-  
-  
-    
-  
+
+
+
+
   <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
 
-  
-  
-  
-  
 
-  
-    
-    
-  
 
-  
 
-  
 
-  
 
-  
 
-  
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
 
 
 
-  
+
+
 
 <link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
@@ -101,15 +101,15 @@
 <meta name="keywords" content="原创,javascript,Node">
 <meta property="og:type" content="article">
 <meta property="og:title" content="node项目服务器部署(新手教程)">
-<meta property="og:url" content="http://www.wclimb.site/2018/07/28/node项目服务器部署-新手教程/index.html">
-<meta property="og:site_name" content="wclimb的个人博客--分享">
+<meta property="og:url" content="http://wunci.github.io/2018/07/28/node项目服务器部署-新手教程/index.html">
+<meta property="og:site_name" content="wunci的个人博客--分享">
 <meta property="og:description" content="写在前面之前在github写了几个项目，然后一直有很多人问我node项目怎么部署到服务器上，于是乎应大家要求就写了这篇文章，此篇教程只提供给新手借鉴，如果你是大佬的话可以不用往下看了，教程多少有些缺陷，都是按照自己的印象写出来的，所以有问题还望指正。 linux服务器安装node首先下载node包1wget https://npm.taobao.org/mirrors/node/latest-v8">
-<meta property="og:image" content="http://www.wclimb.site/cdn/xcx.jpeg">
+<meta property="og:image" content="http://wunci.github.io/cdn/xcx.jpeg">
 <meta property="og:updated_time" content="2021-09-12T07:52:45.016Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="node项目服务器部署(新手教程)">
 <meta name="twitter:description" content="写在前面之前在github写了几个项目，然后一直有很多人问我node项目怎么部署到服务器上，于是乎应大家要求就写了这篇文章，此篇教程只提供给新手借鉴，如果你是大佬的话可以不用往下看了，教程多少有些缺陷，都是按照自己的印象写出来的，所以有问题还望指正。 linux服务器安装node首先下载node包1wget https://npm.taobao.org/mirrors/node/latest-v8">
-<meta name="twitter:image" content="http://www.wclimb.site/cdn/xcx.jpeg">
+<meta name="twitter:image" content="http://wunci.github.io/cdn/xcx.jpeg">
 
 
 
@@ -137,14 +137,14 @@
 
 
 
-  <link rel="canonical" href="http://www.wclimb.site/2018/07/28/node项目服务器部署-新手教程/"/>
+  <link rel="canonical" href="http://wunci.github.io/2018/07/28/node项目服务器部署-新手教程/"/>
 
 
 
 
 
-  <title>node项目服务器部署(新手教程) | wclimb的个人博客--分享</title>
-  
+  <title>node项目服务器部署(新手教程) | wunci的个人博客--分享</title>
+
 
 
 
@@ -163,10 +163,10 @@
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  
-  
-    
-  
+
+
+
+
 
   <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
@@ -174,18 +174,18 @@
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
-    
+
 
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">wclimb的个人博客--分享</span>
+        <span class="site-title">wunci的个人博客--分享</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
+
         <p class="site-subtitle"></p>
-      
+
   </div>
 
   <div class="site-nav-toggle">
@@ -198,80 +198,80 @@
 </div>
 
 <nav class="site-nav">
-  
 
-  
+
+
     <ul id="menu" class="menu">
-      
-        
+
+
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
+
             首页
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
+
             分类
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
+
             关于
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
+
             归档
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
+
             标签
           </a>
         </li>
-      
 
-      
+
+
         <li class="menu-item menu-item-search">
-          
+
             <a href="javascript:;" class="popup-trigger">
-          
-            
+
+
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
+
             搜索
           </a>
         </li>
-      
-    </ul>
-  
 
-  
+    </ul>
+
+
+
     <div class="site-search">
-      
+
   <div class="popup search-popup local-search-popup">
   <div class="local-search-header clearfix">
     <span class="search-icon">
@@ -292,7 +292,7 @@
 
 
     </div>
-  
+
 </nav>
 
 
@@ -304,140 +304,140 @@
       <div class="main-inner">
         <div class="content-wrap">
           <div id="content" class="content">
-            
+
 
   <div id="posts" class="posts-expand">
-    
 
-  
 
-  
-  
-  
+
+
+
+
+
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.wclimb.site/2018/07/28/node项目服务器部署-新手教程/">
+    <link itemprop="mainEntityOfPage" href="http://wunci.github.io/2018/07/28/node项目服务器部署-新手教程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wclimb">
+      <meta itemprop="name" content="wunci">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wclimb的个人博客--分享">
+      <meta itemprop="name" content="wunci的个人博客--分享">
     </span>
 
-    
+
       <header class="post-header">
 
-        
-        
+
+
           <h1 class="post-title" itemprop="name headline">node项目服务器部署(新手教程)</h1>
-        
+
 
         <div class="post-meta">
           <span class="post-time">
-            
+
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
+
                 <span class="post-meta-item-text">发表于</span>
-              
+
               <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-28T15:16:46+08:00">
                 2018-07-28
               </time>
-            
 
-            
 
-            
+
+
+
           </span>
 
-          
+
             <span class="post-category" >
-            
+
               <span class="post-meta-divider">|</span>
-            
+
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
+
                 <span class="post-meta-item-text">分类于</span>
-              
-              
+
+
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Node/" itemprop="url" rel="index">
                     <span itemprop="name">Node</span>
                   </a>
                 </span>
 
-                
-                
-                  ， 
-                
-              
+
+
+                  ，
+
+
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Node/教程/" itemprop="url" rel="index">
                     <span itemprop="name">教程</span>
                   </a>
                 </span>
 
-                
-                
-              
+
+
+
             </span>
-          
 
-          
-            
-          
 
-          
-          
 
-          
+
+
+
+
+
+
+
             <span class="post-meta-divider">|</span>
             <span class="page-pv"><i class="fa fa-file-o"></i>   浏览
             <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
             </span>
-          
 
-          
+
+
             <div class="post-wordcount">
-              
 
-              
+
+
                 <span class="post-meta-divider">|</span>
-              
 
-              
+
+
                 <span class="post-meta-item-icon" style="margin-left:4px;">
                   <i class="fa fa-clock-o"></i>
                 </span>
-                
+
                   <span class="post-meta-item-text">约</span>
-                
+
                 <span title="约">
                   5 分钟
                 </span>
-              
-            </div>
-          
 
-          
+            </div>
+
+
+
 
         </div>
       </header>
-    
+
 
     <div class="post-body" itemprop="articleBody">
 
-      
-      
 
-      
+
+
+
         <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>之前在github写了几个项目，然后一直有很多人问我node项目怎么部署到服务器上，于是乎应大家要求就写了这篇文章，此篇教程只提供给新手借鉴，如果你是大佬的话可以不用往下看了，教程多少有些缺陷，都是按照自己的印象写出来的，所以有问题还望指正。</p>
 <h2 id="linux服务器安装node"><a href="#linux服务器安装node" class="headerlink" title="linux服务器安装node"></a>linux服务器安装node</h2><p>首先<br>下载node包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget https://npm.taobao.org/mirrors/node/latest-v8.x/node-v8.1.0-linux-x64.tar.gz</div></pre></td></tr></table></figure></p>
 <p>解压<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar xvf node-v8.1.0-linux-x64.tar.gz</div></pre></td></tr></table></figure></p>
@@ -480,133 +480,133 @@
 <p>启动<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service nginx start</div></pre></td></tr></table></figure></p>
 <p>查找nginx安装在哪，我这里是<code>/etc/nginx/conf.d</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">whereis nginx</div></pre></td></tr></table></figure></p>
 <p>进入文件夹<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd /etc/nginx/conf.d</div></pre></td></tr></table></figure></p>
-<p>然后新建文件，这里以我的域名为例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi www.wclimb.site.conf</div></pre></td></tr></table></figure></p>
+<p>然后新建文件，这里以我的域名为例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi wunci.github.io.conf</div></pre></td></tr></table></figure></p>
 <p>然后里面的文件内容我们先不写，我们先把node项目部署一下</p>
-<h2 id="使用pm2启动node项目"><a href="#使用pm2启动node项目" class="headerlink" title="使用pm2启动node项目"></a>使用pm2启动node项目</h2><p>这里以我的项目为例<a href="https://github.com/wclimb/Koa2-blog" target="_blank" rel="external">koa2-blog</a><br>我们先找到合适的文件夹存放我们得项目，然后<code>git clone</code>一下（git我们之前安装过了）</p>
+<h2 id="使用pm2启动node项目"><a href="#使用pm2启动node项目" class="headerlink" title="使用pm2启动node项目"></a>使用pm2启动node项目</h2><p>这里以我的项目为例<a href="https://github.com/wunci/Koa2-blog" target="_blank" rel="external">koa2-blog</a><br>我们先找到合适的文件夹存放我们得项目，然后<code>git clone</code>一下（git我们之前安装过了）</p>
 <blockquote>
 <p>该项目的数据库名叫nodeSql，使用运行之前得先建立好数据库，然后再运行项目，登录数据库执行 create database nodesql;</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/wclimb/Koa2-blog.git</div><div class="line">cd Koa2-blog</div><div class="line">cnpm i </div><div class="line">pm2 start index.js</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/wunci/Koa2-blog.git</div><div class="line">cd Koa2-blog</div><div class="line">cnpm i </div><div class="line">pm2 start index.js</div></pre></td></tr></table></figure>
 <p>上面pm2我们也安装过，该项目监听的是3000端口，项目已经运行起来了<br>可以使用<code>pm2 list</code>查看进程列表，使用<code>pm2 log</code>打印日志</p>
-<h2 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h2><p>记得刚刚我们没有编写<code>www.wclimb.site.conf</code>文件<br>现在开始写入以下内容，<code>blog.wclimb.site</code>是我的域名，你可以在你的服务器平台去解析一下，目前我们监听的是<code>3000</code>端口，所以代理到<code>3000</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    listen 80;</div><div class="line">    server_name blog.wclimb.site;</div><div class="line">    location / &#123;</div><div class="line">        proxy_pass http://127.0.0.1:3000;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h2><p>记得刚刚我们没有编写<code>wunci.github.io.conf</code>文件<br>现在开始写入以下内容，<code>blog.wunci.site</code>是我的域名，你可以在你的服务器平台去解析一下，目前我们监听的是<code>3000</code>端口，所以代理到<code>3000</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    listen 80;</div><div class="line">    server_name blog.wunci.site;</div><div class="line">    location / &#123;</div><div class="line">        proxy_pass http://127.0.0.1:3000;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>检验nginx是否正确配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nginx -t</div></pre></td></tr></table></figure></p>
 <p>重启nginx<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service nginx restart</div></pre></td></tr></table></figure></p>
 <p>如果不成功，可能还需执行一下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">systemctl stop httpd</div><div class="line">systemctl disable httpd</div></pre></td></tr></table></figure></p>
 <h2 id="完结"><a href="#完结" class="headerlink" title="完结"></a>完结</h2><p>OK，现在访问域名看看是否有效果了，整个流程可能有写纰漏，大致流程也差不多了，希望对你有帮助</p>
-<p>GitHub：<a href="https://github.com/wclimb" target="_blank" rel="external">wclimb</a></p>
-<h2 id="个人小程序"><a href="#个人小程序" class="headerlink" title="个人小程序"></a>个人小程序</h2><p><img src="http://www.wclimb.site/cdn/xcx.jpeg" alt="img"></p>
+<p>GitHub：<a href="https://github.com/wunci" target="_blank" rel="external">wunci</a></p>
+<h2 id="个人小程序"><a href="#个人小程序" class="headerlink" title="个人小程序"></a>个人小程序</h2><p><img src="http://wunci.github.io/cdn/xcx.jpeg" alt="img"></p>
 
-      
+
     </div>
 
     <div>
-      
-        
 
-      
+
+
+
     </div>
 
     <div>
-      
-        
+
+
   <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
     <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
     <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
       <span>赏</span>
     </button>
     <div id="QR" style="display: none;">
-      
+
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay"/>
+          <img id="wechat_qr" src="/img/wx.png" alt="wunci WeChat Pay"/>
           <p>微信打赏</p>
         </div>
-      
-      
+
+
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay"/>
+          <img id="alipay_qr" src="/img/alipay.png" alt="wunci Alipay"/>
           <p>支付宝打赏</p>
         </div>
-      
+
     </div>
   </div>
 
 
-      
+
     </div>
 
     <div>
-      
-        
 
-      
+
+
+
     </div>
 
     <footer class="post-footer">
-      
+
         <div class="post-tags">
-          
+
             <a href="/tags/原创/" rel="tag"># 原创</a>
-          
+
             <a href="/tags/javascript/" rel="tag"># javascript</a>
-          
+
             <a href="/tags/Node/" rel="tag"># Node</a>
-          
+
         </div>
-      
 
-      
-      
-      
 
-      
+
+
+
+
+
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-            
+
               <a href="/2018/07/12/JavaScript之函数记忆/" rel="next" title="JavaScript之函数记忆">
                 <i class="fa fa-chevron-left"></i> JavaScript之函数记忆
               </a>
-            
+
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
+
               <a href="/2018/07/29/JavsScript之浅拷贝与深拷贝/" rel="prev" title="JavsScript之浅拷贝与深拷贝">
                 JavsScript之浅拷贝与深拷贝 <i class="fa fa-chevron-right"></i>
               </a>
-            
+
           </div>
         </div>
-      
 
-      
-      
+
+
+
     </footer>
   </article>
 
 
 
     <div class="post-spread">
-      
+
     </div>
   </div>
 
 
           </div>
-          
 
 
-          
+
+
   <div class="comments" id="comments">
-    
+
   </div>
 
 
         </div>
-        
-          
-  
+
+
+
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
       <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
@@ -618,9 +618,9 @@
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
-      
 
-      
+
+
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
             文章目录
@@ -629,184 +629,184 @@
             站点概览
           </li>
         </ul>
-      
+
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
-               alt="wclimb" />
-          <p class="site-author-name" itemprop="name">wclimb</p>
-           
+               alt="wunci" />
+          <p class="site-author-name" itemprop="name">wunci</p>
+
               <p class="site-description motion-element" itemprop="description"></p>
-          
+
         </div>
         <nav class="site-state motion-element">
 
-          
+
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
                 <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
-          
 
-          
-            
-            
+
+
+
+
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
                 <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
-          
 
-          
-            
-            
+
+
+
+
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
                 <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
-          
+
 
         </nav>
 
-        
+
 
         <div class="links-of-author motion-element">
-          
-            
+
+
               <span class="links-of-author-item">
-                <a href="https://github.com/wclimb" target="_blank" title="GitHub">
-                  
+                <a href="https://github.com/wunci" target="_blank" title="GitHub">
+
                     <i class="fa fa-fw fa-github"></i>
-                  
+
                   GitHub
                 </a>
               </span>
-            
+
               <span class="links-of-author-item">
                 <a href="http://shang.qq.com/wpa/qunwpa?idkey=e6c66b1ee584a90b52dec3545622e988afcf900144eff03cab6d473c50a31d59" target="_blank" title="QQ群">
-                  
+
                     <i class="fa fa-fw fa-qq"></i>
-                  
+
                   QQ群
                 </a>
               </span>
-            
+
               <span class="links-of-author-item">
-                <a href="http://www.wclimb.site/cdn/xcx.jpeg" target="_blank" title="小程序">
-                  
+                <a href="http://wunci.github.io/cdn/xcx.jpeg" target="_blank" title="小程序">
+
                     <i class="fa fa-fw fa-weixin"></i>
-                  
+
                   小程序
                 </a>
               </span>
-            
+
               <span class="links-of-author-item">
                 <a href="/img/gzh.jpg" target="_blank" title="公众号">
-                  
+
                     <i class="fa fa-fw fa-globe"></i>
-                  
+
                   公众号
                 </a>
               </span>
-            
-          
+
+
         </div>
 
-        
-        
 
-        
-        
+
+
+
+
           <div class="links-of-blogroll motion-element links-of-blogroll-inline">
             <div class="links-of-blogroll-title">
               <i class="fa  fa-fw fa-globe"></i>
               Links
             </div>
             <ul class="links-of-blogroll-list">
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="https://www.lsnsh.site/" title="Lsnsh" target="_blank">Lsnsh</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://blog.curtaintan.club" title="curtain Tan" target="_blank">curtain Tan</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://eraylee.com/" title="eraylee" target="_blank">eraylee</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="https://dcdcdog.com" title="flutter体验" target="_blank">flutter体验</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://www.jspeng.com" title="技术鹏" target="_blank">技术鹏</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://www.suchenqiang.cn/" title="苏博客" target="_blank">苏博客</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="https://www.phpojbk.com" title="Blog Luo" target="_blank">Blog Luo</a>
                 </li>
-              
+
             </ul>
           </div>
-        
 
-        
+
+
 
 
       </section>
 
-      
+
       <!--noindex-->
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
-            
-              
-            
 
-            
+
+
+
+
               <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#linux服务器安装node"><span class="nav-number">1.1.</span> <span class="nav-text">linux服务器安装node</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装pm2"><span class="nav-number">1.2.</span> <span class="nav-text">安装pm2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装mysql"><span class="nav-number">1.3.</span> <span class="nav-text">安装mysql</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装nginx"><span class="nav-number">1.4.</span> <span class="nav-text">安装nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用pm2启动node项目"><span class="nav-number">1.5.</span> <span class="nav-text">使用pm2启动node项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx配置"><span class="nav-number">1.6.</span> <span class="nav-text">nginx配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完结"><span class="nav-number">1.7.</span> <span class="nav-text">完结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个人小程序"><span class="nav-number">1.8.</span> <span class="nav-text">个人小程序</span></a></li></ol></li></ol></div>
-            
+
 
           </div>
         </section>
       <!--/noindex-->
-      
 
-      
+
+
 
     </div>
   </aside>
 
 
-        
+
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright" >
-  
-  &copy;  2017 - 
+
+  &copy;  2017 -
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">wclimb</span>
+  <span class="author" itemprop="copyrightHolder">wunci</span>
 </div>
 
 
@@ -836,37 +836,37 @@ var total= Math.floor(duration / (1000 * 60 * 60 * 24));
 document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 </script>
 
-<span>赣ICP备 17009321号</span> 
-        
+<span>赣ICP备 17009321号</span>
+
 <div class="busuanzi-count">
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-  
+
     <span class="site-uv">
       <i class="fa fa-user"></i>  访问人数
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
       人次
     </span>
-  
 
-  
+
+
 </div>
 
 
-        
+
       </div>
     </footer>
 
-    
+
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
-        
+
       </div>
-    
+
 
   </div>
 
-  
+
 
 <script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
@@ -882,7 +882,6 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
 
 
 
@@ -895,26 +894,27 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
+
+
   <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
 
 
-  
+
 
 
   <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
@@ -923,8 +923,8 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
-  
+
+
 
 
   <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
@@ -933,53 +933,53 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
+
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
 
 
-  
+
 
 
   <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-  
 
 
 
 
 
 
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <script type="text/javascript">
     // Popup Window;
@@ -1302,17 +1302,17 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
+
+
+
+
+
+
 
   <script src="https://cdn.bootcss.com/clipboard.js/2.0.6/clipboard.min.js"></script>
   <style>

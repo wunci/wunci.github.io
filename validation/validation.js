@@ -21,7 +21,7 @@
 	        // 邮箱
 	        isEmail:function(value){
 	        	var reg = /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/;
-	        	if (reg.test(value)) {	
+	        	if (reg.test(value)) {
 	        		return true
 	        	}
 	        	return false
@@ -29,7 +29,7 @@
 	        // url
 	        isUrl:function(value){
 	        	var reg = /^((ht|f)tps?):\/\/[\w\-]+(\.[\w\-]+)+([\w\-\.,@?^=%&:\/~\+#]*[\w\-\@?^=%&\/~\+#])?/;
-	        	if (reg.test(value)) {	
+	        	if (reg.test(value)) {
 	        		return true
 	        	}
 	        	return false
@@ -37,7 +37,7 @@
 	        // qq
 	        isQQ:function(value){
 	        	var reg = /^[1-9][0-9]{4,}$/;
-	        	if (reg.test(value)) {	
+	        	if (reg.test(value)) {
 	        		return true
 	        	}
 	        	return false
@@ -45,7 +45,7 @@
 	        // 邮政编码
 	        isPostcode:function(value){
 	        	var reg = /^[1-9]\d{5}(?!\d)$/;
-	        	if (reg.test(value)) {	
+	        	if (reg.test(value)) {
 	        		return true
 	        	}
 	        	return false
@@ -53,7 +53,7 @@
 	        // 身份证
 	        isCertificate:function(value){
 	        	var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
-	        	if (reg.test(value)) {	
+	        	if (reg.test(value)) {
 	        		return true
 	        	}
 	        	return false
@@ -61,7 +61,7 @@
 	        // 匹配中文
 	        isChinese:function(value){
 	        	var reg = /[\u4e00-\u9fa5]/;
-	        	if (reg.test(value)) {	
+	        	if (reg.test(value)) {
 	        		return true
 	        	}
 	        	return false
@@ -69,7 +69,7 @@
 	        // 密码强度
 	        pwdStrong:function(value){
 	        	var reg = /(?!^[0-9]{6,12}$)^[0-9A-Za-z]{6,12}$/;
-	        	if (reg.test(value)) {	
+	        	if (reg.test(value)) {
 	        		return true
 	        	}
 	        	return false
@@ -77,13 +77,13 @@
 	        // 检测重复密码
 	        repeat:function(value){
 	        	var pwdVal = document.querySelector('input[name=pwd]').value
-	        	if (pwdVal === value && !/^\s+$/g.test(pwdVal) && value.length !== 0) {	
+	        	if (pwdVal === value && !/^\s+$/g.test(pwdVal) && value.length !== 0) {
 	        		return true
 	        	}
 	        	return false
 	        },
 	    }
-	    return function(value,type){ 
+	    return function(value,type){
 	    	//type为检测类型,value为检测的值
 	        if(!types[type]){
 	            throw "检测类型不存在";
@@ -96,7 +96,7 @@
 	}
 	// 验证开始
 	Wvld.prototype.validation = function(value,types,target,wrap,successCb){
-	    var that = this       
+	    var that = this
 	    this.each(types,function(key,val){
 	        var isTrue = that.test()(value,val.type);
 	        // 验证不通过
@@ -112,7 +112,7 @@
 		          	}else{
 		            	target.parentNode.appendChild(newEle)
 		          	}
-		            return false 
+		            return false
 	            }
 	        }else{
 	        	 // 验证通过
@@ -120,13 +120,13 @@
 	        	console.log(target)
 	        	nextS && nextS.nodeName == 'SPAN' && nextS.className == 'error-tips' ? target.parentNode.removeChild(nextS) : '';
 	        	target.className = target.className.replace(/\berror-red\b/g,'');
-	        }	
+	        }
 	    })
-	    
+
 	}
 	// each循环
 	Wvld.prototype.each = function(obj,callback){
-		var isObj = Object.prototype.toString.call(obj) 
+		var isObj = Object.prototype.toString.call(obj)
 		if (isObj === '[object Object]') {
 			for (var name in obj){
 				callback.call(obj[name],name,obj[name])
@@ -158,13 +158,13 @@
 			for (var i = 0,len = input.length; i < len; i++) {
 				if (/\berror-red\b/g.test(input[i].className)) {
 					isError = true
-					return false 
+					return false
 				}else{
 					isError = false
 				}
 			}
 			if (!isError && successCb) {
-				successCb()  
+				successCb()
 				return false
 			}else{
 				document.querySelector(wrap+' form').submit()
@@ -210,7 +210,7 @@
 		defaults.type = defaults.type.toUpperCase()
 		defaults.cache = defaults.cache ? '' : '&' + new Date().getTime()
 
-		if (defaults.type === 'GET' && (defaults.data || defaults.cache)) defaults.url += '?' + defaults.data + defaults.cache 
+		if (defaults.type === 'GET' && (defaults.data || defaults.cache)) defaults.url += '?' + defaults.data + defaults.cache
 
 		var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP')
 		xhr.open(defaults.type,defaults.url,defaults.async)
@@ -231,10 +231,6 @@
 	}
 
 	vld = new Wvld();
-	window.vld = window.wclimb = vld
+	window.vld = window.wunci = vld
 
 })(window)
-	
-
-			
-			

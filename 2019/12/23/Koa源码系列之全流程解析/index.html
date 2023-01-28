@@ -2,7 +2,7 @@
 
 
 
-  
+
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
@@ -36,45 +36,45 @@
 
 
 
-  
-  
-    
-  
+
+
+
+
   <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
 
-  
-  
-  
-  
 
-  
-    
-    
-  
 
-  
 
-  
 
-  
 
-  
 
-  
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
 
 
 
-  
+
+
 
 <link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
@@ -101,8 +101,8 @@
 <meta name="keywords" content="原创,javascript,Koa">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Koa源码系列之全流程解析">
-<meta property="og:url" content="http://www.wclimb.site/2019/12/23/Koa源码系列之全流程解析/index.html">
-<meta property="og:site_name" content="wclimb的个人博客--分享">
+<meta property="og:url" content="http://wunci.github.io/2019/12/23/Koa源码系列之全流程解析/index.html">
+<meta property="og:site_name" content="wunci的个人博客--分享">
 <meta property="og:description" content="写在前面之前我们已经讲解了koa源码中的一些依赖包，Koa源码系列之依赖包解析 Koa源码系列之koa-compose，现在我们来看看koa源码的全流程 解析我们首先来看看最简单的用法，一下是官网的示例12345678const Koa = require(&apos;koa&apos;);const app = new Koa();app.use(async ctx =&amp;gt; &amp;#123;  ctx.body =">
 <meta property="og:updated_time" content="2021-09-12T07:52:45.003Z">
 <meta name="twitter:card" content="summary">
@@ -135,14 +135,14 @@
 
 
 
-  <link rel="canonical" href="http://www.wclimb.site/2019/12/23/Koa源码系列之全流程解析/"/>
+  <link rel="canonical" href="http://wunci.github.io/2019/12/23/Koa源码系列之全流程解析/"/>
 
 
 
 
 
-  <title>Koa源码系列之全流程解析 | wclimb的个人博客--分享</title>
-  
+  <title>Koa源码系列之全流程解析 | wunci的个人博客--分享</title>
+
 
 
 
@@ -161,10 +161,10 @@
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  
-  
-    
-  
+
+
+
+
 
   <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
@@ -172,18 +172,18 @@
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
-    
+
 
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">wclimb的个人博客--分享</span>
+        <span class="site-title">wunci的个人博客--分享</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
+
         <p class="site-subtitle"></p>
-      
+
   </div>
 
   <div class="site-nav-toggle">
@@ -196,80 +196,80 @@
 </div>
 
 <nav class="site-nav">
-  
 
-  
+
+
     <ul id="menu" class="menu">
-      
-        
+
+
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
+
             首页
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
+
             分类
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
+
             关于
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
+
             归档
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
+
             标签
           </a>
         </li>
-      
 
-      
+
+
         <li class="menu-item menu-item-search">
-          
+
             <a href="javascript:;" class="popup-trigger">
-          
-            
+
+
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
+
             搜索
           </a>
         </li>
-      
-    </ul>
-  
 
-  
+    </ul>
+
+
+
     <div class="site-search">
-      
+
   <div class="popup search-popup local-search-popup">
   <div class="local-search-header clearfix">
     <span class="search-icon">
@@ -290,7 +290,7 @@
 
 
     </div>
-  
+
 </nav>
 
 
@@ -302,143 +302,143 @@
       <div class="main-inner">
         <div class="content-wrap">
           <div id="content" class="content">
-            
+
 
   <div id="posts" class="posts-expand">
-    
 
-  
 
-  
-  
-  
+
+
+
+
+
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.wclimb.site/2019/12/23/Koa源码系列之全流程解析/">
+    <link itemprop="mainEntityOfPage" href="http://wunci.github.io/2019/12/23/Koa源码系列之全流程解析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wclimb">
+      <meta itemprop="name" content="wunci">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wclimb的个人博客--分享">
+      <meta itemprop="name" content="wunci的个人博客--分享">
     </span>
 
-    
+
       <header class="post-header">
 
-        
-        
+
+
           <h1 class="post-title" itemprop="name headline">Koa源码系列之全流程解析</h1>
-        
+
 
         <div class="post-meta">
           <span class="post-time">
-            
+
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
+
                 <span class="post-meta-item-text">发表于</span>
-              
+
               <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-23T16:13:58+08:00">
                 2019-12-23
               </time>
-            
 
-            
 
-            
+
+
+
           </span>
 
-          
+
             <span class="post-category" >
-            
+
               <span class="post-meta-divider">|</span>
-            
+
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
+
                 <span class="post-meta-item-text">分类于</span>
-              
-              
+
+
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Node/" itemprop="url" rel="index">
                     <span itemprop="name">Node</span>
                   </a>
                 </span>
 
-                
-                
-                  ， 
-                
-              
+
+
+                  ，
+
+
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Node/Koa/" itemprop="url" rel="index">
                     <span itemprop="name">Koa</span>
                   </a>
                 </span>
 
-                
-                
-              
+
+
+
             </span>
-          
 
-          
-            
-          
 
-          
-          
 
-          
+
+
+
+
+
+
+
             <span class="post-meta-divider">|</span>
             <span class="page-pv"><i class="fa fa-file-o"></i>   浏览
             <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
             </span>
-          
 
-          
+
+
             <div class="post-wordcount">
-              
 
-              
+
+
                 <span class="post-meta-divider">|</span>
-              
 
-              
+
+
                 <span class="post-meta-item-icon" style="margin-left:4px;">
                   <i class="fa fa-clock-o"></i>
                 </span>
-                
+
                   <span class="post-meta-item-text">约</span>
-                
+
                 <span title="约">
                   17 分钟
                 </span>
-              
-            </div>
-          
 
-          
+            </div>
+
+
+
 
         </div>
       </header>
-    
+
 
     <div class="post-body" itemprop="articleBody">
 
-      
-      
 
-      
-        <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>之前我们已经讲解了<code>koa</code>源码中的一些依赖包，<a href="http://www.wclimb.site/2019/12/16/Koa源码系列之依赖包解析/">Koa源码系列之依赖包解析</a> <a href="http://www.wclimb.site/2019/12/11/Koa源码系列之koa-compose/">Koa源码系列之koa-compose</a>，现在我们来看看<code>koa</code>源码的全流程</p>
+
+
+
+        <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>之前我们已经讲解了<code>koa</code>源码中的一些依赖包，<a href="http://wunci.github.io/2019/12/16/Koa源码系列之依赖包解析/">Koa源码系列之依赖包解析</a> <a href="http://wunci.github.io/2019/12/11/Koa源码系列之koa-compose/">Koa源码系列之koa-compose</a>，现在我们来看看<code>koa</code>源码的全流程</p>
 <h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>我们首先来看看最简单的用法，一下是官网的示例<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</div><div class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</div><div class="line"></div><div class="line">app.use(<span class="keyword">async</span> ctx =&gt; &#123;</div><div class="line">  ctx.body = <span class="string">'Hello World'</span>;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.listen(<span class="number">3000</span>);</div></pre></td></tr></table></figure></p>
-<p>首先我们引入<code>koa</code>包，然后实例化一个对象，也就是<code>const = new Koa()</code>。然后调用<code>use</code>方法，这个方法之前在<a href="http://www.wclimb.site/2019/12/11/Koa源码系列之koa-compose/">Koa源码系列之koa-compose</a>讲过，用处就是挂载中间件。当前内部执行的方法就是向前端返回一个<code>hello world</code>的内容，最后我们将应用挂载在<code>3000</code>端口下，这个<code>listen</code>很重要，因为一切我们定义的的方法都会从这里执行。我们看看 <code>Koa</code> 的构造函数的主入口是从哪暴露的，先来🤔思考一个问题，我们怎么快速找到一个包的主入口呢？如果你发布过<code>npm</code>包就知道，我们可以在<code>package.json</code>内找到<code>main</code>，<code>koa</code>的内容是 <code>&quot;main&quot;: &quot;lib/application.js&quot;</code>，现在我们可以直接去查看<code>lib</code>下的<code>application</code>文件，是不是很方便？</p>
+<p>首先我们引入<code>koa</code>包，然后实例化一个对象，也就是<code>const = new Koa()</code>。然后调用<code>use</code>方法，这个方法之前在<a href="http://wunci.github.io/2019/12/11/Koa源码系列之koa-compose/">Koa源码系列之koa-compose</a>讲过，用处就是挂载中间件。当前内部执行的方法就是向前端返回一个<code>hello world</code>的内容，最后我们将应用挂载在<code>3000</code>端口下，这个<code>listen</code>很重要，因为一切我们定义的的方法都会从这里执行。我们看看 <code>Koa</code> 的构造函数的主入口是从哪暴露的，先来🤔思考一个问题，我们怎么快速找到一个包的主入口呢？如果你发布过<code>npm</code>包就知道，我们可以在<code>package.json</code>内找到<code>main</code>，<code>koa</code>的内容是 <code>&quot;main&quot;: &quot;lib/application.js&quot;</code>，现在我们可以直接去查看<code>lib</code>下的<code>application</code>文件，是不是很方便？</p>
 <p>接下来部分解析可能在代码注释内<br><a href="https://github.com/koajs/koa/blob/master/lib/application.js#L30" target="_blank" rel="external">https://github.com/koajs/koa/blob/master/lib/application.js#L30</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="class"><span class="keyword">class</span> <span class="title">Application</span> <span class="keyword">extends</span> <span class="title">Emitter</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(options) &#123;</div><div class="line">    <span class="keyword">super</span>();</div><div class="line">    options = options || &#123;&#125;;</div><div class="line">    <span class="keyword">this</span>.proxy = options.proxy || <span class="literal">false</span>;</div><div class="line">    <span class="keyword">this</span>.subdomainOffset = options.subdomainOffset || <span class="number">2</span>;</div><div class="line">    <span class="keyword">this</span>.proxyIpHeader = options.proxyIpHeader || <span class="string">'X-Forwarded-For'</span>;</div><div class="line">    <span class="keyword">this</span>.maxIpsCount = options.maxIpsCount || <span class="number">0</span>;</div><div class="line">    <span class="keyword">this</span>.env = options.env || process.env.NODE_ENV || <span class="string">'development'</span>;</div><div class="line">    <span class="keyword">if</span> (options.keys) <span class="keyword">this</span>.keys = options.keys;</div><div class="line">    <span class="comment">// 存放中间件</span></div><div class="line">    <span class="keyword">this</span>.middleware = [];</div><div class="line">    <span class="keyword">this</span>.context = <span class="built_in">Object</span>.create(context);</div><div class="line">    <span class="keyword">this</span>.request = <span class="built_in">Object</span>.create(request);</div><div class="line">    <span class="keyword">this</span>.response = <span class="built_in">Object</span>.create(response);</div><div class="line">    <span class="keyword">if</span> (util.inspect.custom) &#123;</div><div class="line">      <span class="keyword">this</span>[util.inspect.custom] = <span class="keyword">this</span>.inspect;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
 <p>以上代码就是暴露出来的构造函数，所以我们可以使用<code>new Koa()</code>的形式调用，它继承了（<code>extends Emitter</code>这段代码）<code>node</code>提供的原生 <code>events</code>（事件触发器）方法，那么它在哪用到了呢？我们知道<code>koa</code>可以使用 <code>app.on(&#39;error&#39;)</code> 来监听错误，可以看下面代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">app.on(<span class="string">'error'</span>, err =&gt; &#123;</div><div class="line">  log.error(<span class="string">'server error'</span>, err)</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
@@ -449,7 +449,7 @@
 <p>那么执行完构造函数，程序还是跑不起来不是？我们知道原生的创建一个后台应用需要使用到<code>http.createServer</code>，到目前为止我们还没有说到，我们先来看看原生怎么创建的<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</div><div class="line">http.createServer(<span class="function"><span class="keyword">function</span> (<span class="params">request, response</span>) </span>&#123;</div><div class="line">  response.writeHead(<span class="number">200</span>, &#123;<span class="string">'Content-Type'</span>: <span class="string">'text/plain'</span>&#125;);</div><div class="line">  response.end(<span class="string">'Hello World\n'</span>);</div><div class="line">&#125;).listen(<span class="number">8888</span>);</div></pre></td></tr></table></figure></p>
 <p>我们之前讲过<code>app.listen</code>方法是创建应用的关键，我们来看看源码<br><a href="https://github.com/koajs/koa/blob/master/lib/application.js#L77" target="_blank" rel="external">https://github.com/koajs/koa/blob/master/lib/application.js#L77</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">listen(...args) &#123;</div><div class="line">  debug(<span class="string">'listen'</span>);</div><div class="line">  <span class="keyword">const</span> server = http.createServer(<span class="keyword">this</span>.callback());</div><div class="line">  <span class="keyword">return</span> server.listen(...args);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>是不是跟之前我们写的很像？看上面代码可以看出执行<code>listen</code>构建了一个服务，调用了<code>callback</code>方法，继续看<code>callback</code><br><a href="https://github.com/koajs/koa/blob/master/lib/application.js#L141" target="_blank" rel="external">https://github.com/koajs/koa/blob/master/lib/application.js#L141</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">callback() &#123;</div><div class="line">  <span class="keyword">const</span> fn = compose(<span class="keyword">this</span>.middleware);</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (!<span class="keyword">this</span>.listenerCount(<span class="string">'error'</span>)) <span class="keyword">this</span>.on(<span class="string">'error'</span>, <span class="keyword">this</span>.onerror);</div><div class="line"></div><div class="line">  <span class="keyword">const</span> handleRequest = <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">const</span> ctx = <span class="keyword">this</span>.createContext(req, res);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.handleRequest(ctx, fn);</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> handleRequest;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>回调内部首先执行了中间件，调用了<code>compose</code>，这个<a href="http://www.wclimb.site/2019/12/11/Koa源码系列之koa-compose/">上上篇文章</a>讲过，继续看，最后返回了一个处理请求的函数<code>handleRequest</code>，接收两个参数<code>req</code>，<code>res</code>，其实就是之前我们原生创建应用返回的数据，内部继续调用了<code>this.createContext</code>，该方法主要是对数据进行处理，源码如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">createContext(req, res) &#123;</div><div class="line">  <span class="keyword">const</span> context = <span class="built_in">Object</span>.create(<span class="keyword">this</span>.context);</div><div class="line">  <span class="keyword">const</span> request = context.request = <span class="built_in">Object</span>.create(<span class="keyword">this</span>.request);</div><div class="line">  <span class="keyword">const</span> response = context.response = <span class="built_in">Object</span>.create(<span class="keyword">this</span>.response);</div><div class="line">  context.app = request.app = response.app = <span class="keyword">this</span>;</div><div class="line">  context.req = request.req = response.req = req;</div><div class="line">  context.res = request.res = response.res = res;</div><div class="line">  request.ctx = response.ctx = context;</div><div class="line">  request.response = response;</div><div class="line">  response.request = request;</div><div class="line">  context.originalUrl = request.originalUrl = req.url;</div><div class="line">  context.state = &#123;&#125;;</div><div class="line">  <span class="keyword">return</span> context;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>回调内部首先执行了中间件，调用了<code>compose</code>，这个<a href="http://wunci.github.io/2019/12/11/Koa源码系列之koa-compose/">上上篇文章</a>讲过，继续看，最后返回了一个处理请求的函数<code>handleRequest</code>，接收两个参数<code>req</code>，<code>res</code>，其实就是之前我们原生创建应用返回的数据，内部继续调用了<code>this.createContext</code>，该方法主要是对数据进行处理，源码如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">createContext(req, res) &#123;</div><div class="line">  <span class="keyword">const</span> context = <span class="built_in">Object</span>.create(<span class="keyword">this</span>.context);</div><div class="line">  <span class="keyword">const</span> request = context.request = <span class="built_in">Object</span>.create(<span class="keyword">this</span>.request);</div><div class="line">  <span class="keyword">const</span> response = context.response = <span class="built_in">Object</span>.create(<span class="keyword">this</span>.response);</div><div class="line">  context.app = request.app = response.app = <span class="keyword">this</span>;</div><div class="line">  context.req = request.req = response.req = req;</div><div class="line">  context.res = request.res = response.res = res;</div><div class="line">  request.ctx = response.ctx = context;</div><div class="line">  request.response = response;</div><div class="line">  response.request = request;</div><div class="line">  context.originalUrl = request.originalUrl = req.url;</div><div class="line">  context.state = &#123;&#125;;</div><div class="line">  <span class="keyword">return</span> context;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>从上面可以看出，它的功能主要是对数据进行进一步处理，把它挂载多个<code>key</code>上，这也就是我们可以使用<code>ctx.req</code>和<code>ctx.response</code>的原因。等会会讲到<code>this.context/this.request/this.response</code>内部的实现。<br><code>callback</code>回调内部使用<code>this.handleRequest</code>方法来处理结果，我们看一下源码<br><a href="https://github.com/koajs/koa/blob/master/lib/application.js#L160" target="_blank" rel="external">https://github.com/koajs/koa/blob/master/lib/application.js#L160</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">handleRequest(ctx, fnMiddleware) &#123;</div><div class="line">  <span class="keyword">const</span> res = ctx.res;</div><div class="line">  res.statusCode = <span class="number">404</span>;</div><div class="line">  <span class="keyword">const</span> onerror = <span class="function"><span class="params">err</span> =&gt;</span> ctx.onerror(err);</div><div class="line">  <span class="keyword">const</span> handleResponse = <span class="function"><span class="params">()</span> =&gt;</span> respond(ctx);</div><div class="line">  onFinished(res, onerror);</div><div class="line">  <span class="keyword">return</span> fnMiddleware(ctx).then(handleResponse).catch(onerror);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>上面的代码很好理解，意思就是中间件执行完后，再异步里处理返回请求的信息，也就是<code>respond</code>方法，如果内部报错自然会走<code>catch</code>方法，然后处理的函数是<code>lib/context.js</code>文件下暴露的<code>onerror</code>方法，这个方法上面有讲过。我们具体看一下<code>koa</code>是怎么处理请求返回数据的。</p>
 <p>🤔分析之前我们先思考一下开发的时候是怎么返回数据给前端的？我们使用<code>ctx.body = &#39;xx&#39;</code>，当然这个值不一定是字符串，可以是对象、<code>buffer</code>等。然后思考一下原生的使用最后一般返回数据是怎么样的呢？肯定不是<code>ctx.body</code>，这个只是个语法糖而已，熟悉的人应该立马就知道，原生返回数据我们都是使用<code>res.end(data)</code>的形式返回，这里就可以猜测，<code>koa</code>肯定是先取到了我们<code>ctx.body</code>的值，最后使用<code>res.end(data)</code>来返回数据的。</p>
@@ -458,126 +458,126 @@
 <h2 id="context-js"><a href="#context-js" class="headerlink" title="context.js"></a>context.js</h2><p><a href="https://github.com/koajs/koa/blob/master/lib/context.js" target="_blank" rel="external">https://github.com/koajs/koa/blob/master/lib/context.js</a></p>
 <p>之前说过会讲到三个文件暴露出来的方法，这是其中一个。他们其实都是对数据进行了一系列的处理。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div></pre></td><td class="code"><pre><div class="line"><span class="meta"></span></div><div class="line">'use strict';</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Module dependencies.</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="keyword">const</span> util = <span class="built_in">require</span>(<span class="string">'util'</span>);</div><div class="line"><span class="keyword">const</span> createError = <span class="built_in">require</span>(<span class="string">'http-errors'</span>);</div><div class="line"><span class="keyword">const</span> httpAssert = <span class="built_in">require</span>(<span class="string">'http-assert'</span>);</div><div class="line"><span class="keyword">const</span> delegate = <span class="built_in">require</span>(<span class="string">'delegates'</span>);</div><div class="line"><span class="keyword">const</span> statuses = <span class="built_in">require</span>(<span class="string">'statuses'</span>);</div><div class="line"><span class="keyword">const</span> Cookies = <span class="built_in">require</span>(<span class="string">'cookies'</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> COOKIES = <span class="built_in">Symbol</span>(<span class="string">'context#cookies'</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> proto = <span class="built_in">module</span>.exports = &#123;</div><div class="line"></div><div class="line">  inspect() &#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span> === proto) <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.toJSON();</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  toJSON() &#123;</div><div class="line">    ...</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">assert</span>: httpAssert,</div><div class="line"></div><div class="line">  <span class="keyword">throw</span>(...args) &#123;</div><div class="line">    <span class="keyword">throw</span> createError(...args);</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  onerror(err) &#123;</div><div class="line">    ...</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  get cookies() &#123;</div><div class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>[COOKIES]) &#123;</div><div class="line">      <span class="keyword">this</span>[COOKIES] = <span class="keyword">new</span> Cookies(<span class="keyword">this</span>.req, <span class="keyword">this</span>.res, &#123;</div><div class="line">        <span class="attr">keys</span>: <span class="keyword">this</span>.app.keys,</div><div class="line">        <span class="attr">secure</span>: <span class="keyword">this</span>.request.secure</div><div class="line">      &#125;);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>[COOKIES];</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  set cookies(_cookies) &#123;</div><div class="line">    <span class="keyword">this</span>[COOKIES] = _cookies;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">if</span> (util.inspect.custom) &#123;</div><div class="line">  <span class="built_in">module</span>.exports[util.inspect.custom] = <span class="built_in">module</span>.exports.inspect;</div><div class="line">&#125;</div><div class="line">delegate(proto, <span class="string">'response'</span>)</div><div class="line">  ...</div><div class="line">  .method(<span class="string">'append'</span>)</div><div class="line">  .method(<span class="string">'flushHeaders'</span>)</div><div class="line">  .access(<span class="string">'status'</span>)</div><div class="line">  .access(<span class="string">'message'</span>)</div><div class="line">  .access(<span class="string">'body'</span>)</div><div class="line">  .access(<span class="string">'length'</span>)</div><div class="line">  .access(<span class="string">'type'</span>)</div><div class="line">  .access(<span class="string">'lastModified'</span>)</div><div class="line">  .access(<span class="string">'etag'</span>)</div><div class="line">  .getter(<span class="string">'headerSent'</span>)</div><div class="line">  .getter(<span class="string">'writable'</span>);</div><div class="line"></div><div class="line">delegate(proto, <span class="string">'request'</span>)</div><div class="line">  ...</div><div class="line">  .getter(<span class="string">'host'</span>)</div><div class="line">  .getter(<span class="string">'hostname'</span>)</div><div class="line">  .getter(<span class="string">'URL'</span>)</div><div class="line">  .getter(<span class="string">'header'</span>)</div><div class="line">  .getter(<span class="string">'headers'</span>)</div><div class="line">  .getter(<span class="string">'secure'</span>)</div><div class="line">  .getter(<span class="string">'stale'</span>)</div><div class="line">  .getter(<span class="string">'fresh'</span>)</div><div class="line">  .getter(<span class="string">'ips'</span>)</div><div class="line">  .getter(<span class="string">'ip'</span>);</div></pre></td></tr></table></figure>
-<p>以上就是<code>context</code>的全部内容，我做了精简，把注释和一些相似的代码删除了，但是方法上面全部都在，<code>context</code>你可以直接理解为我们经常使用的<code>ctx</code>，<code>ctx</code>下面是不是有很多方法？其实基本上都是末尾<code>delegate</code>方法处理之后得到的，我们可以看到它分别处理了<code>response</code>、<code>request</code>，其实就算请求体和响应体，<a href="http://www.wclimb.site/2019/12/16/Koa%E6%BA%90%E7%A0%81%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BE%9D%E8%B5%96%E5%8C%85%E8%A7%A3%E6%9E%90/#delegates">上篇文章</a>我们介绍过它的机制，我们使用的<code>ctx.body</code>、<code>ctx.header</code>、<code>ctx.query</code>….基本上方法都可以在这里看到。除了这些，上面还有获取<code>cookie</code>和设置<code>cookie</code>的方法，还有我们之前讲到的 <code>onerror</code> 方法，</p>
+<p>以上就是<code>context</code>的全部内容，我做了精简，把注释和一些相似的代码删除了，但是方法上面全部都在，<code>context</code>你可以直接理解为我们经常使用的<code>ctx</code>，<code>ctx</code>下面是不是有很多方法？其实基本上都是末尾<code>delegate</code>方法处理之后得到的，我们可以看到它分别处理了<code>response</code>、<code>request</code>，其实就算请求体和响应体，<a href="http://wunci.github.io/2019/12/16/Koa%E6%BA%90%E7%A0%81%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BE%9D%E8%B5%96%E5%8C%85%E8%A7%A3%E6%9E%90/#delegates">上篇文章</a>我们介绍过它的机制，我们使用的<code>ctx.body</code>、<code>ctx.header</code>、<code>ctx.query</code>….基本上方法都可以在这里看到。除了这些，上面还有获取<code>cookie</code>和设置<code>cookie</code>的方法，还有我们之前讲到的 <code>onerror</code> 方法，</p>
 <h2 id="request-js"><a href="#request-js" class="headerlink" title="request.js"></a>request.js</h2><p>现在我们自然可以知道，<code>body/header/query</code>这些方法都放在另外两个文件下面，<code>requset</code>下面会有<code>host/hostname/URL/header</code>…..方法，我们这里只看部分方法，因为方法有点多，篇幅很长<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> URL = <span class="built_in">require</span>(<span class="string">'url'</span>).URL;</div><div class="line"><span class="keyword">const</span> net = <span class="built_in">require</span>(<span class="string">'net'</span>);</div><div class="line"><span class="keyword">const</span> accepts = <span class="built_in">require</span>(<span class="string">'accepts'</span>);</div><div class="line"><span class="keyword">const</span> contentType = <span class="built_in">require</span>(<span class="string">'content-type'</span>);</div><div class="line"><span class="keyword">const</span> stringify = <span class="built_in">require</span>(<span class="string">'url'</span>).format;</div><div class="line"><span class="keyword">const</span> parse = <span class="built_in">require</span>(<span class="string">'parseurl'</span>);</div><div class="line"><span class="keyword">const</span> qs = <span class="built_in">require</span>(<span class="string">'querystring'</span>);</div><div class="line"><span class="keyword">const</span> typeis = <span class="built_in">require</span>(<span class="string">'type-is'</span>);</div><div class="line"><span class="keyword">const</span> fresh = <span class="built_in">require</span>(<span class="string">'fresh'</span>);</div><div class="line"><span class="keyword">const</span> only = <span class="built_in">require</span>(<span class="string">'only'</span>);</div><div class="line"><span class="keyword">const</span> util = <span class="built_in">require</span>(<span class="string">'util'</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> IP = <span class="built_in">Symbol</span>(<span class="string">'context#ip'</span>);</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Prototype.</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line"></div><div class="line">  <span class="comment">/**</span></div><div class="line">   * Return request header.</div><div class="line">   *</div><div class="line">   * @return &#123;Object&#125;</div><div class="line">   * @api public</div><div class="line">   */</div><div class="line"></div><div class="line">  get header() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.req.headers;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  <span class="comment">/**</span></div><div class="line">   * Set request header.</div><div class="line">   *</div><div class="line">   * @api public</div><div class="line">   */</div><div class="line"></div><div class="line">  set header(val) &#123;</div><div class="line">    <span class="keyword">this</span>.req.headers = val;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  <span class="comment">/**</span></div><div class="line">   * Return request header, alias as request.header</div><div class="line">   *</div><div class="line">   * @return &#123;Object&#125;</div><div class="line">   * @api public</div><div class="line">   */</div><div class="line"></div><div class="line">  get headers() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.req.headers;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  <span class="comment">/**</span></div><div class="line">   * Set request header, alias as request.header</div><div class="line">   *</div><div class="line">   * @api public</div><div class="line">   */</div><div class="line"></div><div class="line">  set headers(val) &#123;</div><div class="line">    <span class="keyword">this</span>.req.headers = val;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  <span class="comment">/**</span></div><div class="line">   * Get request URL.</div><div class="line">   *</div><div class="line">   * @return &#123;String&#125;</div><div class="line">   * @api public</div><div class="line">   */</div><div class="line"></div><div class="line">  get url() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.req.url;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  <span class="comment">/**</span></div><div class="line">   * Set request URL.</div><div class="line">   *</div><div class="line">   * @api public</div><div class="line">   */</div><div class="line"></div><div class="line">  set url(val) &#123;</div><div class="line">    <span class="keyword">this</span>.req.url = val;</div><div class="line">  &#125;,</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>上面就是部分<code>request</code>内的方法，是不是很简单，就是一些获取和值的设置。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">get header() &#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.req.headers;</div><div class="line">&#125;,</div><div class="line">set header(val) &#123;</div><div class="line">  <span class="keyword">this</span>.req.headers = val;</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
 <p>比如上面获取我设置<code>header</code>会有两个方法，<code>ctx.header</code>，会调用第一个<code>get</code>方法，赋值则会走第二个方法，那么<code>this.req</code>是什么呢，我们肯定知道是<code>http.createServer</code>回调返回的<code>req</code>信息，那么<code>this</code>具体是什么呢？之前我们就讲过在<code>application.js</code>内的<code>createContext</code>方法，<code>request</code>赋值给了<code>context.requset</code>，然后<code>context.js</code>内部通过<code>delegate</code>代理了数据，<code>context</code>下也定义了<code>req</code>对象，这样我们就可以直接使用<code>this.req</code>直接获取数据<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">createContext(req, res) &#123;</div><div class="line">  <span class="keyword">const</span> context = <span class="built_in">Object</span>.create(<span class="keyword">this</span>.context);</div><div class="line">  <span class="keyword">const</span> request = (context.request = <span class="built_in">Object</span>.create(<span class="keyword">this</span>.request));</div><div class="line">  <span class="keyword">const</span> response = (context.response = <span class="built_in">Object</span>.create(<span class="keyword">this</span>.response));</div><div class="line">  context.app = request.app = response.app = <span class="keyword">this</span>;</div><div class="line">  context.req = request.req = response.req = req;</div><div class="line">  context.res = request.res = response.res = res;</div><div class="line">  request.ctx = response.ctx = context;</div><div class="line">  request.response = response;</div><div class="line">  response.request = request;</div><div class="line">  context.originalUrl = request.originalUrl = req.url;</div><div class="line">  context.state = &#123;&#125;;</div><div class="line">  <span class="keyword">return</span> context;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h2 id="response-js"><a href="#response-js" class="headerlink" title="response.js"></a>response.js</h2><p>这里跟上面的原理一样，我们简单看一下部分代码吧<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line"></div><div class="line">  get status() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.res.statusCode;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  <span class="comment">/**</span></div><div class="line">   * Set response status code.</div><div class="line">   *</div><div class="line">   * @param &#123;Number&#125; code</div><div class="line">   * @api public</div><div class="line">   */</div><div class="line"></div><div class="line">  set status(code) &#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.headerSent) <span class="keyword">return</span>;</div><div class="line"></div><div class="line">    assert(<span class="built_in">Number</span>.isInteger(code), <span class="string">'status code must be a number'</span>);</div><div class="line">    assert(code &gt;= <span class="number">100</span> &amp;&amp; code &lt;= <span class="number">999</span>, <span class="string">`invalid status code: <span class="subst">$&#123;code&#125;</span>`</span>);</div><div class="line">    <span class="keyword">this</span>._explicitStatus = <span class="literal">true</span>;</div><div class="line">    <span class="keyword">this</span>.res.statusCode = code;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.req.httpVersionMajor &lt; <span class="number">2</span>) <span class="keyword">this</span>.res.statusMessage = statuses[code];</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.body &amp;&amp; statuses.empty[code]) <span class="keyword">this</span>.body = <span class="literal">null</span>;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  <span class="comment">/**</span></div><div class="line">   * Get response status message</div><div class="line">   *</div><div class="line">   * @return &#123;String&#125;</div><div class="line">   * @api public</div><div class="line">   */</div><div class="line"></div><div class="line">  get message() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.res.statusMessage || statuses[<span class="keyword">this</span>.status];</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  <span class="comment">/**</span></div><div class="line">   * Set response status message</div><div class="line">   *</div><div class="line">   * @param &#123;String&#125; msg</div><div class="line">   * @api public</div><div class="line">   */</div><div class="line"></div><div class="line">  set message(msg) &#123;</div><div class="line">    <span class="keyword">this</span>.res.statusMessage = msg;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  <span class="comment">/**</span></div><div class="line">   * Get response body.</div><div class="line">   *</div><div class="line">   * @return &#123;Mixed&#125;</div><div class="line">   * @api public</div><div class="line">   */</div><div class="line"></div><div class="line">  get body() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._body;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  <span class="comment">/**</span></div><div class="line">   * Set response body.</div><div class="line">   *</div><div class="line">   * @param &#123;String|Buffer|Object|Stream&#125; val</div><div class="line">   * @api public</div><div class="line">   */</div><div class="line"></div><div class="line">  set body(val) &#123;</div><div class="line">    <span class="keyword">const</span> original = <span class="keyword">this</span>._body;</div><div class="line">    <span class="keyword">this</span>._body = val;</div><div class="line"></div><div class="line">    <span class="comment">// no content</span></div><div class="line">    <span class="keyword">if</span> (<span class="literal">null</span> == val) &#123;</div><div class="line">      <span class="keyword">if</span> (!statuses.empty[<span class="keyword">this</span>.status]) <span class="keyword">this</span>.status = <span class="number">204</span>;</div><div class="line">      <span class="keyword">this</span>.remove(<span class="string">'Content-Type'</span>);</div><div class="line">      <span class="keyword">this</span>.remove(<span class="string">'Content-Length'</span>);</div><div class="line">      <span class="keyword">this</span>.remove(<span class="string">'Transfer-Encoding'</span>);</div><div class="line">      <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// set the status</span></div><div class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>._explicitStatus) <span class="keyword">this</span>.status = <span class="number">200</span>;</div><div class="line"></div><div class="line">    <span class="comment">// set the content-type only if not yet set</span></div><div class="line">    <span class="keyword">const</span> setType = !<span class="keyword">this</span>.has(<span class="string">'Content-Type'</span>);</div><div class="line"></div><div class="line">    <span class="comment">// string</span></div><div class="line">    <span class="keyword">if</span> (<span class="string">'string'</span> == <span class="keyword">typeof</span> val) &#123;</div><div class="line">      <span class="keyword">if</span> (setType) <span class="keyword">this</span>.type = <span class="regexp">/^\s*&lt;/</span>.test(val) ? <span class="string">'html'</span> : <span class="string">'text'</span>;</div><div class="line">      <span class="keyword">this</span>.length = Buffer.byteLength(val);</div><div class="line">      <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// buffer</span></div><div class="line">    <span class="keyword">if</span> (Buffer.isBuffer(val)) &#123;</div><div class="line">      <span class="keyword">if</span> (setType) <span class="keyword">this</span>.type = <span class="string">'bin'</span>;</div><div class="line">      <span class="keyword">this</span>.length = val.length;</div><div class="line">      <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// stream</span></div><div class="line">    <span class="keyword">if</span> (<span class="string">'function'</span> == <span class="keyword">typeof</span> val.pipe) &#123;</div><div class="line">      onFinish(<span class="keyword">this</span>.res, destroy.bind(<span class="literal">null</span>, val));</div><div class="line">      ensureErrorHandler(val, err =&gt; <span class="keyword">this</span>.ctx.onerror(err));</div><div class="line"></div><div class="line">      <span class="comment">// overwriting</span></div><div class="line">      <span class="keyword">if</span> (<span class="literal">null</span> != original &amp;&amp; original != val) <span class="keyword">this</span>.remove(<span class="string">'Content-Length'</span>);</div><div class="line"></div><div class="line">      <span class="keyword">if</span> (setType) <span class="keyword">this</span>.type = <span class="string">'bin'</span>;</div><div class="line">      <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// json</span></div><div class="line">    <span class="keyword">this</span>.remove(<span class="string">'Content-Length'</span>);</div><div class="line">    <span class="keyword">this</span>.type = <span class="string">'json'</span>;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  <span class="comment">/**</span></div><div class="line">   * Set Content-Length field to `n`.</div><div class="line">   *</div><div class="line">   * @param &#123;Number&#125; n</div><div class="line">   * @api public</div><div class="line">   */</div><div class="line"></div><div class="line">  set length(n) &#123;</div><div class="line">    <span class="keyword">this</span>.set(<span class="string">'Content-Length'</span>, n);</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  <span class="comment">/**</span></div><div class="line">   * Return parsed response Content-Length when present.</div><div class="line">   *</div><div class="line">   * @return &#123;Number&#125;</div><div class="line">   * @api public</div><div class="line">   */</div><div class="line"></div><div class="line">  get length() &#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.has(<span class="string">'Content-Length'</span>)) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="built_in">parseInt</span>(<span class="keyword">this</span>.get(<span class="string">'Content-Length'</span>), <span class="number">10</span>) || <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">const</span> &#123; body &#125; = <span class="keyword">this</span>;</div><div class="line">    <span class="keyword">if</span> (!body || body <span class="keyword">instanceof</span> Stream) <span class="keyword">return</span> <span class="literal">undefined</span>;</div><div class="line">    <span class="keyword">if</span> (<span class="string">'string'</span> === <span class="keyword">typeof</span> body) <span class="keyword">return</span> Buffer.byteLength(body);</div><div class="line">    <span class="keyword">if</span> (Buffer.isBuffer(body)) <span class="keyword">return</span> body.length;</div><div class="line">    <span class="keyword">return</span> Buffer.byteLength(<span class="built_in">JSON</span>.stringify(body));</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>上面是部分代码，看起来很容易理解，获取状态码使用<code>ctx.status</code>，也可以设置。这里我们值得看看<code>body</code>方法，看看它是怎么处理的，我们经常使用的<code>ctx.body</code>就是来自这里<br><code>body</code>方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">set body(val) &#123;</div><div class="line">  <span class="keyword">const</span> original = <span class="keyword">this</span>._body;</div><div class="line">  <span class="keyword">this</span>._body = val;</div><div class="line"></div><div class="line">  <span class="comment">// no content</span></div><div class="line">  <span class="comment">// 如果没有内容返回状态码204</span></div><div class="line">  <span class="keyword">if</span> (<span class="literal">null</span> == val) &#123;</div><div class="line">    <span class="keyword">if</span> (!statuses.empty[<span class="keyword">this</span>.status]) <span class="keyword">this</span>.status = <span class="number">204</span>;</div><div class="line">    <span class="keyword">this</span>.remove(<span class="string">'Content-Type'</span>);</div><div class="line">    <span class="keyword">this</span>.remove(<span class="string">'Content-Length'</span>);</div><div class="line">    <span class="keyword">this</span>.remove(<span class="string">'Transfer-Encoding'</span>);</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// set the status</span></div><div class="line">  <span class="comment">// 如果我们没有设置状态码，默认是200，this._explicitStatus在set status方法内会有赋值，意思是如果我们显示的设置了状态码，那么它的值为true</span></div><div class="line">  <span class="keyword">if</span> (!<span class="keyword">this</span>._explicitStatus) <span class="keyword">this</span>.status = <span class="number">200</span>;</div><div class="line"></div><div class="line">  <span class="comment">// set the content-type only if not yet set</span></div><div class="line">  <span class="comment">// 这里意思是，如果我们没有设置content-type的时候，判断是否需要设置数据类型</span></div><div class="line">  <span class="keyword">const</span> setType = !<span class="keyword">this</span>.has(<span class="string">'Content-Type'</span>);</div><div class="line"></div><div class="line">  <span class="comment">// string</span></div><div class="line">  <span class="comment">// 如果是字符串类型</span></div><div class="line">  <span class="keyword">if</span> (<span class="string">'string'</span> == <span class="keyword">typeof</span> val) &#123;</div><div class="line">    <span class="comment">// 如果需要设置content-type，那么会有两种类型，html、text</span></div><div class="line">    <span class="keyword">if</span> (setType) <span class="keyword">this</span>.type = <span class="regexp">/^\s*&lt;/</span>.test(val) ? <span class="string">'html'</span> : <span class="string">'text'</span>;</div><div class="line">    <span class="comment">// 顺便设置他们的length</span></div><div class="line">    <span class="keyword">this</span>.length = Buffer.byteLength(val);</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// buffer</span></div><div class="line">  <span class="comment">// 如果是buffer，并且需要设置content-type，那么指定类型为bin，同样需要设置length</span></div><div class="line">  <span class="keyword">if</span> (Buffer.isBuffer(val)) &#123;</div><div class="line">    <span class="keyword">if</span> (setType) <span class="keyword">this</span>.type = <span class="string">'bin'</span>;</div><div class="line">    <span class="keyword">this</span>.length = val.length;</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// stream</span></div><div class="line">  <span class="comment">// 如果是流文件，类型仍然是bin</span></div><div class="line">  <span class="keyword">if</span> (<span class="string">'function'</span> == <span class="keyword">typeof</span> val.pipe) &#123;</div><div class="line">    onFinish(<span class="keyword">this</span>.res, destroy.bind(<span class="literal">null</span>, val));</div><div class="line">    ensureErrorHandler(val, err =&gt; <span class="keyword">this</span>.ctx.onerror(err));</div><div class="line"></div><div class="line">    <span class="comment">// overwriting</span></div><div class="line">    <span class="keyword">if</span> (<span class="literal">null</span> != original &amp;&amp; original != val) <span class="keyword">this</span>.remove(<span class="string">'Content-Length'</span>);</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (setType) <span class="keyword">this</span>.type = <span class="string">'bin'</span>;</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// json</span></div><div class="line">  <span class="comment">// 最后剩下的只有json类型了</span></div><div class="line">  <span class="keyword">this</span>.remove(<span class="string">'Content-Length'</span>);</div><div class="line">  <span class="keyword">this</span>.type = <span class="string">'json'</span>;</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>大体对<code>koa</code>执行的流程分析了一遍，总体来说还是很好理解的，就是用文字表达出来可能不太理想，现在其实我们已经可以写一个自己的<code>koa</code>了。本文还会继续完善，如有错误，还望指正。</p>
-<p>原文地址：<a href="http://www.wclimb.site/2019/12/23/Koa源码系列之全流程解析/">http://www.wclimb.site/2019/12/23/Koa源码系列之全流程解析/</a></p>
+<p>原文地址：<a href="http://wunci.github.io/2019/12/23/Koa源码系列之全流程解析/">http://wunci.github.io/2019/12/23/Koa源码系列之全流程解析/</a></p>
 
-      
+
     </div>
 
     <div>
-      
-        
 
-      
+
+
+
     </div>
 
     <div>
-      
-        
+
+
   <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
     <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
     <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
       <span>赏</span>
     </button>
     <div id="QR" style="display: none;">
-      
+
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay"/>
+          <img id="wechat_qr" src="/img/wx.png" alt="wunci WeChat Pay"/>
           <p>微信打赏</p>
         </div>
-      
-      
+
+
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay"/>
+          <img id="alipay_qr" src="/img/alipay.png" alt="wunci Alipay"/>
           <p>支付宝打赏</p>
         </div>
-      
+
     </div>
   </div>
 
 
-      
+
     </div>
 
     <div>
-      
-        
 
-      
+
+
+
     </div>
 
     <footer class="post-footer">
-      
+
         <div class="post-tags">
-          
+
             <a href="/tags/原创/" rel="tag"># 原创</a>
-          
+
             <a href="/tags/javascript/" rel="tag"># javascript</a>
-          
+
             <a href="/tags/Koa/" rel="tag"># Koa</a>
-          
+
         </div>
-      
 
-      
-      
-      
 
-      
+
+
+
+
+
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-            
+
               <a href="/2019/12/16/Koa源码系列之依赖包解析/" rel="next" title="Koa源码系列之依赖包解析">
                 <i class="fa fa-chevron-left"></i> Koa源码系列之依赖包解析
               </a>
-            
+
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
+
               <a href="/2020/03/08/write-daemon/" rel="prev" title="编写一个守护进程">
                 编写一个守护进程 <i class="fa fa-chevron-right"></i>
               </a>
-            
+
           </div>
         </div>
-      
 
-      
-      
+
+
+
     </footer>
   </article>
 
 
 
     <div class="post-spread">
-      
+
     </div>
   </div>
 
 
           </div>
-          
 
 
-          
+
+
   <div class="comments" id="comments">
-    
+
   </div>
 
 
         </div>
-        
-          
-  
+
+
+
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
       <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
@@ -589,9 +589,9 @@
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
-      
 
-      
+
+
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
             文章目录
@@ -600,184 +600,184 @@
             站点概览
           </li>
         </ul>
-      
+
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
-               alt="wclimb" />
-          <p class="site-author-name" itemprop="name">wclimb</p>
-           
+               alt="wunci" />
+          <p class="site-author-name" itemprop="name">wunci</p>
+
               <p class="site-description motion-element" itemprop="description"></p>
-          
+
         </div>
         <nav class="site-state motion-element">
 
-          
+
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
                 <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
-          
 
-          
-            
-            
+
+
+
+
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
                 <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
-          
 
-          
-            
-            
+
+
+
+
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
                 <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
-          
+
 
         </nav>
 
-        
+
 
         <div class="links-of-author motion-element">
-          
-            
+
+
               <span class="links-of-author-item">
-                <a href="https://github.com/wclimb" target="_blank" title="GitHub">
-                  
+                <a href="https://github.com/wunci" target="_blank" title="GitHub">
+
                     <i class="fa fa-fw fa-github"></i>
-                  
+
                   GitHub
                 </a>
               </span>
-            
+
               <span class="links-of-author-item">
                 <a href="http://shang.qq.com/wpa/qunwpa?idkey=e6c66b1ee584a90b52dec3545622e988afcf900144eff03cab6d473c50a31d59" target="_blank" title="QQ群">
-                  
+
                     <i class="fa fa-fw fa-qq"></i>
-                  
+
                   QQ群
                 </a>
               </span>
-            
+
               <span class="links-of-author-item">
-                <a href="http://www.wclimb.site/cdn/xcx.jpeg" target="_blank" title="小程序">
-                  
+                <a href="http://wunci.github.io/cdn/xcx.jpeg" target="_blank" title="小程序">
+
                     <i class="fa fa-fw fa-weixin"></i>
-                  
+
                   小程序
                 </a>
               </span>
-            
+
               <span class="links-of-author-item">
                 <a href="/img/gzh.jpg" target="_blank" title="公众号">
-                  
+
                     <i class="fa fa-fw fa-globe"></i>
-                  
+
                   公众号
                 </a>
               </span>
-            
-          
+
+
         </div>
 
-        
-        
 
-        
-        
+
+
+
+
           <div class="links-of-blogroll motion-element links-of-blogroll-inline">
             <div class="links-of-blogroll-title">
               <i class="fa  fa-fw fa-globe"></i>
               Links
             </div>
             <ul class="links-of-blogroll-list">
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="https://www.lsnsh.site/" title="Lsnsh" target="_blank">Lsnsh</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://blog.curtaintan.club" title="curtain Tan" target="_blank">curtain Tan</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://eraylee.com/" title="eraylee" target="_blank">eraylee</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="https://dcdcdog.com" title="flutter体验" target="_blank">flutter体验</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://www.jspeng.com" title="技术鹏" target="_blank">技术鹏</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://www.suchenqiang.cn/" title="苏博客" target="_blank">苏博客</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="https://www.phpojbk.com" title="Blog Luo" target="_blank">Blog Luo</a>
                 </li>
-              
+
             </ul>
           </div>
-        
 
-        
+
+
 
 
       </section>
 
-      
+
       <!--noindex-->
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
-            
-              
-            
 
-            
+
+
+
+
               <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解析"><span class="nav-number">2.</span> <span class="nav-text">解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#context-js"><span class="nav-number">3.</span> <span class="nav-text">context.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#request-js"><span class="nav-number">4.</span> <span class="nav-text">request.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#response-js"><span class="nav-number">5.</span> <span class="nav-text">response.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
-            
+
 
           </div>
         </section>
       <!--/noindex-->
-      
 
-      
+
+
 
     </div>
   </aside>
 
 
-        
+
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright" >
-  
-  &copy;  2017 - 
+
+  &copy;  2017 -
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">wclimb</span>
+  <span class="author" itemprop="copyrightHolder">wunci</span>
 </div>
 
 
@@ -807,37 +807,37 @@ var total= Math.floor(duration / (1000 * 60 * 60 * 24));
 document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 </script>
 
-<span>赣ICP备 17009321号</span> 
-        
+<span>赣ICP备 17009321号</span>
+
 <div class="busuanzi-count">
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-  
+
     <span class="site-uv">
       <i class="fa fa-user"></i>  访问人数
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
       人次
     </span>
-  
 
-  
+
+
 </div>
 
 
-        
+
       </div>
     </footer>
 
-    
+
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
-        
+
       </div>
-    
+
 
   </div>
 
-  
+
 
 <script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
@@ -853,7 +853,6 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
 
 
 
@@ -866,26 +865,27 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
+
+
   <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
 
 
-  
+
 
 
   <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
@@ -894,8 +894,8 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
-  
+
+
 
 
   <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
@@ -904,53 +904,53 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
+
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
 
 
-  
+
 
 
   <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-  
 
 
 
 
 
 
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <script type="text/javascript">
     // Popup Window;
@@ -1273,17 +1273,17 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
+
+
+
+
+
+
 
   <script src="https://cdn.bootcss.com/clipboard.js/2.0.6/clipboard.min.js"></script>
   <style>

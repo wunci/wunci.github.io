@@ -2,7 +2,7 @@
 
 
 
-  
+
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
@@ -36,45 +36,45 @@
 
 
 
-  
-  
-    
-  
+
+
+
+
   <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
 
-  
-  
-  
-  
 
-  
-    
-    
-  
 
-  
 
-  
 
-  
 
-  
 
-  
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
 
 
 
-  
+
+
 
 <link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
@@ -101,8 +101,8 @@
 <meta name="keywords" content="原创,javascript,Koa">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Koa源码系列之依赖包解析">
-<meta property="og:url" content="http://www.wclimb.site/2019/12/16/Koa源码系列之依赖包解析/index.html">
-<meta property="og:site_name" content="wclimb的个人博客--分享">
+<meta property="og:url" content="http://wunci.github.io/2019/12/16/Koa源码系列之依赖包解析/index.html">
+<meta property="og:site_name" content="wunci的个人博客--分享">
 <meta property="og:description" content="写在前面上一篇我们讲了 Koa源码系列之koa-compose，其实也可以归为到这篇文章。今天开始我们看看Koa源码中使用了哪些包，他们起到了什么作用。ps: 这里不准备讲所有的包 is-generator-functionhttps://github.com/koajs/koa/blob/master/lib/application.js#L122123456789101112use(fn) &amp;">
 <meta property="og:updated_time" content="2021-09-12T07:52:45.003Z">
 <meta name="twitter:card" content="summary">
@@ -135,14 +135,14 @@
 
 
 
-  <link rel="canonical" href="http://www.wclimb.site/2019/12/16/Koa源码系列之依赖包解析/"/>
+  <link rel="canonical" href="http://wunci.github.io/2019/12/16/Koa源码系列之依赖包解析/"/>
 
 
 
 
 
-  <title>Koa源码系列之依赖包解析 | wclimb的个人博客--分享</title>
-  
+  <title>Koa源码系列之依赖包解析 | wunci的个人博客--分享</title>
+
 
 
 
@@ -161,10 +161,10 @@
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  
-  
-    
-  
+
+
+
+
 
   <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
@@ -172,18 +172,18 @@
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
-    
+
 
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">wclimb的个人博客--分享</span>
+        <span class="site-title">wunci的个人博客--分享</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
+
         <p class="site-subtitle"></p>
-      
+
   </div>
 
   <div class="site-nav-toggle">
@@ -196,80 +196,80 @@
 </div>
 
 <nav class="site-nav">
-  
 
-  
+
+
     <ul id="menu" class="menu">
-      
-        
+
+
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
+
             首页
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
+
             分类
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
+
             关于
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
+
             归档
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
+
             标签
           </a>
         </li>
-      
 
-      
+
+
         <li class="menu-item menu-item-search">
-          
+
             <a href="javascript:;" class="popup-trigger">
-          
-            
+
+
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
+
             搜索
           </a>
         </li>
-      
-    </ul>
-  
 
-  
+    </ul>
+
+
+
     <div class="site-search">
-      
+
   <div class="popup search-popup local-search-popup">
   <div class="local-search-header clearfix">
     <span class="search-icon">
@@ -290,7 +290,7 @@
 
 
     </div>
-  
+
 </nav>
 
 
@@ -302,141 +302,141 @@
       <div class="main-inner">
         <div class="content-wrap">
           <div id="content" class="content">
-            
+
 
   <div id="posts" class="posts-expand">
-    
 
-  
 
-  
-  
-  
+
+
+
+
+
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.wclimb.site/2019/12/16/Koa源码系列之依赖包解析/">
+    <link itemprop="mainEntityOfPage" href="http://wunci.github.io/2019/12/16/Koa源码系列之依赖包解析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wclimb">
+      <meta itemprop="name" content="wunci">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wclimb的个人博客--分享">
+      <meta itemprop="name" content="wunci的个人博客--分享">
     </span>
 
-    
+
       <header class="post-header">
 
-        
-        
+
+
           <h1 class="post-title" itemprop="name headline">Koa源码系列之依赖包解析</h1>
-        
+
 
         <div class="post-meta">
           <span class="post-time">
-            
+
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
+
                 <span class="post-meta-item-text">发表于</span>
-              
+
               <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-16T10:19:49+08:00">
                 2019-12-16
               </time>
-            
 
-            
 
-            
+
+
+
           </span>
 
-          
+
             <span class="post-category" >
-            
+
               <span class="post-meta-divider">|</span>
-            
+
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
+
                 <span class="post-meta-item-text">分类于</span>
-              
-              
+
+
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Node/" itemprop="url" rel="index">
                     <span itemprop="name">Node</span>
                   </a>
                 </span>
 
-                
-                
-                  ， 
-                
-              
+
+
+                  ，
+
+
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Node/Koa/" itemprop="url" rel="index">
                     <span itemprop="name">Koa</span>
                   </a>
                 </span>
 
-                
-                
-              
+
+
+
             </span>
-          
 
-          
-            
-          
 
-          
-          
 
-          
+
+
+
+
+
+
+
             <span class="post-meta-divider">|</span>
             <span class="page-pv"><i class="fa fa-file-o"></i>   浏览
             <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
             </span>
-          
 
-          
+
+
             <div class="post-wordcount">
-              
 
-              
+
+
                 <span class="post-meta-divider">|</span>
-              
 
-              
+
+
                 <span class="post-meta-item-icon" style="margin-left:4px;">
                   <i class="fa fa-clock-o"></i>
                 </span>
-                
+
                   <span class="post-meta-item-text">约</span>
-                
+
                 <span title="约">
                   8 分钟
                 </span>
-              
-            </div>
-          
 
-          
+            </div>
+
+
+
 
         </div>
       </header>
-    
+
 
     <div class="post-body" itemprop="articleBody">
 
-      
-      
 
-      
-        <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>上一篇我们讲了 <a href="http://www.wclimb.site/2019/12/11/Koa源码系列之koa-compose/">Koa源码系列之koa-compose</a>，其实也可以归为到这篇文章。今天开始我们看看<code>Koa</code>源码中使用了哪些包，他们起到了什么作用。ps: 这里不准备讲所有的包</p>
+
+
+
+        <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>上一篇我们讲了 <a href="http://wunci.github.io/2019/12/11/Koa源码系列之koa-compose/">Koa源码系列之koa-compose</a>，其实也可以归为到这篇文章。今天开始我们看看<code>Koa</code>源码中使用了哪些包，他们起到了什么作用。ps: 这里不准备讲所有的包</p>
 <h2 id="is-generator-function"><a href="#is-generator-function" class="headerlink" title="is-generator-function"></a>is-generator-function</h2><p><a href="https://github.com/koajs/koa/blob/master/lib/application.js#L122" target="_blank" rel="external">https://github.com/koajs/koa/blob/master/lib/application.js#L122</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">use(fn) &#123;</div><div class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> fn !== <span class="string">'function'</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'middleware must be a function!'</span>);</div><div class="line">  <span class="keyword">if</span> (isGeneratorFunction(fn)) &#123;</div><div class="line">    deprecate(<span class="string">'Support for generators will be removed in v3. '</span> +</div><div class="line">              <span class="string">'See the documentation for examples of how to convert old middleware '</span> +</div><div class="line">              <span class="string">'https://github.com/koajs/koa/blob/master/docs/migration.md'</span>);</div><div class="line">    fn = convert(fn);</div><div class="line">  &#125;</div><div class="line">  debug(<span class="string">'use %s'</span>, fn._name || fn.name || <span class="string">'-'</span>);</div><div class="line">  <span class="keyword">this</span>.middleware.push(fn);</div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>可以看看上面一段代码，<code>koa</code>在注入中间件的之前先判断传入是否是函数，然后判断当前传入的函数是否是 <code>generator</code>，如果是 <code>generator</code> 那么使用<code>convert</code>（<code>koa-convert</code>包，下面会讲到）进行转换，其实转换出来返回的是一个 <code>promise</code>，那么怎么判断是否是 <code>generator</code> 函数的呢？使用了<code>isGeneratorFunction</code>方法，也就是 <code>is-generator-function</code>包，下面是源码<br><a id="more"></a><br><a href="https://github.com/inspect-js/is-generator-function/blob/master/index.js" target="_blank" rel="external">https://github.com/inspect-js/is-generator-function/blob/master/index.js</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> toStr = <span class="built_in">Object</span>.prototype.toString;</div><div class="line"><span class="keyword">var</span> fnToStr = <span class="built_in">Function</span>.prototype.toString;</div><div class="line"><span class="keyword">var</span> isFnRegex = <span class="regexp">/^\s*(?:function)?\*/</span>; </div><div class="line"><span class="keyword">var</span> hasToStringTag = <span class="keyword">typeof</span> <span class="built_in">Symbol</span> === <span class="string">'function'</span> &amp;&amp; <span class="keyword">typeof</span> <span class="built_in">Symbol</span>.toStringTag === <span class="string">'symbol'</span>;</div><div class="line"><span class="keyword">var</span> getProto = <span class="built_in">Object</span>.getPrototypeOf;</div><div class="line"><span class="keyword">var</span> getGeneratorFunc = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">// eslint-disable-line consistent-return</span></div><div class="line">	<span class="keyword">if</span> (!hasToStringTag) &#123;</div><div class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">		<span class="keyword">return</span> <span class="built_in">Function</span>(<span class="string">'return function*() &#123;&#125;'</span>)();</div><div class="line">	&#125; <span class="keyword">catch</span> (e) &#123;</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> generatorFunc = getGeneratorFunc();</div><div class="line"><span class="keyword">var</span> GeneratorFunction = generatorFunc ? getProto(generatorFunc) : &#123;&#125;;</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> <span class="title">isGeneratorFunction</span>(<span class="params">fn</span>) </span>&#123;</div><div class="line">  <span class="comment">// 首先判断是否是函数，如果不是直接返回false</span></div><div class="line">	<span class="keyword">if</span> (<span class="keyword">typeof</span> fn !== <span class="string">'function'</span>) &#123;</div><div class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">	&#125;</div><div class="line">  <span class="comment">// 先将函数转为字符串，然后正则匹配判断</span></div><div class="line">	<span class="keyword">if</span> (isFnRegex.test(fnToStr.call(fn))) &#123;</div><div class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> (!hasToStringTag) &#123;</div><div class="line">		<span class="keyword">var</span> str = toStr.call(fn);</div><div class="line">		<span class="keyword">return</span> str === <span class="string">'[object GeneratorFunction]'</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> getProto(fn) === GeneratorFunction;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <h3 id="函数转字符串正则匹配"><a href="#函数转字符串正则匹配" class="headerlink" title="函数转字符串正则匹配"></a>函数转字符串正则匹配</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> isFnRegex = <span class="regexp">/^\s*(?:function)?\*/</span>;</div></pre></td></tr></table></figure>
@@ -460,119 +460,119 @@
 <p>依赖包源码 <a href="https://github.com/tj/node-only/blob/master/index.js" target="_blank" rel="external">https://github.com/tj/node-only/blob/master/index.js</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">obj, keys</span>)</span>&#123;</div><div class="line">  obj = obj || &#123;&#125;;</div><div class="line">  <span class="keyword">if</span> (<span class="string">'string'</span> == <span class="keyword">typeof</span> keys) keys = keys.split(<span class="regexp">/ +/</span>);</div><div class="line">  <span class="keyword">return</span> keys.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">ret, key</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="literal">null</span> == obj[key]) <span class="keyword">return</span> ret;</div><div class="line">    ret[key] = obj[key];</div><div class="line">    <span class="keyword">return</span> ret;</div><div class="line">  &#125;, &#123;&#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <p>代码很简单，看源码知道，我们可以传字符串或者直接数组的形式传递需要的<code>key</code>值，默认定义一个空对象，调用<code>reduce</code>把结果循环传递下去，最终返回，如果没找指定的<code>value</code>，直接返回<code>ret</code>。额，感觉没有讲的必要，那么就。。。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本来一股脑想讲5 6个依赖包，但是看了一下，简单的讲起来感觉有点没意思，大部分依赖包内部又依赖其他包，想讲明白其实不容易，篇幅太长，所以先讲到这里吧，下一篇讲讲总体的<code>koa</code>构造流程，有一个更清楚的认识，毕竟看源码也主要是为了这一点。</p>
-<p>原文地址：<a href="http://www.wclimb.site/2019/12/16/Koa源码系列之依赖包解析/">http://www.wclimb.site/2019/12/16/Koa源码系列之依赖包解析/</a></p>
+<p>原文地址：<a href="http://wunci.github.io/2019/12/16/Koa源码系列之依赖包解析/">http://wunci.github.io/2019/12/16/Koa源码系列之依赖包解析/</a></p>
 
-      
+
     </div>
 
     <div>
-      
-        
 
-      
+
+
+
     </div>
 
     <div>
-      
-        
+
+
   <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
     <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
     <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
       <span>赏</span>
     </button>
     <div id="QR" style="display: none;">
-      
+
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay"/>
+          <img id="wechat_qr" src="/img/wx.png" alt="wunci WeChat Pay"/>
           <p>微信打赏</p>
         </div>
-      
-      
+
+
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay"/>
+          <img id="alipay_qr" src="/img/alipay.png" alt="wunci Alipay"/>
           <p>支付宝打赏</p>
         </div>
-      
+
     </div>
   </div>
 
 
-      
+
     </div>
 
     <div>
-      
-        
 
-      
+
+
+
     </div>
 
     <footer class="post-footer">
-      
+
         <div class="post-tags">
-          
+
             <a href="/tags/原创/" rel="tag"># 原创</a>
-          
+
             <a href="/tags/javascript/" rel="tag"># javascript</a>
-          
+
             <a href="/tags/Koa/" rel="tag"># Koa</a>
-          
+
         </div>
-      
 
-      
-      
-      
 
-      
+
+
+
+
+
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-            
+
               <a href="/2019/12/11/Koa源码系列之koa-compose/" rel="next" title="Koa源码系列之koa-compose">
                 <i class="fa fa-chevron-left"></i> Koa源码系列之koa-compose
               </a>
-            
+
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
+
               <a href="/2019/12/23/Koa源码系列之全流程解析/" rel="prev" title="Koa源码系列之全流程解析">
                 Koa源码系列之全流程解析 <i class="fa fa-chevron-right"></i>
               </a>
-            
+
           </div>
         </div>
-      
 
-      
-      
+
+
+
     </footer>
   </article>
 
 
 
     <div class="post-spread">
-      
+
     </div>
   </div>
 
 
           </div>
-          
 
 
-          
+
+
   <div class="comments" id="comments">
-    
+
   </div>
 
 
         </div>
-        
-          
-  
+
+
+
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
       <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
@@ -584,9 +584,9 @@
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
-      
 
-      
+
+
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
             文章目录
@@ -595,184 +595,184 @@
             站点概览
           </li>
         </ul>
-      
+
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
-               alt="wclimb" />
-          <p class="site-author-name" itemprop="name">wclimb</p>
-           
+               alt="wunci" />
+          <p class="site-author-name" itemprop="name">wunci</p>
+
               <p class="site-description motion-element" itemprop="description"></p>
-          
+
         </div>
         <nav class="site-state motion-element">
 
-          
+
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
                 <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
-          
 
-          
-            
-            
+
+
+
+
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
                 <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
-          
 
-          
-            
-            
+
+
+
+
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
                 <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
-          
+
 
         </nav>
 
-        
+
 
         <div class="links-of-author motion-element">
-          
-            
+
+
               <span class="links-of-author-item">
-                <a href="https://github.com/wclimb" target="_blank" title="GitHub">
-                  
+                <a href="https://github.com/wunci" target="_blank" title="GitHub">
+
                     <i class="fa fa-fw fa-github"></i>
-                  
+
                   GitHub
                 </a>
               </span>
-            
+
               <span class="links-of-author-item">
                 <a href="http://shang.qq.com/wpa/qunwpa?idkey=e6c66b1ee584a90b52dec3545622e988afcf900144eff03cab6d473c50a31d59" target="_blank" title="QQ群">
-                  
+
                     <i class="fa fa-fw fa-qq"></i>
-                  
+
                   QQ群
                 </a>
               </span>
-            
+
               <span class="links-of-author-item">
-                <a href="http://www.wclimb.site/cdn/xcx.jpeg" target="_blank" title="小程序">
-                  
+                <a href="http://wunci.github.io/cdn/xcx.jpeg" target="_blank" title="小程序">
+
                     <i class="fa fa-fw fa-weixin"></i>
-                  
+
                   小程序
                 </a>
               </span>
-            
+
               <span class="links-of-author-item">
                 <a href="/img/gzh.jpg" target="_blank" title="公众号">
-                  
+
                     <i class="fa fa-fw fa-globe"></i>
-                  
+
                   公众号
                 </a>
               </span>
-            
-          
+
+
         </div>
 
-        
-        
 
-        
-        
+
+
+
+
           <div class="links-of-blogroll motion-element links-of-blogroll-inline">
             <div class="links-of-blogroll-title">
               <i class="fa  fa-fw fa-globe"></i>
               Links
             </div>
             <ul class="links-of-blogroll-list">
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="https://www.lsnsh.site/" title="Lsnsh" target="_blank">Lsnsh</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://blog.curtaintan.club" title="curtain Tan" target="_blank">curtain Tan</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://eraylee.com/" title="eraylee" target="_blank">eraylee</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="https://dcdcdog.com" title="flutter体验" target="_blank">flutter体验</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://www.jspeng.com" title="技术鹏" target="_blank">技术鹏</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://www.suchenqiang.cn/" title="苏博客" target="_blank">苏博客</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="https://www.phpojbk.com" title="Blog Luo" target="_blank">Blog Luo</a>
                 </li>
-              
+
             </ul>
           </div>
-        
 
-        
+
+
 
 
       </section>
 
-      
+
       <!--noindex-->
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
-            
-              
-            
 
-            
+
+
+
+
               <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#is-generator-function"><span class="nav-number">2.</span> <span class="nav-text">is-generator-function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数转字符串正则匹配"><span class="nav-number">2.1.</span> <span class="nav-text">函数转字符串正则匹配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断Symbol-toStringTag"><span class="nav-number">2.2.</span> <span class="nav-text">判断Symbol.toStringTag</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直接使用Object-prototype-toString"><span class="nav-number">2.3.</span> <span class="nav-text">直接使用Object.prototype.toString</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delegates"><span class="nav-number">3.</span> <span class="nav-text">delegates</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#koa-convert"><span class="nav-number">4.</span> <span class="nav-text">koa-convert</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#only"><span class="nav-number">5.</span> <span class="nav-text">only</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
-            
+
 
           </div>
         </section>
       <!--/noindex-->
-      
 
-      
+
+
 
     </div>
   </aside>
 
 
-        
+
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright" >
-  
-  &copy;  2017 - 
+
+  &copy;  2017 -
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">wclimb</span>
+  <span class="author" itemprop="copyrightHolder">wunci</span>
 </div>
 
 
@@ -802,37 +802,37 @@ var total= Math.floor(duration / (1000 * 60 * 60 * 24));
 document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 </script>
 
-<span>赣ICP备 17009321号</span> 
-        
+<span>赣ICP备 17009321号</span>
+
 <div class="busuanzi-count">
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-  
+
     <span class="site-uv">
       <i class="fa fa-user"></i>  访问人数
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
       人次
     </span>
-  
 
-  
+
+
 </div>
 
 
-        
+
       </div>
     </footer>
 
-    
+
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
-        
+
       </div>
-    
+
 
   </div>
 
-  
+
 
 <script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
@@ -848,7 +848,6 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
 
 
 
@@ -861,26 +860,27 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
+
+
   <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
 
 
-  
+
 
 
   <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
@@ -889,8 +889,8 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
-  
+
+
 
 
   <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
@@ -899,53 +899,53 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
+
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
 
 
-  
+
 
 
   <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-  
 
 
 
 
 
 
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <script type="text/javascript">
     // Popup Window;
@@ -1268,17 +1268,17 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
+
+
+
+
+
+
 
   <script src="https://cdn.bootcss.com/clipboard.js/2.0.6/clipboard.min.js"></script>
   <style>

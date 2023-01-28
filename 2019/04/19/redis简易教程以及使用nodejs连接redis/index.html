@@ -2,7 +2,7 @@
 
 
 
-  
+
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
@@ -36,45 +36,45 @@
 
 
 
-  
-  
-    
-  
+
+
+
+
   <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
 
-  
-  
-  
-  
 
-  
-    
-    
-  
 
-  
 
-  
 
-  
 
-  
 
-  
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
 
 
 
-  
+
+
 
 <link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
@@ -101,8 +101,8 @@
 <meta name="keywords" content="教程,Node,redis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="redis简易教程以及使用nodejs连接redis">
-<meta property="og:url" content="http://www.wclimb.site/2019/04/19/redis简易教程以及使用nodejs连接redis/index.html">
-<meta property="og:site_name" content="wclimb的个人博客--分享">
+<meta property="og:url" content="http://wunci.github.io/2019/04/19/redis简易教程以及使用nodejs连接redis/index.html">
+<meta property="og:site_name" content="wunci的个人博客--分享">
 <meta property="og:description" content="前言一直没机会学习redis，最近抽空学了一下，因为知道reids还是比较重要的，经常看到有人开发公众号因为没有对access_token进行缓存，判断是否过期，导致access_token的调用api次数超过限制而影响业务的情况，熟悉的人都知道使用redis基本上都是做缓存，因为他简单、速度快，可以说是个”快男”。使用reids做抽奖也很普遍，有空可以试试。本篇本章暂时只讲key、hash、li">
 <meta property="og:updated_time" content="2021-09-12T07:52:45.017Z">
 <meta name="twitter:card" content="summary">
@@ -135,14 +135,14 @@
 
 
 
-  <link rel="canonical" href="http://www.wclimb.site/2019/04/19/redis简易教程以及使用nodejs连接redis/"/>
+  <link rel="canonical" href="http://wunci.github.io/2019/04/19/redis简易教程以及使用nodejs连接redis/"/>
 
 
 
 
 
-  <title>redis简易教程以及使用nodejs连接redis | wclimb的个人博客--分享</title>
-  
+  <title>redis简易教程以及使用nodejs连接redis | wunci的个人博客--分享</title>
+
 
 
 
@@ -161,10 +161,10 @@
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  
-  
-    
-  
+
+
+
+
 
   <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
@@ -172,18 +172,18 @@
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
-    
+
 
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">wclimb的个人博客--分享</span>
+        <span class="site-title">wunci的个人博客--分享</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
+
         <p class="site-subtitle"></p>
-      
+
   </div>
 
   <div class="site-nav-toggle">
@@ -196,80 +196,80 @@
 </div>
 
 <nav class="site-nav">
-  
 
-  
+
+
     <ul id="menu" class="menu">
-      
-        
+
+
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
+
             首页
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
+
             分类
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
+
             关于
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
+
             归档
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
+
             标签
           </a>
         </li>
-      
 
-      
+
+
         <li class="menu-item menu-item-search">
-          
+
             <a href="javascript:;" class="popup-trigger">
-          
-            
+
+
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
+
             搜索
           </a>
         </li>
-      
-    </ul>
-  
 
-  
+    </ul>
+
+
+
     <div class="site-search">
-      
+
   <div class="popup search-popup local-search-popup">
   <div class="local-search-header clearfix">
     <span class="search-icon">
@@ -290,7 +290,7 @@
 
 
     </div>
-  
+
 </nav>
 
 
@@ -302,129 +302,129 @@
       <div class="main-inner">
         <div class="content-wrap">
           <div id="content" class="content">
-            
+
 
   <div id="posts" class="posts-expand">
-    
 
-  
 
-  
-  
-  
+
+
+
+
+
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.wclimb.site/2019/04/19/redis简易教程以及使用nodejs连接redis/">
+    <link itemprop="mainEntityOfPage" href="http://wunci.github.io/2019/04/19/redis简易教程以及使用nodejs连接redis/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wclimb">
+      <meta itemprop="name" content="wunci">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wclimb的个人博客--分享">
+      <meta itemprop="name" content="wunci的个人博客--分享">
     </span>
 
-    
+
       <header class="post-header">
 
-        
-        
+
+
           <h1 class="post-title" itemprop="name headline">redis简易教程以及使用nodejs连接redis</h1>
-        
+
 
         <div class="post-meta">
           <span class="post-time">
-            
+
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
+
                 <span class="post-meta-item-text">发表于</span>
-              
+
               <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-19T15:38:40+08:00">
                 2019-04-19
               </time>
-            
 
-            
 
-            
+
+
+
           </span>
 
-          
+
             <span class="post-category" >
-            
+
               <span class="post-meta-divider">|</span>
-            
+
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
+
                 <span class="post-meta-item-text">分类于</span>
-              
-              
+
+
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/javascript/" itemprop="url" rel="index">
                     <span itemprop="name">javascript</span>
                   </a>
                 </span>
 
-                
-                
-              
+
+
+
             </span>
-          
 
-          
-            
-          
 
-          
-          
 
-          
+
+
+
+
+
+
+
             <span class="post-meta-divider">|</span>
             <span class="page-pv"><i class="fa fa-file-o"></i>   浏览
             <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
             </span>
-          
 
-          
+
+
             <div class="post-wordcount">
-              
 
-              
+
+
                 <span class="post-meta-divider">|</span>
-              
 
-              
+
+
                 <span class="post-meta-item-icon" style="margin-left:4px;">
                   <i class="fa fa-clock-o"></i>
                 </span>
-                
+
                   <span class="post-meta-item-text">约</span>
-                
+
                 <span title="约">
                   8 分钟
                 </span>
-              
-            </div>
-          
 
-          
+            </div>
+
+
+
 
         </div>
       </header>
-    
+
 
     <div class="post-body" itemprop="articleBody">
 
-      
-      
 
-      
+
+
+
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>一直没机会学习<code>redis</code>，最近抽空学了一下，因为知道<code>reids</code>还是比较重要的，经常看到有人开发公众号因为没有对<code>access_token</code>进行缓存，判断是否过期，导致<code>access_token</code>的调用<code>api</code>次数超过限制而影响业务的情况，熟悉的人都知道使用<code>redis</code>基本上都是做缓存，因为他简单、速度快，可以说是个”快男”。使用<code>reids</code>做抽奖也很普遍，有空可以试试。本篇本章暂时只讲<code>key</code>、<code>hash</code>、<code>list</code></p>
 <h2 id="redis简介"><a href="#redis简介" class="headerlink" title="redis简介"></a>redis简介</h2><ul>
 <li>Redis 是完全开源免费的，遵守BSD协议，是一个高性能的key-value数据库。</li>
@@ -448,27 +448,27 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; tar xzf redis-3.0.6.tar.gz</div><div class="line">&gt; make</div><div class="line">&gt; sudo make install</div><div class="line">&gt; cd /usr/local/bin &amp;&amp; redis-server // 开启redis服务</div><div class="line">&gt; cd /usr/local/bin &amp;&amp; redis-cli // 开启redis调试服务</div></pre></td></tr></table></figure>
 <p>开启调试会显示下面的界面，现在你就可以开始使用redis的api了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; cd /usr/local/bin &amp;&amp; redis-cli</div><div class="line">127.0.0.1:6379&gt;</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<h2 id="全局api"><a href="#全局api" class="headerlink" title="全局api"></a>全局api</h2><h3 id="查询键"><a href="#查询键" class="headerlink" title="查询键"></a>查询键</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; keys *</div><div class="line">1) &quot;wclimb&quot;</div><div class="line">2) &quot;key&quot;</div><div class="line">3) &quot;me&quot;</div><div class="line">4) &quot;user&quot;</div><div class="line">5) &quot;user1&quot;</div></pre></td></tr></table></figure>
+<h2 id="全局api"><a href="#全局api" class="headerlink" title="全局api"></a>全局api</h2><h3 id="查询键"><a href="#查询键" class="headerlink" title="查询键"></a>查询键</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; keys *</div><div class="line">1) &quot;wunci&quot;</div><div class="line">2) &quot;key&quot;</div><div class="line">3) &quot;me&quot;</div><div class="line">4) &quot;user&quot;</div><div class="line">5) &quot;user1&quot;</div></pre></td></tr></table></figure>
 <h3 id="键的总数"><a href="#键的总数" class="headerlink" title="键的总数"></a>键的总数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; dbsize </div><div class="line">(integer) 5</div></pre></td></tr></table></figure>
-<h3 id="检查键是否存在"><a href="#检查键是否存在" class="headerlink" title="检查键是否存在"></a>检查键是否存在</h3><p>存在返回 1 ，不存在返回 0<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; exists wclimb </div><div class="line">(integer) 1</div><div class="line">127.0.0.1:6379&gt; exists wclimb1 </div><div class="line">(integer) 0</div></pre></td></tr></table></figure></p>
+<h3 id="检查键是否存在"><a href="#检查键是否存在" class="headerlink" title="检查键是否存在"></a>检查键是否存在</h3><p>存在返回 1 ，不存在返回 0<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; exists wunci </div><div class="line">(integer) 1</div><div class="line">127.0.0.1:6379&gt; exists wunci1 </div><div class="line">(integer) 0</div></pre></td></tr></table></figure></p>
 <h3 id="删除键"><a href="#删除键" class="headerlink" title="删除键"></a>删除键</h3><p>返回结果为成功删除键的个数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; del user1 </div><div class="line">(integer) 1</div></pre></td></tr></table></figure></p>
 <h3 id="键过期"><a href="#键过期" class="headerlink" title="键过期"></a>键过期</h3><p>expire key seconds 当超过过期时间，会自动删除，key在seconds秒后过期<br>expireat key timestamp 键在秒级时间戳timestamp后过期<br>pexpire key milliseconds 当超过过期时间，会自动删除，key在milliseconds毫秒后过期<br>pexpireat key milliseconds-timestamp key在毫秒级时间戳timestamp后过期</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; expire user 10   // 10秒后user会被删除</div><div class="line">(integer) 1</div></pre></td></tr></table></figure>
-<h3 id="randomkey-随机返回一个键"><a href="#randomkey-随机返回一个键" class="headerlink" title="randomkey 随机返回一个键"></a>randomkey 随机返回一个键</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; randomkey </div><div class="line">&quot;wclimb&quot;</div><div class="line">127.0.0.1:6379&gt; randomkey </div><div class="line">&quot;me&quot;</div></pre></td></tr></table></figure>
+<h3 id="randomkey-随机返回一个键"><a href="#randomkey-随机返回一个键" class="headerlink" title="randomkey 随机返回一个键"></a>randomkey 随机返回一个键</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; randomkey </div><div class="line">&quot;wunci&quot;</div><div class="line">127.0.0.1:6379&gt; randomkey </div><div class="line">&quot;me&quot;</div></pre></td></tr></table></figure>
 <h2 id="redis-键（key）"><a href="#redis-键（key）" class="headerlink" title="redis 键（key）"></a>redis 键（key）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">set key value [ex] [px] [nx|xx]</div><div class="line">ex为键值设置秒级过期时间</div><div class="line">px为键值设置毫秒级过期时间</div><div class="line">nx键必须不存在，才可以设置成功，用于添加</div><div class="line">xx与nx相反，键必须存在，才可以设置成功，用于更新</div><div class="line">setnx、setex 与上面的nx、ex作用相同</div></pre></td></tr></table></figure>
-<h3 id="设置key-O-1"><a href="#设置key-O-1" class="headerlink" title="设置key(O(1))"></a>设置key(O(1))</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; set name 25 </div><div class="line">OK</div><div class="line">127.0.0.1:6379&gt; keys * </div><div class="line">1) &quot;wclimb&quot;</div><div class="line">2) &quot;key&quot;</div><div class="line">3) &quot;me&quot;</div><div class="line">4) &quot;name&quot;</div></pre></td></tr></table></figure>
+<h3 id="设置key-O-1"><a href="#设置key-O-1" class="headerlink" title="设置key(O(1))"></a>设置key(O(1))</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; set name 25 </div><div class="line">OK</div><div class="line">127.0.0.1:6379&gt; keys * </div><div class="line">1) &quot;wunci&quot;</div><div class="line">2) &quot;key&quot;</div><div class="line">3) &quot;me&quot;</div><div class="line">4) &quot;name&quot;</div></pre></td></tr></table></figure>
 <h3 id="获取key-O-1"><a href="#获取key-O-1" class="headerlink" title="获取key(O(1))"></a>获取key(O(1))</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; get name </div><div class="line">&quot;25&quot;</div></pre></td></tr></table></figure>
 <h3 id="批量设置key"><a href="#批量设置key" class="headerlink" title="批量设置key"></a>批量设置key</h3><p>mset key value [key value ……]</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; mset test1 1 test2 2</div><div class="line">OK</div><div class="line">127.0.0.1:6379&gt; get test2</div><div class="line">&quot;2&quot;</div></pre></td></tr></table></figure>
 <h3 id="追加值-O-1"><a href="#追加值-O-1" class="headerlink" title="追加值(O(1))"></a>追加值(O(1))</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; append test2 apend</div><div class="line">(integer) 6</div><div class="line">127.0.0.1:6379&gt; get test2 </div><div class="line">&quot;2apend&quot;</div></pre></td></tr></table></figure>
 <h3 id="字符串长度"><a href="#字符串长度" class="headerlink" title="字符串长度"></a>字符串长度</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; strlen test2</div><div class="line">(integer) 6</div></pre></td></tr></table></figure>
 <h2 id="哈希（hash）"><a href="#哈希（hash）" class="headerlink" title="哈希（hash）"></a>哈希（hash）</h2><p>HGET KEY_NAME FIELD_NAME<br>类似javscript里的对象 {}</p>
-<h3 id="设置hash"><a href="#设置hash" class="headerlink" title="设置hash"></a>设置hash</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; HMSET hash name wclimb age 25</div><div class="line">OK</div></pre></td></tr></table></figure>
-<h3 id="获取hash"><a href="#获取hash" class="headerlink" title="获取hash"></a>获取hash</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; hmget hash name</div><div class="line">1) &quot;wclimb&quot;</div></pre></td></tr></table></figure>
+<h3 id="设置hash"><a href="#设置hash" class="headerlink" title="设置hash"></a>设置hash</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; HMSET hash name wunci age 25</div><div class="line">OK</div></pre></td></tr></table></figure>
+<h3 id="获取hash"><a href="#获取hash" class="headerlink" title="获取hash"></a>获取hash</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; hmget hash name</div><div class="line">1) &quot;wunci&quot;</div></pre></td></tr></table></figure>
 <h3 id="删除hash"><a href="#删除hash" class="headerlink" title="删除hash"></a>删除hash</h3><p>hdel key field [field ……] 会删除一个或多个field，返回结果为成功删除fiel的个数</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; hdel hash name</div><div class="line">(integer) 1</div><div class="line">127.0.0.1:6379&gt; hmget hash name  // 再获取就返回nil</div><div class="line">1) (nil)</div></pre></td></tr></table></figure>
-<h3 id="获取所有field"><a href="#获取所有field" class="headerlink" title="获取所有field"></a>获取所有field</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; hkeys hash</div><div class="line">1) &quot;age&quot;</div><div class="line">127.0.0.1:6379&gt; HMSET hash name wclimb from jiangxi</div><div class="line">OK</div><div class="line">127.0.0.1:6379&gt; hkeys hash</div><div class="line">1) &quot;age&quot;</div><div class="line">2) &quot;name&quot;</div><div class="line">3) &quot;from&quot;</div></pre></td></tr></table></figure>
-<h3 id="获取所有value"><a href="#获取所有value" class="headerlink" title="获取所有value"></a>获取所有value</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; hvals hash</div><div class="line">1) &quot;25&quot;</div><div class="line">2) &quot;wclimb&quot;</div><div class="line">3) &quot;jiangxi&quot;</div></pre></td></tr></table></figure>
+<h3 id="获取所有field"><a href="#获取所有field" class="headerlink" title="获取所有field"></a>获取所有field</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; hkeys hash</div><div class="line">1) &quot;age&quot;</div><div class="line">127.0.0.1:6379&gt; HMSET hash name wunci from jiangxi</div><div class="line">OK</div><div class="line">127.0.0.1:6379&gt; hkeys hash</div><div class="line">1) &quot;age&quot;</div><div class="line">2) &quot;name&quot;</div><div class="line">3) &quot;from&quot;</div></pre></td></tr></table></figure>
+<h3 id="获取所有value"><a href="#获取所有value" class="headerlink" title="获取所有value"></a>获取所有value</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">127.0.0.1:6379&gt; hvals hash</div><div class="line">1) &quot;25&quot;</div><div class="line">2) &quot;wunci&quot;</div><div class="line">3) &quot;jiangxi&quot;</div></pre></td></tr></table></figure>
 <h2 id="列表（list）"><a href="#列表（list）" class="headerlink" title="列表（list）"></a>列表（list）</h2><table>
 <thead>
 <tr>
@@ -517,126 +517,126 @@
 <h2 id="使用node连接redis"><a href="#使用node连接redis" class="headerlink" title="使用node连接redis"></a>使用node连接redis</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; npm init</div><div class="line">&gt; cnpm i reids -S</div><div class="line">&gt; touch index.js</div><div class="line">&gt; vim index.js</div></pre></td></tr></table></figure>
 <h3 id="连接redis"><a href="#连接redis" class="headerlink" title="连接redis"></a>连接redis</h3><p>redis npm包链接 <a href="https://www.npmjs.com/package/redis" target="_blank" rel="external">https://www.npmjs.com/package/redis</a></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> redis = <span class="built_in">require</span>(<span class="string">'redis'</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> client = redis.createClient(<span class="number">6379</span>, <span class="string">'127.0.0.1'</span>);</div><div class="line">client.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'Error '</span> + err);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h3 id="设置获取key"><a href="#设置获取key" class="headerlink" title="设置获取key"></a>设置获取key</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">client.set(<span class="string">'user'</span>, <span class="built_in">JSON</span>.stringify(&#123; <span class="attr">name</span>: <span class="string">'wclimb'</span>, <span class="attr">age</span>: <span class="string">'18'</span> &#125;), redis.print);</div><div class="line">client.get(<span class="string">'user'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, value</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'Got: '</span> + value);</div><div class="line">  client.quit();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="设置获取key"><a href="#设置获取key" class="headerlink" title="设置获取key"></a>设置获取key</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">client.set(<span class="string">'user'</span>, <span class="built_in">JSON</span>.stringify(&#123; <span class="attr">name</span>: <span class="string">'wunci'</span>, <span class="attr">age</span>: <span class="string">'18'</span> &#125;), redis.print);</div><div class="line">client.get(<span class="string">'user'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, value</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'Got: '</span> + value);</div><div class="line">  client.quit();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <p>控制台打印</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; node index.js</div><div class="line">Reply: OK</div><div class="line">Got: &#123;&quot;name&quot;:&quot;wclimb&quot;,&quot;age&quot;:&quot;18&quot;&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; node index.js</div><div class="line">Reply: OK</div><div class="line">Got: &#123;&quot;name&quot;:&quot;wunci&quot;,&quot;age&quot;:&quot;18&quot;&#125;</div></pre></td></tr></table></figure>
 <h3 id="设置获取hash"><a href="#设置获取hash" class="headerlink" title="设置获取hash"></a>设置获取hash</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">client.hmset(<span class="string">"hosts"</span>, <span class="string">"mjr"</span>, <span class="string">"1"</span>, <span class="string">"another"</span>, <span class="string">"23"</span>, <span class="string">"home"</span>, <span class="string">"1234"</span>);</div><div class="line">client.hgetall(<span class="string">"hosts"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, obj</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.dir(obj);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <p>控制台打印<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; node index.js</div><div class="line">&#123; mjr: &apos;1&apos;, another: &apos;23&apos;, home: &apos;1234&apos; &#125;</div></pre></td></tr></table></figure></p>
 <h3 id="设置获取list"><a href="#设置获取list" class="headerlink" title="设置获取list"></a>设置获取list</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">client.LPUSH(<span class="string">'list'</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], redis.print);</div><div class="line">client.lrange(<span class="string">'list'</span>, <span class="string">'0'</span>, <span class="string">'-1'</span>, redis.print);</div></pre></td></tr></table></figure>
 <p>控制台打印<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; node index.js</div><div class="line">Reply: 8</div><div class="line">Reply: 4,3,2,1,newValue,b,a,redis</div></pre></td></tr></table></figure></p>
 <p>基本用法和上面讲的都差不多，直接上去一顿写就完事了，完全可以不带脑子的使用各种api</p>
 
-      
+
     </div>
 
     <div>
-      
-        
 
-      
+
+
+
     </div>
 
     <div>
-      
-        
+
+
   <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
     <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
     <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
       <span>赏</span>
     </button>
     <div id="QR" style="display: none;">
-      
+
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay"/>
+          <img id="wechat_qr" src="/img/wx.png" alt="wunci WeChat Pay"/>
           <p>微信打赏</p>
         </div>
-      
-      
+
+
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay"/>
+          <img id="alipay_qr" src="/img/alipay.png" alt="wunci Alipay"/>
           <p>支付宝打赏</p>
         </div>
-      
+
     </div>
   </div>
 
 
-      
+
     </div>
 
     <div>
-      
-        
 
-      
+
+
+
     </div>
 
     <footer class="post-footer">
-      
+
         <div class="post-tags">
-          
+
             <a href="/tags/教程/" rel="tag"># 教程</a>
-          
+
             <a href="/tags/Node/" rel="tag"># Node</a>
-          
+
             <a href="/tags/redis/" rel="tag"># redis</a>
-          
+
         </div>
-      
 
-      
-      
-      
 
-      
+
+
+
+
+
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-            
+
               <a href="/2018/09/11/JavaScript之实现一个简单的Vue/" rel="next" title="JavaScript之实现一个简单的Vue">
                 <i class="fa fa-chevron-left"></i> JavaScript之实现一个简单的Vue
               </a>
-            
+
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
+
               <a href="/2019/06/06/webpack系列之初探/" rel="prev" title="webpack系列之初探">
                 webpack系列之初探 <i class="fa fa-chevron-right"></i>
               </a>
-            
+
           </div>
         </div>
-      
 
-      
-      
+
+
+
     </footer>
   </article>
 
 
 
     <div class="post-spread">
-      
+
     </div>
   </div>
 
 
           </div>
-          
 
 
-          
+
+
   <div class="comments" id="comments">
-    
+
   </div>
 
 
         </div>
-        
-          
-  
+
+
+
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
       <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
@@ -648,9 +648,9 @@
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
-      
 
-      
+
+
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
             文章目录
@@ -659,184 +659,184 @@
             站点概览
           </li>
         </ul>
-      
+
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
-               alt="wclimb" />
-          <p class="site-author-name" itemprop="name">wclimb</p>
-           
+               alt="wunci" />
+          <p class="site-author-name" itemprop="name">wunci</p>
+
               <p class="site-description motion-element" itemprop="description"></p>
-          
+
         </div>
         <nav class="site-state motion-element">
 
-          
+
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
                 <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
-          
 
-          
-            
-            
+
+
+
+
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
                 <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
-          
 
-          
-            
-            
+
+
+
+
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
                 <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
-          
+
 
         </nav>
 
-        
+
 
         <div class="links-of-author motion-element">
-          
-            
+
+
               <span class="links-of-author-item">
-                <a href="https://github.com/wclimb" target="_blank" title="GitHub">
-                  
+                <a href="https://github.com/wunci" target="_blank" title="GitHub">
+
                     <i class="fa fa-fw fa-github"></i>
-                  
+
                   GitHub
                 </a>
               </span>
-            
+
               <span class="links-of-author-item">
                 <a href="http://shang.qq.com/wpa/qunwpa?idkey=e6c66b1ee584a90b52dec3545622e988afcf900144eff03cab6d473c50a31d59" target="_blank" title="QQ群">
-                  
+
                     <i class="fa fa-fw fa-qq"></i>
-                  
+
                   QQ群
                 </a>
               </span>
-            
+
               <span class="links-of-author-item">
-                <a href="http://www.wclimb.site/cdn/xcx.jpeg" target="_blank" title="小程序">
-                  
+                <a href="http://wunci.github.io/cdn/xcx.jpeg" target="_blank" title="小程序">
+
                     <i class="fa fa-fw fa-weixin"></i>
-                  
+
                   小程序
                 </a>
               </span>
-            
+
               <span class="links-of-author-item">
                 <a href="/img/gzh.jpg" target="_blank" title="公众号">
-                  
+
                     <i class="fa fa-fw fa-globe"></i>
-                  
+
                   公众号
                 </a>
               </span>
-            
-          
+
+
         </div>
 
-        
-        
 
-        
-        
+
+
+
+
           <div class="links-of-blogroll motion-element links-of-blogroll-inline">
             <div class="links-of-blogroll-title">
               <i class="fa  fa-fw fa-globe"></i>
               Links
             </div>
             <ul class="links-of-blogroll-list">
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="https://www.lsnsh.site/" title="Lsnsh" target="_blank">Lsnsh</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://blog.curtaintan.club" title="curtain Tan" target="_blank">curtain Tan</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://eraylee.com/" title="eraylee" target="_blank">eraylee</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="https://dcdcdog.com" title="flutter体验" target="_blank">flutter体验</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://www.jspeng.com" title="技术鹏" target="_blank">技术鹏</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://www.suchenqiang.cn/" title="苏博客" target="_blank">苏博客</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="https://www.phpojbk.com" title="Blog Luo" target="_blank">Blog Luo</a>
                 </li>
-              
+
             </ul>
           </div>
-        
 
-        
+
+
 
 
       </section>
 
-      
+
       <!--noindex-->
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
-            
-              
-            
 
-            
+
+
+
+
               <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis简介"><span class="nav-number">2.</span> <span class="nav-text">redis简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要用redis（优势）"><span class="nav-number">3.</span> <span class="nav-text">为什么要用redis（优势）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装运行及调试（这里以mac为例）"><span class="nav-number">4.</span> <span class="nav-text">安装运行及调试（这里以mac为例）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局api"><span class="nav-number">5.</span> <span class="nav-text">全局api</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查询键"><span class="nav-number">5.1.</span> <span class="nav-text">查询键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#键的总数"><span class="nav-number">5.2.</span> <span class="nav-text">键的总数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检查键是否存在"><span class="nav-number">5.3.</span> <span class="nav-text">检查键是否存在</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除键"><span class="nav-number">5.4.</span> <span class="nav-text">删除键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#键过期"><span class="nav-number">5.5.</span> <span class="nav-text">键过期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#randomkey-随机返回一个键"><span class="nav-number">5.6.</span> <span class="nav-text">randomkey 随机返回一个键</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis-键（key）"><span class="nav-number">6.</span> <span class="nav-text">redis 键（key）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置key-O-1"><span class="nav-number">6.1.</span> <span class="nav-text">设置key(O(1))</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取key-O-1"><span class="nav-number">6.2.</span> <span class="nav-text">获取key(O(1))</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#批量设置key"><span class="nav-number">6.3.</span> <span class="nav-text">批量设置key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#追加值-O-1"><span class="nav-number">6.4.</span> <span class="nav-text">追加值(O(1))</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串长度"><span class="nav-number">6.5.</span> <span class="nav-text">字符串长度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#哈希（hash）"><span class="nav-number">7.</span> <span class="nav-text">哈希（hash）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置hash"><span class="nav-number">7.1.</span> <span class="nav-text">设置hash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取hash"><span class="nav-number">7.2.</span> <span class="nav-text">获取hash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除hash"><span class="nav-number">7.3.</span> <span class="nav-text">删除hash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取所有field"><span class="nav-number">7.4.</span> <span class="nav-text">获取所有field</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取所有value"><span class="nav-number">7.5.</span> <span class="nav-text">获取所有value</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列表（list）"><span class="nav-number">8.</span> <span class="nav-text">列表（list）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加"><span class="nav-number">8.1.</span> <span class="nav-text">添加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找"><span class="nav-number">8.2.</span> <span class="nav-text">查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#长度"><span class="nav-number">8.3.</span> <span class="nav-text">长度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除"><span class="nav-number">8.4.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改"><span class="nav-number">8.5.</span> <span class="nav-text">修改</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用node连接redis"><span class="nav-number">9.</span> <span class="nav-text">使用node连接redis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#连接redis"><span class="nav-number">9.1.</span> <span class="nav-text">连接redis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置获取key"><span class="nav-number">9.2.</span> <span class="nav-text">设置获取key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置获取hash"><span class="nav-number">9.3.</span> <span class="nav-text">设置获取hash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置获取list"><span class="nav-number">9.4.</span> <span class="nav-text">设置获取list</span></a></li></ol></li></ol></div>
-            
+
 
           </div>
         </section>
       <!--/noindex-->
-      
 
-      
+
+
 
     </div>
   </aside>
 
 
-        
+
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright" >
-  
-  &copy;  2017 - 
+
+  &copy;  2017 -
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">wclimb</span>
+  <span class="author" itemprop="copyrightHolder">wunci</span>
 </div>
 
 
@@ -866,37 +866,37 @@ var total= Math.floor(duration / (1000 * 60 * 60 * 24));
 document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 </script>
 
-<span>赣ICP备 17009321号</span> 
-        
+<span>赣ICP备 17009321号</span>
+
 <div class="busuanzi-count">
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-  
+
     <span class="site-uv">
       <i class="fa fa-user"></i>  访问人数
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
       人次
     </span>
-  
 
-  
+
+
 </div>
 
 
-        
+
       </div>
     </footer>
 
-    
+
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
-        
+
       </div>
-    
+
 
   </div>
 
-  
+
 
 <script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
@@ -912,7 +912,6 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
 
 
 
@@ -925,26 +924,27 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
+
+
   <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
 
 
-  
+
 
 
   <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
@@ -953,8 +953,8 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
-  
+
+
 
 
   <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
@@ -963,53 +963,53 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
+
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
 
 
-  
+
 
 
   <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-  
 
 
 
 
 
 
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <script type="text/javascript">
     // Popup Window;
@@ -1332,17 +1332,17 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
+
+
+
+
+
+
 
   <script src="https://cdn.bootcss.com/clipboard.js/2.0.6/clipboard.min.js"></script>
   <style>

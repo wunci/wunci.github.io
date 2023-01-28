@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: wclimb的个人博客--分享
+title: wunci的个人博客--分享
 subtitle:
 description:
-author: wclimb
+author: wunci
 language: zh-Hans
 timezone:
 
@@ -74,5 +74,5 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: git@github.com:wclimb/wclimb.github.io.git #在仓库找到该仓库的ssh
+  repository: git@github.com:wunci/wunci.github.io.git #在仓库找到该仓库的ssh
   branch: master #分支，这里为github-pages

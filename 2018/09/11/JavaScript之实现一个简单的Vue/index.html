@@ -2,7 +2,7 @@
 
 
 
-  
+
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
@@ -36,45 +36,45 @@
 
 
 
-  
-  
-    
-  
+
+
+
+
   <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
 
-  
-  
-  
-  
 
-  
-    
-    
-  
 
-  
 
-  
 
-  
 
-  
 
-  
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
 
 
 
-  
+
+
 
 <link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
@@ -97,19 +97,19 @@
 
 
 
-<meta name="description" content="补充：写一个较为强大的Vue，支持虚拟DOM、diff更新以及基本的API，项目地址：https://github.com/wclimb/euv vue的使用相信大家都很熟练了，使用起来简单。但是大部分人不知道其内部的原理是怎么样的，今天我们就来一起实现一个简单的vue Object.defineProperty()实现之前我们得先看一下Object.defineProperty的实现，因为vue">
+<meta name="description" content="补充：写一个较为强大的Vue，支持虚拟DOM、diff更新以及基本的API，项目地址：https://github.com/wunci/euv vue的使用相信大家都很熟练了，使用起来简单。但是大部分人不知道其内部的原理是怎么样的，今天我们就来一起实现一个简单的vue Object.defineProperty()实现之前我们得先看一下Object.defineProperty的实现，因为vue">
 <meta name="keywords" content="原创,javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript之实现一个简单的Vue">
-<meta property="og:url" content="http://www.wclimb.site/2018/09/11/JavaScript之实现一个简单的Vue/index.html">
-<meta property="og:site_name" content="wclimb的个人博客--分享">
-<meta property="og:description" content="补充：写一个较为强大的Vue，支持虚拟DOM、diff更新以及基本的API，项目地址：https://github.com/wclimb/euv vue的使用相信大家都很熟练了，使用起来简单。但是大部分人不知道其内部的原理是怎么样的，今天我们就来一起实现一个简单的vue Object.defineProperty()实现之前我们得先看一下Object.defineProperty的实现，因为vue">
-<meta property="og:image" content="http://www.wclimb.site/img/vue.png">
+<meta property="og:url" content="http://wunci.github.io/2018/09/11/JavaScript之实现一个简单的Vue/index.html">
+<meta property="og:site_name" content="wunci的个人博客--分享">
+<meta property="og:description" content="补充：写一个较为强大的Vue，支持虚拟DOM、diff更新以及基本的API，项目地址：https://github.com/wunci/euv vue的使用相信大家都很熟练了，使用起来简单。但是大部分人不知道其内部的原理是怎么样的，今天我们就来一起实现一个简单的vue Object.defineProperty()实现之前我们得先看一下Object.defineProperty的实现，因为vue">
+<meta property="og:image" content="http://wunci.github.io/img/vue.png">
 <meta property="og:updated_time" content="2021-09-12T07:52:45.002Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript之实现一个简单的Vue">
-<meta name="twitter:description" content="补充：写一个较为强大的Vue，支持虚拟DOM、diff更新以及基本的API，项目地址：https://github.com/wclimb/euv vue的使用相信大家都很熟练了，使用起来简单。但是大部分人不知道其内部的原理是怎么样的，今天我们就来一起实现一个简单的vue Object.defineProperty()实现之前我们得先看一下Object.defineProperty的实现，因为vue">
-<meta name="twitter:image" content="http://www.wclimb.site/img/vue.png">
+<meta name="twitter:description" content="补充：写一个较为强大的Vue，支持虚拟DOM、diff更新以及基本的API，项目地址：https://github.com/wunci/euv vue的使用相信大家都很熟练了，使用起来简单。但是大部分人不知道其内部的原理是怎么样的，今天我们就来一起实现一个简单的vue Object.defineProperty()实现之前我们得先看一下Object.defineProperty的实现，因为vue">
+<meta name="twitter:image" content="http://wunci.github.io/img/vue.png">
 
 
 
@@ -137,14 +137,14 @@
 
 
 
-  <link rel="canonical" href="http://www.wclimb.site/2018/09/11/JavaScript之实现一个简单的Vue/"/>
+  <link rel="canonical" href="http://wunci.github.io/2018/09/11/JavaScript之实现一个简单的Vue/"/>
 
 
 
 
 
-  <title>JavaScript之实现一个简单的Vue | wclimb的个人博客--分享</title>
-  
+  <title>JavaScript之实现一个简单的Vue | wunci的个人博客--分享</title>
+
 
 
 
@@ -163,10 +163,10 @@
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  
-  
-    
-  
+
+
+
+
 
   <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
@@ -174,18 +174,18 @@
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
-    
+
 
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">wclimb的个人博客--分享</span>
+        <span class="site-title">wunci的个人博客--分享</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
+
         <p class="site-subtitle"></p>
-      
+
   </div>
 
   <div class="site-nav-toggle">
@@ -198,80 +198,80 @@
 </div>
 
 <nav class="site-nav">
-  
 
-  
+
+
     <ul id="menu" class="menu">
-      
-        
+
+
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
+
             首页
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
+
             分类
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
+
             关于
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
+
             归档
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
+
             标签
           </a>
         </li>
-      
 
-      
+
+
         <li class="menu-item menu-item-search">
-          
+
             <a href="javascript:;" class="popup-trigger">
-          
-            
+
+
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
+
             搜索
           </a>
         </li>
-      
-    </ul>
-  
 
-  
+    </ul>
+
+
+
     <div class="site-search">
-      
+
   <div class="popup search-popup local-search-popup">
   <div class="local-search-header clearfix">
     <span class="search-icon">
@@ -292,7 +292,7 @@
 
 
     </div>
-  
+
 </nav>
 
 
@@ -304,146 +304,146 @@
       <div class="main-inner">
         <div class="content-wrap">
           <div id="content" class="content">
-            
+
 
   <div id="posts" class="posts-expand">
-    
 
-  
 
-  
-  
-  
+
+
+
+
+
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.wclimb.site/2018/09/11/JavaScript之实现一个简单的Vue/">
+    <link itemprop="mainEntityOfPage" href="http://wunci.github.io/2018/09/11/JavaScript之实现一个简单的Vue/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wclimb">
+      <meta itemprop="name" content="wunci">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wclimb的个人博客--分享">
+      <meta itemprop="name" content="wunci的个人博客--分享">
     </span>
 
-    
+
       <header class="post-header">
 
-        
-        
+
+
           <h1 class="post-title" itemprop="name headline">JavaScript之实现一个简单的Vue</h1>
-        
+
 
         <div class="post-meta">
           <span class="post-time">
-            
+
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
+
                 <span class="post-meta-item-text">发表于</span>
-              
+
               <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-11T17:48:22+08:00">
                 2018-09-11
               </time>
-            
 
-            
 
-            
+
+
+
           </span>
 
-          
+
             <span class="post-category" >
-            
+
               <span class="post-meta-divider">|</span>
-            
+
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
+
                 <span class="post-meta-item-text">分类于</span>
-              
-              
+
+
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/javascript/" itemprop="url" rel="index">
                     <span itemprop="name">javascript</span>
                   </a>
                 </span>
 
-                
-                
-                  ， 
-                
-              
+
+
+                  ，
+
+
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/javascript/vue/" itemprop="url" rel="index">
                     <span itemprop="name">vue</span>
                   </a>
                 </span>
 
-                
-                
-              
+
+
+
             </span>
-          
 
-          
-            
-          
 
-          
-          
 
-          
+
+
+
+
+
+
+
             <span class="post-meta-divider">|</span>
             <span class="page-pv"><i class="fa fa-file-o"></i>   浏览
             <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
             </span>
-          
 
-          
+
+
             <div class="post-wordcount">
-              
 
-              
+
+
                 <span class="post-meta-divider">|</span>
-              
 
-              
+
+
                 <span class="post-meta-item-icon" style="margin-left:4px;">
                   <i class="fa fa-clock-o"></i>
                 </span>
-                
+
                   <span class="post-meta-item-text">约</span>
-                
+
                 <span title="约">
                   7 分钟
                 </span>
-              
-            </div>
-          
 
-          
+            </div>
+
+
+
 
         </div>
       </header>
-    
+
 
     <div class="post-body" itemprop="articleBody">
 
-      
-      
 
-      
-        <p><strong>补充：写一个较为强大的Vue，支持虚拟DOM、diff更新以及基本的API，项目地址：<a href="https://github.com/wclimb/euv" target="_blank" rel="external">https://github.com/wclimb/euv</a></strong></p>
+
+
+
+        <p><strong>补充：写一个较为强大的Vue，支持虚拟DOM、diff更新以及基本的API，项目地址：<a href="https://github.com/wunci/euv" target="_blank" rel="external">https://github.com/wunci/euv</a></strong></p>
 <p>vue的使用相信大家都很熟练了，使用起来简单。但是大部分人不知道其内部的原理是怎么样的，今天我们就来一起实现一个简单的vue</p>
 <h1 id="Object-defineProperty"><a href="#Object-defineProperty" class="headerlink" title="Object.defineProperty()"></a>Object.defineProperty()</h1><p>实现之前我们得先看一下<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank" rel="external">Object.defineProperty</a>的实现，因为vue主要是通过数据劫持来实现的，通过<code>get</code>、<code>set</code>来完成数据的读取和更新。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">name</span>:<span class="string">'wclimb'</span>&#125;</div><div class="line"><span class="keyword">var</span> age = <span class="number">24</span></div><div class="line"><span class="built_in">Object</span>.defineProperty(obj,<span class="string">'age'</span>,&#123;</div><div class="line">	<span class="attr">enumerable</span>: <span class="literal">true</span>, <span class="comment">// 可枚举</span></div><div class="line">    configurable: <span class="literal">false</span>, <span class="comment">// 不能再define</span></div><div class="line">    get () &#123;</div><div class="line">        <span class="keyword">return</span> age</div><div class="line">    &#125;,</div><div class="line">    set (newVal) &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'我改变了'</span>,age +<span class="string">' -&gt; '</span>+newVal);</div><div class="line">        age = newVal</div><div class="line">    &#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line">&gt; obj.age</div><div class="line">&gt; <span class="number">24</span></div><div class="line"></div><div class="line">&gt; obj.age = <span class="number">25</span>;</div><div class="line">&gt; 我改变了 <span class="number">24</span> -&gt; <span class="number">25</span></div><div class="line">&gt; <span class="number">25</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">name</span>:<span class="string">'wunci'</span>&#125;</div><div class="line"><span class="keyword">var</span> age = <span class="number">24</span></div><div class="line"><span class="built_in">Object</span>.defineProperty(obj,<span class="string">'age'</span>,&#123;</div><div class="line">	<span class="attr">enumerable</span>: <span class="literal">true</span>, <span class="comment">// 可枚举</span></div><div class="line">    configurable: <span class="literal">false</span>, <span class="comment">// 不能再define</span></div><div class="line">    get () &#123;</div><div class="line">        <span class="keyword">return</span> age</div><div class="line">    &#125;,</div><div class="line">    set (newVal) &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'我改变了'</span>,age +<span class="string">' -&gt; '</span>+newVal);</div><div class="line">        age = newVal</div><div class="line">    &#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line">&gt; obj.age</div><div class="line">&gt; <span class="number">24</span></div><div class="line"></div><div class="line">&gt; obj.age = <span class="number">25</span>;</div><div class="line">&gt; 我改变了 <span class="number">24</span> -&gt; <span class="number">25</span></div><div class="line">&gt; <span class="number">25</span></div></pre></td></tr></table></figure>
 <p>从上面可以看到通过<code>get</code>获取数据，通过<code>set</code>监听到数据变化执行相应操作，还是不明白的话可以去看看<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank" rel="external">Object.defineProperty</a>文档。<br><a id="more"></a></p>
-<h1 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h1><p><img src="http://www.wclimb.site/img/vue.png" alt=""></p>
+<h1 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h1><p><img src="http://wunci.github.io/img/vue.png" alt=""></p>
 <h1 id="html代码结构"><a href="#html代码结构" class="headerlink" title="html代码结构"></a>html代码结构</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;wrap&quot;&gt;</div><div class="line">    &lt;p v-html=&quot;test&quot;&gt;&lt;/p&gt;</div><div class="line">    &lt;input type=&quot;text&quot; v-model=&quot;form&quot;&gt;</div><div class="line">    &lt;input type=&quot;text&quot; v-model=&quot;form&quot;&gt;</div><div class="line">    &lt;button @click=&quot;changeValue&quot;&gt;改变值&lt;/button&gt;</div><div class="line">    &#123;&#123;form&#125;&#125;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
 <h1 id="js调用"><a href="#js调用" class="headerlink" title="js调用"></a>js调用</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> Vue(&#123;</div><div class="line">    <span class="attr">el</span>: <span class="string">'#wrap'</span>,</div><div class="line">    <span class="attr">data</span>:&#123;</div><div class="line">        <span class="attr">form</span>: <span class="string">'这是form的值'</span>,</div><div class="line">        <span class="attr">test</span>: <span class="string">'&lt;strong&gt;我是粗体&lt;/strong&gt;'</span>,</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">methods</span>:&#123;</div><div class="line">        changeValue()&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.form)</div><div class="line">            <span class="keyword">this</span>.form = <span class="string">'值被我改变了，气不气？'</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <h1 id="Vue结构"><a href="#Vue结构" class="headerlink" title="Vue结构"></a>Vue结构</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vue</span></span>&#123;</div><div class="line">    <span class="keyword">constructor</span>()&#123;&#125;</div><div class="line">    proxyData()&#123;&#125;</div><div class="line">    observer()&#123;&#125;</div><div class="line">    compile()&#123;&#125;</div><div class="line">    compileText()&#123;&#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Watcher</span></span>&#123;</div><div class="line">    <span class="keyword">constructor</span>()&#123;&#125;</div><div class="line">    update()&#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -473,120 +473,120 @@
 <h1 id="Watcher"><a href="#Watcher" class="headerlink" title="Watcher"></a>Watcher</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Watcher</span></span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(el,vm,value,type)&#123;</div><div class="line">        <span class="keyword">this</span>.el = el;</div><div class="line">        <span class="keyword">this</span>.vm = vm;</div><div class="line">        <span class="keyword">this</span>.value = value;</div><div class="line">        <span class="keyword">this</span>.type = type;</div><div class="line">        <span class="keyword">this</span>.update()</div><div class="line">    &#125;</div><div class="line">    update()&#123;</div><div class="line">        <span class="keyword">this</span>.el[<span class="keyword">this</span>.type] = <span class="keyword">this</span>.vm.data[<span class="keyword">this</span>.value]</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>之前发布订阅之后走了这里面的操作，意思就是把当前元素如：node.innerHTML = ‘这是data里面的值’、node.value = ‘这个是表单的数据’</p>
 <p>那么我们为什么不直接去更新呢，还需要<code>update</code>做什么，不是多此一举吗？<br>其实<code>update</code>记得吗？我们在订阅池里面需要批量更新，就是通过调用<code>Watcher</code>原型上的<code>update</code>方法。</p>
-<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p><a href="http://www.wclimb.site/myVue">在线效果地址</a>，大家可以浏览器看一下效果，由于本人太懒了，<code>gif</code>效果图就先不放了，哈哈😄😄</p>
-<h1 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h1><p>完整代码已经放到<code>github</code>上了 -&gt; <a href="https://github.com/wclimb/MyVue" target="_blank" rel="external">MyVue</a></p>
+<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p><a href="http://wunci.github.io/myVue">在线效果地址</a>，大家可以浏览器看一下效果，由于本人太懒了，<code>gif</code>效果图就先不放了，哈哈😄😄</p>
+<h1 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h1><p>完整代码已经放到<code>github</code>上了 -&gt; <a href="https://github.com/wunci/MyVue" target="_blank" rel="external">MyVue</a></p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://segmentfault.com/a/1190000006599500" target="_blank" rel="external">剖析Vue原理&amp;实现双向绑定MVVM</a><br><a href="https://segmentfault.com/a/1190000015375217" target="_blank" rel="external">仿Vue实现极简双向绑定</a></p>
 <h1 id="QQ群"><a href="#QQ群" class="headerlink" title="QQ群"></a>QQ群</h1><p>有兴趣的同学可以加qq群: 725165362 <a href="http://shang.qq.com/wpa/qunwpa?idkey=e6c66b1ee584a90b52dec3545622e988afcf900144eff03cab6d473c50a31d59" target="_blank" rel="external">点击加入</a></p>
 
-      
+
     </div>
 
     <div>
-      
-        
 
-      
+
+
+
     </div>
 
     <div>
-      
-        
+
+
   <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
     <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
     <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
       <span>赏</span>
     </button>
     <div id="QR" style="display: none;">
-      
+
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay"/>
+          <img id="wechat_qr" src="/img/wx.png" alt="wunci WeChat Pay"/>
           <p>微信打赏</p>
         </div>
-      
-      
+
+
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay"/>
+          <img id="alipay_qr" src="/img/alipay.png" alt="wunci Alipay"/>
           <p>支付宝打赏</p>
         </div>
-      
+
     </div>
   </div>
 
 
-      
+
     </div>
 
     <div>
-      
-        
 
-      
+
+
+
     </div>
 
     <footer class="post-footer">
-      
+
         <div class="post-tags">
-          
+
             <a href="/tags/原创/" rel="tag"># 原创</a>
-          
+
             <a href="/tags/javascript/" rel="tag"># javascript</a>
-          
+
         </div>
-      
 
-      
-      
-      
 
-      
+
+
+
+
+
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-            
+
               <a href="/2018/09/10/JavaScript之Web-Worker/" rel="next" title="JavaScript之Web Worker">
                 <i class="fa fa-chevron-left"></i> JavaScript之Web Worker
               </a>
-            
+
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
+
               <a href="/2019/04/19/redis简易教程以及使用nodejs连接redis/" rel="prev" title="redis简易教程以及使用nodejs连接redis">
                 redis简易教程以及使用nodejs连接redis <i class="fa fa-chevron-right"></i>
               </a>
-            
+
           </div>
         </div>
-      
 
-      
-      
+
+
+
     </footer>
   </article>
 
 
 
     <div class="post-spread">
-      
+
     </div>
   </div>
 
 
           </div>
-          
 
 
-          
+
+
   <div class="comments" id="comments">
-    
+
   </div>
 
 
         </div>
-        
-          
-  
+
+
+
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
       <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
@@ -598,9 +598,9 @@
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
-      
 
-      
+
+
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
             文章目录
@@ -609,184 +609,184 @@
             站点概览
           </li>
         </ul>
-      
+
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
-               alt="wclimb" />
-          <p class="site-author-name" itemprop="name">wclimb</p>
-           
+               alt="wunci" />
+          <p class="site-author-name" itemprop="name">wunci</p>
+
               <p class="site-description motion-element" itemprop="description"></p>
-          
+
         </div>
         <nav class="site-state motion-element">
 
-          
+
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
                 <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
-          
 
-          
-            
-            
+
+
+
+
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
                 <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
-          
 
-          
-            
-            
+
+
+
+
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
                 <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
-          
+
 
         </nav>
 
-        
+
 
         <div class="links-of-author motion-element">
-          
-            
+
+
               <span class="links-of-author-item">
-                <a href="https://github.com/wclimb" target="_blank" title="GitHub">
-                  
+                <a href="https://github.com/wunci" target="_blank" title="GitHub">
+
                     <i class="fa fa-fw fa-github"></i>
-                  
+
                   GitHub
                 </a>
               </span>
-            
+
               <span class="links-of-author-item">
                 <a href="http://shang.qq.com/wpa/qunwpa?idkey=e6c66b1ee584a90b52dec3545622e988afcf900144eff03cab6d473c50a31d59" target="_blank" title="QQ群">
-                  
+
                     <i class="fa fa-fw fa-qq"></i>
-                  
+
                   QQ群
                 </a>
               </span>
-            
+
               <span class="links-of-author-item">
-                <a href="http://www.wclimb.site/cdn/xcx.jpeg" target="_blank" title="小程序">
-                  
+                <a href="http://wunci.github.io/cdn/xcx.jpeg" target="_blank" title="小程序">
+
                     <i class="fa fa-fw fa-weixin"></i>
-                  
+
                   小程序
                 </a>
               </span>
-            
+
               <span class="links-of-author-item">
                 <a href="/img/gzh.jpg" target="_blank" title="公众号">
-                  
+
                     <i class="fa fa-fw fa-globe"></i>
-                  
+
                   公众号
                 </a>
               </span>
-            
-          
+
+
         </div>
 
-        
-        
 
-        
-        
+
+
+
+
           <div class="links-of-blogroll motion-element links-of-blogroll-inline">
             <div class="links-of-blogroll-title">
               <i class="fa  fa-fw fa-globe"></i>
               Links
             </div>
             <ul class="links-of-blogroll-list">
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="https://www.lsnsh.site/" title="Lsnsh" target="_blank">Lsnsh</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://blog.curtaintan.club" title="curtain Tan" target="_blank">curtain Tan</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://eraylee.com/" title="eraylee" target="_blank">eraylee</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="https://dcdcdog.com" title="flutter体验" target="_blank">flutter体验</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://www.jspeng.com" title="技术鹏" target="_blank">技术鹏</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://www.suchenqiang.cn/" title="苏博客" target="_blank">苏博客</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="https://www.phpojbk.com" title="Blog Luo" target="_blank">Blog Luo</a>
                 </li>
-              
+
             </ul>
           </div>
-        
 
-        
+
+
 
 
       </section>
 
-      
+
       <!--noindex-->
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
-            
-              
-            
 
-            
+
+
+
+
               <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Object-defineProperty"><span class="nav-number">1.</span> <span class="nav-text">Object.defineProperty()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#流程图"><span class="nav-number">2.</span> <span class="nav-text">流程图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#html代码结构"><span class="nav-number">3.</span> <span class="nav-text">html代码结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#js调用"><span class="nav-number">4.</span> <span class="nav-text">js调用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue结构"><span class="nav-number">5.</span> <span class="nav-text">Vue结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue-constructor-初始化"><span class="nav-number">6.</span> <span class="nav-text">Vue constructor 初始化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proxyData-代理data"><span class="nav-number">7.</span> <span class="nav-text">proxyData 代理data</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#observer-劫持监听"><span class="nav-number">8.</span> <span class="nav-text">observer 劫持监听</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#compile-解析dom"><span class="nav-number">9.</span> <span class="nav-text">compile 解析dom</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Watcher"><span class="nav-number">10.</span> <span class="nav-text">Watcher</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#效果"><span class="nav-number">11.</span> <span class="nav-text">效果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#完整代码"><span class="nav-number">12.</span> <span class="nav-text">完整代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">13.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#QQ群"><span class="nav-number">14.</span> <span class="nav-text">QQ群</span></a></li></ol></div>
-            
+
 
           </div>
         </section>
       <!--/noindex-->
-      
 
-      
+
+
 
     </div>
   </aside>
 
 
-        
+
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright" >
-  
-  &copy;  2017 - 
+
+  &copy;  2017 -
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">wclimb</span>
+  <span class="author" itemprop="copyrightHolder">wunci</span>
 </div>
 
 
@@ -816,37 +816,37 @@ var total= Math.floor(duration / (1000 * 60 * 60 * 24));
 document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 </script>
 
-<span>赣ICP备 17009321号</span> 
-        
+<span>赣ICP备 17009321号</span>
+
 <div class="busuanzi-count">
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-  
+
     <span class="site-uv">
       <i class="fa fa-user"></i>  访问人数
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
       人次
     </span>
-  
 
-  
+
+
 </div>
 
 
-        
+
       </div>
     </footer>
 
-    
+
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
-        
+
       </div>
-    
+
 
   </div>
 
-  
+
 
 <script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
@@ -862,7 +862,6 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
 
 
 
@@ -875,26 +874,27 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
+
+
   <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
 
 
-  
+
 
 
   <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
@@ -903,8 +903,8 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
-  
+
+
 
 
   <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
@@ -913,53 +913,53 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
+
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
 
 
-  
+
 
 
   <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-  
 
 
 
 
 
 
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <script type="text/javascript">
     // Popup Window;
@@ -1282,17 +1282,17 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
+
+
+
+
+
+
 
   <script src="https://cdn.bootcss.com/clipboard.js/2.0.6/clipboard.min.js"></script>
   <style>

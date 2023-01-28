@@ -1,7 +1,7 @@
 /**
  * Swiper 0.1.2
- * https://github.com/wclimb/Swipe
- * Copyright 2018 wclimb
+ * https://github.com/wunci/Swipe
+ * Copyright 2018 wunci
  * Released under the MIT License
  * 2018-06-28
  */
@@ -323,7 +323,7 @@
         if (num === 0) {
             num = totalLength - 2
         }
-        
+
         var list = document.querySelectorAll('.swipe-pagination-list');
         list.forEach(function (val, i) {
             var cls = val.className

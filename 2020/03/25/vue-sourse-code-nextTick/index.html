@@ -2,7 +2,7 @@
 
 
 
-  
+
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
@@ -36,45 +36,45 @@
 
 
 
-  
-  
-    
-  
+
+
+
+
   <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
 
-  
-  
-  
-  
 
-  
-    
-    
-  
 
-  
 
-  
 
-  
 
-  
 
-  
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
 
 
 
-  
+
+
 
 <link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
@@ -101,8 +101,8 @@
 <meta name="keywords" content="原创,javascript,vue,源码">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue源码之nextTick">
-<meta property="og:url" content="http://www.wclimb.site/2020/03/25/vue-sourse-code-nextTick/index.html">
-<meta property="og:site_name" content="wclimb的个人博客--分享">
+<meta property="og:url" content="http://wunci.github.io/2020/03/25/vue-sourse-code-nextTick/index.html">
+<meta property="og:site_name" content="wunci的个人博客--分享">
 <meta property="og:description" content="前言今天我们开始讲一下 Vue 的 nextTick 方法的实现，无论是源码还是开发的过程中，经常需要使用到 nextTick，Vue 在更新 DOM 时是异步执行的，只要侦听到数据变化，Vue 将开启一个队列，并缓冲在同一事件循环中发生的所有数据变更。如果同一个 watcher 被多次触发，只会被推入到队列中一次。这种在缓冲时去除重复数据对于避免不必要的计算和 DOM 操作是非常重要的。然后，在">
 <meta property="og:updated_time" content="2021-09-12T07:52:45.018Z">
 <meta name="twitter:card" content="summary">
@@ -135,14 +135,14 @@
 
 
 
-  <link rel="canonical" href="http://www.wclimb.site/2020/03/25/vue-sourse-code-nextTick/"/>
+  <link rel="canonical" href="http://wunci.github.io/2020/03/25/vue-sourse-code-nextTick/"/>
 
 
 
 
 
-  <title>Vue源码之nextTick | wclimb的个人博客--分享</title>
-  
+  <title>Vue源码之nextTick | wunci的个人博客--分享</title>
+
 
 
 
@@ -161,10 +161,10 @@
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  
-  
-    
-  
+
+
+
+
 
   <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
@@ -172,18 +172,18 @@
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
-    
+
 
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">wclimb的个人博客--分享</span>
+        <span class="site-title">wunci的个人博客--分享</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
+
         <p class="site-subtitle"></p>
-      
+
   </div>
 
   <div class="site-nav-toggle">
@@ -196,80 +196,80 @@
 </div>
 
 <nav class="site-nav">
-  
 
-  
+
+
     <ul id="menu" class="menu">
-      
-        
+
+
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
+
             首页
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
+
             分类
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
+
             关于
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
+
             归档
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
+
             标签
           </a>
         </li>
-      
 
-      
+
+
         <li class="menu-item menu-item-search">
-          
+
             <a href="javascript:;" class="popup-trigger">
-          
-            
+
+
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
+
             搜索
           </a>
         </li>
-      
-    </ul>
-  
 
-  
+    </ul>
+
+
+
     <div class="site-search">
-      
+
   <div class="popup search-popup local-search-popup">
   <div class="local-search-header clearfix">
     <span class="search-icon">
@@ -290,7 +290,7 @@
 
 
     </div>
-  
+
 </nav>
 
 
@@ -302,264 +302,264 @@
       <div class="main-inner">
         <div class="content-wrap">
           <div id="content" class="content">
-            
+
 
   <div id="posts" class="posts-expand">
-    
 
-  
 
-  
-  
-  
+
+
+
+
+
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.wclimb.site/2020/03/25/vue-sourse-code-nextTick/">
+    <link itemprop="mainEntityOfPage" href="http://wunci.github.io/2020/03/25/vue-sourse-code-nextTick/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wclimb">
+      <meta itemprop="name" content="wunci">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wclimb的个人博客--分享">
+      <meta itemprop="name" content="wunci的个人博客--分享">
     </span>
 
-    
+
       <header class="post-header">
 
-        
-        
+
+
           <h1 class="post-title" itemprop="name headline">Vue源码之nextTick</h1>
-        
+
 
         <div class="post-meta">
           <span class="post-time">
-            
+
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
+
                 <span class="post-meta-item-text">发表于</span>
-              
+
               <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-25T17:49:01+08:00">
                 2020-03-25
               </time>
-            
 
-            
 
-            
+
+
+
           </span>
 
-          
+
             <span class="post-category" >
-            
+
               <span class="post-meta-divider">|</span>
-            
+
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
+
                 <span class="post-meta-item-text">分类于</span>
-              
-              
+
+
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/javascript/" itemprop="url" rel="index">
                     <span itemprop="name">javascript</span>
                   </a>
                 </span>
 
-                
-                
-                  ， 
-                
-              
+
+
+                  ，
+
+
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/javascript/vue/" itemprop="url" rel="index">
                     <span itemprop="name">vue</span>
                   </a>
                 </span>
 
-                
-                
-              
+
+
+
             </span>
-          
 
-          
-            
-          
 
-          
-          
 
-          
+
+
+
+
+
+
+
             <span class="post-meta-divider">|</span>
             <span class="page-pv"><i class="fa fa-file-o"></i>   浏览
             <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
             </span>
-          
 
-          
+
+
             <div class="post-wordcount">
-              
 
-              
+
+
                 <span class="post-meta-divider">|</span>
-              
 
-              
+
+
                 <span class="post-meta-item-icon" style="margin-left:4px;">
                   <i class="fa fa-clock-o"></i>
                 </span>
-                
+
                   <span class="post-meta-item-text">约</span>
-                
+
                 <span title="约">
                   4 分钟
                 </span>
-              
-            </div>
-          
 
-          
+            </div>
+
+
+
 
         </div>
       </header>
-    
+
 
     <div class="post-body" itemprop="articleBody">
 
-      
-      
 
-      
+
+
+
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天我们开始讲一下 <code>Vue</code> 的 <code>nextTick</code> 方法的实现，无论是源码还是开发的过程中，经常需要使用到 <code>nextTick</code>，<code>Vue</code> 在更新 <code>DOM</code> 时是异步执行的，只要侦听到数据变化，<code>Vue</code> 将开启一个队列，并缓冲在同一事件循环中发生的所有数据变更。如果同一个 <code>watcher</code> 被多次触发，只会被推入到队列中一次。这种在缓冲时去除重复数据对于避免不必要的计算和 <code>DOM</code> 操作是非常重要的。然后，在下一个的事件循环 <code>“tick”</code> 中，<code>Vue</code> 刷新队列并执行实际 (已去重的) 工作。<code>Vue</code> 在内部对异步队列尝试使用原生的 <code>Promise.then</code>、<code>MutationObserver</code> 和 <code>setImmediate</code>，如果执行环境不支持，则会采用 <code>setTimeout(fn, 0)</code> 代替。</p>
 <a id="more"></a>
-<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><p><a href="https://github.com/wclimb/vue/blob/dev/src/core/util/next-tick.js" target="_blank" rel="external">https://github.com/wclimb/vue/blob/dev/src/core/util/next-tick.js</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">let</span> isUsingMicroTask = <span class="literal">false</span></div><div class="line"></div><div class="line"><span class="comment">// 储存回调</span></div><div class="line"><span class="keyword">const</span> callbacks = []</div><div class="line"><span class="comment">// 是否正在处理中</span></div><div class="line"><span class="keyword">let</span> pending = <span class="literal">false</span></div><div class="line"><span class="comment">// 批量执行回调</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">flushCallbacks</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">// 恢复状态以便后续能正常使用</span></div><div class="line">  pending = <span class="literal">false</span></div><div class="line">  <span class="keyword">const</span> copies = callbacks.slice(<span class="number">0</span>)</div><div class="line">  <span class="comment">// 执行之前先把回调清空，以便后续能正常调用</span></div><div class="line">  callbacks.length = <span class="number">0</span></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; copies.length; i++) &#123;</div><div class="line">    copies[i]()</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> timerFunc</div><div class="line"><span class="comment">// 判断是否支持Promise，使用Promise的异步，属于微任务</span></div><div class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">Promise</span> !== <span class="string">'undefined'</span> &amp;&amp; isNative(<span class="built_in">Promise</span>)) &#123;</div><div class="line">  <span class="keyword">const</span> p = <span class="built_in">Promise</span>.resolve()</div><div class="line">  timerFunc = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    p.then(flushCallbacks)</div><div class="line">    <span class="keyword">if</span> (isIOS) setTimeout(noop)</div><div class="line">  &#125;</div><div class="line">  isUsingMicroTask = <span class="literal">true</span></div><div class="line">  <span class="comment">// 判断是否支持MutationObserver，属于微任务</span></div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (!isIE &amp;&amp; <span class="keyword">typeof</span> MutationObserver !== <span class="string">'undefined'</span> &amp;&amp; (</div><div class="line">  isNative(MutationObserver) ||</div><div class="line">  <span class="comment">// iOS 7.x 平台处理的判断</span></div><div class="line">  MutationObserver.toString() === <span class="string">'[object MutationObserverConstructor]'</span></div><div class="line">)) &#123;</div><div class="line">  <span class="keyword">let</span> counter = <span class="number">1</span></div><div class="line">  <span class="keyword">const</span> observer = <span class="keyword">new</span> MutationObserver(flushCallbacks)</div><div class="line">  <span class="keyword">const</span> textNode = <span class="built_in">document</span>.createTextNode(<span class="built_in">String</span>(counter))</div><div class="line">  observer.observe(textNode, &#123;</div><div class="line">    <span class="attr">characterData</span>: <span class="literal">true</span></div><div class="line">  &#125;)</div><div class="line">  timerFunc = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    counter = (counter + <span class="number">1</span>) % <span class="number">2</span></div><div class="line">    textNode.data = <span class="built_in">String</span>(counter)</div><div class="line">  &#125;</div><div class="line">  isUsingMicroTask = <span class="literal">true</span></div><div class="line">  <span class="comment">// 是否支持setImmediate，属于宏任务</span></div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> setImmediate !== <span class="string">'undefined'</span> &amp;&amp; isNative(setImmediate)) &#123;</div><div class="line">  timerFunc = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    setImmediate(flushCallbacks)</div><div class="line">  &#125;</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">  <span class="comment">// 都不支持就直接使用宏任务 setTimeout</span></div><div class="line">  timerFunc = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    setTimeout(flushCallbacks, <span class="number">0</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// nextTick方法</span></div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">nextTick</span> (<span class="params">cb?: Function, ctx?: Object</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> _resolve</div><div class="line">  <span class="comment">// 收集回调函数</span></div><div class="line">  callbacks.push(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">if</span> (cb) &#123;</div><div class="line">      <span class="keyword">try</span> &#123;</div><div class="line">        cb.call(ctx)</div><div class="line">      &#125; <span class="keyword">catch</span> (e) &#123;</div><div class="line">        handleError(e, ctx, <span class="string">'nextTick'</span>)</div><div class="line">      &#125;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (_resolve) &#123;</div><div class="line">      <span class="comment">// 如果没有传递回调函数会执行_resolve，执行的代码其实就是callback this.$nextTick().then(callback)</span></div><div class="line">      _resolve(ctx)</div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line">  <span class="comment">// 如果状态没有正在处理执行</span></div><div class="line">  <span class="keyword">if</span> (!pending) &#123;</div><div class="line">    <span class="comment">// 置为处理中</span></div><div class="line">    pending = <span class="literal">true</span></div><div class="line">    <span class="comment">// 执行刚刚一系列判断下来获得的函数，最终会执行flushCallbacks方法</span></div><div class="line">    timerFunc()</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// 如果没有传递回调函数就会返回一个Promise，this.$nextTick().then(callback)，执行 _resolve(ctx) 之后会执行callback</span></div><div class="line">  <span class="keyword">if</span> (!cb &amp;&amp; <span class="keyword">typeof</span> <span class="built_in">Promise</span> !== <span class="string">'undefined'</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</div><div class="line">      _resolve = resolve</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><p><a href="https://github.com/wunci/vue/blob/dev/src/core/util/next-tick.js" target="_blank" rel="external">https://github.com/wunci/vue/blob/dev/src/core/util/next-tick.js</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">let</span> isUsingMicroTask = <span class="literal">false</span></div><div class="line"></div><div class="line"><span class="comment">// 储存回调</span></div><div class="line"><span class="keyword">const</span> callbacks = []</div><div class="line"><span class="comment">// 是否正在处理中</span></div><div class="line"><span class="keyword">let</span> pending = <span class="literal">false</span></div><div class="line"><span class="comment">// 批量执行回调</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">flushCallbacks</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">// 恢复状态以便后续能正常使用</span></div><div class="line">  pending = <span class="literal">false</span></div><div class="line">  <span class="keyword">const</span> copies = callbacks.slice(<span class="number">0</span>)</div><div class="line">  <span class="comment">// 执行之前先把回调清空，以便后续能正常调用</span></div><div class="line">  callbacks.length = <span class="number">0</span></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; copies.length; i++) &#123;</div><div class="line">    copies[i]()</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> timerFunc</div><div class="line"><span class="comment">// 判断是否支持Promise，使用Promise的异步，属于微任务</span></div><div class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">Promise</span> !== <span class="string">'undefined'</span> &amp;&amp; isNative(<span class="built_in">Promise</span>)) &#123;</div><div class="line">  <span class="keyword">const</span> p = <span class="built_in">Promise</span>.resolve()</div><div class="line">  timerFunc = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    p.then(flushCallbacks)</div><div class="line">    <span class="keyword">if</span> (isIOS) setTimeout(noop)</div><div class="line">  &#125;</div><div class="line">  isUsingMicroTask = <span class="literal">true</span></div><div class="line">  <span class="comment">// 判断是否支持MutationObserver，属于微任务</span></div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (!isIE &amp;&amp; <span class="keyword">typeof</span> MutationObserver !== <span class="string">'undefined'</span> &amp;&amp; (</div><div class="line">  isNative(MutationObserver) ||</div><div class="line">  <span class="comment">// iOS 7.x 平台处理的判断</span></div><div class="line">  MutationObserver.toString() === <span class="string">'[object MutationObserverConstructor]'</span></div><div class="line">)) &#123;</div><div class="line">  <span class="keyword">let</span> counter = <span class="number">1</span></div><div class="line">  <span class="keyword">const</span> observer = <span class="keyword">new</span> MutationObserver(flushCallbacks)</div><div class="line">  <span class="keyword">const</span> textNode = <span class="built_in">document</span>.createTextNode(<span class="built_in">String</span>(counter))</div><div class="line">  observer.observe(textNode, &#123;</div><div class="line">    <span class="attr">characterData</span>: <span class="literal">true</span></div><div class="line">  &#125;)</div><div class="line">  timerFunc = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    counter = (counter + <span class="number">1</span>) % <span class="number">2</span></div><div class="line">    textNode.data = <span class="built_in">String</span>(counter)</div><div class="line">  &#125;</div><div class="line">  isUsingMicroTask = <span class="literal">true</span></div><div class="line">  <span class="comment">// 是否支持setImmediate，属于宏任务</span></div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> setImmediate !== <span class="string">'undefined'</span> &amp;&amp; isNative(setImmediate)) &#123;</div><div class="line">  timerFunc = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    setImmediate(flushCallbacks)</div><div class="line">  &#125;</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">  <span class="comment">// 都不支持就直接使用宏任务 setTimeout</span></div><div class="line">  timerFunc = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    setTimeout(flushCallbacks, <span class="number">0</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// nextTick方法</span></div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">nextTick</span> (<span class="params">cb?: Function, ctx?: Object</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> _resolve</div><div class="line">  <span class="comment">// 收集回调函数</span></div><div class="line">  callbacks.push(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">if</span> (cb) &#123;</div><div class="line">      <span class="keyword">try</span> &#123;</div><div class="line">        cb.call(ctx)</div><div class="line">      &#125; <span class="keyword">catch</span> (e) &#123;</div><div class="line">        handleError(e, ctx, <span class="string">'nextTick'</span>)</div><div class="line">      &#125;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (_resolve) &#123;</div><div class="line">      <span class="comment">// 如果没有传递回调函数会执行_resolve，执行的代码其实就是callback this.$nextTick().then(callback)</span></div><div class="line">      _resolve(ctx)</div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line">  <span class="comment">// 如果状态没有正在处理执行</span></div><div class="line">  <span class="keyword">if</span> (!pending) &#123;</div><div class="line">    <span class="comment">// 置为处理中</span></div><div class="line">    pending = <span class="literal">true</span></div><div class="line">    <span class="comment">// 执行刚刚一系列判断下来获得的函数，最终会执行flushCallbacks方法</span></div><div class="line">    timerFunc()</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// 如果没有传递回调函数就会返回一个Promise，this.$nextTick().then(callback)，执行 _resolve(ctx) 之后会执行callback</span></div><div class="line">  <span class="keyword">if</span> (!cb &amp;&amp; <span class="keyword">typeof</span> <span class="built_in">Promise</span> !== <span class="string">'undefined'</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</div><div class="line">      _resolve = resolve</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>我们可以看到 <code>Vue</code> 会借助 <code>timerFunc</code> 方法异步批量处理回调函数，<code>timerFunc</code> 可能是 <code>Promise.then</code>、<code>MutationObserver</code> 、 <code>setImmediate</code>、<code>setTimeout</code>。判断他们的支持程度，降级处理。<br>如果没有传递回调函数会返回一个Promise，并把 <code>resolve</code> 方法赋值给 <code>_resolve</code>，这样我们 <code>this.$nextTick().then(callback)</code>，<code>callback</code>就会被触发了。至于为什么要使用 <code>timerFunc</code> 这种方式，开头已经讲了，是因为 <code>Vue</code> 是异步更新队列，这样做的好处是去除重复数据对于避免不必要的计算和 <code>DOM</code> 操作，比如我们操作一个数据，并且重复多次给他赋不一样的值，<code>this.a = 1;this.a = 2; this.a = 3</code>，答案结果最后自然是3，但是 <code>Vue</code> 不会去更新三次 <code>DOM</code> 或者数据，这样会造成不必要的浪费，所以需要做异步处理去 <code>update</code> 他们，既然更新是异步的，我们如果想直接马上获取最新的数据自然是不行的，需要借助 <code>nextTick</code>，在下一次事件循环中去获取，可以看下面👇的代码</p>
 <h2 id="实际代码"><a href="#实际代码" class="headerlink" title="实际代码"></a>实际代码</h2><p>我们看下面的代码<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span> @<span class="attr">click</span>=<span class="string">"fn"</span>&gt;</span>&#123;&#123;code&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">el</span>: <span class="string">'#app'</span>,</div><div class="line">  <span class="attr">data</span>: &#123;</div><div class="line">    <span class="attr">code</span>: <span class="number">0</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">methods</span>:&#123;</div><div class="line">    fn()&#123;</div><div class="line">      <span class="keyword">this</span>.code = <span class="number">1</span></div><div class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>.$el.textConent); <span class="comment">// 0</span></div><div class="line">      <span class="keyword">this</span>.$nextTick(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.$el.textConent) <span class="comment">// 1</span></div><div class="line">      &#125;)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <p>你也可以这样</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">var vm = new Vue(&#123;</div><div class="line">  el: '#app',</div><div class="line">  data: &#123;</div><div class="line">    code: 0</div><div class="line">  &#125;,</div><div class="line">  methods:&#123;</div><div class="line">    async fn()&#123;</div><div class="line">      this.code = 1</div><div class="line">      console.log(this.$el.textConent); // 0</div><div class="line"><span class="deletion">-     this.$nextTick(()=&gt;&#123;</span></div><div class="line"><span class="deletion">-       console.log(this.$el.textConent) // 1</span></div><div class="line"><span class="deletion">-     &#125;)</span></div><div class="line"><span class="addition">+     await this.$nextTick()</span></div><div class="line"><span class="addition">+     console.log(this.$el.textConent) // 1</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>今天带大家了解了一下 <code>nextTick</code> 的内部实现，虽然你也可以直接使用 <code>setTimeout</code> 去做，但是基于性能和执行顺序的问题(微任务执行快于宏任务)，推荐还是使用 <code>nextTick</code> 更好一点。</p>
-<p>本文地址 <a href="http://www.wclimb.site/2020/03/25/vue-sourse-code-nextTick/">Vue源码之nextTick</a></p>
+<p>本文地址 <a href="http://wunci.github.io/2020/03/25/vue-sourse-code-nextTick/">Vue源码之nextTick</a></p>
 
-      
+
     </div>
 
     <div>
-      
-        
 
-      
+
+
+
     </div>
 
     <div>
-      
-        
+
+
   <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
     <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
     <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
       <span>赏</span>
     </button>
     <div id="QR" style="display: none;">
-      
+
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay"/>
+          <img id="wechat_qr" src="/img/wx.png" alt="wunci WeChat Pay"/>
           <p>微信打赏</p>
         </div>
-      
-      
+
+
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay"/>
+          <img id="alipay_qr" src="/img/alipay.png" alt="wunci Alipay"/>
           <p>支付宝打赏</p>
         </div>
-      
+
     </div>
   </div>
 
 
-      
+
     </div>
 
     <div>
-      
-        
 
-      
+
+
+
     </div>
 
     <footer class="post-footer">
-      
+
         <div class="post-tags">
-          
+
             <a href="/tags/原创/" rel="tag"># 原创</a>
-          
+
             <a href="/tags/javascript/" rel="tag"># javascript</a>
-          
+
             <a href="/tags/vue/" rel="tag"># vue</a>
-          
+
             <a href="/tags/源码/" rel="tag"># 源码</a>
-          
+
         </div>
-      
 
-      
-      
-      
 
-      
+
+
+
+
+
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-            
+
               <a href="/2020/03/19/simple-virtual-dom/" rel="next" title="撸一个简易Virtual DOM">
                 <i class="fa fa-chevron-left"></i> 撸一个简易Virtual DOM
               </a>
-            
+
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
+
               <a href="/2020/04/04/node-proxy/" rel="prev" title="Nodejs之实现代理">
                 Nodejs之实现代理 <i class="fa fa-chevron-right"></i>
               </a>
-            
+
           </div>
         </div>
-      
 
-      
-      
+
+
+
     </footer>
   </article>
 
 
 
     <div class="post-spread">
-      
+
     </div>
   </div>
 
 
           </div>
-          
 
 
-          
+
+
   <div class="comments" id="comments">
-    
+
   </div>
 
 
         </div>
-        
-          
-  
+
+
+
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
       <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
@@ -571,9 +571,9 @@
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
-      
 
-      
+
+
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
             文章目录
@@ -582,184 +582,184 @@
             站点概览
           </li>
         </ul>
-      
+
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
-               alt="wclimb" />
-          <p class="site-author-name" itemprop="name">wclimb</p>
-           
+               alt="wunci" />
+          <p class="site-author-name" itemprop="name">wunci</p>
+
               <p class="site-description motion-element" itemprop="description"></p>
-          
+
         </div>
         <nav class="site-state motion-element">
 
-          
+
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
                 <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
-          
 
-          
-            
-            
+
+
+
+
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
                 <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
-          
 
-          
-            
-            
+
+
+
+
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
                 <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
-          
+
 
         </nav>
 
-        
+
 
         <div class="links-of-author motion-element">
-          
-            
+
+
               <span class="links-of-author-item">
-                <a href="https://github.com/wclimb" target="_blank" title="GitHub">
-                  
+                <a href="https://github.com/wunci" target="_blank" title="GitHub">
+
                     <i class="fa fa-fw fa-github"></i>
-                  
+
                   GitHub
                 </a>
               </span>
-            
+
               <span class="links-of-author-item">
                 <a href="http://shang.qq.com/wpa/qunwpa?idkey=e6c66b1ee584a90b52dec3545622e988afcf900144eff03cab6d473c50a31d59" target="_blank" title="QQ群">
-                  
+
                     <i class="fa fa-fw fa-qq"></i>
-                  
+
                   QQ群
                 </a>
               </span>
-            
+
               <span class="links-of-author-item">
-                <a href="http://www.wclimb.site/cdn/xcx.jpeg" target="_blank" title="小程序">
-                  
+                <a href="http://wunci.github.io/cdn/xcx.jpeg" target="_blank" title="小程序">
+
                     <i class="fa fa-fw fa-weixin"></i>
-                  
+
                   小程序
                 </a>
               </span>
-            
+
               <span class="links-of-author-item">
                 <a href="/img/gzh.jpg" target="_blank" title="公众号">
-                  
+
                     <i class="fa fa-fw fa-globe"></i>
-                  
+
                   公众号
                 </a>
               </span>
-            
-          
+
+
         </div>
 
-        
-        
 
-        
-        
+
+
+
+
           <div class="links-of-blogroll motion-element links-of-blogroll-inline">
             <div class="links-of-blogroll-title">
               <i class="fa  fa-fw fa-globe"></i>
               Links
             </div>
             <ul class="links-of-blogroll-list">
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="https://www.lsnsh.site/" title="Lsnsh" target="_blank">Lsnsh</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://blog.curtaintan.club" title="curtain Tan" target="_blank">curtain Tan</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://eraylee.com/" title="eraylee" target="_blank">eraylee</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="https://dcdcdog.com" title="flutter体验" target="_blank">flutter体验</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://www.jspeng.com" title="技术鹏" target="_blank">技术鹏</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://www.suchenqiang.cn/" title="苏博客" target="_blank">苏博客</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="https://www.phpojbk.com" title="Blog Luo" target="_blank">Blog Luo</a>
                 </li>
-              
+
             </ul>
           </div>
-        
 
-        
+
+
 
 
       </section>
 
-      
+
       <!--noindex-->
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
-            
-              
-            
 
-            
+
+
+
+
               <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码"><span class="nav-number">2.</span> <span class="nav-text">源码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实际代码"><span class="nav-number">3.</span> <span class="nav-text">实际代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
-            
+
 
           </div>
         </section>
       <!--/noindex-->
-      
 
-      
+
+
 
     </div>
   </aside>
 
 
-        
+
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright" >
-  
-  &copy;  2017 - 
+
+  &copy;  2017 -
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">wclimb</span>
+  <span class="author" itemprop="copyrightHolder">wunci</span>
 </div>
 
 
@@ -789,37 +789,37 @@ var total= Math.floor(duration / (1000 * 60 * 60 * 24));
 document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 </script>
 
-<span>赣ICP备 17009321号</span> 
-        
+<span>赣ICP备 17009321号</span>
+
 <div class="busuanzi-count">
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-  
+
     <span class="site-uv">
       <i class="fa fa-user"></i>  访问人数
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
       人次
     </span>
-  
 
-  
+
+
 </div>
 
 
-        
+
       </div>
     </footer>
 
-    
+
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
-        
+
       </div>
-    
+
 
   </div>
 
-  
+
 
 <script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
@@ -835,7 +835,6 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
 
 
 
@@ -848,26 +847,27 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
+
+
   <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
 
 
-  
+
 
 
   <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
@@ -876,8 +876,8 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
-  
+
+
 
 
   <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
@@ -886,53 +886,53 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
+
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
 
 
-  
+
 
 
   <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-  
 
 
 
 
 
 
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <script type="text/javascript">
     // Popup Window;
@@ -1255,17 +1255,17 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
+
+
+
+
+
+
 
   <script src="https://cdn.bootcss.com/clipboard.js/2.0.6/clipboard.min.js"></script>
   <style>

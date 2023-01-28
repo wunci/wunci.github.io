@@ -1,7 +1,7 @@
 (function(window){
 	Wvld = function(){}
 	Wvld.prototype.each = function(obj,callback){
-		var isObj = Object.prototype.toString.call(obj) 
+		var isObj = Object.prototype.toString.call(obj)
 		if (isObj === '[object Object]') {
 			for (var name in obj){
 				callback.call(obj[name],name,obj[name])
@@ -47,7 +47,7 @@
 		// 横向滚动条监听，查找多层父级
 		this.each(parentsNode,function(i){
 			if (parentsNode[i].scrollWidth > 0) {
-				parentsNode[i].addEventListener('scroll',throttle(lazyload,200,500));	
+				parentsNode[i].addEventListener('scroll',throttle(lazyload,200,500));
 			}
 		})
 		var that = this
@@ -90,7 +90,7 @@
 		            args = arguments,
 		            curTime = new Date();
 		        clearTimeout(timeout);
-		        // 如果达到了规定的触发时间间隔，触发 
+		        // 如果达到了规定的触发时间间隔，触发
 		        if (curTime - startTime >= time) {
 		            fun.apply(context, args);
 		            startTime = curTime;
@@ -102,9 +102,5 @@
 		};
 	}
 	vld = new Wvld();
-	window.vld = window.wclimb = vld
+	window.vld = window.wunci = vld
 })(window)
-	
-
-			
-			

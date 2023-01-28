@@ -2,7 +2,7 @@
 
 
 
-  
+
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
@@ -36,45 +36,45 @@
 
 
 
-  
-  
-    
-  
+
+
+
+
   <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
 
-  
-  
-  
-  
 
-  
-    
-    
-  
 
-  
 
-  
 
-  
 
-  
 
-  
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
 
 
 
-  
+
+
 
 <link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
@@ -101,8 +101,8 @@
 <meta name="keywords" content="原创,javascript,Node">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nodejs之实现路由和中间件">
-<meta property="og:url" content="http://www.wclimb.site/2020/04/14/node-route-middleware/index.html">
-<meta property="og:site_name" content="wclimb的个人博客--分享">
+<meta property="og:url" content="http://wunci.github.io/2020/04/14/node-route-middleware/index.html">
+<meta property="og:site_name" content="wunci的个人博客--分享">
 <meta property="og:description" content="前言今天来实现一个 node 的路由和中间件 铺垫我们首先起一个服务 12345678const http = require(&quot;http&quot;);const url = require(&quot;url&quot;);http  .createServer(function(req, res) &amp;#123;    const pathname = url.parse(req.url).pathname;    res">
 <meta property="og:updated_time" content="2021-09-12T07:52:45.016Z">
 <meta name="twitter:card" content="summary">
@@ -135,14 +135,14 @@
 
 
 
-  <link rel="canonical" href="http://www.wclimb.site/2020/04/14/node-route-middleware/"/>
+  <link rel="canonical" href="http://wunci.github.io/2020/04/14/node-route-middleware/"/>
 
 
 
 
 
-  <title>Nodejs之实现路由和中间件 | wclimb的个人博客--分享</title>
-  
+  <title>Nodejs之实现路由和中间件 | wunci的个人博客--分享</title>
+
 
 
 
@@ -161,10 +161,10 @@
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  
-  
-    
-  
+
+
+
+
 
   <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
@@ -172,18 +172,18 @@
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
-    
+
 
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">wclimb的个人博客--分享</span>
+        <span class="site-title">wunci的个人博客--分享</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
+
         <p class="site-subtitle"></p>
-      
+
   </div>
 
   <div class="site-nav-toggle">
@@ -196,80 +196,80 @@
 </div>
 
 <nav class="site-nav">
-  
 
-  
+
+
     <ul id="menu" class="menu">
-      
-        
+
+
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
+
             首页
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
+
             分类
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
+
             关于
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
+
             归档
           </a>
         </li>
-      
-        
+
+
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
-            
+
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
+
             标签
           </a>
         </li>
-      
 
-      
+
+
         <li class="menu-item menu-item-search">
-          
+
             <a href="javascript:;" class="popup-trigger">
-          
-            
+
+
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
+
             搜索
           </a>
         </li>
-      
-    </ul>
-  
 
-  
+    </ul>
+
+
+
     <div class="site-search">
-      
+
   <div class="popup search-popup local-search-popup">
   <div class="local-search-header clearfix">
     <span class="search-icon">
@@ -290,7 +290,7 @@
 
 
     </div>
-  
+
 </nav>
 
 
@@ -302,140 +302,140 @@
       <div class="main-inner">
         <div class="content-wrap">
           <div id="content" class="content">
-            
+
 
   <div id="posts" class="posts-expand">
-    
 
-  
 
-  
-  
-  
+
+
+
+
+
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.wclimb.site/2020/04/14/node-route-middleware/">
+    <link itemprop="mainEntityOfPage" href="http://wunci.github.io/2020/04/14/node-route-middleware/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wclimb">
+      <meta itemprop="name" content="wunci">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wclimb的个人博客--分享">
+      <meta itemprop="name" content="wunci的个人博客--分享">
     </span>
 
-    
+
       <header class="post-header">
 
-        
-        
+
+
           <h1 class="post-title" itemprop="name headline">Nodejs之实现路由和中间件</h1>
-        
+
 
         <div class="post-meta">
           <span class="post-time">
-            
+
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
+
                 <span class="post-meta-item-text">发表于</span>
-              
+
               <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-14T17:25:50+08:00">
                 2020-04-14
               </time>
-            
 
-            
 
-            
+
+
+
           </span>
 
-          
+
             <span class="post-category" >
-            
+
               <span class="post-meta-divider">|</span>
-            
+
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
+
                 <span class="post-meta-item-text">分类于</span>
-              
-              
+
+
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Node/" itemprop="url" rel="index">
                     <span itemprop="name">Node</span>
                   </a>
                 </span>
 
-                
-                
-                  ， 
-                
-              
+
+
+                  ，
+
+
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Node/模版引擎/" itemprop="url" rel="index">
                     <span itemprop="name">模版引擎</span>
                   </a>
                 </span>
 
-                
-                
-              
+
+
+
             </span>
-          
 
-          
-            
-          
 
-          
-          
 
-          
+
+
+
+
+
+
+
             <span class="post-meta-divider">|</span>
             <span class="page-pv"><i class="fa fa-file-o"></i>   浏览
             <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
             </span>
-          
 
-          
+
+
             <div class="post-wordcount">
-              
 
-              
+
+
                 <span class="post-meta-divider">|</span>
-              
 
-              
+
+
                 <span class="post-meta-item-icon" style="margin-left:4px;">
                   <i class="fa fa-clock-o"></i>
                 </span>
-                
+
                   <span class="post-meta-item-text">约</span>
-                
+
                 <span title="约">
                   9 分钟
                 </span>
-              
-            </div>
-          
 
-          
+            </div>
+
+
+
 
         </div>
       </header>
-    
+
 
     <div class="post-body" itemprop="articleBody">
 
-      
-      
 
-      
+
+
+
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天来实现一个 <code>node</code> 的路由和中间件</p>
 <h2 id="铺垫"><a href="#铺垫" class="headerlink" title="铺垫"></a>铺垫</h2><p>我们首先起一个服务</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</div><div class="line"><span class="keyword">const</span> url = <span class="built_in">require</span>(<span class="string">"url"</span>);</div><div class="line">http</div><div class="line">  .createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</div><div class="line">    <span class="keyword">const</span> pathname = url.parse(req.url).pathname;</div><div class="line">    res.end(req.method.toLowerCase() + <span class="string">": "</span> + pathname);</div><div class="line">  &#125;)</div><div class="line">  .listen(<span class="number">3000</span>);</div></pre></td></tr></table></figure>
@@ -449,7 +449,7 @@
 <p>回到router.js<br><figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">const url = require("url");</div><div class="line">class Router &#123;</div><div class="line">  constructor() &#123;</div><div class="line">    this.route = &#123;&#125;;</div><div class="line">    ["HEAD", "OPTIONS", "GET", "PUT", "PATCH", "POST", "DELETE"].forEach(</div><div class="line">      method =&gt; &#123;</div><div class="line">        method = method.toLowerCase();</div><div class="line">        this.route[method] = [];</div><div class="line">        this[method] = function(path, ...stacks) &#123;</div><div class="line">          this.route[method].push([path, [...stacks]]);</div><div class="line">        &#125;;</div><div class="line">      &#125;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line"><span class="addition">+  install(req, res, app) &#123;</span></div><div class="line"><span class="addition">+    const pathname = url.parse(req.url).pathname;</span></div><div class="line"><span class="addition">+    const method = req.method.toLowerCase();</span></div><div class="line"><span class="addition">+    if (this.route[method]) &#123;</span></div><div class="line"><span class="addition">+      for (let i = 0; i &lt; this.route[method].length; i++) &#123;</span></div><div class="line"><span class="addition">+        const [path, stacks] = this.route[method][i];</span></div><div class="line"><span class="addition">+        const &#123; keys, regExp &#125; = this.pathRegexp(path);</span></div><div class="line"><span class="addition">+        const mathed = regExp.exec(pathname);</span></div><div class="line"><span class="addition">+        if (mathed) &#123;</span></div><div class="line"><span class="addition">+          req.params = &#123;&#125;;</span></div><div class="line"><span class="addition">+          for (let j = 0; j &lt; keys.length; j++) &#123;</span></div><div class="line"><span class="addition">+            const key = keys[j];</span></div><div class="line"><span class="addition">+            req.params[key] = mathed[j + 1];</span></div><div class="line"><span class="addition">+          &#125;</span></div><div class="line"><span class="addition">+          return app.handle(req, res, stacks);</span></div><div class="line"><span class="addition">+        &#125;</span></div><div class="line"><span class="addition">+      &#125;</span></div><div class="line"><span class="addition">+      res.writeHead(404);</span></div><div class="line"><span class="addition">+      res.end("404");</span></div><div class="line"><span class="addition">+    &#125;else&#123;</span></div><div class="line"><span class="addition">+      res.writeHead(404);</span></div><div class="line"><span class="addition">+      res.end("404");</span></div><div class="line"><span class="addition">+    &#125;</span></div><div class="line"><span class="addition">+  &#125;</span></div><div class="line"><span class="addition">+  pathRegexp(path) &#123;</span></div><div class="line"><span class="addition">+    const keys = [];</span></div><div class="line"><span class="addition">+    path = path.replace(/\/:(\w+)?(?:\/)?/g, function(match, key) &#123;</span></div><div class="line"><span class="addition">+      keys.push(key);</span></div><div class="line"><span class="addition">+      return `\\/([^\\/]+)(?:\\/)?`;</span></div><div class="line"><span class="addition">+    &#125;);</span></div><div class="line"><span class="addition">+    return &#123;</span></div><div class="line"><span class="addition">+      keys,</span></div><div class="line"><span class="addition">+      regExp: new RegExp(`^$&#123;path&#125;$`)</span></div><div class="line"><span class="addition">+    &#125;;</span></div><div class="line"><span class="addition">+  &#125;</span></div><div class="line">&#125;</div><div class="line">module.exports = Router;</div></pre></td></tr></table></figure></p>
 <p>你会发现多了两个方法<code>install</code>，<code>pathRegexp</code>。<code>install</code>是用来注册路由的，首先拿到请求方法和路径，然后去之前收集的路由查找是否存在这个路由，如果不存在直接返回404，如果存在会调用 <code>pathRegexp</code> 做路径匹配，因为可能会有 <code>/:id</code>、 <code>/user</code>，这种不同的路由，这里借鉴一下 <code>koa-router</code> 获取参数的方式，比如我们路由是 <code>/:id/test/:p</code>，当我们访问 <code>/123/test/456</code>的时候，我们可以拿到一个对象<code>params: {id:123,p:456}</code>。其实 <code>koa-router</code> 的路由匹配规则用的是 <a href="https://github.com/pillarjs/path-to-regexp" target="_blank" rel="external">path-to-regexp</a> 这个包，我们这里是自己做的匹配，可以思考一下上面 <code>pathRegexp</code> 方法的实现，正则好的同学应该看得很明白。如果发现匹配，我们会把 <code>params</code> 赋值到 <code>req</code> 对象上，然后调用执行中间件的操作，也就是 <code>app.handle(req, res, stacks);</code>，你会发现上面我们注册的时候压根就没有传递 <code>app</code>，因为这是后面需要讲的内容，实现中间件</p>
 <p>顺便说一下，如果你想让上面的代码正常执行，把 <code>app.handle()</code> 这行代码去掉，然后 <code>res.end()</code> 就可以正常执行了</p>
-<h2 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h2><p>中间件其实就是洋葱模型了，先收集中间件的依赖，然后去递归一个个执行中间件，感兴趣可以去看看我直接写的<a href="http://www.wclimb.site/2019/12/11/Koa%E6%BA%90%E7%A0%81%E7%B3%BB%E5%88%97%E4%B9%8Bkoa-compose/">Koa源码系列之koa-compose</a></p>
+<h2 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h2><p>中间件其实就是洋葱模型了，先收集中间件的依赖，然后去递归一个个执行中间件，感兴趣可以去看看我直接写的<a href="http://wunci.github.io/2019/12/11/Koa%E6%BA%90%E7%A0%81%E7%B3%BB%E5%88%97%E4%B9%8Bkoa-compose/">Koa源码系列之koa-compose</a></p>
 <p>中间件我们希望他是这么注册收集的<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">app.use(cookie);</div><div class="line">app.use(<span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</div><div class="line">  req.query = url.parse(req.url, <span class="literal">true</span>).query;</div><div class="line">  next();</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 <p>新建文件<code>middleware.js</code>，内容如下<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> url = <span class="built_in">require</span>(<span class="string">"url"</span>);</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MiddleWare</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>() &#123;</div><div class="line">    <span class="keyword">this</span>.aloneMiddleWare = &#123;&#125;;</div><div class="line">    <span class="keyword">this</span>.commonMiddleWare = [];</div><div class="line">  &#125;</div><div class="line">  use(middleWare) &#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> middleWare === <span class="string">"string"</span>) &#123;</div><div class="line">      <span class="keyword">this</span>.aloneMiddleWare[middleWare] = <span class="built_in">arguments</span>[<span class="number">1</span>];</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">this</span>.commonMiddleWare.push(middleWare);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  handle(req, res, stacks) &#123;</div><div class="line">    <span class="keyword">const</span> pathname = url.parse(req.url).pathname;</div><div class="line">    <span class="keyword">const</span> middleWareList = [</div><div class="line">      ...this.commonMiddleWare,</div><div class="line">      ...(<span class="keyword">this</span>.aloneMiddleWare[pathname] ? <span class="keyword">this</span>.aloneMiddleWare[pathname] : []),</div><div class="line">      ...stacks</div><div class="line">    ];</div><div class="line">    <span class="keyword">const</span> next = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">const</span> middleWare = middleWareList.shift();</div><div class="line">      <span class="keyword">if</span> (middleWare) &#123;</div><div class="line">        middleWare(req, res, next);</div><div class="line">      &#125;</div><div class="line">    &#125;;</div><div class="line">    next();</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = <span class="keyword">new</span> MiddleWare();</div></pre></td></tr></table></figure></p>
 <p><code>aloneMiddleWare</code> 先不看，<code>use</code>方法是进行依赖收集的，<code>handle</code>方法是集中处理中间件的方法，递归调用，依次执行。关键代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> next = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> middleWare = middleWareList.shift();</div><div class="line">  <span class="keyword">if</span> (middleWare) &#123;</div><div class="line">    middleWare(req, res, next);</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line">next();</div></pre></td></tr></table></figure></p>
@@ -460,127 +460,127 @@
 <p>嗯，现在大致完成了功能，但是呢，好像我们可以把上一篇写的模版引擎拿过来，借鉴一下 <a href="https://www.npmjs.com/package/koa-views" target="_blank" rel="external">koa-views</a> 方法，使用 <code>ctx.render(file,{})</code> 渲染模版</p>
 <h2 id="支持模版引擎"><a href="#支持模版引擎" class="headerlink" title="支持模版引擎"></a>支持模版引擎</h2><p>新建文件<code>render.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> render = <span class="function"><span class="keyword">function</span>(<span class="params">file, data</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> str = fs.readFileSync(<span class="string">`<span class="subst">$&#123;file&#125;</span>.ejs`</span>, <span class="string">"utf8"</span>);</div><div class="line">  <span class="keyword">const</span> <span class="built_in">escape</span> = <span class="function"><span class="keyword">function</span>(<span class="params">html</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">String</span>(html)</div><div class="line">      .replace(<span class="regexp">/&amp;(?!\w+;)/g</span>, <span class="string">"&amp;amp;"</span>)</div><div class="line">      .replace(<span class="regexp">/&lt;/g</span>, <span class="string">"&amp;lt;"</span>)</div><div class="line">      .replace(<span class="regexp">/&gt;/g</span>, <span class="string">"&amp;gt;"</span>)</div><div class="line">      .replace(<span class="regexp">/"/g</span>, <span class="string">"&amp;quot;"</span>)</div><div class="line">      .replace(<span class="regexp">/'/g</span>, <span class="string">"&amp;#039;"</span>); <span class="comment">// IE下不支持&amp;apos;(单引号)转义</span></div><div class="line">  &#125;;</div><div class="line">  str = str</div><div class="line">    .replace(<span class="regexp">/\n/g</span>, <span class="string">""</span>)</div><div class="line">    .replace(<span class="regexp">/\s&#123;2,&#125;/g</span>, <span class="string">""</span>)</div><div class="line">    .replace(<span class="regexp">/&lt;%-([\S\s]+?)%&gt;/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params">match, val</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> <span class="string">`'+ <span class="subst">$&#123;val&#125;</span> +'`</span>;</div><div class="line">    &#125;)</div><div class="line">    .replace(<span class="regexp">/&lt;%=([\S\s]+?)%&gt;/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params">match, val</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> <span class="string">`'+ escape(<span class="subst">$&#123;val&#125;</span>) +'`</span>;</div><div class="line">    &#125;)</div><div class="line">    .replace(<span class="regexp">/&lt;%([\S\s]+?)%&gt;/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params">match, val</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> <span class="string">`';\n<span class="subst">$&#123;val&#125;</span>\ntpl +='`</span>;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">  str = <span class="string">`let tpl = '<span class="subst">$&#123;str&#125;</span>';return tpl;`</span>;</div><div class="line">  str = <span class="string">`with(option)&#123;<span class="subst">$&#123;str&#125;</span>;return tpl;&#125;`</span>;</div><div class="line">  <span class="keyword">const</span> complied = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"option"</span>, str);</div><div class="line">  <span class="keyword">let</span> result;</div><div class="line">  <span class="keyword">try</span> &#123;</div><div class="line">    result = complied(data);</div><div class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</div><div class="line">    <span class="built_in">console</span>.log(error);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> result;</div><div class="line">&#125;;</div><div class="line"><span class="built_in">module</span>.exports = render;</div></pre></td></tr></table></figure></p>
 <h3 id="写一个支持模版引擎的中间件"><a href="#写一个支持模版引擎的中间件" class="headerlink" title="写一个支持模版引擎的中间件"></a>写一个支持模版引擎的中间件</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">app.use(<span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</div><div class="line">  res.render = <span class="function"><span class="keyword">function</span>(<span class="params">file, data</span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> template = render(file, data);</div><div class="line">    res.writeHead(<span class="number">200</span>, &#123; <span class="string">"Content-Type"</span>: <span class="string">"text/html;charset=utf8"</span> &#125;);</div><div class="line">    res.end(template);</div><div class="line">  &#125;;</div><div class="line">  next();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">app.get(<span class="string">"/user/:id"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> obj = &#123;</div><div class="line">    <span class="attr">items</span>: [&#123; <span class="attr">name</span>: <span class="string">"123"</span> &#125;, &#123; <span class="attr">name</span>: <span class="string">"wclimb"</span> &#125;],</div><div class="line">  &#125;;</div><div class="line">  res.render(<span class="string">"template"</span>, obj);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">app.get(<span class="string">"/user/:id"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> obj = &#123;</div><div class="line">    <span class="attr">items</span>: [&#123; <span class="attr">name</span>: <span class="string">"123"</span> &#125;, &#123; <span class="attr">name</span>: <span class="string">"wunci"</span> &#125;],</div><div class="line">  &#125;;</div><div class="line">  res.render(<span class="string">"template"</span>, obj);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <p><code>template</code> 是 <code>template.ejs</code>文件，当然得有</p>
 <p><code>template.ejs</code><br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang="en"&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;meta charset="UTF-8" /&gt;</div><div class="line">    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;</div><div class="line">    &lt;title&gt;Document&lt;/title&gt;</div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    &lt;% for (var i = 0; i &lt; items.length; i++) &#123; %&gt; &lt;% var item = items[i];%&gt;</div><div class="line">    &lt;p&gt;&lt;%= (i+1) %&gt;、&lt;%-item.name%&gt;&lt;/p&gt;</div><div class="line">    &lt;% &#125; %&gt;</div><div class="line"></div><div class="line">    &lt;div&gt;测试一下&lt;/div&gt;</div><div class="line"></div><div class="line">    &lt;% if (user) &#123; %&gt;</div><div class="line">    &lt;h2&gt;&lt;%=user.name%&gt;&lt;/h2&gt;</div><div class="line">    &lt;% &#125; else &#123; %&gt;</div><div class="line">    &lt;h2&gt;匿名用户&lt;/h2&gt;</div><div class="line">    &lt;% &#125; %&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
 <h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>至此，我们实现了路由、中间件、模版引擎，完整流程串起来可以方便我们写一些 <code>demo</code> 了，额，但是别在生产环境使用，不保证代码的健壮。当然我也相信你绝对不会上生产，因为这就是个 <code>demo</code>，其实那么框架也是这么一步步搭建起来的，原理思想差不多</p>
-<p>以上代码已经上传到Github：<a href="https://github.com/wclimb/router-middleware" target="_blank" rel="external">https://github.com/wclimb/router-middleware</a></p>
+<p>以上代码已经上传到Github：<a href="https://github.com/wunci/router-middleware" target="_blank" rel="external">https://github.com/wunci/router-middleware</a></p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
 <li><a href="https://book.douban.com/subject/25768396/" target="_blank" rel="external">深入浅出Node.js</a></li>
 </ul>
-<p>本文地址 <a href="http://www.wclimb.site/2020/04/14/node-route-middleware/">Nodejs之实现路由和中间件</a></p>
+<p>本文地址 <a href="http://wunci.github.io/2020/04/14/node-route-middleware/">Nodejs之实现路由和中间件</a></p>
 
-      
+
     </div>
 
     <div>
-      
-        
 
-      
+
+
+
     </div>
 
     <div>
-      
-        
+
+
   <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
     <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
     <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
       <span>赏</span>
     </button>
     <div id="QR" style="display: none;">
-      
+
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/img/wx.png" alt="wclimb WeChat Pay"/>
+          <img id="wechat_qr" src="/img/wx.png" alt="wunci WeChat Pay"/>
           <p>微信打赏</p>
         </div>
-      
-      
+
+
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/img/alipay.png" alt="wclimb Alipay"/>
+          <img id="alipay_qr" src="/img/alipay.png" alt="wunci Alipay"/>
           <p>支付宝打赏</p>
         </div>
-      
+
     </div>
   </div>
 
 
-      
+
     </div>
 
     <div>
-      
-        
 
-      
+
+
+
     </div>
 
     <footer class="post-footer">
-      
+
         <div class="post-tags">
-          
+
             <a href="/tags/原创/" rel="tag"># 原创</a>
-          
+
             <a href="/tags/javascript/" rel="tag"># javascript</a>
-          
+
             <a href="/tags/Node/" rel="tag"># Node</a>
-          
+
         </div>
-      
 
-      
-      
-      
 
-      
+
+
+
+
+
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-            
+
               <a href="/2020/04/14/node-template/" rel="next" title="Nodejs之实现一个模版引擎">
                 <i class="fa fa-chevron-left"></i> Nodejs之实现一个模版引擎
               </a>
-            
+
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
+
               <a href="/2020/04/15/node-process/" rel="prev" title="Nodejs之进程">
                 Nodejs之进程 <i class="fa fa-chevron-right"></i>
               </a>
-            
+
           </div>
         </div>
-      
 
-      
-      
+
+
+
     </footer>
   </article>
 
 
 
     <div class="post-spread">
-      
+
     </div>
   </div>
 
 
           </div>
-          
 
 
-          
+
+
   <div class="comments" id="comments">
-    
+
   </div>
 
 
         </div>
-        
-          
-  
+
+
+
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
       <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
@@ -592,9 +592,9 @@
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
-      
 
-      
+
+
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
             文章目录
@@ -603,184 +603,184 @@
             站点概览
           </li>
         </ul>
-      
+
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
-               alt="wclimb" />
-          <p class="site-author-name" itemprop="name">wclimb</p>
-           
+               alt="wunci" />
+          <p class="site-author-name" itemprop="name">wunci</p>
+
               <p class="site-description motion-element" itemprop="description"></p>
-          
+
         </div>
         <nav class="site-state motion-element">
 
-          
+
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
                 <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
-          
 
-          
-            
-            
+
+
+
+
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
                 <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
-          
 
-          
-            
-            
+
+
+
+
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
                 <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
-          
+
 
         </nav>
 
-        
+
 
         <div class="links-of-author motion-element">
-          
-            
+
+
               <span class="links-of-author-item">
-                <a href="https://github.com/wclimb" target="_blank" title="GitHub">
-                  
+                <a href="https://github.com/wunci" target="_blank" title="GitHub">
+
                     <i class="fa fa-fw fa-github"></i>
-                  
+
                   GitHub
                 </a>
               </span>
-            
+
               <span class="links-of-author-item">
                 <a href="http://shang.qq.com/wpa/qunwpa?idkey=e6c66b1ee584a90b52dec3545622e988afcf900144eff03cab6d473c50a31d59" target="_blank" title="QQ群">
-                  
+
                     <i class="fa fa-fw fa-qq"></i>
-                  
+
                   QQ群
                 </a>
               </span>
-            
+
               <span class="links-of-author-item">
-                <a href="http://www.wclimb.site/cdn/xcx.jpeg" target="_blank" title="小程序">
-                  
+                <a href="http://wunci.github.io/cdn/xcx.jpeg" target="_blank" title="小程序">
+
                     <i class="fa fa-fw fa-weixin"></i>
-                  
+
                   小程序
                 </a>
               </span>
-            
+
               <span class="links-of-author-item">
                 <a href="/img/gzh.jpg" target="_blank" title="公众号">
-                  
+
                     <i class="fa fa-fw fa-globe"></i>
-                  
+
                   公众号
                 </a>
               </span>
-            
-          
+
+
         </div>
 
-        
-        
 
-        
-        
+
+
+
+
           <div class="links-of-blogroll motion-element links-of-blogroll-inline">
             <div class="links-of-blogroll-title">
               <i class="fa  fa-fw fa-globe"></i>
               Links
             </div>
             <ul class="links-of-blogroll-list">
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="https://www.lsnsh.site/" title="Lsnsh" target="_blank">Lsnsh</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://blog.curtaintan.club" title="curtain Tan" target="_blank">curtain Tan</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://eraylee.com/" title="eraylee" target="_blank">eraylee</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="https://dcdcdog.com" title="flutter体验" target="_blank">flutter体验</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://www.jspeng.com" title="技术鹏" target="_blank">技术鹏</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="http://www.suchenqiang.cn/" title="苏博客" target="_blank">苏博客</a>
                 </li>
-              
+
                 <li class="links-of-blogroll-item">
                   <a href="https://www.phpojbk.com" title="Blog Luo" target="_blank">Blog Luo</a>
                 </li>
-              
+
             </ul>
           </div>
-        
 
-        
+
+
 
 
       </section>
 
-      
+
       <!--noindex-->
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
-            
-              
-            
 
-            
+
+
+
+
               <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#铺垫"><span class="nav-number">2.</span> <span class="nav-text">铺垫</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现路由"><span class="nav-number">3.</span> <span class="nav-text">实现路由</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中间件"><span class="nav-number">4.</span> <span class="nav-text">中间件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#支持模版引擎"><span class="nav-number">5.</span> <span class="nav-text">支持模版引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#写一个支持模版引擎的中间件"><span class="nav-number">5.1.</span> <span class="nav-text">写一个支持模版引擎的中间件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">6.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结尾"><span class="nav-number">7.</span> <span class="nav-text">结尾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">8.</span> <span class="nav-text">Reference</span></a></li></ol></div>
-            
+
 
           </div>
         </section>
       <!--/noindex-->
-      
 
-      
+
+
 
     </div>
   </aside>
 
 
-        
+
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright" >
-  
-  &copy;  2017 - 
+
+  &copy;  2017 -
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">wclimb</span>
+  <span class="author" itemprop="copyrightHolder">wunci</span>
 </div>
 
 
@@ -810,37 +810,37 @@ var total= Math.floor(duration / (1000 * 60 * 60 * 24));
 document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 </script>
 
-<span>赣ICP备 17009321号</span> 
-        
+<span>赣ICP备 17009321号</span>
+
 <div class="busuanzi-count">
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-  
+
     <span class="site-uv">
       <i class="fa fa-user"></i>  访问人数
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
       人次
     </span>
-  
 
-  
+
+
 </div>
 
 
-        
+
       </div>
     </footer>
 
-    
+
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
-        
+
       </div>
-    
+
 
   </div>
 
-  
+
 
 <script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
@@ -856,7 +856,6 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
 
 
 
@@ -869,26 +868,27 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
+
+
   <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
 
-  
+
   <script type="text/javascript" src="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
 
 
-  
+
 
 
   <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
@@ -897,8 +897,8 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
-  
+
+
 
 
   <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
@@ -907,53 +907,53 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
+
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
 
 
-  
+
 
 
   <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-  
 
 
 
 
 
 
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <script type="text/javascript">
     // Popup Window;
@@ -1276,17 +1276,17 @@ document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
 
 
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
+
+
+
+
+
+
 
   <script src="https://cdn.bootcss.com/clipboard.js/2.0.6/clipboard.min.js"></script>
   <style>
